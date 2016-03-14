@@ -1,41 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Estado list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Uf</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for estado in estados %}
-            <tr>
-                <td><a href="{{ path('estado_show', { 'id': estado.id }) }}">{{ estado.id }}</a></td>
-                <td>{{ estado.nome }}</td>
-                <td>{{ estado.uf }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('estado_show', { 'id': estado.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('estado_edit', { 'id': estado.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('estado_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                    <h2>Estados</h2>
+                    <table class="hoverable bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-align-center">ID</th>
+                                <th>Nome</th>
+                                <th>UF</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for estado in estados %}
+                            <tr>
+                                <td class="text-align-center"><a href="{{ path('estado_show', { 'id': estado.id }) }}">{{ estado.id }}</a></td>
+                                <td>{{ estado.nome }}</td>
+                                <td>{{ estado.uf }}</td>
+                                <td>
+                                    <a href="{{ path('estado_edit', { 'id': estado.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
+                                    <a href="{{ path('estado_delete', { 'id': estado.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">delete</i>Excluir</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div> <!-- end col s12 -->
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+        <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+            <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('estado_new') }}">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
 {% endblock %}
+

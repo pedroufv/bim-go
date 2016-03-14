@@ -1,36 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Estado</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ estado.id }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ estado.nome }}</td>
-            </tr>
-            <tr>
-                <th>Uf</th>
-                <td>{{ estado.uf }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('estado_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('estado_edit', { 'id': estado.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Estado</h2>
+                <table class="hoverable bordered">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ estado.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nome</th>
+                            <td>{{ estado.nome }}</td>
+                        </tr>
+                        <tr>
+                            <th>UF</th>
+                            <td>{{ estado.uf }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <a href="{{ path('estado_index', { 'id': estado.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">list</i>Voltar</a>
+                <a href="{{ path('estado_edit', { 'id': estado.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
+                <a href="{{ path('estado_delete', { 'id': estado.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">delete</i>Excluir</a>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
 {% endblock %}

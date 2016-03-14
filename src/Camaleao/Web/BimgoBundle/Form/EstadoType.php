@@ -16,7 +16,7 @@ class EstadoType extends AbstractType
     {
         $builder
             ->add('nome')
-            ->add('uf')
+            ->add('uf', 'text', array('label' => 'UF'))
         ;
     }
     
