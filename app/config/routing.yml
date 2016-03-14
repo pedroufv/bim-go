@@ -1,0 +1,115 @@
+camaleao_web_bimgo_estado:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EstadoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_cidade:
+    resource: "@CamaleaoWebBimgoBundle/Controller/CidadeController.php"
+    type:     annotation
+
+camaleao_web_bimgo_cliente:
+    resource: "@CamaleaoWebBimgoBundle/Controller/ClienteController.php"
+    type:     annotation
+
+camaleao_web_bimgo_endereco:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EnderecoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_funcionario:
+    resource: "@CamaleaoWebBimgoBundle/Controller/FuncionarioController.php"
+    type:     annotation
+
+camaleao_web_bimgo_pagamento:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PagamentoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_grupoempresas:
+    resource: "@CamaleaoWebBimgoBundle/Controller/GrupoempresasController.php"
+    type:     annotation
+
+camaleao_web_bimgo_usuario:
+    resource: "@CamaleaoWebBimgoBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+camaleao_web_bimgo_empresa:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EmpresaController.php"
+    type:     annotation
+
+camaleao_web_bimgo_produto:
+    resource: "@CamaleaoWebBimgoBundle/Controller/ProdutoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_papel:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PapelController.php"
+    type:     annotation
+
+camaleao_web_bimgo_promocao:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PromocaoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_segmento:
+    resource: "@CamaleaoWebBimgoBundle/Controller/SegmentoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_notificacao:
+    resource: "@CamaleaoWebBimgoBundle/Controller/NotificacaoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_pagamento:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PagamentoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_grupoempresas:
+    resource: "@CamaleaoWebBimgoBundle/Controller/GrupoempresasController.php"
+    type:     annotation
+
+camaleao_web_bimgo_funcionario:
+    resource: "@CamaleaoWebBimgoBundle/Controller/FuncionarioController.php"
+    type:     annotation
+
+camaleao_web_bimgo_endereco:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EnderecoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_cliente:
+    resource: "@CamaleaoWebBimgoBundle/Controller/ClienteController.php"
+    type:     annotation
+
+camaleao_web_bimgo_cidade:
+    resource: "@CamaleaoWebBimgoBundle/Controller/CidadeController.php"
+    type:     annotation
+
+camaleao_web_bimgo_estado:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EstadoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_usuario:
+    resource: "@CamaleaoWebBimgoBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+camaleao_web_bimgo_produto:
+    resource: "@CamaleaoWebBimgoBundle/Controller/ProdutoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_papel:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PapelController.php"
+    type:     annotation
+
+camaleao_web_bimgo_promocao:
+    resource: "@CamaleaoWebBimgoBundle/Controller/PromocaoController.php"
+    type:     annotation
+
+camaleao_web_bimgo_empresa:
+    resource: "@CamaleaoWebBimgoBundle/Controller/EmpresaController.php"
+    type:     annotation
+
+camaleao_web_bimgo_segmento:
+    resource: "@CamaleaoWebBimgoBundle/Controller/SegmentoController.php"
+    type:     annotation
+
+camaleao_web_bimgo:
+    resource: "@CamaleaoWebBimgoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

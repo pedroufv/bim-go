@@ -1,0 +1,76 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Funcionario
+ *
+ * @ORM\Table(name="funcionario", uniqueConstraints={@ORM\UniqueConstraint(name="cpf", columns={"cpf"})}, indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="usuario", columns={"usuario"})})
+ * @ORM\Entity
+ */
+class Funcionario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cpf", type="string", length=11, nullable=false)
+     */
+    private $cpf;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone", type="string", length=50, nullable=false)
+     */
+    private $telefone;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
+
+    /**
+     * @var \Endereco
+     *
+     * @ORM\ManyToOne(targetEntity="Endereco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
+     * })
+     */
+    private $endereco;
+
+
+}

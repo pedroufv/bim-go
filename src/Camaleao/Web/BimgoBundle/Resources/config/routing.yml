@@ -1,0 +1,3 @@
+camaleao_web_bimgo_homepage:
+    path:     /
+    defaults: { _controller: CamaleaoWebBimgoBundle:Default:index }

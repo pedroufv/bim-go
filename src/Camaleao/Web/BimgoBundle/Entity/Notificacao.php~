@@ -1,0 +1,52 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Notificacao
+ *
+ * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "destinatario"}), @ORM\Index(name="destinatario", columns={"destinatario"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
+ * @ORM\Entity
+ */
+class Notificacao
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mensagem", type="text", length=65535, nullable=false)
+     */
+    private $mensagem;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="destinatario", referencedColumnName="id")
+     * })
+     */
+    private $destinatario;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="remetente", referencedColumnName="id")
+     * })
+     */
+    private $remetente;
+
+
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Empresa list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Razaosocial</th>
+                <th>Nomefantasia</th>
+                <th>Descricao</th>
+                <th>Cnpj</th>
+                <th>Inscricaoestadual</th>
+                <th>Telefone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for empresa in empresas %}
+            <tr>
+                <td><a href="{{ path('empresa_show', { 'id': empresa.id }) }}">{{ empresa.id }}</a></td>
+                <td>{{ empresa.razaosocial }}</td>
+                <td>{{ empresa.nomefantasia }}</td>
+                <td>{{ empresa.descricao }}</td>
+                <td>{{ empresa.cnpj }}</td>
+                <td>{{ empresa.inscricaoestadual }}</td>
+                <td>{{ empresa.telefone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('empresa_show', { 'id': empresa.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('empresa_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

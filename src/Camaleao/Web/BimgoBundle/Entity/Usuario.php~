@@ -1,0 +1,77 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nome", columns={"nome"}), @ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="papel", columns={"papel"})})
+ * @ORM\Entity
+ */
+class Usuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=200, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="senha", type="string", length=32, nullable=false)
+     */
+    private $senha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", length=32, nullable=false)
+     */
+    private $token;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="registrationId", type="string", length=32, nullable=false)
+     */
+    private $registrationid;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo;
+
+    /**
+     * @var \Papel
+     *
+     * @ORM\ManyToOne(targetEntity="Papel")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
+     * })
+     */
+    private $papel;
+
+
+}

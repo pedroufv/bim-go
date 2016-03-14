@@ -1,0 +1,77 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Promocao
+ *
+ * @ORM\Table(name="promocao", indexes={@ORM\Index(name="empresa", columns={"empresa"})})
+ * @ORM\Entity
+ */
+class Promocao
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
+     */
+    private $descricao;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataInicio", type="date", nullable=false)
+     */
+    private $datainicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataFim", type="date", nullable=false)
+     */
+    private $datafim;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Produto", mappedBy="promocao")
+     */
+    private $produto;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->produto = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

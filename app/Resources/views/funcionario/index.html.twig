@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Funcionario list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cpf</th>
+                <th>Telefone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for funcionario in funcionarios %}
+            <tr>
+                <td><a href="{{ path('funcionario_show', { 'id': funcionario.id }) }}">{{ funcionario.id }}</a></td>
+                <td>{{ funcionario.nome }}</td>
+                <td>{{ funcionario.cpf }}</td>
+                <td>{{ funcionario.telefone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('funcionario_show', { 'id': funcionario.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('funcionario_edit', { 'id': funcionario.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('funcionario_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

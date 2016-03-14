@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Segmento list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descricao</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for segmento in segmentos %}
+            <tr>
+                <td><a href="{{ path('segmento_show', { 'id': segmento.id }) }}">{{ segmento.id }}</a></td>
+                <td>{{ segmento.nome }}</td>
+                <td>{{ segmento.descricao }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('segmento_show', { 'id': segmento.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('segmento_edit', { 'id': segmento.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('segmento_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

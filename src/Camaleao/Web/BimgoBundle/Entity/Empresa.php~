@@ -1,0 +1,111 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empresa
+ *
+ * @ORM\Table(name="empresa", indexes={@ORM\Index(name="entidade", columns={"grupoEmpresas"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="usuario", columns={"usuario"})})
+ * @ORM\Entity
+ */
+class Empresa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="razaoSocial", type="string", length=200, nullable=false)
+     */
+    private $razaosocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomeFantasia", type="string", length=200, nullable=false)
+     */
+    private $nomefantasia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
+     */
+    private $descricao;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cnpj", type="integer", nullable=false)
+     */
+    private $cnpj;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="inscricaoEstadual", type="integer", nullable=false)
+     */
+    private $inscricaoestadual;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone", type="string", length=50, nullable=false)
+     */
+    private $telefone;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Endereco
+     *
+     * @ORM\ManyToOne(targetEntity="Endereco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
+     * })
+     */
+    private $endereco;
+
+    /**
+     * @var \Grupoempresas
+     *
+     * @ORM\ManyToOne(targetEntity="Grupoempresas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="grupoEmpresas", referencedColumnName="id")
+     * })
+     */
+    private $grupoempresas;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Segmento", mappedBy="empresa")
+     */
+    private $segmento;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
