@@ -24,10 +24,10 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
+        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findBy(array(), array('id' => 'DESC'), 4);
 
         return $this->render('CamaleaoWebBimgoBundle:Default:index.html.twig', array(
-//            'empresas' => $empresas,
+//            'promocoes' => $promocoes,
         ));
     }
 }

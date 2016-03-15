@@ -1,38 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="mapa" class="col s12 m12" style="height: 600px;"></div>
+        </div>
+    </div>
+    {% if promocoes %}
     <div class="container">
         <div class="section">
-            <!--   Icon Section   -->
+            <div class="row">
+                {% for promocao in promocoes %}
+                <div class="col s12 m3">
+                        <h5 class="center">{{ promocao.nome }}</h5>
+                        <p class="light center">{{ promocao.descricao }}</p>
+                        <span class="right">{{ promocao.empresa.nomefantasia }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container">
+        <div class="section">
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                        <h5 class="center">Speeds up development</h5>
-
-                        <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                        <h2 class="center light-blue-text"><i class="material-icons">search</i></h2>
+                        <h5 class="center">Encontre empresas</h5>
+                        <p class="light">
+                            Utilize a ferramenta de busca para encontrar empresas da região.
+                        </p>
                     </div>
                 </div>
-
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                        <h5 class="center">User Experience Focused</h5>
-
-                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                        <h2 class="center light-blue-text"><i class="material-icons">place</i></h2>
+                        <h5 class="center">Descubra sua localização</h5>
+                        <p class="light">
+                            Descubra onde está localizada a empresa que você procura.
+                        </p>
                     </div>
                 </div>
-
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                        <h5 class="center">Easy to work with</h5>
-
-                        <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                        <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+                        <h5 class="center">Acompanhe promoções</h5>
+                        <p class="light">
+                            Siga uma empresa para receber promoções exclusivas.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
 
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/mapa.js') }}"></script>
 {% endblock %}
