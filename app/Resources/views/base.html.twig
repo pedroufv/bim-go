@@ -18,41 +18,40 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-
-            <nav class="blue" role="navigation">
-               <div class="nav-wrapper container">
-                    <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">Logo</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>
-                            <form>
-                                <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label for="search"><i class="material-icons">search</i></label>
-                                    <i class="material-icons">close</i>
-                                </div>
-                            </form>
-                        </li>
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li>
-                            <form>
-                                <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label for="search"><i class="material-icons">search</i></label>
-                                    <i class="material-icons">close</i>
-                                </div>
-                            </form>
-                        </li>
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <nav class="blue" role="navigation">
+           <div class="nav-wrapper container">
+                <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">Logo</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </li>
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li>
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </li>
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+        </nav>
 
         {% block body %}{% endblock %}
 
@@ -60,34 +59,27 @@
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">Company Bio</h5>
-                        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+                        <h5 class="white-text">Bim-go!</h5>
+                        <p class="grey-text text-lighten-4">
+                            O Bim-go! permite aos usuários acompanhar promoções, localizar empresas, conhecer os produtos disponíveis e entrar em contato de forma rápida, fácil e segura. Basta acessar o site ou instalar o aplicativo em seu dispotivo móvel, você poderá optar por ser notificado a cada nova promoção cadastrada e nunca perder as melhores ofertas da sua região.
+                        </p>
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Settings</h5>
+                        <h5 class="white-text">Empresas</h5>
                         <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
+                            {% for empresa in empresas %}
+                                <li class="white-text" href="#!">{{ empresa.nomefantasia }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Connect</h5>
+                        <h5 class="white-text">Promoções</h5>
                         <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
+                            {% for promocao in promocoes %}
+                                <li class="white-text" href="#!">{{ promocao.nome }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
                 </div>
             </div>
         </footer>
@@ -100,6 +92,7 @@
 
         <!-- owner js -->
         <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/script.js') }}"></script>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -2,3 +2,15 @@ services:
 #    camaleao_web_bimgo.example:
 #        class: Camaleao\Web\BimgoBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+  camaleao_web_bimgo.empresatwigextensio:
+    class: Camaleao\Web\BimgoBundle\Twig\Extension\EmpresaExtension
+    arguments: ["@doctrine.orm.entity_manager"]
+    tags:
+      - { name: twig.extension }
+
+  camaleao_web_bimgo.promocaotwigextensio:
+      class: Camaleao\Web\BimgoBundle\Twig\Extension\PromocaoExtension
+      arguments: ["@doctrine.orm.entity_manager"]
+      tags:
+        - { name: twig.extension }

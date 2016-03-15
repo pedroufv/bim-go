@@ -21,6 +21,13 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('CamaleaoWebBimgoBundle:Default:index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
+
+        return $this->render('CamaleaoWebBimgoBundle:Default:index.html.twig', array(
+//            'empresas' => $empresas,
+        ));
     }
 }
