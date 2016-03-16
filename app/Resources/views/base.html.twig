@@ -10,19 +10,23 @@
         <!-- include material design CSS -->
         <link rel="stylesheet" href="{{ asset('bundles/camaleaowebbimgo/css/materialize.min.css') }}" />
 
+        <!-- include font-awesome CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <!-- include material design icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
         <link href="{{ asset('bundles/camaleaowebbimgo/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/camaleaowebbimgo/img/favicon.ico') }}" />
     </head>
     <body>
         <header>
-            <div class="blue darken-3" style="height: 56px"></div>
-            <nav class="blue" role="navigation">
+            <nav class="light-blue lighten-1" role="navigation">
                 <div class="nav-wrapper container">
-                    <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">Logo</a>
+                    <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">
+                        <img src="{{ asset('bundles/camaleaowebbimgo/img/logo.png') }}" title="Bim-go!"/>
+                    </a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
@@ -56,7 +60,6 @@
             </nav>
         </header>
 
-
         {% block body %}{% endblock %}
 
         <footer class="page-footer orange">
@@ -77,13 +80,36 @@
                         </ul>
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Promoções</h5>
+                        <h5 class="white-text">Social</h5>
                         <ul>
-                            {% for promocao in promocoes %}
-                                <li class="white-text" href="#!">{{ promocao.nome }}</li>
-                            {% endfor %}
+                            <li>
+                                <a class="white-text" href="#">
+                                    <i class="small fa fa-behance-square white-text"></i> Behance
+                                </a>
+                            </li>
+                            <li>
+                                <a class="white-text" href="">
+                                    <i class="small fa fa-facebook-square white-text"></i> Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a class="white-text" href="">
+                                    <i class="small fa fa-github-square white-text"></i> Github
+                                </a>
+                            </li>
+                            <li>
+                                <a class="white-text" href="">
+                                    <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+                                </a>
+                            </li>
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+
+                    <a class="grey-text text-lighten-4 right" href="#!">© 2014 Camaleão Feroz</a>
                 </div>
             </div>
         </footer>

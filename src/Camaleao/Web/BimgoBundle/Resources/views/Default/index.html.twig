@@ -1,11 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="section no-pad-bot light-blue lighten-1">
         <div class="row">
-            <div id="mapa" class="col s12 m12" style="height: 600px;"></div>
+            <div id="mapa" class="col s12 m12" style="height: 500px; margin-top: -10px;"></div>
         </div>
     </div>
+    {% if promocoes %}
+    <div class="section no-pad-bot light-blue lighten-1">
+        <div class="container light-blue lighten-1">
+            <div class="row">
+                {% for empresa in empresas %}
+                    <div class="col s12 m3">
+                        <h5 class="center white-text">{{ empresa.nomefantasia }}</h5>
+                        <p class="light center white-text">{{ empresa.descricao }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
     {% if promocoes %}
     <div class="container">
         <div class="section">
@@ -26,7 +40,7 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">search</i></h2>
+                        <h2 class="center light-blue-text"><i class="medium material-icons">search</i></h2>
                         <h5 class="center">Encontre empresas</h5>
                         <p class="light">
                             Utilize a ferramenta de busca para encontrar empresas da região.
@@ -35,7 +49,7 @@
                 </div>
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">place</i></h2>
+                        <h2 class="center light-blue-text"><i class="medium material-icons">place</i></h2>
                         <h5 class="center">Descubra sua localização</h5>
                         <p class="light">
                             Descubra onde está localizada a empresa que você procura.
@@ -44,7 +58,7 @@
                 </div>
                 <div class="col s12 m4">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">star</i></h2>
+                        <h2 class="center light-blue-text"><i class="medium material-icons">star</i></h2>
                         <h5 class="center">Acompanhe promoções</h5>
                         <p class="light">
                             Siga uma empresa para receber promoções exclusivas.
