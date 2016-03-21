@@ -28,14 +28,10 @@
                         <img src="{{ asset('bundles/camaleaowebbimgo/img/logo.png') }}" title="Bim-go!"/>
                     </a>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
-                    {% set menu = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-dow'}) %}
+                    {% set menu = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-down'}) %}
                     {{ knp_menu_render(menu, {'currentClass': 'active', 'template': 'CamaleaoWebBimgoBundle:menu:knp_menu.html.twig'}) }}
-
                     {% set menuSide = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id': 'slide-out', 'class': 'side-nav'}) %}
                     {{ knp_menu_render(menuSide, {'currentClass': 'active', 'template': 'CamaleaoWebBimgoBundle:menu:knp_menu.html.twig'}) }}
-
-
                 </div>
             </nav>
         </header>
