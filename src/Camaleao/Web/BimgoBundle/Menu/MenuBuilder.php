@@ -12,9 +12,13 @@ class MenuBuilder implements ContainerAwareInterface
 
     public function mainMenu(FactoryInterface $factory, array $options)
     {
+        //'id': 'nav-mobile',
+
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('id', $options['id']);
-        $menu->setChildrenAttribute('class',  $options['class']);
+        if(!empty($options['id']))
+            $menu->setChildrenAttribute('id', $options['id']);
+        if(!empty($options['class']))
+            $menu->setChildrenAttribute('class',  $options['class']);
 
         $menu->addChild('Home', array('route' => 'default_index'));
         $menu->addChild('Cliente', array('route' => 'cliente_index'));
