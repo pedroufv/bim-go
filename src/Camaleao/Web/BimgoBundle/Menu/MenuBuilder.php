@@ -13,23 +13,17 @@ class MenuBuilder implements ContainerAwareInterface
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('id', 'nav-mobile');
-        $menu->setChildrenAttribute('class', 'right hide-on-med-and-dow');
+        $menu->setChildrenAttribute('id', $options['id']);
+        $menu->setChildrenAttribute('class',  $options['class']);
 
         $menu->addChild('Home', array('route' => 'default_index'));
-        $menu->addChild('Estado', array('route' => 'estado_index'));
-
-        return $menu;
-    }
-
-    public function navMobileMenu(FactoryInterface $factory, array $options)
-    {
-        $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('id', 'mobile-demo');
-        $menu->setChildrenAttribute('class', 'side-nav');
-
-        $menu->addChild('Home', array('route' => 'default_index'));
-        $menu->addChild('Estado', array('route' => 'estado_index'));
+        $menu->addChild('Cliente', array('route' => 'cliente_index'));
+        $menu->addChild('Empresa', array('route' => 'empresa_index'));
+        $menu->addChild('Funcionário', array('route' => 'funcionario_index'));
+        $menu->addChild('Grupo Empresas', array('route' => 'grupoempresas_index'));
+        $menu->addChild('Pagamento', array('route' => 'pagamento_index'));
+        $menu->addChild('Produto', array('route' => 'produto_index'));
+        $menu->addChild('Promoção', array('route' => 'promocao_index'));
 
         return $menu;
     }
