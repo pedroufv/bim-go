@@ -77,7 +77,8 @@ class AndroidController extends Controller
 
         $reports = $serializer->serialize($estados, 'json');
 
-        echo $reports;
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode( $reports );
     }
 
     /**
@@ -89,6 +90,9 @@ class AndroidController extends Controller
      */
     public function newEstadoAction(Request $request)
     {
+        $return = json_encode(array('result' => true));
+
+        return new Response($return);
         $jsonObject = json_decode($_POST['jsonObject']);
 
         header('Content-Type: application/json; charset=utf-8');
