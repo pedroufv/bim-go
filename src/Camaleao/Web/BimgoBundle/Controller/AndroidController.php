@@ -77,7 +77,7 @@ class AndroidController extends Controller
 
         $reports = $serializer->serialize($estados, 'json');
 
-        return new Response($reports);
+        echo $reports;
     }
 
     /**
