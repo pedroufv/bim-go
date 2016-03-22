@@ -89,7 +89,10 @@ class AndroidController extends Controller
      */
     public function newEstadoAction(Request $request)
     {
-        header('Content-Type: application/json; charset=utf-8'); echo json_encode( $request );
+        $jsonObject = json_decode($_POST['jsonObject']);
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode( $jsonObject );
         die;
 
         $estado = new Estado();
