@@ -85,7 +85,7 @@ class AndroidController extends Controller
      *  {"nome":"Clevao","uf":"CC"}
      *
      * @Route("/newestado", name="android_newestado")
-     * @Method("POST")
+     * @Method({"GET", "POST"})
      */
     public function newEstadoAction()
     {
