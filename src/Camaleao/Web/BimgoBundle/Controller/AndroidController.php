@@ -60,4 +60,23 @@ class AndroidController extends Controller
 
         return new Response($return);
     }
+
+    /**
+     * load empresas for android
+     *
+     * @Route("/getestados", name="android_getestados")
+     * @Method({"GET", "POST"})
+     */
+    public function getEstadosAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $reports = $serializer->serialize($estados, 'json');
+
+        return new Response($reports);
+    }
 }

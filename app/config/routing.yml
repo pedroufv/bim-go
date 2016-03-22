@@ -106,6 +106,10 @@ camaleao_web_bimgo_segmento:
     resource: "@CamaleaoWebBimgoBundle/Controller/SegmentoController.php"
     type:     annotation
 
+camaleao_web_bimgo_android:
+    resource: "@CamaleaoWebBimgoBundle/Controller/AndroidController.php"
+    type:     annotation
+
 camaleao_web_bimgo:
     resource: "@CamaleaoWebBimgoBundle/Controller/DefaultController.php"
     type:     annotation
