@@ -73,9 +73,23 @@ class AndroidController extends Controller
 
         $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
 
+        //dump($estados);
+
+        $array = array('estados' => $estados);
+
+        $json = json_encode($array);
+
+        //dump($json);
+
+
+
         $serializer = $this->container->get('jms_serializer');
 
-        $reports = $serializer->serialize($estados, 'json');
+
+
+        $reports = $serializer->serialize($array, 'json');
+
+        dump($reports);
 
         return new Response($reports, Response::HTTP_OK, array('content-type' => 'application/json') );
     }
