@@ -87,7 +87,7 @@ class AndroidController extends Controller
      * @Route("/newestado", name="android_newestado")
      * @Method({"GET", "POST"})
      */
-    public function newEstadoAction()
+    public function newEstadoAction(Request $request)
     {
         $jsonObject = json_decode($_POST['jsonObject']);
 
