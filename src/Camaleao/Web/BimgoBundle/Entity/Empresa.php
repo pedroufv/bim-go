@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="empresa", indexes={@ORM\Index(name="entidade", columns={"grupoEmpresas"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="usuario", columns={"usuario"})})
  * @ORM\Entity
+ * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Empresa
 {
@@ -32,6 +33,8 @@ class Empresa
      * @var string
      *
      * @ORM\Column(name="nomeFantasia", type="string", length=200, nullable=false)
+     *
+     * @JMS\Serializer\Annotation\Expose
      */
     private $nomefantasia;
 
@@ -80,6 +83,8 @@ class Empresa
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })
+     *
+     * @JMS\Serializer\Annotation\Expose
      */
     private $endereco;
 

@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="endereco", indexes={@ORM\Index(name="cidade", columns={"cidade"})})
  * @ORM\Entity
+ *
+ * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Endereco
 {
@@ -55,6 +57,24 @@ class Endereco
      * @ORM\Column(name="cep", type="string", length=200, nullable=false)
      */
     private $cep;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="decimal", precision=9, scale=6, nullable=true)
+     *
+     * @JMS\Serializer\Annotation\Expose
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="decimal", precision=9, scale=6, nullable=true)
+     *
+     * @JMS\Serializer\Annotation\Expose
+     */
+    private $longitude;
 
     /**
      * @var \Cidade
@@ -191,6 +211,52 @@ class Endereco
     public function getCep()
     {
         return $this->cep;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     * @return Endereco
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     * @return Endereco
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     /**

@@ -12,8 +12,6 @@ class MenuBuilder implements ContainerAwareInterface
 
     public function mainMenu(FactoryInterface $factory, array $options)
     {
-        //'id': 'nav-mobile',
-
         $menu = $factory->createItem('root');
         if(!empty($options['id']))
             $menu->setChildrenAttribute('id', $options['id']);
@@ -25,7 +23,6 @@ class MenuBuilder implements ContainerAwareInterface
         $menu->addChild('Empresa', array('route' => 'empresa_index'));
         $menu->addChild('Funcionário', array('route' => 'funcionario_index'));
         $menu->addChild('Grupo Empresas', array('route' => 'grupoempresas_index'));
-        $menu->addChild('Pagamento', array('route' => 'pagamento_index'));
         $menu->addChild('Produto', array('route' => 'produto_index'));
         $menu->addChild('Promoção', array('route' => 'promocao_index'));
 

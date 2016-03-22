@@ -43,16 +43,6 @@ class Funcionario
     private $telefone;
 
     /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
-     * })
-     */
-    private $usuario;
-
-    /**
      * @var \Empresa
      *
      * @ORM\ManyToOne(targetEntity="Empresa")
@@ -71,6 +61,16 @@ class Funcionario
      * })
      */
     private $endereco;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
 
 }

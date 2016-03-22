@@ -36,16 +36,6 @@ class Grupoempresas
     private $descricao;
 
     /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
-     * })
-     */
-    private $usuario;
-
-    /**
      * @var \Endereco
      *
      * @ORM\ManyToOne(targetEntity="Endereco")
@@ -54,6 +44,16 @@ class Grupoempresas
      * })
      */
     private $endereco;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
 
 
@@ -114,29 +114,6 @@ class Grupoempresas
     }
 
     /**
-     * Set usuario
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
-     * @return Grupoempresas
-     */
-    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario = null)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
      * Set endereco
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
@@ -157,5 +134,28 @@ class Grupoempresas
     public function getEndereco()
     {
         return $this->endereco;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
+     * @return Grupoempresas
+     */
+    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

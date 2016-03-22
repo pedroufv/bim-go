@@ -57,6 +57,20 @@ class Endereco
     private $cep;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="decimal", precision=9, scale=6, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="decimal", precision=9, scale=6, nullable=true)
+     */
+    private $longitude;
+
+    /**
      * @var \Cidade
      *
      * @ORM\ManyToOne(targetEntity="Cidade")

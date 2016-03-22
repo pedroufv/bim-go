@@ -36,16 +36,6 @@ class Grupoempresas
     private $descricao;
 
     /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
-     * })
-     */
-    private $usuario;
-
-    /**
      * @var \Endereco
      *
      * @ORM\ManyToOne(targetEntity="Endereco")
@@ -54,6 +44,16 @@ class Grupoempresas
      * })
      */
     private $endereco;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
 
 }

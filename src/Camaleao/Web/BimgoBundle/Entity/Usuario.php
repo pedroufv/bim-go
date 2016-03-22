@@ -52,7 +52,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="registrationId", type="string", length=32, nullable=false)
+     * @ORM\Column(name="registrationId", type="string", length=255, nullable=false)
      */
     private $registrationid;
 

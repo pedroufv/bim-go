@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -136,5 +137,24 @@ class EmpresaController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * load coutries
+     *
+     * @Route("/loadpoints", name="empresa_loadpoints")
+     * @Method("POST")
+     */
+    public function loadPointsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $reports = $serializer->serialize($empresas, 'json');
+
+        return new Response($reports);
     }
 }

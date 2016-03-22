@@ -108,4 +108,254 @@ class Empresa
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set razaosocial
+     *
+     * @param string $razaosocial
+     * @return Empresa
+     */
+    public function setRazaosocial($razaosocial)
+    {
+        $this->razaosocial = $razaosocial;
+
+        return $this;
+    }
+
+    /**
+     * Get razaosocial
+     *
+     * @return string 
+     */
+    public function getRazaosocial()
+    {
+        return $this->razaosocial;
+    }
+
+    /**
+     * Set nomefantasia
+     *
+     * @param string $nomefantasia
+     * @return Empresa
+     */
+    public function setNomefantasia($nomefantasia)
+    {
+        $this->nomefantasia = $nomefantasia;
+
+        return $this;
+    }
+
+    /**
+     * Get nomefantasia
+     *
+     * @return string 
+     */
+    public function getNomefantasia()
+    {
+        return $this->nomefantasia;
+    }
+
+    /**
+     * Set descricao
+     *
+     * @param string $descricao
+     * @return Empresa
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * Get descricao
+     *
+     * @return string 
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * Set cnpj
+     *
+     * @param integer $cnpj
+     * @return Empresa
+     */
+    public function setCnpj($cnpj)
+    {
+        $this->cnpj = $cnpj;
+
+        return $this;
+    }
+
+    /**
+     * Get cnpj
+     *
+     * @return integer 
+     */
+    public function getCnpj()
+    {
+        return $this->cnpj;
+    }
+
+    /**
+     * Set inscricaoestadual
+     *
+     * @param integer $inscricaoestadual
+     * @return Empresa
+     */
+    public function setInscricaoestadual($inscricaoestadual)
+    {
+        $this->inscricaoestadual = $inscricaoestadual;
+
+        return $this;
+    }
+
+    /**
+     * Get inscricaoestadual
+     *
+     * @return integer 
+     */
+    public function getInscricaoestadual()
+    {
+        return $this->inscricaoestadual;
+    }
+
+    /**
+     * Set telefone
+     *
+     * @param string $telefone
+     * @return Empresa
+     */
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
+
+        return $this;
+    }
+
+    /**
+     * Get telefone
+     *
+     * @return string 
+     */
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
+     * @return Empresa
+     */
+    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set endereco
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
+     * @return Empresa
+     */
+    public function setEndereco(\Camaleao\Web\BimgoBundle\Entity\Endereco $endereco = null)
+    {
+        $this->endereco = $endereco;
+
+        return $this;
+    }
+
+    /**
+     * Get endereco
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Endereco 
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * Set grupoempresas
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Grupoempresas $grupoempresas
+     * @return Empresa
+     */
+    public function setGrupoempresas(\Camaleao\Web\BimgoBundle\Entity\Grupoempresas $grupoempresas = null)
+    {
+        $this->grupoempresas = $grupoempresas;
+
+        return $this;
+    }
+
+    /**
+     * Get grupoempresas
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Grupoempresas 
+     */
+    public function getGrupoempresas()
+    {
+        return $this->grupoempresas;
+    }
+
+    /**
+     * Add segmento
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Segmento $segmento
+     * @return Empresa
+     */
+    public function addSegmento(\Camaleao\Web\BimgoBundle\Entity\Segmento $segmento)
+    {
+        $this->segmento[] = $segmento;
+
+        return $this;
+    }
+
+    /**
+     * Remove segmento
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Segmento $segmento
+     */
+    public function removeSegmento(\Camaleao\Web\BimgoBundle\Entity\Segmento $segmento)
+    {
+        $this->segmento->removeElement($segmento);
+    }
+
+    /**
+     * Get segmento
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSegmento()
+    {
+        return $this->segmento;
+    }
 }
