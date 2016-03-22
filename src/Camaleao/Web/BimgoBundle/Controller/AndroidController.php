@@ -79,7 +79,7 @@ class AndroidController extends Controller
 
         //$response = new Response( 'Content', Response::HTTP_OK, array('content-type' => 'text/html') );
 
-        return new Response( 'Content', $reports, array('content-type' => 'application/json') );
+        return new Response($reports, Response::HTTP_OK, array('content-type' => 'application/json') );
     }
 
     /**
