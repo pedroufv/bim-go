@@ -71,7 +71,7 @@ class AndroidController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
+        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->find(1);
 
         $serializer = $this->container->get('jms_serializer');
 
@@ -89,7 +89,11 @@ class AndroidController extends Controller
      */
     public function newEstadoAction(Request $request)
     {
-        return new Response($request, Response::HTTP_OK, array('content-type' => 'application/json') );
+        $response =  new Response($request, Response::HTTP_OK, array('content-type' => 'application/json') );
+
+        $response->send();
+
+        dump($response); exit;
 
         $estado = new Estado();
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
