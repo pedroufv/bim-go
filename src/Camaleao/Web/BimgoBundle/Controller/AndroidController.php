@@ -62,7 +62,7 @@ class AndroidController extends Controller
     }
 
     /**
-     * load empresas for android
+     *  select em estados
      *
      * @Route("/getestados", name="android_getestados")
      * @Method({"GET", "POST"})
@@ -78,5 +78,33 @@ class AndroidController extends Controller
         $reports = $serializer->serialize($estados, 'json');
 
         return new Response($reports);
+    }
+
+    /**
+     * insert em estado
+     *  {"nome":"Clevao","uf":"CC"}
+     *
+     * @Route("/newestado", name="android_newestado")
+     * @Method("POST")
+     */
+    public function newEstadoAction(Request $request)
+    {
+        dump($request); die;
+
+        $estado = new Estado();
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($estado);
+            $em->flush();
+
+            return $this->redirectToRoute('estado_show', array('id' => $estado->getId()));
+        }
+
+        $return = json_encode(array('result' => true));
+
+        return new Response($return);
     }
 }
