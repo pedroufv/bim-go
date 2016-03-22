@@ -89,7 +89,8 @@ class AndroidController extends Controller
      */
     public function newEstadoAction(Request $request)
     {
-        dump($request); die;
+        return new Response($request);
+        die;
 
         $estado = new Estado();
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
