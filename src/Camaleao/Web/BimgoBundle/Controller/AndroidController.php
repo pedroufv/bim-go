@@ -71,7 +71,7 @@ class AndroidController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->find(1);
+        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
 
         $serializer = $this->container->get('jms_serializer');
 
