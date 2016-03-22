@@ -77,8 +77,6 @@ class AndroidController extends Controller
 
         $reports = $serializer->serialize($estados, 'json');
 
-        //$response = new Response( 'Content', Response::HTTP_OK, array('content-type' => 'text/html') );
-
         return new Response($reports, Response::HTTP_OK, array('content-type' => 'application/json') );
     }
 
@@ -91,11 +89,7 @@ class AndroidController extends Controller
      */
     public function newEstadoAction(Request $request)
     {
-        $jsonObject = json_decode($_POST['jsonObject']);
-
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode( 'ola mundo' );
-        die;
+        return new Response($request, Response::HTTP_OK, array('content-type' => 'application/json') );
 
         $estado = new Estado();
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
