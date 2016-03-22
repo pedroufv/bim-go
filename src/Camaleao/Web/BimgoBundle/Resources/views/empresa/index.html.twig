@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Empresas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome Fantasia</th>
+                            <th>CNPJ</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for empresa in empresas %}
+                        <tr>
+                            <td><a href="{{ path('empresa_show', { 'id': empresa.id }) }}">{{ empresa.id }}</a></td>
+                            <td>{{ empresa.nomefantasia }}</td>
+                            <td>{{ empresa.cnpj }}</td>
+                            <td>{{ empresa.telefone }}</td>
+                            <td>
+                                <a href="{{ path('estado_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">edit</i>Editar</a>
+                                <a href="{{ path('estado_delete', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">delete</i>Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+    <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+        <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('empresa_new') }}">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+{% endblock %}

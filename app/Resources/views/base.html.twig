@@ -25,7 +25,7 @@
             <nav class="light-blue lighten-1" role="navigation">
                 <div class="nav-wrapper container">
                     <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">
-                        <img src="{{ asset('bundles/camaleaowebbimgo/img/logo.png') }}" title="Bim-go!"/>
+                        <img src="{{ asset('bundles/camaleaowebbimgo/img/logo.png') }}" title="Bim-go!" height="90%" style="vertical-align:middle"/>
                     </a>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
                     {% set menu = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-down'}) %}

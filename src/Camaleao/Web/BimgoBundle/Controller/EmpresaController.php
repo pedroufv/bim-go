@@ -29,7 +29,7 @@ class EmpresaController extends Controller
 
         $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
 
-        return $this->render('empresa/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:empresa:index.html.twig', array(
             'empresas' => $empresas,
         ));
     }
@@ -54,7 +54,7 @@ class EmpresaController extends Controller
             return $this->redirectToRoute('empresa_show', array('id' => $empresa->getId()));
         }
 
-        return $this->render('empresa/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:empresa:new.html.twig', array(
             'empresa' => $empresa,
             'form' => $form->createView(),
         ));
@@ -70,7 +70,7 @@ class EmpresaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($empresa);
 
-        return $this->render('empresa/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:empresa:show.html.twig', array(
             'empresa' => $empresa,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -96,7 +96,7 @@ class EmpresaController extends Controller
             return $this->redirectToRoute('empresa_edit', array('id' => $empresa->getId()));
         }
 
-        return $this->render('empresa/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:empresa:edit.html.twig', array(
             'empresa' => $empresa,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Empresa</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ empresa.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Razão Social</th>
+                            <td>{{ empresa.razaosocial }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nome Fantasia</th>
+                            <td>{{ empresa.nomefantasia }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descrição</th>
+                            <td>{{ empresa.descricao }}</td>
+                        </tr>
+                        <tr>
+                            <th>CNPJ</th>
+                            <td>{{ empresa.cnpj }}</td>
+                        </tr>
+                        <tr>
+                            <th>Inscrição Estadual</th>
+                            <td>{{ empresa.inscricaoestadual }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefone</th>
+                            <td>{{ empresa.telefone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <a href="{{ path('empresa_index') }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">list</i>Voltar</a>
+                <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">edit</i>Editar</a>
+                <a href="{{ path('empresa_delete', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">delete</i>Excluir</a>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+{% endblock %}

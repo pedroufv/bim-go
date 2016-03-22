@@ -14,20 +14,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     *
+     * homepage
      *
      * @Route("/", name="default_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-
-        $em = $this->getDoctrine()->getManager();
-
-        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findBy(array(), array('id' => 'DESC'), 4);
-
-        return $this->render('CamaleaoWebBimgoBundle:Default:index.html.twig', array(
-//            'promocoes' => $promocoes,
-        ));
+        return $this->render('CamaleaoWebBimgoBundle:default:index.html.twig');
     }
 }
