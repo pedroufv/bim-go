@@ -3,6 +3,7 @@
 namespace Camaleao\Web\BimgoBundle\Controller;
 
 use Camaleao\Web\BimgoBundle\Entity\Estado;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -35,7 +36,7 @@ class AndroidController extends Controller
 
         $result = $serializer->serialize($array, 'json');
 
-        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+        return new JsonResponse($result);
     }
 
     /**
@@ -47,6 +48,7 @@ class AndroidController extends Controller
     public function newEstadoAction(Request $request)
     {
         $result = false;
+        //$request->isXmlHttpRequest();
         $estado = new Estado();
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
         $form->handleRequest($request);
@@ -59,6 +61,6 @@ class AndroidController extends Controller
             $result = true;
         }
 
-        return new Response(json_encode(array('result' => $result)), Response::HTTP_OK, array('content-type' => 'application/json'));
+        return new JsonResponse(array('result' => $result));
     }
 }
