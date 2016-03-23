@@ -28,7 +28,7 @@ class ProdutoController extends Controller
 
         $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findAll();
 
-        return $this->render('produto/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:produto:index.html.twig', array(
             'produtos' => $produtos,
         ));
     }
@@ -53,7 +53,7 @@ class ProdutoController extends Controller
             return $this->redirectToRoute('produto_show', array('id' => $produto->getId()));
         }
 
-        return $this->render('produto/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:produto:new.html.twig', array(
             'produto' => $produto,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class ProdutoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($produto);
 
-        return $this->render('produto/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:produto:show.html.twig', array(
             'produto' => $produto,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class ProdutoController extends Controller
             return $this->redirectToRoute('produto_edit', array('id' => $produto->getId()));
         }
 
-        return $this->render('produto/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:produto:edit.html.twig', array(
             'produto' => $produto,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

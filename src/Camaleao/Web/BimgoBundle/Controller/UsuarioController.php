@@ -28,7 +28,7 @@ class UsuarioController extends Controller
 
         $usuarios = $em->getRepository('CamaleaoWebBimgoBundle:Usuario')->findAll();
 
-        return $this->render('usuario/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:usuario:index.html.twig', array(
             'usuarios' => $usuarios,
         ));
     }
@@ -53,7 +53,7 @@ class UsuarioController extends Controller
             return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
         }
 
-        return $this->render('usuario/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:usuario:new.html.twig', array(
             'usuario' => $usuario,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class UsuarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($usuario);
 
-        return $this->render('usuario/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:usuario:show.html.twig', array(
             'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class UsuarioController extends Controller
             return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
         }
 
-        return $this->render('usuario/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:usuario:edit.html.twig', array(
             'usuario' => $usuario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -28,7 +28,7 @@ class GrupoempresasController extends Controller
 
         $grupoempresas = $em->getRepository('CamaleaoWebBimgoBundle:Grupoempresas')->findAll();
 
-        return $this->render('grupoempresas/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:grupoempresas:index.html.twig', array(
             'grupoempresas' => $grupoempresas,
         ));
     }
@@ -53,7 +53,7 @@ class GrupoempresasController extends Controller
             return $this->redirectToRoute('grupoempresas_show', array('id' => $grupoempresa->getId()));
         }
 
-        return $this->render('grupoempresas/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:grupoempresas:new.html.twig', array(
             'grupoempresa' => $grupoempresa,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class GrupoempresasController extends Controller
     {
         $deleteForm = $this->createDeleteForm($grupoempresa);
 
-        return $this->render('grupoempresas/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:grupoempresas:show.html.twig', array(
             'grupoempresa' => $grupoempresa,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class GrupoempresasController extends Controller
             return $this->redirectToRoute('grupoempresas_edit', array('id' => $grupoempresa->getId()));
         }
 
-        return $this->render('grupoempresas/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:grupoempresas:edit.html.twig', array(
             'grupoempresa' => $grupoempresa,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

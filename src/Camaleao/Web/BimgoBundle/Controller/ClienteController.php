@@ -28,7 +28,7 @@ class ClienteController extends Controller
 
         $clientes = $em->getRepository('CamaleaoWebBimgoBundle:Cliente')->findAll();
 
-        return $this->render('cliente/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cliente:index.html.twig', array(
             'clientes' => $clientes,
         ));
     }
@@ -53,7 +53,7 @@ class ClienteController extends Controller
             return $this->redirectToRoute('cliente_show', array('id' => $cliente->getId()));
         }
 
-        return $this->render('cliente/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cliente:new.html.twig', array(
             'cliente' => $cliente,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class ClienteController extends Controller
     {
         $deleteForm = $this->createDeleteForm($cliente);
 
-        return $this->render('cliente/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cliente:show.html.twig', array(
             'cliente' => $cliente,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class ClienteController extends Controller
             return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
         }
 
-        return $this->render('cliente/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cliente:edit.html.twig', array(
             'cliente' => $cliente,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

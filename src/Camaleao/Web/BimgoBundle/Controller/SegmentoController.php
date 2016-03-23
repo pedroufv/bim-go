@@ -28,7 +28,7 @@ class SegmentoController extends Controller
 
         $segmentos = $em->getRepository('CamaleaoWebBimgoBundle:Segmento')->findAll();
 
-        return $this->render('segmento/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:segmento:index.html.twig', array(
             'segmentos' => $segmentos,
         ));
     }
@@ -53,7 +53,7 @@ class SegmentoController extends Controller
             return $this->redirectToRoute('segmento_show', array('id' => $segmento->getId()));
         }
 
-        return $this->render('segmento/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:segmento:new.html.twig', array(
             'segmento' => $segmento,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class SegmentoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($segmento);
 
-        return $this->render('segmento/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:segmento:show.html.twig', array(
             'segmento' => $segmento,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class SegmentoController extends Controller
             return $this->redirectToRoute('segmento_edit', array('id' => $segmento->getId()));
         }
 
-        return $this->render('segmento/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:segmento:edit.html.twig', array(
             'segmento' => $segmento,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -28,7 +28,7 @@ class EnderecoController extends Controller
 
         $enderecos = $em->getRepository('CamaleaoWebBimgoBundle:Endereco')->findAll();
 
-        return $this->render('endereco/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:endereco:index.html.twig', array(
             'enderecos' => $enderecos,
         ));
     }
@@ -53,7 +53,7 @@ class EnderecoController extends Controller
             return $this->redirectToRoute('endereco_show', array('id' => $endereco->getId()));
         }
 
-        return $this->render('endereco/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:endereco:new.html.twig', array(
             'endereco' => $endereco,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class EnderecoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($endereco);
 
-        return $this->render('endereco/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:endereco:show.html.twig', array(
             'endereco' => $endereco,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class EnderecoController extends Controller
             return $this->redirectToRoute('endereco_edit', array('id' => $endereco->getId()));
         }
 
-        return $this->render('endereco/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:endereco:edit.html.twig', array(
             'endereco' => $endereco,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -28,7 +28,7 @@ class FuncionarioController extends Controller
 
         $funcionarios = $em->getRepository('CamaleaoWebBimgoBundle:Funcionario')->findAll();
 
-        return $this->render('funcionario/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:funcionario:index.html.twig', array(
             'funcionarios' => $funcionarios,
         ));
     }
@@ -53,7 +53,7 @@ class FuncionarioController extends Controller
             return $this->redirectToRoute('funcionario_show', array('id' => $funcionario->getId()));
         }
 
-        return $this->render('funcionario/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:funcionario:new.html.twig', array(
             'funcionario' => $funcionario,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class FuncionarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($funcionario);
 
-        return $this->render('funcionario/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:funcionario:show.html.twig', array(
             'funcionario' => $funcionario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class FuncionarioController extends Controller
             return $this->redirectToRoute('funcionario_edit', array('id' => $funcionario->getId()));
         }
 
-        return $this->render('funcionario/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:funcionario:edit.html.twig', array(
             'funcionario' => $funcionario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

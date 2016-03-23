@@ -28,7 +28,7 @@ class PromocaoController extends Controller
 
         $promocaos = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
 
-        return $this->render('promocao/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:promocao:index.html.twig', array(
             'promocaos' => $promocaos,
         ));
     }
@@ -53,7 +53,7 @@ class PromocaoController extends Controller
             return $this->redirectToRoute('promocao_show', array('id' => $promocao->getId()));
         }
 
-        return $this->render('promocao/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:promocao:new.html.twig', array(
             'promocao' => $promocao,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class PromocaoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($promocao);
 
-        return $this->render('promocao/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:promocao:show.html.twig', array(
             'promocao' => $promocao,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class PromocaoController extends Controller
             return $this->redirectToRoute('promocao_edit', array('id' => $promocao->getId()));
         }
 
-        return $this->render('promocao/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:promocao:edit.html.twig', array(
             'promocao' => $promocao,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

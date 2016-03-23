@@ -28,7 +28,7 @@ class CidadeController extends Controller
 
         $cidades = $em->getRepository('CamaleaoWebBimgoBundle:Cidade')->findAll();
 
-        return $this->render('cidade/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cidade:index.html.twig', array(
             'cidades' => $cidades,
         ));
     }
@@ -53,7 +53,7 @@ class CidadeController extends Controller
             return $this->redirectToRoute('cidade_show', array('id' => $cidade->getId()));
         }
 
-        return $this->render('cidade/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cidade:new.html.twig', array(
             'cidade' => $cidade,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class CidadeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($cidade);
 
-        return $this->render('cidade/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cidade:show.html.twig', array(
             'cidade' => $cidade,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class CidadeController extends Controller
             return $this->redirectToRoute('cidade_edit', array('id' => $cidade->getId()));
         }
 
-        return $this->render('cidade/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:cidade:edit.html.twig', array(
             'cidade' => $cidade,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

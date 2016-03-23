@@ -28,7 +28,7 @@ class PagamentoController extends Controller
 
         $pagamentos = $em->getRepository('CamaleaoWebBimgoBundle:Pagamento')->findAll();
 
-        return $this->render('pagamento/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:pagamento:index.html.twig', array(
             'pagamentos' => $pagamentos,
         ));
     }
@@ -53,7 +53,7 @@ class PagamentoController extends Controller
             return $this->redirectToRoute('pagamento_show', array('id' => $pagamento->getId()));
         }
 
-        return $this->render('pagamento/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:pagamento:new.html.twig', array(
             'pagamento' => $pagamento,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class PagamentoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($pagamento);
 
-        return $this->render('pagamento/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:pagamento:show.html.twig', array(
             'pagamento' => $pagamento,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class PagamentoController extends Controller
             return $this->redirectToRoute('pagamento_edit', array('id' => $pagamento->getId()));
         }
 
-        return $this->render('pagamento/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:pagamento:edit.html.twig', array(
             'pagamento' => $pagamento,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

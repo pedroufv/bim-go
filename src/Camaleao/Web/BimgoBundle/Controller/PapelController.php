@@ -28,7 +28,7 @@ class PapelController extends Controller
 
         $papels = $em->getRepository('CamaleaoWebBimgoBundle:Papel')->findAll();
 
-        return $this->render('papel/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:papel:index.html.twig', array(
             'papels' => $papels,
         ));
     }
@@ -53,7 +53,7 @@ class PapelController extends Controller
             return $this->redirectToRoute('papel_show', array('id' => $papel->getId()));
         }
 
-        return $this->render('papel/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:papel:new.html.twig', array(
             'papel' => $papel,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class PapelController extends Controller
     {
         $deleteForm = $this->createDeleteForm($papel);
 
-        return $this->render('papel/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:papel:show.html.twig', array(
             'papel' => $papel,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class PapelController extends Controller
             return $this->redirectToRoute('papel_edit', array('id' => $papel->getId()));
         }
 
-        return $this->render('papel/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:papel:edit.html.twig', array(
             'papel' => $papel,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

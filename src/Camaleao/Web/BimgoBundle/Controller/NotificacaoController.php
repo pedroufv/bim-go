@@ -28,7 +28,7 @@ class NotificacaoController extends Controller
 
         $notificacaos = $em->getRepository('CamaleaoWebBimgoBundle:Notificacao')->findAll();
 
-        return $this->render('notificacao/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:notificacao:index.html.twig', array(
             'notificacaos' => $notificacaos,
         ));
     }
@@ -53,7 +53,7 @@ class NotificacaoController extends Controller
             return $this->redirectToRoute('notificacao_show', array('id' => $notificacao->getId()));
         }
 
-        return $this->render('notificacao/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:notificacao:new.html.twig', array(
             'notificacao' => $notificacao,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class NotificacaoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($notificacao);
 
-        return $this->render('notificacao/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:notificacao:show.html.twig', array(
             'notificacao' => $notificacao,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class NotificacaoController extends Controller
             return $this->redirectToRoute('notificacao_edit', array('id' => $notificacao->getId()));
         }
 
-        return $this->render('notificacao/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:notificacao:edit.html.twig', array(
             'notificacao' => $notificacao,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
