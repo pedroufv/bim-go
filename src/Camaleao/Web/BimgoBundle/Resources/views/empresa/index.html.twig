@@ -26,8 +26,7 @@
                             <td>{{ empresa.cnpj }}</td>
                             <td>{{ empresa.telefone }}</td>
                             <td>
-                                <a href="{{ path('estado_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">edit</i>Editar</a>
-                                <a href="{{ path('estado_delete', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">delete</i>Excluir</a>
+                                <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-2"><i class="material-icons left">edit</i>Editar</a>
                             </td>
                         </tr>
                     {% endfor %}

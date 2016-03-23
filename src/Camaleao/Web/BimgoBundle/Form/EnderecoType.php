@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,13 @@ class EnderecoType extends AbstractType
             ->add('complemento')
             ->add('bairro')
             ->add('cep')
-            ->add('cidade')
+            ->add('cidade', EntityType::class, array(
+                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Cidade',
+                'label'         => 'Segmento',
+                'choice_label'  => function ($cidade) {
+                    return $cidade->getNome();
+                }
+            ))
         ;
     }
     

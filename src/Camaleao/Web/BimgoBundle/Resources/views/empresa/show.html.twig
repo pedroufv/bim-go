@@ -45,7 +45,9 @@
             <div class="col s12">
                 <a href="{{ path('empresa_index') }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">list</i>Voltar</a>
                 <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">edit</i>Editar</a>
-                <a href="{{ path('empresa_delete', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">delete</i>Excluir</a>
+                {{ form_start(delete_form, { 'attr': {'class': 'display-inline'} }) }}
+                    <button type="submit" class="waves-effect waves-light btn light-blue lighten-1"><i class="material-icons left">delete</i>Excluir</button>
+                {{ form_end(delete_form) }}
             </div> <!-- end col s12 -->
         </div> <!-- end row -->
     </div> <!-- end container -->

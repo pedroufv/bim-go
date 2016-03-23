@@ -25,6 +25,7 @@ class EmpresaController extends Controller
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();

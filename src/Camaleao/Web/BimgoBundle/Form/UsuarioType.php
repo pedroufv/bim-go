@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,7 +22,13 @@ class UsuarioType extends AbstractType
             ->add('token')
             ->add('registrationid')
             ->add('ativo')
-            ->add('papel')
+            ->add('papel', EntityType::class, array(
+                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Papel',
+                'label'         => 'Segmento',
+                'choice_label'  => function ($papel) {
+                    return $papel->getNome();
+                }
+            ))
         ;
     }
     

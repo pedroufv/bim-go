@@ -28,7 +28,7 @@ class EstadoController extends Controller
 
         $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
 
-        return $this->render('estado/index.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:estado:index.html.twig', array(
             'estados' => $estados,
         ));
     }
@@ -53,7 +53,7 @@ class EstadoController extends Controller
             return $this->redirectToRoute('estado_show', array('id' => $estado->getId()));
         }
 
-        return $this->render('estado/new.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:estado:new.html.twig', array(
             'estado' => $estado,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class EstadoController extends Controller
     {
         $deleteForm = $this->createDeleteForm($estado);
 
-        return $this->render('estado/show.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:estado:show.html.twig', array(
             'estado' => $estado,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class EstadoController extends Controller
             return $this->redirectToRoute('estado_edit', array('id' => $estado->getId()));
         }
 
-        return $this->render('estado/edit.html.twig', array(
+        return $this->render('CamaleaoWebBimgoBundle:estado:edit.html.twig', array(
             'estado' => $estado,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
