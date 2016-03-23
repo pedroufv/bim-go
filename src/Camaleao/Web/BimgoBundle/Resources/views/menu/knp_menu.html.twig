@@ -73,7 +73,7 @@
 {% endblock %}
 
 {% block linkElement %}
-    <a href="{{ item.uri }}"{{ macros.attributes(item.linkAttributes) }}>
+    <a class="blue-grey-text darken-4" href="{{ item.uri }}"{{ macros.attributes(item.linkAttributes) }}>
         {% if item.attribute('icon') is not empty  %}
             <i class="{{ item.attribute('icon') }}"></i>
         {% endif %}
