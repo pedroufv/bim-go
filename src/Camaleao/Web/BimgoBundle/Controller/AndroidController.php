@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Controller;
 
+use Camaleao\Web\BimgoBundle\Entity\Estado;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
