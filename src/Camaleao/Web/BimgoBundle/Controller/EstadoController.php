@@ -22,14 +22,18 @@ class EstadoController extends Controller
      * @Route("/", name="estado_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Estado a";
+        $estados = $em->createQuery($dql);
 
-        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Estado')->findAll();
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($estados, $request->query->get('pagina', 1), 9);
 
         return $this->render('CamaleaoWebBimgoBundle:estado:index.html.twig', array(
-            'estados' => $estados,
+            'pagination' => $pagination,
         ));
     }
 

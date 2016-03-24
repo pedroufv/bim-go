@@ -8,14 +8,15 @@
                     <table class="hoverable bordered">
                         <thead>
                             <tr>
-                                <th class="text-align-center">ID</th>
-                                <th>Nome</th>
-                                <th>UF</th>
+                                {# sorting of properties based on query components #}
+                                <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                                <th{% if pagination.isSorted('a.nome') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'a.nome') }}</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'UF', 'a.uf') }}</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for estado in estados %}
+                        {% for estado in pagination %}
                             <tr>
                                 <td class="text-align-center"><a href="{{ path('estado_show', { 'id': estado.id }) }}">{{ estado.id }}</a></td>
                                 <td>{{ estado.nome }}</td>
@@ -28,6 +29,9 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                    <div class="navigation center">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
                 </div> <!-- end col s12 -->
             </div> <!-- end row -->
         </div> <!-- end container -->
