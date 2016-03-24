@@ -23,15 +23,18 @@ class EmpresaController extends Controller
      * @Route("/", name="empresa_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Empresa a";
+        $empresas = $em->createQuery($dql);
 
-        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($empresas, $request->query->get('pagina', 1), 10);
 
         return $this->render('CamaleaoWebBimgoBundle:empresa:index.html.twig', array(
-            'empresas' => $empresas,
+            'pagination' => $pagination,
         ));
     }
 

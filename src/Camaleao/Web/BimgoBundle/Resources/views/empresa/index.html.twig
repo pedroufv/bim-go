@@ -11,27 +11,31 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nome Fantasia</th>
-                            <th>CNPJ</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
+                            {# sorting of properties based on query components #}
+                            <th>{{ knp_pagination_sortable(pagination, 'ID', 'a.id') }}</th>
+                            <th{% if pagination.isSorted('a.nomefantasia') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome Fantasia', 'a.nomefantasia') }}</th>
+                            <th{% if pagination.isSorted('a.cnpj') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'CNPJ', 'a.cnpj') }}</th>
+                            <th{% if pagination.isSorted('a.telefone') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Telefone', 'a.telefone') }}</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for empresa in empresas %}
+                    {% for empresa in pagination %}
                         <tr>
                             <td><a href="{{ path('empresa_show', { 'id': empresa.id }) }}">{{ empresa.id }}</a></td>
                             <td>{{ empresa.nomefantasia }}</td>
                             <td>{{ empresa.cnpj }}</td>
                             <td>{{ empresa.telefone }}</td>
                             <td>
-                                <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn light-blue lighten-2"><i class="material-icons left">edit</i>Editar</a>
+                                <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
             {% endif %}
             </div> <!-- end col s12 -->
         </div> <!-- end row -->

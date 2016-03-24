@@ -22,14 +22,18 @@ class PapelController extends Controller
      * @Route("/", name="papel_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Papel a";
+        $papeis = $em->createQuery($dql);
 
-        $papels = $em->getRepository('CamaleaoWebBimgoBundle:Papel')->findAll();
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($papeis, $request->query->get('pagina', 1), 10);
 
         return $this->render('CamaleaoWebBimgoBundle:papel:index.html.twig', array(
-            'papels' => $papels,
+            'pagination' => $pagination,
         ));
     }
 

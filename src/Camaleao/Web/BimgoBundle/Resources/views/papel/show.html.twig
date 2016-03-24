@@ -1,36 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Papel</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ papel.id }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ papel.nome }}</td>
-            </tr>
-            <tr>
-                <th>Descricao</th>
-                <td>{{ papel.descricao }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('papel_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('papel_edit', { 'id': papel.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Papel {{ papel.nome }}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ papel.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nome</th>
+                            <td>{{ papel.nome }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descrição</th>
+                            <td>{{ papel.descricao }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <a href="{{ path('papel_index') }}"class="waves-effect waves-light btn blue"><i class="material-icons left">list</i>Voltar</a>
+                <a href="{{ path('papel_edit', { 'id': papel.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
+                {{ form_start(delete_form, { 'attr': {'class': 'display-inline'} }) }}
+                    <button type="submit" class="waves-effect waves-light btn red"><i class="material-icons left">delete</i>Excluir</button>
+                {{ form_end(delete_form) }}
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
 {% endblock %}
