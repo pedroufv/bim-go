@@ -4,6 +4,9 @@ namespace Camaleao\Web\BimgoBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,20 +21,23 @@ class UsuarioType extends AbstractType
         $builder
             ->add('nome')
             ->add('email')
-            ->add('senha')
-            ->add('token')
-            ->add('registrationid')
-            ->add('ativo')
-            /*
+            ->add('senha', PasswordType::class)
+            ->add('token', HiddenType::class)
+            ->add('registrationid', HiddenType::class)
+            ->add('ativo', ChoiceType::class, array(
+                'choices'  => array(
+                    'Sim' => true,
+                    'Não' => false
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('papel', EntityType::class, array(
-                'class' => 'Camaleao\Web\BimgoBundle\Entity\Papel',
-                'label' => 'Papel',
-                'expanded' => true,
-                'choice_label' => function ($papel) {
-                return $papel->getNome();
+                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Papel',
+                'label'         => 'Papel',
+                'choice_label'  => function ($papel) {
+                    return $papel->getNome();
                 }
             ))
-            */
         ;
     }
     

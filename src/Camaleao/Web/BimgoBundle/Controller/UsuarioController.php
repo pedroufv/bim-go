@@ -30,7 +30,7 @@ class UsuarioController extends Controller
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($usuarios, $request->query->get('pagina', 1), 1);
+        $pagination = $paginator->paginate($usuarios, $request->query->get('pagina', 1), 10);
 
         return $this->render('CamaleaoWebBimgoBundle:usuario:index.html.twig', array(
             'pagination' => $pagination,

@@ -25,7 +25,7 @@
                             <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
                             <td>{{ usuario.nome }}</td>
                             <td>{{ usuario.email }}</td>
-                            <td>{% if usuario.ativo %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if usuario.ativo %}Sim{% else %}Não{% endif %}</td>
                             <td>
                                 <a href="{{ path('usuario_show', { 'id': usuario.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">play_arrow</i>Exibir</a>
                                 <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
