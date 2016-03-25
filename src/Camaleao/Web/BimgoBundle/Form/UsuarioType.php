@@ -22,13 +22,16 @@ class UsuarioType extends AbstractType
             ->add('token')
             ->add('registrationid')
             ->add('ativo')
+            /*
             ->add('papel', EntityType::class, array(
-                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Papel',
-                'label'         => 'Segmento',
-                'choice_label'  => function ($papel) {
-                    return $papel->getNome();
+                'class' => 'Camaleao\Web\BimgoBundle\Entity\Papel',
+                'label' => 'Papel',
+                'expanded' => true,
+                'choice_label' => function ($papel) {
+                return $papel->getNome();
                 }
             ))
+            */
         ;
     }
     

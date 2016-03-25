@@ -22,14 +22,18 @@ class UsuarioController extends Controller
      * @Route("/", name="usuario_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Usuario a";
+        $usuarios = $em->createQuery($dql);
 
-        $usuarios = $em->getRepository('CamaleaoWebBimgoBundle:Usuario')->findAll();
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($usuarios, $request->query->get('pagina', 1), 1);
 
         return $this->render('CamaleaoWebBimgoBundle:usuario:index.html.twig', array(
-            'usuarios' => $usuarios,
+            'pagination' => $pagination,
         ));
     }
 

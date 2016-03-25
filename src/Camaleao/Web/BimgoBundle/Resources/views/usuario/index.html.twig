@@ -1,49 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Usuario list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Usuários</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>Token</th>
-                <th>Registrationid</th>
-                <th>Ativo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for usuario in usuarios %}
-            <tr>
-                <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
-                <td>{{ usuario.nome }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.senha }}</td>
-                <td>{{ usuario.token }}</td>
-                <td>{{ usuario.registrationid }}</td>
-                <td>{% if usuario.ativo %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('usuario_show', { 'id': usuario.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table>
 
-    <ul>
-        <li>
-            <a href="{{ path('usuario_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                    <thead>
+                        <tr>
+                            {# sorting of properties based on query components #}
+                            <th>{{ knp_pagination_sortable(pagination, 'ID', 'a.id') }}</th>
+                            <th{% if pagination.isSorted('a.nome') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'a.nome') }}</th>
+                            <th{% if pagination.isSorted('a.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'E-mail', 'a.email') }}</th>
+                            <th{% if pagination.isSorted('a.ativo') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ativo', 'a.ativo') }}</th>
+                            <th class="blue-text">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for usuario in pagination %}
+                        <tr>
+                            <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
+                            <td>{{ usuario.nome }}</td>
+                            <td>{{ usuario.email }}</td>
+                            <td>{% if usuario.ativo %}Yes{% else %}No{% endif %}</td>
+                            <td>
+                                <a href="{{ path('usuario_show', { 'id': usuario.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">play_arrow</i>Exibir</a>
+                                <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+        <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('usuario_new') }}">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+    
 {% endblock %}
