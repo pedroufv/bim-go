@@ -7,9 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Empresa
  *
- * @ORM\Table(name="empresa", indexes={@ORM\Index(name="entidade", columns={"grupoEmpresas"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="usuario", columns={"usuario"})})
+ * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
  * @ORM\Entity
- * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Empresa
 {
@@ -33,8 +32,6 @@ class Empresa
      * @var string
      *
      * @ORM\Column(name="nomeFantasia", type="string", length=200, nullable=false)
-     *
-     * @JMS\Serializer\Annotation\Expose
      */
     private $nomefantasia;
 
@@ -67,14 +64,28 @@ class Empresa
     private $telefone;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
+     */
+    private $datacriado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     */
+    private $datamodificacao;
+
+    /**
      * @var \Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
      * })
      */
-    private $usuario;
+    private $modificadopor;
 
     /**
      * @var \Endereco
@@ -83,20 +94,18 @@ class Empresa
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })
-     *
-     * @JMS\Serializer\Annotation\Expose
      */
     private $endereco;
 
     /**
-     * @var \Grupoempresas
+     * @var \Usuario
      *
-     * @ORM\ManyToOne(targetEntity="Grupoempresas")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="grupoEmpresas", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="criadoPor", referencedColumnName="id")
      * })
      */
-    private $grupoempresas;
+    private $criadopor;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -263,26 +272,72 @@ class Empresa
     }
 
     /**
-     * Set usuario
+     * Set datacriado
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
+     * @param \DateTime $datacriado
      * @return Empresa
      */
-    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario = null)
+    public function setDatacriado($datacriado)
     {
-        $this->usuario = $usuario;
+        $this->datacriado = $datacriado;
 
         return $this;
     }
 
     /**
-     * Get usuario
+     * Get datacriado
+     *
+     * @return \DateTime 
+     */
+    public function getDatacriado()
+    {
+        return $this->datacriado;
+    }
+
+    /**
+     * Set datamodificacao
+     *
+     * @param \DateTime $datamodificacao
+     * @return Empresa
+     */
+    public function setDatamodificacao($datamodificacao)
+    {
+        $this->datamodificacao = $datamodificacao;
+
+        return $this;
+    }
+
+    /**
+     * Get datamodificacao
+     *
+     * @return \DateTime 
+     */
+    public function getDatamodificacao()
+    {
+        return $this->datamodificacao;
+    }
+
+    /**
+     * Set modificadopor
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
+     * @return Empresa
+     */
+    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
+    {
+        $this->modificadopor = $modificadopor;
+
+        return $this;
+    }
+
+    /**
+     * Get modificadopor
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
      */
-    public function getUsuario()
+    public function getModificadopor()
     {
-        return $this->usuario;
+        return $this->modificadopor;
     }
 
     /**
@@ -309,26 +364,26 @@ class Empresa
     }
 
     /**
-     * Set grupoempresas
+     * Set criadopor
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Grupoempresas $grupoempresas
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor
      * @return Empresa
      */
-    public function setGrupoempresas(\Camaleao\Web\BimgoBundle\Entity\Grupoempresas $grupoempresas = null)
+    public function setCriadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor = null)
     {
-        $this->grupoempresas = $grupoempresas;
+        $this->criadopor = $criadopor;
 
         return $this;
     }
 
     /**
-     * Get grupoempresas
+     * Get criadopor
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Grupoempresas 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
      */
-    public function getGrupoempresas()
+    public function getCriadopor()
     {
-        return $this->grupoempresas;
+        return $this->criadopor;
     }
 
     /**

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Funcionario
  *
- * @ORM\Table(name="funcionario", uniqueConstraints={@ORM\UniqueConstraint(name="cpf", columns={"cpf"})}, indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="usuario", columns={"usuario"})})
+ * @ORM\Table(name="funcionario", uniqueConstraints={@ORM\UniqueConstraint(name="cpf", columns={"cpf"})}, indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_7510A3CF8F3195FB", columns={"criadoPor"})})
  * @ORM\Entity
  */
 class Funcionario
@@ -43,6 +43,30 @@ class Funcionario
     private $telefone;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
+     */
+    private $datacriacao;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     */
+    private $datamodificacao;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
+     * })
+     */
+    private $modificadopor;
+
+    /**
      * @var \Empresa
      *
      * @ORM\ManyToOne(targetEntity="Empresa")
@@ -67,10 +91,10 @@ class Funcionario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="criadoPor", referencedColumnName="id")
      * })
      */
-    private $usuario;
+    private $criadopor;
 
 
 
@@ -154,6 +178,75 @@ class Funcionario
     }
 
     /**
+     * Set datacriacao
+     *
+     * @param \DateTime $datacriacao
+     * @return Funcionario
+     */
+    public function setDatacriacao($datacriacao)
+    {
+        $this->datacriacao = $datacriacao;
+
+        return $this;
+    }
+
+    /**
+     * Get datacriacao
+     *
+     * @return \DateTime 
+     */
+    public function getDatacriacao()
+    {
+        return $this->datacriacao;
+    }
+
+    /**
+     * Set datamodificacao
+     *
+     * @param \DateTime $datamodificacao
+     * @return Funcionario
+     */
+    public function setDatamodificacao($datamodificacao)
+    {
+        $this->datamodificacao = $datamodificacao;
+
+        return $this;
+    }
+
+    /**
+     * Get datamodificacao
+     *
+     * @return \DateTime 
+     */
+    public function getDatamodificacao()
+    {
+        return $this->datamodificacao;
+    }
+
+    /**
+     * Set modificadopor
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
+     * @return Funcionario
+     */
+    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
+    {
+        $this->modificadopor = $modificadopor;
+
+        return $this;
+    }
+
+    /**
+     * Get modificadopor
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
+     */
+    public function getModificadopor()
+    {
+        return $this->modificadopor;
+    }
+
+    /**
      * Set empresa
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
@@ -200,25 +293,25 @@ class Funcionario
     }
 
     /**
-     * Set usuario
+     * Set criadopor
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor
      * @return Funcionario
      */
-    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario = null)
+    public function setCriadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor = null)
     {
-        $this->usuario = $usuario;
+        $this->criadopor = $criadopor;
 
         return $this;
     }
 
     /**
-     * Get usuario
+     * Get criadopor
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
      */
-    public function getUsuario()
+    public function getCriadopor()
     {
-        return $this->usuario;
+        return $this->criadopor;
     }
 }

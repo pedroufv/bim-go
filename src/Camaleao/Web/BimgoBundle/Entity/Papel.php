@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Papel
  *
- * @ORM\Table(name="papel")
+ * @ORM\Table(name="papel", indexes={@ORM\Index(name="pai", columns={"pai"})})
  * @ORM\Entity
  */
 class Papel
@@ -34,6 +34,13 @@ class Papel
      * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
      */
     private $descricao;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pai", type="integer", nullable=true)
+     */
+    private $pai;
 
 
 
@@ -91,5 +98,28 @@ class Papel
     public function getDescricao()
     {
         return $this->descricao;
+    }
+
+    /**
+     * Set pai
+     *
+     * @param integer $pai
+     * @return Papel
+     */
+    public function setPai($pai)
+    {
+        $this->pai = $pai;
+
+        return $this;
+    }
+
+    /**
+     * Get pai
+     *
+     * @return integer 
+     */
+    public function getPai()
+    {
+        return $this->pai;
     }
 }
