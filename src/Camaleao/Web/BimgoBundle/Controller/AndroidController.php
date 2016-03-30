@@ -3,6 +3,7 @@
 namespace Camaleao\Web\BimgoBundle\Controller;
 
 use Camaleao\Web\BimgoBundle\Entity\Estado;
+use Camaleao\Web\BimgoBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,14 +26,10 @@ class AndroidController extends Controller
      */
     public function checkTokenAction(Request $request)
     {
-        //$jsonObject = json_decode($request->get('jsonObject'));
+        $jsonObject = json_decode($request->get('jsonObject'));
 
-        $token = $request->get('token');
+        $token = $jsonObject->object;
 
-
-
-        //$usuario = new Usuario();
-        //$usuario->setToken(jsonObject->usuario->token);
         $em = $this->getDoctrine()->getManager();
 
         $usuario = $em->getRepository('CamaleaoWebBimgoBundle:Usuario')->findOneBy(array('token' => $token));
@@ -42,8 +39,6 @@ class AndroidController extends Controller
         $result = $serializer->serialize($usuario, 'json');
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
-
-//        return new Response(json_encode(array('result' => $usuario)), Response::HTTP_OK, array('content-type' => 'application/json'));
     }
 
     /**
@@ -89,6 +84,69 @@ class AndroidController extends Controller
     }
 
     /**
+     * insert em usuario
+     *
+     * @Route("/newusuario", name="android_newusuario")
+     * @Method("POST")
+     */
+    public function newUsuarioAction(Request $request)
+    {
+        $jsonObject = json_decode($request->get('jsonObject'));
+
+        $usuario = new Usuario();
+        $usuario->setNome($jsonObject->object->nome);
+        $usuario->setEmail($jsonObject->object->email);
+        $usuario->setSenha($jsonObject->object->senha);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($usuario);
+        $em->flush();
+
+        return new Response(json_encode(array('result' => $usuario->getId())), Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     * send push message
+     *
+     * @Route("/sendpushmessage", name="android_sendpushmessage")
+     * @Method("POST")
+     */
+    public function sendPushMessageAction(Request $request)
+    {
+        $jsonObject = json_decode($request->get('jsonObject'));
+
+        $title = $jsonObject->object->title;
+        $message = $jsonObject->object->message;
+
+        //$pushMessage = new PushMessage($title, $message);
+
+        //AplUser::sendPushMessage( $pushMessage );
+
+        $client = $this->get('endroid.gcm.client');
+
+        $registrationIds = array();
+        $registrationIds[0] = 'cZ4BeUYgkcA:APA91bG2FYtvI0oorbVwOBJtwndgT7itoYI2LKzDebFYUJg3kdSM_xqd28PVDBKMuUwXkJjKAG2wcyU9QL4aVPi9LHJmyGsopsYI1PQVY8zS7CHrSG2Ir2mLmG50zhVPzcydDo-b2Oer';
+
+        $data = array(
+            'title' => $title,
+            'message' => $message,
+        );
+
+
+        $options = [
+            'collapse_key'=>'PushMessage',
+            'delay_while_idle'=>false,
+            'time_to_live'=>(4 * 7 * 24 * 60 * 60),
+            'restricted_package_name'=>'com.opportunity.minhaempresa',
+            'dry_run'=>false
+        ];
+
+        $response = $client->send( $data, $registrationIds, $options );
+
+        return new Response(json_encode(array('result' => true)), Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      * insert em estado
      *
      * @Route("/newestado", name="android_newestado")
@@ -99,8 +157,8 @@ class AndroidController extends Controller
         $jsonObject = json_decode($request->get('jsonObject'));
 
         $estado = new Estado();
-        $estado->setNome($jsonObject->estado->nome);
-        $estado->setUf($jsonObject->estado->uf);
+        $estado->setNome($jsonObject->object->nome);
+        $estado->setUf($jsonObject->object->uf);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($estado);
