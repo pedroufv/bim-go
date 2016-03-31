@@ -1,5 +1,6 @@
 // Visualizar no public
-// 
+// app/console assets:install --symlink --relative
+
 
 
 
@@ -9,7 +10,9 @@ var infoBox = [];
 var pinImage = {
         bimgoDefault: 'bundles/camaleaowebbimgo/img/pin_bim-go_45x51.png'
     };
-var empresas = [
+
+
+var empresas = [ // Utilizando esse Objeto como exemplo ate que a url entregue as empresas
     {
         nomefantasia: 'Prefeitura',
         endereco: {
@@ -91,21 +94,34 @@ function dadosInfoBox(nome,latitude,longitude){
 
 function carregarPontos() {
 
-    $.each(empresas, function(index, empresa){
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
-            title: empresa.nomefantasia,
-            map: map,
-            //icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
-            icon: pinImage.bimgoDefault
-        });
-        console.log("Empresa: %s \nLatitude: %s \nLongitude: %s", empresa.nomefantasia,empresa.endereco.latitude, empresa.endereco.longitude);
+    $.ajax({
+        dataType: "json",
+        type: 'POST',
+        url: 'empresa/loadpoints',
+        success: function(response) {
+
+            // ATENÇÂO:
+            // No $.each, troque 'empresas' por 'response' quando a url: 'empresa/loadpoints' entregar as empresas
+            // Em seguida apague estes comentarios;
+
+            $.each(empresas, function(index, empresa){
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
+                    title: empresa.nomefantasia,
+                    map: map,
+                    //icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
+                    icon: pinImage.bimgoDefault
+                });
+                console.log("Empresa: %s \nLatitude: %s \nLongitude: %s", empresa.nomefantasia,empresa.endereco.latitude, empresa.endereco.longitude);
+                     
+                infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.endereco.latitude,empresa.endereco.longitude));
+                infoBox[index].marker = marker;
              
-        infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.endereco.latitude,empresa.endereco.longitude));
-        infoBox[index].marker = marker;
-     
-        infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
-            abrirInfoBox(index, marker);
-        });
+                infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
+                    abrirInfoBox(index, marker);
+                });
+            });
+        }
+        
     });
 }
