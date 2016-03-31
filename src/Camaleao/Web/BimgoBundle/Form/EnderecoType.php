@@ -23,7 +23,7 @@ class EnderecoType extends AbstractType
             ->add('cep')
             ->add('cidade', EntityType::class, array(
                 'class'         => 'Camaleao\Web\BimgoBundle\Entity\Cidade',
-                'label'         => 'Segmento',
+                'label'         => 'cidade',
                 'choice_label'  => function ($cidade) {
                     return $cidade->getNome();
                 }

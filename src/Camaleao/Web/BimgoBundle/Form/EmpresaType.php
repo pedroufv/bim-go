@@ -16,24 +16,21 @@ class EmpresaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('razaosocial')
-            ->add('nomefantasia')
-            ->add('descricao')
+            ->add('razaosocial', 'text', array('label' => 'Razão Social'))
+            ->add('nomefantasia', 'text', array('label' => 'Nome Fantasia'))
+            ->add('descricao', 'textarea', array('label' => 'Descrição'))
             ->add('cnpj')
-            ->add('inscricaoestadual')
+            ->add('inscricaoestadual', 'text', array('label' => 'Inscrição Estadual'))
             ->add('telefone')
-            ->add('usuario', new UsuarioType())
-            ->add('endereco', new EnderecoType())
-            ->add('grupoempresas', EntityType::class, array(
-                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Grupoempresas',
-                'label'         => 'Grupo Empresas',
-                'choice_label'  => function ($grupoempresas) {
-                    return $grupoempresas->getNome();
-                }
-            ))
+            //->add('criadoPor', new UsuarioType())
+            ->add('endereco', new EnderecoType(), array(
+                'label_attr'    => array('class' => 'fieldset')))
             ->add('segmento', EntityType::class, array(
                 'class'         => 'Camaleao\Web\BimgoBundle\Entity\Segmento',
                 'label'         => 'Segmento',
+                'multiple'      => true,
+                'expanded'      => true,
+                'label_attr'    => array('class' => 'checkbox-inline'),
                 'choice_label'  => function ($segmento) {
                     return $segmento->getNome();
                 }
