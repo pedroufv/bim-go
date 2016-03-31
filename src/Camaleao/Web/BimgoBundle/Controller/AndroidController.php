@@ -63,6 +63,56 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em produtos
+     *
+     * @Route("/getprodutos", name="android_getprodutos")
+     * @Method({"GET", "POST"})
+     */
+    public function getProdutosAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findAll();
+
+        $array = array('produtos' => $produtos);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     *  select em produtos por faixa
+     *
+     * @Route("/getprodutoslazy", name="android_getprodutoslazy")
+     * @Method({"GET", "POST"})
+     */
+    public function getProdutosLazyAction(Request $request)
+    {
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+        $index_inicial = $jsonObject->index_inicial;
+        $quantidade = $jsonObject->quantidade;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')
+		->setMaxResults($quantidade)
+		->setFirstResult($index_inicial)
+		->findAll();
+
+        $array = array('produtos' => $produtos);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      *  select em empresas
      *
      * @Route("/getempresas", name="android_getempresas")
@@ -84,6 +134,35 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em empresas por faixa
+     *
+     * @Route("/getempresaslazy", name="android_getempresaslazy")
+     * @Method({"GET", "POST"})
+     */
+    public function getEmpresasLazyAction(Request $request)
+    {
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+        $index_inicial = $jsonObject->index_inicial;
+        $quantidade = $jsonObject->quantidade;
+	
+        $em = $this->getDoctrine()->getManager();
+
+        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')
+		->setMaxResults($quantidade)
+		->setFirstResult($index_inicial)
+		->findAll();
+
+        $array = array('empresas' => $empresas);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      * insert em usuario
      *
      * @Route("/newusuario", name="android_newusuario")
@@ -93,10 +172,13 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 
+	var_dump($jsonObject->object);
+
         $usuario = new Usuario();
         $usuario->setNome($jsonObject->object->nome);
         $usuario->setEmail($jsonObject->object->email);
         $usuario->setSenha($jsonObject->object->senha);
+	$usuario->setAtivo($jsonObject->object->ativo);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($usuario);
