@@ -1,68 +1,111 @@
+// Visualizar no public
+// 
+
+
+
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
+var pinImage = {
+        bimgoDefault: 'bundles/camaleaowebbimgo/img/pin_bim-go_45x51.png'
+    };
+var empresas = [
+    {
+        nomefantasia: 'Prefeitura',
+        endereco: {
+            latitude: -20.7548099,
+            longitude: -42.8790035
+        }
+    },
+    {
+        nomefantasia: 'Casa do Cleverson',
+        endereco: {
+            latitude: -20.7562232,
+            longitude: -42.8854347
+        }
+    },
+    {
+        nomefantasia: 'Casa do Diego',
+        endereco: {
+            latitude: -20.7500267,
+            longitude: -42.8842513
+        }
+    },
+    {
+        nomefantasia: 'Casa do Rhuan',
+        endereco: {
+            latitude: -20.7549866,
+            longitude: -42.8803364
+        }
+    },    
+    {
+        nomefantasia: 'Casa do Pedro',
+        endereco: {
+            latitude: -20.7683248,
+            longitude: -42.8883133
+        }
+    },
+];
+
 
 function initialize()
 {
-    var latlng = new google.maps.LatLng(-20.757503, -42.874956);
+    var latlng = new google.maps.LatLng(-20.7547815,-42.8789577);
 
     var options = {
-        zoom: 17,
+        zoom: 14,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
     map = new google.maps.Map(document.getElementById("mapa"), options);
+
+    // Redimenciona o mapa para 60% da tela
+    var winHeightPorcent = $(window).height()*0.60;
+    $("#mapa").height(winHeightPorcent);
+
+    carregarPontos();
 }
 initialize();
+ 
+function abrirInfoBox(id, marker) {
+    if (typeof(idInfoBoxAberto) == 'number' && typeof(infoBox[idInfoBoxAberto]) == 'object') {
+        infoBox[idInfoBoxAberto].close();
+    }
+ 
+    infoBox[id].open(map, marker);
+    idInfoBoxAberto = id;
+}
 
+function dadosInfoBox(nome,latitude,longitude){
+    var divInfoBoxContent = '<p class="nome">'+nome+'<p>'
+                            +'<p class="latitude">'+latitude+'<p>'
+                            +'<p class="longitude">'+longitude+'<p>';
+    var myOptions = {
+        content: divInfoBoxContent,
+        pixelOffset: new google.maps.Size(-150, 0)
+    };
+
+    return myOptions;
+}
 
 function carregarPontos() {
 
-    $.ajax({
-        dataType: "json",
-        type: 'POST',
-        url: 'empresa/loadpoints',
-        success: function(response) {
-
-            $.each(response, function(index, empresa) {
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
-                    title: empresa.nomefantasia,
-                    map: map,
-                    //icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
-                });
-            });
-
-
-            /*
-            $.each(response, function(index, universidadeid) {
-                $.each(universidadeid, function(index, universidade) {
-                    var ponto = universidade[0];
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(ponto.latitude, ponto.longitude),
-                        title: ponto.nome,
-                        map: map,
-                        icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
-                    });
-
-
-
-                    var myOptions = {
-                        content: "<p>"+ponto.nome + ' - ' + ponto.site +"</p>",
-                        pixelOffset: new google.maps.Size(-150, 0)
-                    };
-
-                    infoBox[ponto.id] = new InfoBox(myOptions);
-                    infoBox[ponto.id].marker = marker;
-
-                    infoBox[ponto.id].listener = google.maps.event.addListener(marker, 'click', function (e) {
-                        abrirInfoBox(ponto.id, marker);
-                    });
-                });
-            });
-            */
-        }
+    $.each(empresas, function(index, empresa){
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
+            title: empresa.nomefantasia,
+            map: map,
+            //icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
+            icon: pinImage.bimgoDefault
+        });
+        console.log("Empresa: %s \nLatitude: %s \nLongitude: %s", empresa.nomefantasia,empresa.endereco.latitude, empresa.endereco.longitude);
+             
+        infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.endereco.latitude,empresa.endereco.longitude));
+        infoBox[index].marker = marker;
+     
+        infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
+            abrirInfoBox(index, marker);
+        });
     });
 }
-carregarPontos();
