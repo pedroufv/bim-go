@@ -15,9 +15,8 @@ class SegmentoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nome')
-            ->add('descricao')
-            ->add('empresa')
+            ->add('nome', 'text', array('label' => 'Nome'))
+            ->add('descricao', 'text', array('label' => 'Descrição'))
         ;
     }
     

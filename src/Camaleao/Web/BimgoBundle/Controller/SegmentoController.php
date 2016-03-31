@@ -22,14 +22,18 @@ class SegmentoController extends Controller
      * @Route("/", name="segmento_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Segmento a";
+        $segmentos = $em->createQuery($dql);
 
-        $segmentos = $em->getRepository('CamaleaoWebBimgoBundle:Segmento')->findAll();
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($segmentos, $request->query->get('pagina', 1), 10);
 
         return $this->render('CamaleaoWebBimgoBundle:segmento:index.html.twig', array(
-            'segmentos' => $segmentos,
+            'pagination' => $pagination,
         ));
     }
 

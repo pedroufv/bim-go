@@ -1,41 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Segmento list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for segmento in segmentos %}
-            <tr>
-                <td><a href="{{ path('segmento_show', { 'id': segmento.id }) }}">{{ segmento.id }}</a></td>
-                <td>{{ segmento.nome }}</td>
-                <td>{{ segmento.descricao }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('segmento_show', { 'id': segmento.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('segmento_edit', { 'id': segmento.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('segmento_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Segmentos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            {# sorting of properties based on query components #}
+                            <th>{{ knp_pagination_sortable(pagination, 'ID', 'a.id') }}</th>
+                            <th{% if pagination.isSorted('a.nome') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'a.nome') }}</th>
+                            <th{% if pagination.isSorted('a.descricao') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Descrição', 'a.descricao') }}</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for segmento in pagination %}
+                        <tr>
+                            <td><a href="{{ path('segmento_show', { 'id': segmento.id }) }}">{{ segmento.id }}</a></td>
+                            <td>{{ segmento.nome }}</td>
+                            <td>{{ segmento.descricao }}</td>
+                            <td>
+                                <a href="{{ path('segmento_show', { 'id': segmento.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">play_arrow</i>Exibir</a>
+                                <a href="{{ path('segmento_edit', { 'id': segmento.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div> <!-- end col s12 -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+    <div class="fixed-action-btn" style="bottom:45px; right:24px;">
+        <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('segmento_new') }}">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
 {% endblock %}

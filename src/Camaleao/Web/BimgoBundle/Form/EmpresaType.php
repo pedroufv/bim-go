@@ -27,10 +27,10 @@ class EmpresaType extends AbstractType
                 'label_attr'    => array('class' => 'fieldset')))
             ->add('segmento', EntityType::class, array(
                 'class'         => 'Camaleao\Web\BimgoBundle\Entity\Segmento',
-                'label'         => 'Segmento',
+                'label'         => 'Segmento(s)',
                 'multiple'      => true,
                 'expanded'      => true,
-                'label_attr'    => array('class' => 'checkbox-inline'),
+                'label_attr'    => array('class' => 'fieldset checkbox-inline'),
                 'choice_label'  => function ($segmento) {
                     return $segmento->getNome();
                 }
