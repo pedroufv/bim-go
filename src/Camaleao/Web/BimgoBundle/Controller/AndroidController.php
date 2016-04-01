@@ -63,6 +63,102 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em funcionarios
+     *
+     * @Route("/getfuncionarios", name="android_getfuncionarios")
+     * @Method({"GET", "POST"})
+     */
+    public function getFuncionariosAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $funcionarios = $em->getRepository('CamaleaoWebBimgoBundle:Funcionario')->findAll();
+
+        $array = array('funcionarios' => $funcionarios);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     *  select em funcionarios por faixa
+     *
+     * @Route("/getfuncionarioslazy", name="android_getfuncionarioslazy")
+     * @Method({"GET", "POST"})
+     */
+    public function getFuncionariosLazyAction(Request $request)
+    {
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+        $index_inicial = $jsonObject->object->index_inicial;
+        $quantidade = $jsonObject->object->quantidade;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $funcionarios = $em->getRepository('CamaleaoWebBimgoBundle:Funcionario')
+		->findBy(array(), array(), $quantidade, $index_inicial);
+
+        $array = array('funcionarios' => $funcionarios);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     *  select em promocoes
+     *
+     * @Route("/getpromocoes", name="android_getpromocoes")
+     * @Method({"GET", "POST"})
+     */
+    public function getPromocoesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
+
+        $array = array('promocoes' => $promocoes);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     *  select em promocoes por faixa
+     *
+     * @Route("/getpromocoeslazy", name="android_getpromocoeslazy")
+     * @Method({"GET", "POST"})
+     */
+    public function getPromocoesLazyAction(Request $request)
+    {
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+        $index_inicial = $jsonObject->object->index_inicial;
+        $quantidade = $jsonObject->object->quantidade;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')
+		->findBy(array(), array(), $quantidade, $index_inicial);
+
+        $array = array('promocoes' => $promocoes);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      *  select em produtos
      *
      * @Route("/getprodutos", name="android_getprodutos")
@@ -93,15 +189,13 @@ class AndroidController extends Controller
     {
 	$jsonObject = json_decode($request->get('jsonObject'));
 
-        $index_inicial = $jsonObject->index_inicial;
-        $quantidade = $jsonObject->quantidade;
+        $index_inicial = $jsonObject->object->index_inicial;
+        $quantidade = $jsonObject->object->quantidade;
 
         $em = $this->getDoctrine()->getManager();
 
         $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')
-		->setMaxResults($quantidade)
-		->setFirstResult($index_inicial)
-		->findAll();
+		->findBy(array(), array(), $quantidade, $index_inicial);
 
         $array = array('produtos' => $produtos);
 
@@ -143,15 +237,13 @@ class AndroidController extends Controller
     {
 	$jsonObject = json_decode($request->get('jsonObject'));
 
-        $index_inicial = $jsonObject->index_inicial;
-        $quantidade = $jsonObject->quantidade;
+        $index_inicial = $jsonObject->object->index_inicial;
+        $quantidade = $jsonObject->object->quantidade;
 	
         $em = $this->getDoctrine()->getManager();
 
         $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')
-		->setMaxResults($quantidade)
-		->setFirstResult($index_inicial)
-		->findAll();
+		->findBy(array(), array(), $quantidade, $index_inicial);
 
         $array = array('empresas' => $empresas);
 
