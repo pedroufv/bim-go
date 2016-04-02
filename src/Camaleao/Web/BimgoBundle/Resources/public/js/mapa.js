@@ -3,7 +3,7 @@
 
 
 
-
+var teste;
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
@@ -50,6 +50,10 @@ var empresas = [ // Utilizando esse Objeto como exemplo ate que a url entregue a
     },
 ];
 
+// Redimenciona o mapa para 60% da tela
+var winHeightPorcent = $(window).height()*0.60;
+$("#mapa").height(winHeightPorcent);
+
 
 function initialize()
 {
@@ -62,10 +66,6 @@ function initialize()
     };
 
     map = new google.maps.Map(document.getElementById("mapa"), options);
-
-    // Redimenciona o mapa para 60% da tela
-    var winHeightPorcent = $(window).height()*0.60;
-    $("#mapa").height(winHeightPorcent);
 
     carregarPontos();
 }
@@ -104,7 +104,10 @@ function carregarPontos() {
             // No $.each, troque 'empresas' por 'response' quando a url: 'empresa/loadpoints' entregar as empresas
             // Em seguida apague estes comentarios;
 
-            $.each(empresas, function(index, empresa){
+            $.each(response, function(index, empresa){
+                teste = response;
+                console.log(response);
+                /*
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
                     title: empresa.nomefantasia,
@@ -120,6 +123,7 @@ function carregarPontos() {
                 infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
                     abrirInfoBox(index, marker);
                 });
+                */
             });
         }
         

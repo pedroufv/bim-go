@@ -57,16 +57,6 @@ class Funcionario
     private $datamodificacao;
 
     /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
-     * })
-     */
-    private $modificadopor;
-
-    /**
      * @var \Empresa
      *
      * @ORM\ManyToOne(targetEntity="Empresa")
@@ -95,6 +85,16 @@ class Funcionario
      * })
      */
     private $criadopor;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
+     * })
+     */
+    private $modificadopor;
 
 
 
@@ -224,29 +224,6 @@ class Funcionario
     }
 
     /**
-     * Set modificadopor
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
-     * @return Funcionario
-     */
-    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
-    {
-        $this->modificadopor = $modificadopor;
-
-        return $this;
-    }
-
-    /**
-     * Get modificadopor
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
-     */
-    public function getModificadopor()
-    {
-        return $this->modificadopor;
-    }
-
-    /**
      * Set empresa
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
@@ -313,5 +290,28 @@ class Funcionario
     public function getCriadopor()
     {
         return $this->criadopor;
+    }
+
+    /**
+     * Set modificadopor
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
+     * @return Funcionario
+     */
+    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
+    {
+        $this->modificadopor = $modificadopor;
+
+        return $this;
+    }
+
+    /**
+     * Get modificadopor
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
+     */
+    public function getModificadopor()
+    {
+        return $this->modificadopor;
     }
 }

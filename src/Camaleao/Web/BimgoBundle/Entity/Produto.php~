@@ -1,0 +1,112 @@
+<?php
+
+namespace Camaleao\Web\BimgoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produto
+ *
+ * @ORM\Table(name="produto", indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
+ * @ORM\Entity
+ */
+class Produto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
+     */
+    private $descricao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="preco", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $preco;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
+     */
+    private $datacriado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     */
+    private $datamodificacao;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="criadoPor", referencedColumnName="id")
+     * })
+     */
+    private $criadopor;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
+     * })
+     */
+    private $modificadopor;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Promocao", inversedBy="produto")
+     * @ORM\JoinTable(name="produto_promocao",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="produto", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="promocao", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $promocao;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->promocao = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

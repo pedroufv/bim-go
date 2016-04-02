@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
  * @ORM\Entity
+ * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Empresa
 {
@@ -32,6 +33,7 @@ class Empresa
      * @var string
      *
      * @ORM\Column(name="nomeFantasia", type="string", length=200, nullable=false)
+     * @JMS\Serializer\Annotation\Expose
      */
     private $nomefantasia;
 
@@ -78,22 +80,13 @@ class Empresa
     private $datamodificacao;
 
     /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
-     * })
-     */
-    private $modificadopor;
-
-    /**
      * @var \Endereco
      *
      * @ORM\ManyToOne(targetEntity="Endereco")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })
+     * @JMS\Serializer\Annotation\Expose
      */
     private $endereco;
 
@@ -106,6 +99,16 @@ class Empresa
      * })
      */
     private $criadopor;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="modificadoPor", referencedColumnName="id")
+     * })
+     */
+    private $modificadopor;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -318,29 +321,6 @@ class Empresa
     }
 
     /**
-     * Set modificadopor
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
-     * @return Empresa
-     */
-    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
-    {
-        $this->modificadopor = $modificadopor;
-
-        return $this;
-    }
-
-    /**
-     * Get modificadopor
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
-     */
-    public function getModificadopor()
-    {
-        return $this->modificadopor;
-    }
-
-    /**
      * Set endereco
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
@@ -384,6 +364,29 @@ class Empresa
     public function getCriadopor()
     {
         return $this->criadopor;
+    }
+
+    /**
+     * Set modificadopor
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
+     * @return Empresa
+     */
+    public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
+    {
+        $this->modificadopor = $modificadopor;
+
+        return $this;
+    }
+
+    /**
+     * Get modificadopor
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
+     */
+    public function getModificadopor()
+    {
+        return $this->modificadopor;
     }
 
     /**
