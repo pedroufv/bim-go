@@ -57,6 +57,13 @@ class Produto
     private $datamodificacao;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="text", length=13, nullable=true)
+     */
+    private $ean;
+
+    /**
      * @var \Empresa
      *
      * @ORM\ManyToOne(targetEntity="Empresa")
