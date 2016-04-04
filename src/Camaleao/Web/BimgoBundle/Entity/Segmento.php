@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Segmento
  *
- * @ORM\Table(name="segmento")
+ * @ORM\Table(name="segmento", indexes={@ORM\Index(name="icone", columns={"icone"})})
  * @ORM\Entity
  */
 class Segmento
@@ -34,6 +34,16 @@ class Segmento
      * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
      */
     private $descricao;
+
+    /**
+     * @var \Icone
+     *
+     * @ORM\ManyToOne(targetEntity="Icone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="icone", referencedColumnName="id")
+     * })
+     */
+    private $icone;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -113,6 +123,29 @@ class Segmento
     public function getDescricao()
     {
         return $this->descricao;
+    }
+
+    /**
+     * Set icone
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Icone $icone
+     * @return Segmento
+     */
+    public function setIcone(\Camaleao\Web\BimgoBundle\Entity\Icone $icone = null)
+    {
+        $this->icone = $icone;
+
+        return $this;
+    }
+
+    /**
+     * Get icone
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Icone 
+     */
+    public function getIcone()
+    {
+        return $this->icone;
     }
 
     /**
