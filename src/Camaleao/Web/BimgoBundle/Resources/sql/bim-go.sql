@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 04/04/2016 às 17:36
+-- Tempo de Geração: 04/04/2016 às 17:42
 -- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
 -- Versão do PHP: 5.5.9-1ubuntu4.14
 
@@ -9589,6 +9589,7 @@ CREATE TABLE IF NOT EXISTS `notificacao` (
   `tipo_destinatario` int(11) NOT NULL,
   `tipo_mensagem` int(11) NOT NULL,
   `mensagem` text NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `remetente` (`remetente`,`tipo_destinatario`),
   KEY `destinatario` (`tipo_destinatario`),
@@ -10087,9 +10088,9 @@ ALTER TABLE `mensagem_tipo`
 -- Restrições para tabelas `notificacao`
 --
 ALTER TABLE `notificacao`
-  ADD CONSTRAINT `notificacao_ibfk_2` FOREIGN KEY (`tipo_mensagem`) REFERENCES `mensagem_tipo` (`id`),
   ADD CONSTRAINT `fk_usuarioid_remetente` FOREIGN KEY (`remetente`) REFERENCES `usuario` (`id`),
-  ADD CONSTRAINT `notificacao_ibfk_1` FOREIGN KEY (`tipo_destinatario`) REFERENCES `destinatario_tipo` (`id`);
+  ADD CONSTRAINT `notificacao_ibfk_1` FOREIGN KEY (`tipo_destinatario`) REFERENCES `destinatario_tipo` (`id`),
+  ADD CONSTRAINT `notificacao_ibfk_2` FOREIGN KEY (`tipo_mensagem`) REFERENCES `mensagem_tipo` (`id`);
 
 --
 -- Restrições para tabelas `pagamento`
