@@ -63,6 +63,48 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em notificacoes
+     *
+     * @Route("/getnotificacoeslazy", name="android_getnotificacoeslazy")
+     * @Method({"GET", "POST"})
+     */
+    public function getNotificacoesLazyAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $notificacoes = $em->getRepository('CamaleaoWebBimgoBundle:Notificacao')->findAll();
+
+        $array = array('notificacoes' => $notificacoes);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+	
+     /**
+     *  select em segmentos
+     *
+     * @Route("/getsegmentos", name="android_getsegmentos")
+     * @Method({"GET", "POST"})
+     */
+    public function getSegmentossAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $segmentos = $em->getRepository('CamaleaoWebBimgoBundle:Segmento')->findAll();
+
+        $array = array('segmentos' => $segmentos);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      *  select em funcionarios
      *
      * @Route("/getfuncionarios", name="android_getfuncionarios")
@@ -207,6 +249,49 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em produtos filtrando
+     *
+     * @Route("/getprodutosfilter", name="android_getprodutosfilter")
+     * @Method("POST")
+     */
+    public function getProdutosFilterAction(Request $request)
+    {
+	/*
+	$criteria = new \Doctrine\Common\Collections\Criteria();
+	$criteria
+	  ->orWhere($criteria->expr()->contains('domains', 'a'))
+	  ->orWhere($criteria->expr()->contains('domains', 'b'));
+
+	$groups = $em
+	  ->getRepository('Group')
+	  ->matching($criteria);
+	*/
+
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+	$filtros = array();
+	$filtros = $jsonObject->object->filtros;
+	
+	$filter = array();
+	foreach($filtros as $registro) {
+		$filter[$registro->campo] = $registro->valor;
+	}
+	
+        /*$em = $this->getDoctrine()->getManager();
+
+        $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')
+                ->findBy($filter);
+
+        $array = array('produtos' => $produtos);
+
+        $serializer = $this->container->get('jms_serializer');*/
+
+        $result = $serializer->serialize($filter, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
      *  select em empresas
      *
      * @Route("/getempresas", name="android_getempresas")
@@ -235,7 +320,7 @@ class AndroidController extends Controller
      */
     public function getEmpresasLazyAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+        $jsonObject = json_decode($request->get('jsonObject'));
 
         $index_inicial = $jsonObject->object->index_inicial;
         $quantidade = $jsonObject->object->quantidade;
@@ -264,13 +349,11 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 
-	var_dump($jsonObject->object);
-
         $usuario = new Usuario();
         $usuario->setNome($jsonObject->object->nome);
         $usuario->setEmail($jsonObject->object->email);
         $usuario->setSenha($jsonObject->object->senha);
-	$usuario->setAtivo($jsonObject->object->ativo);
+        $usuario->setAtivo($jsonObject->object->ativo);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($usuario);
