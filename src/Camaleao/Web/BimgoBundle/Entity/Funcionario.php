@@ -36,13 +36,6 @@ class Funcionario
     private $cpf;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="telefone", type="string", length=50, nullable=false)
-     */
-    private $telefone;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
@@ -96,6 +89,28 @@ class Funcionario
      */
     private $modificadopor;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="funcionario")
+     * @ORM\JoinTable(name="funcionario_contato",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="funcionario", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="contato", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $contato;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -152,29 +167,6 @@ class Funcionario
     public function getCpf()
     {
         return $this->cpf;
-    }
-
-    /**
-     * Set telefone
-     *
-     * @param string $telefone
-     * @return Funcionario
-     */
-    public function setTelefone($telefone)
-    {
-        $this->telefone = $telefone;
-
-        return $this;
-    }
-
-    /**
-     * Get telefone
-     *
-     * @return string 
-     */
-    public function getTelefone()
-    {
-        return $this->telefone;
     }
 
     /**
@@ -313,5 +305,38 @@ class Funcionario
     public function getModificadopor()
     {
         return $this->modificadopor;
+    }
+
+    /**
+     * Add contato
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Contato $contato
+     * @return Funcionario
+     */
+    public function addContato(\Camaleao\Web\BimgoBundle\Entity\Contato $contato)
+    {
+        $this->contato[] = $contato;
+
+        return $this;
+    }
+
+    /**
+     * Remove contato
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Contato $contato
+     */
+    public function removeContato(\Camaleao\Web\BimgoBundle\Entity\Contato $contato)
+    {
+        $this->contato->removeElement($contato);
+    }
+
+    /**
+     * Get contato
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContato()
+    {
+        return $this->contato;
     }
 }

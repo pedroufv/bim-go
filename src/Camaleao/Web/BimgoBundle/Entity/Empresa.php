@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
  * @ORM\Entity
- * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Empresa
 {
@@ -33,7 +32,6 @@ class Empresa
      * @var string
      *
      * @ORM\Column(name="nomeFantasia", type="string", length=200, nullable=false)
-     * @JMS\Serializer\Annotation\Expose
      */
     private $nomefantasia;
 
@@ -86,7 +84,6 @@ class Empresa
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })
-     * @JMS\Serializer\Annotation\Expose
      */
     private $endereco;
 
@@ -113,6 +110,21 @@ class Empresa
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="empresa")
+     * @ORM\JoinTable(name="empresa_contato",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="contato", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $contato;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Segmento", mappedBy="empresa")
      */
     private $segmento;
@@ -122,6 +134,7 @@ class Empresa
      */
     public function __construct()
     {
+        $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -387,6 +400,39 @@ class Empresa
     public function getModificadopor()
     {
         return $this->modificadopor;
+    }
+
+    /**
+     * Add contato
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Contato $contato
+     * @return Empresa
+     */
+    public function addContato(\Camaleao\Web\BimgoBundle\Entity\Contato $contato)
+    {
+        $this->contato[] = $contato;
+
+        return $this;
+    }
+
+    /**
+     * Remove contato
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Contato $contato
+     */
+    public function removeContato(\Camaleao\Web\BimgoBundle\Entity\Contato $contato)
+    {
+        $this->contato->removeElement($contato);
+    }
+
+    /**
+     * Get contato
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContato()
+    {
+        return $this->contato;
     }
 
     /**

@@ -29,6 +29,13 @@ class Cidade
     private $nome;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="participante", type="boolean", nullable=false)
+     */
+    private $participante;
+
+    /**
      * @var \Estado
      *
      * @ORM\ManyToOne(targetEntity="Estado")
@@ -71,6 +78,29 @@ class Cidade
     public function getNome()
     {
         return $this->nome;
+    }
+
+    /**
+     * Set participante
+     *
+     * @param boolean $participante
+     * @return Cidade
+     */
+    public function setParticipante($participante)
+    {
+        $this->participante = $participante;
+
+        return $this;
+    }
+
+    /**
+     * Get participante
+     *
+     * @return boolean 
+     */
+    public function getParticipante()
+    {
+        return $this->participante;
     }
 
     /**
