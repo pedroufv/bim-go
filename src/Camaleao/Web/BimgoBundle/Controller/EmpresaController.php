@@ -155,8 +155,6 @@ class EmpresaController extends Controller
 
         $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
 
-        dump($empresas); exit;
-
         $serializer = $this->container->get('jms_serializer');
 
         $reports = $serializer->serialize($empresas, 'json');

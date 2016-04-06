@@ -3,7 +3,7 @@
 
 
 
-var teste;
+
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
@@ -50,10 +50,6 @@ var empresas = [ // Utilizando esse Objeto como exemplo ate que a url entregue a
     },
 ];
 
-// Redimenciona o mapa para 60% da tela
-var winHeightPorcent = $(window).height()*0.60;
-$("#mapa").height(winHeightPorcent);
-
 
 function initialize()
 {
@@ -66,6 +62,10 @@ function initialize()
     };
 
     map = new google.maps.Map(document.getElementById("mapa"), options);
+
+    // Redimenciona o mapa para 60% da tela
+    var winHeightPorcent = $(window).height()*0.60;
+    $("#mapa").height(winHeightPorcent);
 
     carregarPontos();
 }
@@ -105,9 +105,6 @@ function carregarPontos() {
             // Em seguida apague estes comentarios;
 
             $.each(response, function(index, empresa){
-                teste = response;
-                console.log(response);
-                /*
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(empresa.endereco.latitude, empresa.endereco.longitude),
                     title: empresa.nomefantasia,
@@ -115,7 +112,7 @@ function carregarPontos() {
                     //icon: '/bundles/ufvdriconvenio/image/maker/'+ponto.paisid.nomept+'.png'
                     icon: pinImage.bimgoDefault
                 });
-                console.log("Empresa: %s \nLatitude: %s \nLongitude: %s", empresa.nomefantasia,empresa.endereco.latitude, empresa.endereco.longitude);
+                //console.log("Empresa: %s \nLatitude: %s \nLongitude: %s", empresa.nomefantasia,empresa.endereco.latitude, empresa.endereco.longitude);
                      
                 infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.endereco.latitude,empresa.endereco.longitude));
                 infoBox[index].marker = marker;
@@ -123,7 +120,6 @@ function carregarPontos() {
                 infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
                     abrirInfoBox(index, marker);
                 });
-                */
             });
         }
         
