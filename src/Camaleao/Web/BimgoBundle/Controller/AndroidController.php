@@ -277,16 +277,16 @@ class AndroidController extends Controller
 		$filter[$registro->campo] = $registro->valor;
 	}
 	
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')
                 ->findBy($filter);
 
         $array = array('produtos' => $produtos);
 
-        $serializer = $this->container->get('jms_serializer');*/
+        $serializer = $this->container->get('jms_serializer');
 
-        $result = $serializer->serialize($filter, 'json');
+        $result = $serializer->serialize($array, 'json');
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
