@@ -40,6 +40,38 @@ class AndroidController extends Controller
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
+	
+	/**
+     *  select em cidades filtrando
+     *
+     * @Route("/getcidadesfilter", name="android_getcidadesfilter")
+     * @Method("POST")
+     */
+    public function getCidadesFilterAction(Request $request)
+    {
+		$jsonObject = json_decode($request->get('jsonObject'));
+
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
+		
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
+		
+        $em = $this->getDoctrine()->getManager();
+
+        $cidades = $em->getRepository('CamaleaoWebBimgoBundle:Cidade')
+                ->findBy($filter);
+
+        $array = array('cidades' => $cidades);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
 
     /**
      *  select em estados
@@ -70,9 +102,15 @@ class AndroidController extends Controller
      */
     public function getNotificacoesLazyAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $jsonObject = json_decode($request->get('jsonObject'));
 
-        $notificacoes = $em->getRepository('CamaleaoWebBimgoBundle:Notificacao')->findAll();
+        $index_inicial = $jsonObject->object->index_inicial;
+        $quantidade = $jsonObject->object->quantidade;
+		
+		$em = $this->getDoctrine()->getManager();
+
+        $notificacoes = $em->getRepository('CamaleaoWebBimgoBundle:Notificacao')
+		->findBy(array(), array(), $quantidade, $index_inicial);
 
         $array = array('notificacoes' => $notificacoes);
 
@@ -133,7 +171,7 @@ class AndroidController extends Controller
      */
     public function getFuncionariosLazyAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
         $index_inicial = $jsonObject->object->index_inicial;
         $quantidade = $jsonObject->object->quantidade;
@@ -277,16 +315,16 @@ class AndroidController extends Controller
 		$filter[$registro->campo] = $registro->valor;
 	}
 	
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')
                 ->findBy($filter);
 
         $array = array('produtos' => $produtos);
 
-        $serializer = $this->container->get('jms_serializer');*/
+        $serializer = $this->container->get('jms_serializer');
 
-        $result = $serializer->serialize($filter, 'json');
+        $result = $serializer->serialize($array, 'json');
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
@@ -304,6 +342,47 @@ class AndroidController extends Controller
         $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
 
         $array = array('empresas' => $empresas);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     *  remove em empresas
+     *
+     * @Route("/remempresas", name="android_remempresas")
+     * @Method({"GET", "POST"})
+     */
+    public function remEmpresasAction(Request $request)
+    {
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+	$filtros = array();
+	$filtros = $jsonObject->object->filtros;
+	
+	$filter = array();
+	foreach($filtros as $registro) {
+		$filter[$registro->campo] = $registro->valor;
+	}
+	
+        $em = $this->getDoctrine()->getManager();
+
+        $empresa = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')
+		->findBy($filter);
+
+	$resultado = false;
+
+	if ($empresa) {
+		$em->remove($empresa);
+		$em->flush();
+
+		$resultado = true;
+	}
+
+        $array = array('resultado' => $resultado);
 
         $serializer = $this->container->get('jms_serializer');
 
