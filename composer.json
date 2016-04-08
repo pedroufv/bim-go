@@ -11,6 +11,12 @@
             "app/AppCache.php"
         ]
     },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.org"
+        }
+    },
     "require": {
         "php": ">=5.4.9",
         "symfony/symfony": "2.8.*",
