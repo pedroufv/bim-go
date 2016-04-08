@@ -8,7 +8,7 @@ var map;
 var idInfoBoxAberto;
 var infoBox = [];
 var pinImage = {
-        bimgoDefault: 'bundles/camaleaowebbimgo/img/pin_bim-go_45x51.png'
+        bimgoDefault: '/bundles/camaleaowebbimgo/img/pin_bim-go_45x51.png'
     };
 
 
