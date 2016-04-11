@@ -5,12 +5,12 @@ namespace Camaleao\Web\BimgoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MensagemTipo
+ * Mensagemtipo
  *
  * @ORM\Table(name="mensagemTipo", indexes={@ORM\Index(name="papel", columns={"papel"})})
  * @ORM\Entity
  */
-class MensagemTipo
+class Mensagemtipo
 {
     /**
      * @var integer
@@ -61,7 +61,7 @@ class MensagemTipo
      * Set nome
      *
      * @param string $nome
-     * @return MensagemTipo
+     * @return Mensagemtipo
      */
     public function setNome($nome)
     {
@@ -84,7 +84,7 @@ class MensagemTipo
      * Set descricao
      *
      * @param string $descricao
-     * @return MensagemTipo
+     * @return Mensagemtipo
      */
     public function setDescricao($descricao)
     {
@@ -107,7 +107,7 @@ class MensagemTipo
      * Set papel
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Papel $papel
-     * @return MensagemTipo
+     * @return Mensagemtipo
      */
     public function setPapel(\Camaleao\Web\BimgoBundle\Entity\Papel $papel = null)
     {

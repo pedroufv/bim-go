@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Empresa
  *
  * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
- * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\EmpresaRepository")
+ * @ORM\Entity
  */
 class Empresa
 {
@@ -59,7 +59,7 @@ class Empresa
     /**
      * @var string
      *
-     * @ORM\Column(name="site", type="string", length=50, nullable=true)
+     * @ORM\Column(name="site", type="string", length=255, nullable=true)
      */
     private $site;
 

@@ -5,12 +5,12 @@ namespace Camaleao\Web\BimgoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * DestinatarioTipo
+ * Contatotipo
  *
- * @ORM\Table(name="destinatarioTipo", indexes={@ORM\Index(name="papel", columns={"papel"})})
+ * @ORM\Table(name="contatoTipo")
  * @ORM\Entity
  */
-class DestinatarioTipo
+class Contatotipo
 {
     /**
      * @var integer
@@ -24,26 +24,16 @@ class DestinatarioTipo
     /**
      * @var string
      *
-     * @ORM\Column(name="nome", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nome", type="string", length=30, nullable=false)
      */
     private $nome;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=50, nullable=false)
+     * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
      */
     private $descricao;
-
-    /**
-     * @var \Papel
-     *
-     * @ORM\ManyToOne(targetEntity="Papel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
-     * })
-     */
-    private $papel;
 
 
 
@@ -61,7 +51,7 @@ class DestinatarioTipo
      * Set nome
      *
      * @param string $nome
-     * @return DestinatarioTipo
+     * @return Contatotipo
      */
     public function setNome($nome)
     {
@@ -84,7 +74,7 @@ class DestinatarioTipo
      * Set descricao
      *
      * @param string $descricao
-     * @return DestinatarioTipo
+     * @return Contatotipo
      */
     public function setDescricao($descricao)
     {
@@ -101,28 +91,5 @@ class DestinatarioTipo
     public function getDescricao()
     {
         return $this->descricao;
-    }
-
-    /**
-     * Set papel
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Papel $papel
-     * @return DestinatarioTipo
-     */
-    public function setPapel(\Camaleao\Web\BimgoBundle\Entity\Papel $papel = null)
-    {
-        $this->papel = $papel;
-
-        return $this;
-    }
-
-    /**
-     * Get papel
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Papel 
-     */
-    public function getPapel()
-    {
-        return $this->papel;
     }
 }
