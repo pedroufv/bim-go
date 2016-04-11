@@ -10,7 +10,7 @@ class EmpresaRepository extends EntityRepository
      * Get all necessary datas for map
      * @return mixed
      */
-    public function getMapDatas()
+    public function getMapData()
     {
         $result = $this->getEntityManager()->createQueryBuilder()
             ->select('empresa.nomefantasia, empresa.descricao, empresa.telefone, endereco.latitude, endereco.longitude')
