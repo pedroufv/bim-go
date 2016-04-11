@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Empresa
  *
  * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\EmpresaRepository")
  */
 class Empresa
 {
@@ -24,7 +24,7 @@ class Empresa
     /**
      * @var string
      *
-     * @ORM\Column(name="razaoSocial", type="string", length=200, nullable=false)
+     * @ORM\Column(name="razaoSocial", type="string", length=200, nullable=true)
      */
     private $razaosocial;
 
@@ -45,23 +45,23 @@ class Empresa
     /**
      * @var integer
      *
-     * @ORM\Column(name="cnpj", type="integer", nullable=false)
+     * @ORM\Column(name="cnpj", type="integer", nullable=true)
      */
     private $cnpj;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="inscricaoEstadual", type="integer", nullable=false)
+     * @ORM\Column(name="inscricaoEstadual", type="integer", nullable=true)
      */
     private $inscricaoestadual;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telefone", type="string", length=50, nullable=false)
+     * @ORM\Column(name="site", type="string", length=255, nullable=true)
      */
-    private $telefone;
+    private $site;
 
     /**
      * @var \DateTime
@@ -265,26 +265,26 @@ class Empresa
     }
 
     /**
-     * Set telefone
+     * Set site
      *
-     * @param string $telefone
+     * @param string $site
      * @return Empresa
      */
-    public function setTelefone($telefone)
+    public function setSite($site)
     {
-        $this->telefone = $telefone;
+        $this->site = $site;
 
         return $this;
     }
 
     /**
-     * Get telefone
+     * Get site
      *
      * @return string 
      */
-    public function getTelefone()
+    public function getSite()
     {
-        return $this->telefone;
+        return $this->site;
     }
 
     /**

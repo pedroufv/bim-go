@@ -24,6 +24,13 @@ class Papel
     /**
      * @var string
      *
+     * @ORM\Column(name="regra", type="string", length=50, nullable=false)
+     */
+    private $regra;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nome", type="string", length=200, nullable=false)
      */
     private $nome;
@@ -52,6 +59,29 @@ class Papel
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set regra
+     *
+     * @param string $regra
+     * @return Papel
+     */
+    public function setRegra($regra)
+    {
+        $this->regra = $regra;
+
+        return $this;
+    }
+
+    /**
+     * Get regra
+     *
+     * @return string 
+     */
+    public function getRegra()
+    {
+        return $this->regra;
     }
 
     /**

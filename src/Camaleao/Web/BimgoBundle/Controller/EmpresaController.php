@@ -144,16 +144,16 @@ class EmpresaController extends Controller
     }
 
     /**
-     * load coutries
+     * load empresas
      *
-     * @Route("/loadpoints", name="empresa_loadpoints")
+     * @Route("/getmapadata", name="empresa_getmapadata")
      * @Method("POST")
      */
-    public function loadPointsAction()
+    public function getMapDataAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findAll();
+        $empresas = $em->getRepository('CamaleaoWebBimgoBundle:Empresa')->getMapData();
 
         $serializer = $this->container->get('jms_serializer');
 

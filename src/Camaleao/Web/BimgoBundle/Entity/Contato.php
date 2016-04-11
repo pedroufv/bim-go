@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contato
  *
- * @ORM\Table(name="contato", indexes={@ORM\Index(name="tipo", columns={"tipo"})})
+ * @ORM\Table(name="contato", indexes={@ORM\Index(name="tipo", columns={"contatoTipo"})})
  * @ORM\Entity
  */
 class Contato
@@ -29,14 +29,14 @@ class Contato
     private $contato;
 
     /**
-     * @var \ContatoTipo
+     * @var \Contatotipo
      *
-     * @ORM\ManyToOne(targetEntity="ContatoTipo")
+     * @ORM\ManyToOne(targetEntity="Contatotipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="contatoTipo", referencedColumnName="id")
      * })
      */
-    private $tipo;
+    private $contatotipo;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -96,26 +96,26 @@ class Contato
     }
 
     /**
-     * Set tipo
+     * Set contatotipo
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\ContatoTipo $tipo
+     * @param \Camaleao\Web\BimgoBundle\Entity\Contatotipo $contatotipo
      * @return Contato
      */
-    public function setTipo(\Camaleao\Web\BimgoBundle\Entity\ContatoTipo $tipo = null)
+    public function setContatotipo(\Camaleao\Web\BimgoBundle\Entity\Contatotipo $contatotipo = null)
     {
-        $this->tipo = $tipo;
+        $this->contatotipo = $contatotipo;
 
         return $this;
     }
 
     /**
-     * Get tipo
+     * Get contatotipo
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\ContatoTipo 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Contatotipo 
      */
-    public function getTipo()
+    public function getContatotipo()
     {
-        return $this->tipo;
+        return $this->contatotipo;
     }
 
     /**

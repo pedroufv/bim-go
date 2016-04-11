@@ -50,6 +50,13 @@ class Promocao
     private $datafim;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="publicada", type="boolean", nullable=false)
+     */
+    private $publicada;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
@@ -96,16 +103,24 @@ class Promocao
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Produto", mappedBy="promocao")
+     * @ORM\ManyToMany(targetEntity="Produtopromocional", inversedBy="promocao")
+     * @ORM\JoinTable(name="promocao_produtopromocional",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="promocao", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="produtoPromocional", referencedColumnName="id")
+     *   }
+     * )
      */
-    private $produto;
+    private $produtopromocional;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->produto = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->produtopromocional = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -209,6 +224,29 @@ class Promocao
     public function getDatafim()
     {
         return $this->datafim;
+    }
+
+    /**
+     * Set publicada
+     *
+     * @param boolean $publicada
+     * @return Promocao
+     */
+    public function setPublicada($publicada)
+    {
+        $this->publicada = $publicada;
+
+        return $this;
+    }
+
+    /**
+     * Get publicada
+     *
+     * @return boolean 
+     */
+    public function getPublicada()
+    {
+        return $this->publicada;
     }
 
     /**
@@ -327,35 +365,35 @@ class Promocao
     }
 
     /**
-     * Add produto
+     * Add produtopromocional
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Produto $produto
+     * @param \Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional
      * @return Promocao
      */
-    public function addProduto(\Camaleao\Web\BimgoBundle\Entity\Produto $produto)
+    public function addProdutopromocional(\Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional)
     {
-        $this->produto[] = $produto;
+        $this->produtopromocional[] = $produtopromocional;
 
         return $this;
     }
 
     /**
-     * Remove produto
+     * Remove produtopromocional
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Produto $produto
+     * @param \Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional
      */
-    public function removeProduto(\Camaleao\Web\BimgoBundle\Entity\Produto $produto)
+    public function removeProdutopromocional(\Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional)
     {
-        $this->produto->removeElement($produto);
+        $this->produtopromocional->removeElement($produtopromocional);
     }
 
     /**
-     * Get produto
+     * Get produtopromocional
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProduto()
+    public function getProdutopromocional()
     {
-        return $this->produto;
+        return $this->produtopromocional;
     }
 }
