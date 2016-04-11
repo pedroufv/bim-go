@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Notificacao
  *
- * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "tipo_destinatario"}), @ORM\Index(name="destinatario", columns={"tipo_destinatario"}), @ORM\Index(name="tipo_destinatario", columns={"tipo_destinatario"}), @ORM\Index(name="tipo_mensagem", columns={"tipo_mensagem"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
+ * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "destinatarioTipo"}), @ORM\Index(name="destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="destinatarioTipo", columns={"destinatarioTipo"}), @ORM\Index(name="mensagemTipo", columns={"mensagemTipo"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
  * @ORM\Entity
  */
 class Notificacao
@@ -50,20 +50,20 @@ class Notificacao
      *
      * @ORM\ManyToOne(targetEntity="DestinatarioTipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_destinatario", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="destinatarioTipo", referencedColumnName="id")
      * })
      */
-    private $tipoDestinatario;
+    private $destinatarioTipo;
 
     /**
      * @var \MensagemTipo
      *
      * @ORM\ManyToOne(targetEntity="MensagemTipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo_mensagem", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="mensagemTipo", referencedColumnName="id")
      * })
      */
-    private $tipoMensagem;
+    private $mensagemTipo;
 
 
 
@@ -147,48 +147,48 @@ class Notificacao
     }
 
     /**
-     * Set tipoDestinatario
+     * Set destinatarioTipo
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\DestinatarioTipo $tipoDestinatario
+     * @param \Camaleao\Web\BimgoBundle\Entity\DestinatarioTipo $destinatarioTipo
      * @return Notificacao
      */
-    public function setTipoDestinatario(\Camaleao\Web\BimgoBundle\Entity\DestinatarioTipo $tipoDestinatario = null)
+    public function setDestinatarioTipo(\Camaleao\Web\BimgoBundle\Entity\DestinatarioTipo $destinatarioTipo = null)
     {
-        $this->tipoDestinatario = $tipoDestinatario;
+        $this->destinatarioTipo = $destinatarioTipo;
 
         return $this;
     }
 
     /**
-     * Get tipoDestinatario
+     * Get destinatarioTipo
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\DestinatarioTipo 
      */
-    public function getTipoDestinatario()
+    public function getDestinatarioTipo()
     {
-        return $this->tipoDestinatario;
+        return $this->destinatarioTipo;
     }
 
     /**
-     * Set tipoMensagem
+     * Set mensagemTipo
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\MensagemTipo $tipoMensagem
+     * @param \Camaleao\Web\BimgoBundle\Entity\MensagemTipo $mensagemTipo
      * @return Notificacao
      */
-    public function setTipoMensagem(\Camaleao\Web\BimgoBundle\Entity\MensagemTipo $tipoMensagem = null)
+    public function setMensagemTipo(\Camaleao\Web\BimgoBundle\Entity\MensagemTipo $mensagemTipo = null)
     {
-        $this->tipoMensagem = $tipoMensagem;
+        $this->mensagemTipo = $mensagemTipo;
 
         return $this;
     }
 
     /**
-     * Get tipoMensagem
+     * Get mensagemTipo
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\MensagemTipo 
      */
-    public function getTipoMensagem()
+    public function getMensagemTipo()
     {
-        return $this->tipoMensagem;
+        return $this->mensagemTipo;
     }
 }

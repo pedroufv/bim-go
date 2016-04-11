@@ -33,10 +33,10 @@ class Contato
      *
      * @ORM\ManyToOne(targetEntity="ContatoTipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipo", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="contatoTipo", referencedColumnName="id")
      * })
      */
-    private $tipo;
+    private $contatoTipo;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -96,26 +96,26 @@ class Contato
     }
 
     /**
-     * Set tipo
+     * Set contatoTipo
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\ContatoTipo $tipo
+     * @param \Camaleao\Web\BimgoBundle\Entity\ContatoTipo $contatoTipo
      * @return Contato
      */
-    public function setTipo(\Camaleao\Web\BimgoBundle\Entity\ContatoTipo $tipo = null)
+    public function setContatoTipo(\Camaleao\Web\BimgoBundle\Entity\ContatoTipo $contatoTipo = null)
     {
-        $this->tipo = $tipo;
+        $this->contatoTipo = $contatoTipo;
 
         return $this;
     }
 
     /**
-     * Get tipo
+     * Get contatoTipo
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\ContatoTipo 
      */
-    public function getTipo()
+    public function getContatoTipo()
     {
-        return $this->tipo;
+        return $this->contatoTipo;
     }
 
     /**

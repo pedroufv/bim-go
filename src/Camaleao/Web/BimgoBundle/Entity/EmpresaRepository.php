@@ -13,7 +13,7 @@ class EmpresaRepository extends EntityRepository
     public function getMapData()
     {
         $result = $this->getEntityManager()->createQueryBuilder()
-            ->select('empresa.nomefantasia, empresa.descricao, empresa.telefone, endereco.latitude, endereco.longitude')
+            ->select('empresa.nomefantasia, empresa.descricao, empresa.site, endereco.latitude, endereco.longitude')
             ->from('CamaleaoWebBimgoBundle:Empresa', 'empresa')
             ->innerjoin('empresa.endereco', 'endereco')
             ->getQuery()

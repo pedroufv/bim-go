@@ -50,6 +50,13 @@ class Promocao
     private $datafim;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="publicada", type="boolean", nullable=false)
+     */
+    private $publicada;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
@@ -209,6 +216,29 @@ class Promocao
     public function getDatafim()
     {
         return $this->datafim;
+    }
+
+    /**
+     * Set publicada
+     *
+     * @param boolean $publicada
+     * @return Cidade
+     */
+    public function setPublicada($publicada)
+    {
+        $this->publicada = $publicada;
+
+        return $this;
+    }
+
+    /**
+     * Get publicada
+     *
+     * @return boolean
+     */
+    public function getPublicada()
+    {
+        return $this->publicada;
     }
 
     /**
