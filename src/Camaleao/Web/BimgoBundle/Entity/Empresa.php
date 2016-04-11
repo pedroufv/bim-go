@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Empresa
  *
- * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
+ * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
  * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\EmpresaRepository")
  */
 class Empresa
@@ -64,6 +64,13 @@ class Empresa
     private $site;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="grupo", type="boolean", nullable=false)
+     */
+    private $grupo;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
@@ -86,6 +93,16 @@ class Empresa
      * })
      */
     private $endereco;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vinculada", referencedColumnName="id")
+     * })
+     */
+    private $vinculada;
 
     /**
      * @var \Usuario
@@ -288,6 +305,29 @@ class Empresa
     }
 
     /**
+     * Set grupo
+     *
+     * @param boolean $grupo
+     * @return Empresa
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
+
+        return $this;
+    }
+
+    /**
+     * Get grupo
+     *
+     * @return boolean 
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
      * Set datacriado
      *
      * @param \DateTime $datacriado
@@ -354,6 +394,29 @@ class Empresa
     public function getEndereco()
     {
         return $this->endereco;
+    }
+
+    /**
+     * Set vinculada
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $vinculada
+     * @return Empresa
+     */
+    public function setVinculada(\Camaleao\Web\BimgoBundle\Entity\Empresa $vinculada = null)
+    {
+        $this->vinculada = $vinculada;
+
+        return $this;
+    }
+
+    /**
+     * Get vinculada
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     */
+    public function getVinculada()
+    {
+        return $this->vinculada;
     }
 
     /**
