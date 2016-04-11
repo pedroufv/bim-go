@@ -7,22 +7,34 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UsuarioEmpresaPapel
  *
- * @ORM\Table(name="usuario_empresa_papel", indexes={@ORM\Index(name="idUsuario", columns={"idUsuario", "idEmpresa", "idPapel"}), @ORM\Index(name="idEmpresa", columns={"idEmpresa", "idPapel"}), @ORM\Index(name="idPapel", columns={"idPapel"}), @ORM\Index(name="IDX_C67D5E22A86E31A2", columns={"idEmpresa"}), @ORM\Index(name="IDX_C67D5E2232DCDBAF", columns={"idUsuario"})})
+ * @ORM\Table(name="usuario_empresa_papel", indexes={@ORM\Index(name="idUsuario", columns={"usuario", "empresa", "papel"}), @ORM\Index(name="idEmpresa", columns={"empresa", "papel"}), @ORM\Index(name="idPapel", columns={"papel"}), @ORM\Index(name="IDX_C67D5E222265B05D", columns={"usuario"}), @ORM\Index(name="IDX_C67D5E22B8D75A50", columns={"empresa"})})
  * @ORM\Entity
  */
 class UsuarioEmpresaPapel
 {
     /**
-     * @var \Endereco
+     * @var \Usuario
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Endereco")
+     * @ORM\OneToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idEmpresa", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
      * })
      */
-    private $idempresa;
+    private $usuario;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
 
     /**
      * @var \Papel
@@ -31,91 +43,79 @@ class UsuarioEmpresaPapel
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Papel")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPapel", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
      * })
      */
-    private $idpapel;
-
-    /**
-     * @var \Usuario
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUsuario", referencedColumnName="id")
-     * })
-     */
-    private $idusuario;
+    private $papel;
 
 
 
     /**
-     * Set idempresa
+     * Set usuario
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $idempresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $usuario
      * @return UsuarioEmpresaPapel
      */
-    public function setIdempresa(\Camaleao\Web\BimgoBundle\Entity\Endereco $idempresa)
+    public function setUsuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $usuario)
     {
-        $this->idempresa = $idempresa;
+        $this->usuario = $usuario;
 
         return $this;
     }
 
     /**
-     * Get idempresa
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Endereco 
-     */
-    public function getIdempresa()
-    {
-        return $this->idempresa;
-    }
-
-    /**
-     * Set idpapel
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Papel $idpapel
-     * @return UsuarioEmpresaPapel
-     */
-    public function setIdpapel(\Camaleao\Web\BimgoBundle\Entity\Papel $idpapel)
-    {
-        $this->idpapel = $idpapel;
-
-        return $this;
-    }
-
-    /**
-     * Get idpapel
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Papel 
-     */
-    public function getIdpapel()
-    {
-        return $this->idpapel;
-    }
-
-    /**
-     * Set idusuario
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $idusuario
-     * @return UsuarioEmpresaPapel
-     */
-    public function setIdusuario(\Camaleao\Web\BimgoBundle\Entity\Usuario $idusuario)
-    {
-        $this->idusuario = $idusuario;
-
-        return $this;
-    }
-
-    /**
-     * Get idusuario
+     * Get usuario
      *
      * @return \Camaleao\Web\BimgoBundle\Entity\Usuario 
      */
-    public function getIdusuario()
+    public function getUsuario()
     {
-        return $this->idusuario;
+        return $this->usuario;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @return UsuarioEmpresaPapel
+     */
+    public function setEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set papel
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Papel $papel
+     * @return UsuarioEmpresaPapel
+     */
+    public function setPapel(\Camaleao\Web\BimgoBundle\Entity\Papel $papel)
+    {
+        $this->papel = $papel;
+
+        return $this;
+    }
+
+    /**
+     * Get papel
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Papel 
+     */
+    public function getPapel()
+    {
+        return $this->papel;
     }
 }

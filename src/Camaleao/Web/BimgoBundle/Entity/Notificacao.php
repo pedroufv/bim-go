@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Notificacao
  *
- * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "destinatarioTipo"}), @ORM\Index(name="destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_mensagem", columns={"mensagemTipo"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
+ * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "destinatarioTipo"}), @ORM\Index(name="destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_mensagem", columns={"mensagemTipo"}), @ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
  * @ORM\Entity
  */
 class Notificacao
@@ -64,6 +64,16 @@ class Notificacao
      * })
      */
     private $mensagemtipo;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
 
 
 
@@ -190,5 +200,28 @@ class Notificacao
     public function getMensagemtipo()
     {
         return $this->mensagemtipo;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @return Notificacao
+     */
+    public function setEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
     }
 }
