@@ -104,7 +104,7 @@ class Promocao
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Produtopromocional", inversedBy="promocao")
-     * @ORM\JoinTable(name="promocao_produtopromocional",
+     * @ORM\JoinTable(name="promocao_produtoPromocional",
      *   joinColumns={
      *     @ORM\JoinColumn(name="promocao", referencedColumnName="id")
      *   },

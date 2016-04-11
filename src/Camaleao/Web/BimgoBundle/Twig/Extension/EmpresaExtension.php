@@ -14,7 +14,7 @@ class EmpresaExtension extends \Twig_Extension
     }
     public function getGlobals()
     {
-        $empresas = $this->em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findBy(array(), array('id' => 'DESC'), 5);
+        $empresas = $this->em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findBy(array(), array('id' => 'DESC'), 4);
 
         return array(
             'empresas'=> $empresas,
