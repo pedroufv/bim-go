@@ -144,7 +144,7 @@ class EmpresaController extends Controller
     }
 
     /**
-     * load coutries
+     * load empresas
      *
      * @Route("/getmapadata", name="empresa_getmapadata")
      * @Method("POST")
