@@ -41,24 +41,24 @@ class Contato
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Empresa", mappedBy="contato")
+     * @ORM\ManyToMany(targetEntity="Funcionario", mappedBy="contato")
      */
-    private $empresa;
+    private $funcionario;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Funcionario", mappedBy="contato")
+     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="contato")
      */
-    private $funcionario;
+    private $instituicao;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
         $this->funcionario = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -119,39 +119,6 @@ class Contato
     }
 
     /**
-     * Add empresa
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
-     * @return Contato
-     */
-    public function addEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
-    {
-        $this->empresa[] = $empresa;
-
-        return $this;
-    }
-
-    /**
-     * Remove empresa
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
-     */
-    public function removeEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
-    {
-        $this->empresa->removeElement($empresa);
-    }
-
-    /**
-     * Get empresa
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEmpresa()
-    {
-        return $this->empresa;
-    }
-
-    /**
      * Add funcionario
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Funcionario $funcionario
@@ -182,5 +149,38 @@ class Contato
     public function getFuncionario()
     {
         return $this->funcionario;
+    }
+
+    /**
+     * Add instituicao
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
+     * @return Contato
+     */
+    public function addInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
+    {
+        $this->instituicao[] = $instituicao;
+
+        return $this;
+    }
+
+    /**
+     * Remove instituicao
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
+     */
+    public function removeInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
+    {
+        $this->instituicao->removeElement($instituicao);
+    }
+
+    /**
+     * Get instituicao
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInstituicao()
+    {
+        return $this->instituicao;
     }
 }

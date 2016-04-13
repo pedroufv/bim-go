@@ -4,7 +4,7 @@ namespace Camaleao\Web\BimgoBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class EmpresaRepository extends EntityRepository
+class InstituicaoRepository extends EntityRepository
 {
     /**
      * Get all necessary datas for map
@@ -13,9 +13,9 @@ class EmpresaRepository extends EntityRepository
     public function getMapData()
     {
         $result = $this->getEntityManager()->createQueryBuilder()
-            ->select('empresa.nomefantasia, empresa.descricao, empresa.site, endereco.latitude, endereco.longitude')
-            ->from('CamaleaoWebBimgoBundle:Empresa', 'empresa')
-            ->innerjoin('empresa.endereco', 'endereco')
+            ->select('instituicao.nomefantasia, instituicao.descricao, instituicao.site, endereco.latitude, endereco.longitude')
+            ->from('CamaleaoWebBimgoBundle:Instituicao', 'instituicao')
+            ->innerjoin('instituicao.endereco', 'endereco')
             ->getQuery()
             ->getResult();
 

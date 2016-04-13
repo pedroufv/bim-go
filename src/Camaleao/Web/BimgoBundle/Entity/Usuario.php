@@ -52,7 +52,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="registrationId", type="string", length=255, nullable=false)
+     * @ORM\Column(name="registrationId", type="string", length=255, nullable=true)
      */
     private $registrationid;
 
@@ -61,7 +61,7 @@ class Usuario
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $ativo;
+    private $ativo = 1;
 
     /**
      * @var \Papel
@@ -139,7 +139,7 @@ class Usuario
      */
     public function setSenha($senha)
     {
-        $this->senha = $senha;
+        $this->senha = md5($senha);
 
         return $this;
     }
@@ -162,7 +162,7 @@ class Usuario
      */
     public function setToken($token)
     {
-        $this->token = $token;
+        $this->token = md5($token);
 
         return $this;
     }

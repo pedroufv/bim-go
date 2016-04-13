@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Funcionario
  *
- * @ORM\Table(name="funcionario", uniqueConstraints={@ORM\UniqueConstraint(name="cpf", columns={"cpf"})}, indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_7510A3CF8F3195FB", columns={"criadoPor"})})
+ * @ORM\Table(name="funcionario", uniqueConstraints={@ORM\UniqueConstraint(name="cpf", columns={"cpf"})}, indexes={@ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="IDX_7510A3CF8F3195FB", columns={"criadoPor"})})
  * @ORM\Entity
  */
 class Funcionario
@@ -50,14 +50,14 @@ class Funcionario
     private $datamodificacao;
 
     /**
-     * @var \Empresa
+     * @var \Instituicao
      *
-     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\ManyToOne(targetEntity="Instituicao")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      * })
      */
-    private $empresa;
+    private $instituicao;
 
     /**
      * @var \Endereco
@@ -216,26 +216,26 @@ class Funcionario
     }
 
     /**
-     * Set empresa
+     * Set instituicao
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
      * @return Funcionario
      */
-    public function setEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa = null)
+    public function setInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao = null)
     {
-        $this->empresa = $empresa;
+        $this->instituicao = $instituicao;
 
         return $this;
     }
 
     /**
-     * Get empresa
+     * Get instituicao
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
      */
-    public function getEmpresa()
+    public function getInstituicao()
     {
-        return $this->empresa;
+        return $this->instituicao;
     }
 
     /**

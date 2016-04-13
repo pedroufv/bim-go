@@ -4,7 +4,7 @@ namespace Camaleao\Web\BimgoBundle\Twig\Extension;
 
 use Doctrine\ORM\EntityManager;
 
-class EmpresaExtension extends \Twig_Extension
+class InstituicaoExtension extends \Twig_Extension
 {
     private $em;
 
@@ -14,7 +14,7 @@ class EmpresaExtension extends \Twig_Extension
     }
     public function getGlobals()
     {
-        $empresas = $this->em->getRepository('CamaleaoWebBimgoBundle:Empresa')->findBy(array(), array('id' => 'DESC'), 4);
+        $empresas = $this->em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy(array('grupo' => false), array('id' => 'DESC'), 4);
 
         return array(
             'empresas'=> $empresas,
