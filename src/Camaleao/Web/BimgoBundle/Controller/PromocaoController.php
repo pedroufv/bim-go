@@ -22,14 +22,18 @@ class PromocaoController extends Controller
      * @Route("/", name="promocao_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $promocaos = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
+        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
+
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($promocoes, $request->query->get('pagina', 1), 9);
 
         return $this->render('CamaleaoWebBimgoBundle:promocao:index.html.twig', array(
-            'promocaos' => $promocaos,
+            'pagination' => $pagination,
         ));
     }
 

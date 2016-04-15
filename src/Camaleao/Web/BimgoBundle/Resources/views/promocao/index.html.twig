@@ -1,45 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Promocao list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>Datainicio</th>
-                <th>Datafim</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for promocao in promocaos %}
-            <tr>
-                <td><a href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.id }}</a></td>
-                <td>{{ promocao.nome }}</td>
-                <td>{{ promocao.descricao }}</td>
-                <td>{% if promocao.datainicio %}{{ promocao.datainicio|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if promocao.datafim %}{{ promocao.datafim|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('promocao_show', { 'id': promocao.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('promocao_edit', { 'id': promocao.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('promocao_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <h2>Acesse a promoção desejada</h2>
+                {% for promocao in pagination %}
+                <div class="col s4">
+                    <div class="icon-block">
+                        <h3 class="center">
+                            <a href="{{ path('instituicao_show', { 'id': promocao.id }) }}">
+                                {% set logo = 'bundles/camaleaowebbimgo/img/promocao/' ~ promocao.id ~ '.png' %}
+                                {% if file_exists(logo) %}
+                                    <img src="{{ asset(logo) }}" class="responsive-img">
+                                {% else %}
+                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
+                                {% endif %}
+                            </a>
+                        </h3>
+                        <h5 class="center"><a href="" class="black-text">{{ promocao.nome }}</a></h5>
+                        <p><a href="" class="black-text">{{ promocao.descricao }}</a></p>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
