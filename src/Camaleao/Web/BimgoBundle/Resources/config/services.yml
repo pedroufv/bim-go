@@ -1,5 +1,10 @@
 services:
 
+  camaleao_web_bimgo.filetwigextensio:
+      class: Camaleao\Web\BimgoBundle\Twig\Extension\FileExtension
+      tags:
+        - { name: twig.extension }
+
   camaleao_web_bimgo.empresatwigextensio:
     class: Camaleao\Web\BimgoBundle\Twig\Extension\InstituicaoExtension
     arguments: ["@doctrine.orm.entity_manager"]

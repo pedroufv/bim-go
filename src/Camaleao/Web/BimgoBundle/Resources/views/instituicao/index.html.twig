@@ -2,44 +2,31 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2>Instituições</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            {# sorting of properties based on query components #}
-                            <th>{{ knp_pagination_sortable(pagination, 'ID', 'a.id') }}</th>
-                            <th{% if pagination.isSorted('a.nomefantasia') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome Fantasia', 'a.nomefantasia') }}</th>
-                            <th{% if pagination.isSorted('a.cnpj') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'CNPJ', 'a.cnpj') }}</th>
-                            <th{% if pagination.isSorted('a.telefone') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Telefone', 'a.telefone') }}</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for instituicao in pagination %}
-                        <tr>
-                            <td><a href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">{{ instituicao.id }}</a></td>
-                            <td>{{ instituicao.nomefantasia }}</td>
-                            <td>{{ instituicao.cnpj }}</td>
-                            <td>{{ instituicao.telefone }}</td>
-                            <td>
-                                <a href="{{ path('instituicao_show', { 'id': instituicao.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">play_arrow</i>Exibir</a>
-                                <a href="{{ path('instituicao_edit', { 'id': instituicao.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <div class="navigation center">
-                    {{ knp_pagination_render(pagination) }}
-                </div>
-            </div> <!-- end col s12 -->
-        </div> <!-- end row -->
-    </div> <!-- end container -->
-    <div class="fixed-action-btn" style="bottom:45px; right:24px;">
-        <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('instituicao_new') }}">
-            <i class="large material-icons">add</i>
-        </a>
+        <div class="section">
+            <div class="row">
+                <h2>Acesse a instituição desejada</h2>
+                {% for instituicao in pagination %}
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h3 class="center">
+                                <a href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">
+                                    {% set logo = 'bundles/camaleaowebbimgo/img/logo/' ~ instituicao.id ~ '.png' %}
+                                    {% if file_exists(logo) %}
+                                        <img src="{{ asset(logo) }}">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}">
+                                    {% endif %}
+                                </a>
+                            </h3>
+                            <h5 class="center"><a href="" class="black-text">{{ instituicao.nomefantasia }}</a></h5>
+                            <p><a href="" class="black-text">{{ instituicao.descricao }}</a></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="navigation center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

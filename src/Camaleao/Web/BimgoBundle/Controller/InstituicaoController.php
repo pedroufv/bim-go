@@ -26,6 +26,50 @@ class InstituicaoController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findAll();
+
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($instituicoes, $request->query->get('pagina', 1), 9);
+
+        return $this->render('CamaleaoWebBimgoBundle:instituicao:index.html.twig', array(
+            'pagination' => $pagination,
+        ));
+    }
+
+    /**
+     * Lists all Instituicao entities.
+     *
+     * @Route("/segmento/{id}", name="instituicao_segmento")
+     * @Method("GET")
+     */
+    public function segmentoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $segmentoId = $request->attributes->get('id');
+
+        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->getInstituicaoBySegmento($segmentoId);
+
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($instituicoes, $request->query->get('pagina', 1), 9);
+
+        return $this->render('CamaleaoWebBimgoBundle:instituicao:index.html.twig', array(
+            'pagination' => $pagination,
+        ));
+    }
+
+    /**
+     * Lists all Instituicao entities.
+     *
+     * @Route("/admin", name="instituicao_indexadmin")
+     * @Method("GET")
+     */
+    public function indexAdminAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
         $dql   = "SELECT a FROM CamaleaoWebBimgoBundle:Instituicao a";
         $instituicaos = $em->createQuery($dql);
 

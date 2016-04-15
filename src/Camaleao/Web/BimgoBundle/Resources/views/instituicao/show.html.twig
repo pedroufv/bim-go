@@ -2,53 +2,36 @@
 
 {% block body %}
     <div class="container">
+        <h2>Instituição: {{ instituicao.nomefantasia }}</h2>
         <div class="row">
-            <div class="col s12">
-                <h2>Instituição: {{ instituicao.nomefantasia }}</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>ID</th>
-                            <td>{{ instituicao.id }}</td>
-                        </tr>
-                        <tr>
-                            <th>Razão Social</th>
-                            <td>{{ instituicao.razaosocial }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nome Fantasia</th>
-                            <td>{{ instituicao.nomefantasia }}</td>
-                        </tr>
-                        <tr>
-                            <th>Descrição</th>
-                            <td>{{ instituicao.descricao }}</td>
-                        </tr>
-                        <tr>
-                            <th>CNPJ</th>
-                            <td>{{ instituicao.cnpj }}</td>
-                        </tr>
-                        <tr>
-                            <th>Inscrição Estadual</th>
-                            <td>{{ instituicao.inscricaoestadual }}</td>
-                        </tr>
-                        <tr>
-                            <th>Telefone</th>
-                            <td>{{ instituicao.telefone }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> <!-- end col s12 -->
-        </div> <!-- end row -->
-    </div> <!-- end container -->
-    <div class="container">
+            <div class="col s6">
+            {% set logo = 'bundles/camaleaowebbimgo/img/logo/' ~ instituicao.id ~ '.png' %}
+            {% if file_exists(logo) %}
+                <img src="{{ asset(logo) }}">
+            {% else %}
+                <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}">
+            {% endif %}
+            </div>
+            <div class="col s6">
+                <p><strong>Razão Social:</strong> {{ instituicao.razaosocial }}</p>
+                <p><strong>Nome Fantasial:</strong>  {{ instituicao.nomefantasia }}</p>
+                <p><strong>Descrição:</strong>  {{ instituicao.descricao }}</p>
+                <p><strong>CNPJ:</strong>  {{ instituicao.cnpj }}</p>
+                <p><strong>Inscrição Estaduall:</strong>  {{ instituicao.inscricaoestadual }}</p>
+            </div>
+        </div>
         <div class="row">
-            <div class="col s12">
-                <a href="{{ path('instituicao_index') }}"class="waves-effect waves-light btn blue"><i class="material-icons left">list</i>Voltar</a>
-                <a href="{{ path('instituicao_edit', { 'id': instituicao.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
-                {{ form_start(delete_form, { 'attr': {'class': 'display-inline'} }) }}
-                    <button type="submit" class="waves-effect waves-light btn red"><i class="material-icons left">delete</i>Excluir</button>
-                {{ form_end(delete_form) }}
-            </div> <!-- end col s12 -->
-        </div> <!-- end row -->
-    </div> <!-- end container -->
+            <div id="mapa" class="col s12 m12" style="height: 500px; margin: -10px 0;"></div>
+            {{ instituicao.endereco.logradouro }}
+            {{ instituicao.endereco.numero }}
+            {{ instituicao.endereco.bairro }}
+            {{ instituicao.endereco.cidade.nome }}
+            {{ instituicao.endereco.cidade.estado.nome }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBi3pBExnVG5i49pC4arKt5_vHCQp79Wl0"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/infobox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/mapa.js') }}"></script>
 {% endblock %}

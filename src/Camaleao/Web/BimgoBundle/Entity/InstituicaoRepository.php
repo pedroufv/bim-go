@@ -22,4 +22,19 @@ class InstituicaoRepository extends EntityRepository
         return $result;
     }
 
+    /**
+     * obter empresas de determinado segmento
+     * @return mixed
+     */
+    public function getInstituicaoBySegmento($id)
+    {
+        $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
+            ->createQueryBuilder('instituicao')
+            ->innerJoin('instituicao.segmento', 'segmento')
+            ->where("segmento.id = $id")
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }
