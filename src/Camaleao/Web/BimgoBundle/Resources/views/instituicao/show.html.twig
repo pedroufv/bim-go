@@ -18,6 +18,9 @@
                 <p><strong>Descrição:</strong>  {{ instituicao.descricao }}</p>
                 <p><strong>CNPJ:</strong>  {{ instituicao.cnpj }}</p>
                 <p><strong>Inscrição Estaduall:</strong>  {{ instituicao.inscricaoestadual }}</p>
+                {% for contato in instituicao.contato %}
+                    <p><strong>{{ contato.contatoTipo.nome }}:</strong> {{ contato.contato }}</p>
+                {% endfor %}
             </div>
         </div>
         <div class="row">
