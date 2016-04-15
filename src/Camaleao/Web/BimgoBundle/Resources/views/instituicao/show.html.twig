@@ -4,32 +4,47 @@
     <div class="container">
         <h2>Instituição: {{ instituicao.nomefantasia }}</h2>
         <div class="row">
-            <div class="col s6">
+            <div class="col s2">
             {% set logo = 'bundles/camaleaowebbimgo/img/logo/' ~ instituicao.id ~ '.png' %}
             {% if file_exists(logo) %}
-                <img src="{{ asset(logo) }}">
+                <img src="{{ asset(logo) }}" class="responsive-img">
             {% else %}
-                <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}">
+                <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
             {% endif %}
             </div>
-            <div class="col s6">
-                <p><strong>Razão Social:</strong> {{ instituicao.razaosocial }}</p>
-                <p><strong>Nome Fantasial:</strong>  {{ instituicao.nomefantasia }}</p>
-                <p><strong>Descrição:</strong>  {{ instituicao.descricao }}</p>
-                <p><strong>CNPJ:</strong>  {{ instituicao.cnpj }}</p>
-                <p><strong>Inscrição Estaduall:</strong>  {{ instituicao.inscricaoestadual }}</p>
+            <div class="col s10">
+                <div class="col s4">
+                    <p><strong>Razão Social:</strong> {{ instituicao.razaosocial }}</p>
+                    <p><strong>Nome Fantasial:</strong>  {{ instituicao.nomefantasia }}</p>
+                    <p><strong>Descrição:</strong>  {{ instituicao.descricao }}</p>
+                    <p><strong>CNPJ:</strong>  {{ instituicao.cnpj }}</p>
+                    <p><strong>Inscrição Estaduall:</strong>  {{ instituicao.inscricaoestadual }}</p>
+                </div>
+                <div class="col s4">
                 {% for contato in instituicao.contato %}
                     <p><strong>{{ contato.contatoTipo.nome }}:</strong> {{ contato.contato }}</p>
                 {% endfor %}
+                </div>
+                {% if instituicao.segmento|length > 0  %}
+                <div class="col s4">
+                    <ul class="display-inline">
+                    {% for segmento in instituicao.segmento %}
+                        <li>{{ segmento.nome }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
             </div>
         </div>
         <div class="row">
-            <div id="mapa" class="col s12 m12" style="height: 500px; margin: -10px 0;"></div>
             {{ instituicao.endereco.logradouro }}
             {{ instituicao.endereco.numero }}
             {{ instituicao.endereco.bairro }}
             {{ instituicao.endereco.cidade.nome }}
             {{ instituicao.endereco.cidade.estado.nome }}
+        </div>
+        <div class="row">
+            <div id="mapa" class="col s12 m12" style="height: 500px; margin: -10px 0;"></div>
         </div>
     </div>
 {% endblock %}
