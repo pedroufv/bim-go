@@ -40,6 +40,8 @@
             {{ instituicao.endereco.logradouro }}
             {{ instituicao.endereco.numero }}
             {{ instituicao.endereco.bairro }}
+            {{ instituicao.endereco.latitude }}
+            {{ instituicao.endereco.longitude }}
             {{ instituicao.endereco.cidade.nome }}
             {{ instituicao.endereco.cidade.estado.nome }}
         </div>
@@ -51,5 +53,8 @@
 {% block javascripts %}
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBi3pBExnVG5i49pC4arKt5_vHCQp79Wl0"></script>
     <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/infobox.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/mapa.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/mapaInstituicao.js') }}"></script>
+    <script>
+        initialize({{ instituicaoJson|raw }});
+    </script>
 {% endblock %}

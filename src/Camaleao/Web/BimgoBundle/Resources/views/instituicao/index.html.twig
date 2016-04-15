@@ -5,24 +5,23 @@
         <div class="section">
             <div class="row">
                 <h2>Acesse a instituição desejada</h2>
-                {% for instituicao in pagination %}
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <h3 class="center">
-                                <a href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">
-                                    {% set logo = 'bundles/camaleaowebbimgo/img/logo/' ~ instituicao.id ~ '.png' %}
-                                    {% if file_exists(logo) %}
-                                        <img src="{{ asset(logo) }}">
-                                    {% else %}
-                                        <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}">
-                                    {% endif %}
-                                </a>
-                            </h3>
-                            <h5 class="center"><a href="" class="black-text">{{ instituicao.nomefantasia }}</a></h5>
-                            <p><a href="" class="black-text">{{ instituicao.descricao }}</a></p>
-                        </div>
+                <div class="col s12">
+                    {% for instituicao in pagination %}
+                    <div class="col s4 icon-block">
+                        <h3 class="center">
+                            <a href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">
+                                {% set logo = 'bundles/camaleaowebbimgo/img/logo/' ~ instituicao.id ~ '.png' %}
+                                {% if file_exists(logo) %}
+                                    <img src="{{ asset(logo) }}" class="responsive-img">
+                                {% else %}
+                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
+                                {% endif %}
+                            </a>
+                        </h3>
+                        <h5 class="center"><a href="" class="black-text">{{ instituicao.nomefantasia }}</a></h5>
+                        <p><a href="" class="black-text">{{ instituicao.descricao }}</a></p>
                     </div>
-                {% endfor %}
+                    {% endfor %}
             </div>
             <div class="navigation center">
                 {{ knp_pagination_render(pagination) }}

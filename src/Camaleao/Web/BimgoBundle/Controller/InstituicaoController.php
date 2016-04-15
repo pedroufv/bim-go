@@ -116,11 +116,16 @@ class InstituicaoController extends Controller
      */
     public function showAction(Instituicao $instituicao)
     {
-        $deleteForm = $this->createDeleteForm($instituicao);
+        //$deleteForm = $this->createDeleteForm($instituicao);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $instituicaoJson = $serializer->serialize($instituicao, 'json');
 
         return $this->render('CamaleaoWebBimgoBundle:instituicao:show.html.twig', array(
             'instituicao' => $instituicao,
-            'delete_form' => $deleteForm->createView(),
+            'instituicaoJson' => $instituicaoJson
+            //'delete_form' => $deleteForm->createView(),
         ));
     }
 

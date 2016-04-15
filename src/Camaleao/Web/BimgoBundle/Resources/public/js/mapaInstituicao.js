@@ -3,12 +3,13 @@ var idInfoBoxAberto;
 var infoBox = [];
 var pinImage = {bimgoDefault: '/bundles/camaleaowebbimgo/img/pin_bim-go_45x51.png'};
 
-function initialize()
+function initialize(instituicao)
 {
-    var latlng = new google.maps.LatLng(-20.7547815,-42.8789577);
+    console.log(instituicao);
+    var latlng = new google.maps.LatLng(instituicao.endereco.latitude, instituicao.endereco.longitude);
 
     var options = {
-        zoom: 14,
+        zoom: 17,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -19,9 +20,8 @@ function initialize()
     var winHeightPorcent = $(window).height()*0.60;
     $("#mapa").height(winHeightPorcent);
 
-    carregarPontos();
+    carregarInstituicao(instituicao);
 }
-initialize();
  
 function abrirInfoBox(id, marker) {
     if (typeof(idInfoBoxAberto) == 'number' && typeof(infoBox[idInfoBoxAberto]) == 'object') {
@@ -44,30 +44,18 @@ function dadosInfoBox(nome,latitude,longitude){
     return myOptions;
 }
 
-function carregarPontos() {
+function carregarInstituicao(instituicao) {
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(instituicao.endereco.latitude, instituicao.endereco.longitude),
+        title: instituicao.nomefantasia,
+        map: map,
+        icon: pinImage.bimgoDefault
+    });
 
-    $.ajax({
-        dataType: "json",
-        type: 'POST',
-        url: '/instituicao/getmapadata',
-        success: function(response) {
+    infoBox[instituicao.id] = new InfoBox(dadosInfoBox(instituicao.nomefantasia, instituicao.endereco.latitude, instituicao.endereco.longitude));
+    infoBox[instituicao.id].marker = marker;
 
-            $.each(response, function(index, empresa){
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(empresa.latitude, empresa.longitude),
-                    title: empresa.nomefantasia,
-                    map: map,
-                    icon: pinImage.bimgoDefault
-                });
-                     
-                infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.latitude,empresa.longitude));
-                infoBox[index].marker = marker;
-             
-                infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
-                    abrirInfoBox(index, marker);
-                });
-            });
-        }
-        
+    infoBox[instituicao.id].listener = google.maps.event.addListener(marker, 'click', function (e) {
+        abrirInfoBox(instituicao.id, marker);
     });
 }
