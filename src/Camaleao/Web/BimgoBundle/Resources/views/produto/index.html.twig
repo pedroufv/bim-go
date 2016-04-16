@@ -9,7 +9,7 @@
                 <div class="col s4">
                     <div class="icon-block">
                         <h3 class="center">
-                            <a href="{{ path('instituicao_show', { 'id': produto.id }) }}">
+                            <a href="{{ path('produto_show', { 'id': produto.id }) }}">
                                 {% set logo = 'bundles/camaleaowebbimgo/img/produto/' ~ produto.id ~ '.png' %}
                                 {% if file_exists(logo) %}
                                     <img src="{{ asset(logo) }}" class="responsive-img">

@@ -9,7 +9,7 @@ function initialize(instituicao)
     var latlng = new google.maps.LatLng(instituicao.endereco.latitude, instituicao.endereco.longitude);
 
     var options = {
-        zoom: 17,
+        zoom: 18,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };

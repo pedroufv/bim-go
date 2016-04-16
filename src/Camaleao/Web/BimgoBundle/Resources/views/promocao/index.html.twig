@@ -9,12 +9,12 @@
                 <div class="col s4">
                     <div class="icon-block">
                         <h3 class="center">
-                            <a href="{{ path('instituicao_show', { 'id': promocao.id }) }}">
+                            <a href="{{ path('promocao_show', { 'id': promocao.id }) }}">
                                 {% set logo = 'bundles/camaleaowebbimgo/img/promocao/' ~ promocao.id ~ '.png' %}
                                 {% if file_exists(logo) %}
                                     <img src="{{ asset(logo) }}" class="responsive-img">
                                 {% else %}
-                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
+                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/default.png') }}" class="responsive-img">
                                 {% endif %}
                             </a>
                         </h3>
