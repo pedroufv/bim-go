@@ -43,8 +43,8 @@
             <div class="row">
                 {% for empresa in empresas %}
                     <div class="col s12 m3">
-                        <h5 class="center blue-grey-text darken-4">{{ empresa.nomefantasia }}</h5>
-                        <p class="light center blue-grey-text darken-4">{{ empresa.descricao }}</p>
+                        <h5 class="center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.nomefantasia }}</a></h5>
+                        <p class="light center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.descricao }}</a></p>
                     </div>
                 {% endfor %}
             </div>
@@ -57,9 +57,9 @@
             <div class="row">
                 {% for promocao in promocoes %}
                 <div class="col s12 m3">
-                        <h5 class="center">{{ promocao.nome }}</h5>
-                        <p class="light center">{{ promocao.descricao }}</p>
-                        <span class="right">{{ promocao.instituicao.nomefantasia }}</span>
+                        <h5 class="center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.nome }}</a></h5>
+                        <p class="light center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.descricao }}</a></p>
+                        <span class="right"><a class="black-text" href="{{ path('instituicao_show', { 'id': promocao.instituicao.id }) }}">{{ promocao.instituicao.nomefantasia }}</a></span>
                 </div>
                 {% endfor %}
             </div>
