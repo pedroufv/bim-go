@@ -5,12 +5,12 @@ namespace Camaleao\Web\BimgoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Empresa
+ * Instituicao
  *
- * @ORM\Table(name="empresa", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="IDX_B8D75A508F3195FB", columns={"criadoPor"})})
- * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\EmpresaRepository")
+ * @ORM\Table(name="instituicao", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="IDX_7CFF8F698F3195FB", columns={"criadoPor"})})
+ * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\InstituicaoRepository")
  */
-class Empresa
+class Instituicao
 {
     /**
      * @var integer
@@ -95,9 +95,9 @@ class Empresa
     private $endereco;
 
     /**
-     * @var \Empresa
+     * @var \Instituicao
      *
-     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\ManyToOne(targetEntity="Instituicao")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="vinculada", referencedColumnName="id")
      * })
@@ -127,10 +127,10 @@ class Empresa
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="empresa")
-     * @ORM\JoinTable(name="empresa_contato",
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="instituicao")
+     * @ORM\JoinTable(name="instituicao_contato",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="contato", referencedColumnName="id")
@@ -142,7 +142,7 @@ class Empresa
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Segmento", mappedBy="empresa")
+     * @ORM\ManyToMany(targetEntity="Segmento", mappedBy="instituicao")
      */
     private $segmento;
 
@@ -170,7 +170,7 @@ class Empresa
      * Set razaosocial
      *
      * @param string $razaosocial
-     * @return Empresa
+     * @return Instituicao
      */
     public function setRazaosocial($razaosocial)
     {
@@ -193,7 +193,7 @@ class Empresa
      * Set nomefantasia
      *
      * @param string $nomefantasia
-     * @return Empresa
+     * @return Instituicao
      */
     public function setNomefantasia($nomefantasia)
     {
@@ -216,7 +216,7 @@ class Empresa
      * Set descricao
      *
      * @param string $descricao
-     * @return Empresa
+     * @return Instituicao
      */
     public function setDescricao($descricao)
     {
@@ -239,7 +239,7 @@ class Empresa
      * Set cnpj
      *
      * @param integer $cnpj
-     * @return Empresa
+     * @return Instituicao
      */
     public function setCnpj($cnpj)
     {
@@ -262,7 +262,7 @@ class Empresa
      * Set inscricaoestadual
      *
      * @param integer $inscricaoestadual
-     * @return Empresa
+     * @return Instituicao
      */
     public function setInscricaoestadual($inscricaoestadual)
     {
@@ -285,7 +285,7 @@ class Empresa
      * Set site
      *
      * @param string $site
-     * @return Empresa
+     * @return Instituicao
      */
     public function setSite($site)
     {
@@ -308,7 +308,7 @@ class Empresa
      * Set grupo
      *
      * @param boolean $grupo
-     * @return Empresa
+     * @return Instituicao
      */
     public function setGrupo($grupo)
     {
@@ -331,7 +331,7 @@ class Empresa
      * Set datacriado
      *
      * @param \DateTime $datacriado
-     * @return Empresa
+     * @return Instituicao
      */
     public function setDatacriado($datacriado)
     {
@@ -354,7 +354,7 @@ class Empresa
      * Set datamodificacao
      *
      * @param \DateTime $datamodificacao
-     * @return Empresa
+     * @return Instituicao
      */
     public function setDatamodificacao($datamodificacao)
     {
@@ -377,7 +377,7 @@ class Empresa
      * Set endereco
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
-     * @return Empresa
+     * @return Instituicao
      */
     public function setEndereco(\Camaleao\Web\BimgoBundle\Entity\Endereco $endereco = null)
     {
@@ -399,10 +399,10 @@ class Empresa
     /**
      * Set vinculada
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $vinculada
-     * @return Empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada
+     * @return Instituicao
      */
-    public function setVinculada(\Camaleao\Web\BimgoBundle\Entity\Empresa $vinculada = null)
+    public function setVinculada(\Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada = null)
     {
         $this->vinculada = $vinculada;
 
@@ -412,7 +412,7 @@ class Empresa
     /**
      * Get vinculada
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
      */
     public function getVinculada()
     {
@@ -423,7 +423,7 @@ class Empresa
      * Set criadopor
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor
-     * @return Empresa
+     * @return Instituicao
      */
     public function setCriadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor = null)
     {
@@ -446,7 +446,7 @@ class Empresa
      * Set modificadopor
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor
-     * @return Empresa
+     * @return Instituicao
      */
     public function setModificadopor(\Camaleao\Web\BimgoBundle\Entity\Usuario $modificadopor = null)
     {
@@ -469,7 +469,7 @@ class Empresa
      * Add contato
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Contato $contato
-     * @return Empresa
+     * @return Instituicao
      */
     public function addContato(\Camaleao\Web\BimgoBundle\Entity\Contato $contato)
     {
@@ -502,7 +502,7 @@ class Empresa
      * Add segmento
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Segmento $segmento
-     * @return Empresa
+     * @return Instituicao
      */
     public function addSegmento(\Camaleao\Web\BimgoBundle\Entity\Segmento $segmento)
     {

@@ -1,43 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Produto list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>Preco</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for produto in produtos %}
-            <tr>
-                <td><a href="{{ path('produto_show', { 'id': produto.id }) }}">{{ produto.id }}</a></td>
-                <td>{{ produto.nome }}</td>
-                <td>{{ produto.descricao }}</td>
-                <td>{{ produto.preco }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('produto_show', { 'id': produto.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('produto_edit', { 'id': produto.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('produto_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <h2>Acesse o produto desejado</h2>
+                {% for produto in pagination %}
+                <div class="col s4">
+                    <div class="icon-block">
+                        <h3 class="center">
+                            <a href="{{ path('produto_show', { 'id': produto.id }) }}">
+                                {% set logo = 'bundles/camaleaowebbimgo/img/produto/' ~ produto.id ~ '.png' %}
+                                {% if file_exists(logo) %}
+                                    <img src="{{ asset(logo) }}" class="responsive-img">
+                                {% else %}
+                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
+                                {% endif %}
+                            </a>
+                        </h3>
+                        <h5 class="center"><a href="" class="black-text">{{ produto.nome }}</a></h5>
+                        <p><a href="" class="black-text">{{ produto.descricao }}</a></p>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Produto
  *
- * @ORM\Table(name="produto", indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
+ * @ORM\Table(name="produto", indexes={@ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
  * @ORM\Entity
  */
 class Produto
@@ -64,14 +64,14 @@ class Produto
     private $datamodificacao;
 
     /**
-     * @var \Empresa
+     * @var \Instituicao
      *
-     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\ManyToOne(targetEntity="Instituicao")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      * })
      */
-    private $empresa;
+    private $instituicao;
 
     /**
      * @var \Usuario
@@ -244,26 +244,26 @@ class Produto
     }
 
     /**
-     * Set empresa
+     * Set instituicao
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
      * @return Produto
      */
-    public function setEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa = null)
+    public function setInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao = null)
     {
-        $this->empresa = $empresa;
+        $this->instituicao = $instituicao;
 
         return $this;
     }
 
     /**
-     * Get empresa
+     * Get instituicao
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
      */
-    public function getEmpresa()
+    public function getInstituicao()
     {
-        return $this->empresa;
+        return $this->instituicao;
     }
 
     /**

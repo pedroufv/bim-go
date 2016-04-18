@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Grupoempresas list</h1>
+    <h1>Produto list</h1>
 
     <table>
         <thead>
@@ -9,22 +9,24 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Descricao</th>
+                <th>Preco</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for grupoempresa in grupoempresas %}
+        {% for produto in produtos %}
             <tr>
-                <td><a href="{{ path('grupoempresas_show', { 'id': grupoempresa.id }) }}">{{ grupoempresa.id }}</a></td>
-                <td>{{ grupoempresa.nome }}</td>
-                <td>{{ grupoempresa.descricao }}</td>
+                <td><a href="{{ path('produto_show', { 'id': produto.id }) }}">{{ produto.id }}</a></td>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.preco }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('grupoempresas_show', { 'id': grupoempresa.id }) }}">show</a>
+                            <a href="{{ path('produto_show', { 'id': produto.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('grupoempresas_edit', { 'id': grupoempresa.id }) }}">edit</a>
+                            <a href="{{ path('produto_edit', { 'id': produto.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('grupoempresas_new') }}">Create a new entry</a>
+            <a href="{{ path('produto_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

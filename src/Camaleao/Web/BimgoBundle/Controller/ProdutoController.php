@@ -22,14 +22,18 @@ class ProdutoController extends Controller
      * @Route("/", name="produto_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findAll();
 
+        /** @var  $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($produtos, $request->query->get('pagina', 1), 9);
+
         return $this->render('CamaleaoWebBimgoBundle:produto:index.html.twig', array(
-            'produtos' => $produtos,
+            'pagination' => $pagination,
         ));
     }
 

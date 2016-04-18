@@ -12,7 +12,7 @@
                         <h2 class="center blue-text"><i class="medium material-icons">search</i></h2>
                         <h5 class="center">Encontre empresas</h5>
                         <p class="light">
-                            Utilize a ferramenta de busca para encontrar empresas da região.
+                            Utilize a ferramenta de busca para encontrar empresas, promoções e produtos da sua região.
                         </p>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <h2 class="center blue-text"><i class="medium material-icons">place</i></h2>
                         <h5 class="center">Descubra a localização</h5>
                         <p class="light">
-                            Descubra onde está localizada a empresa que você procura.
+                            Descubra a localização exata e informações de contato da empresa que você procura.
                         </p>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
             <div class="row">
                 {% for empresa in empresas %}
                     <div class="col s12 m3">
-                        <h5 class="center blue-grey-text darken-4">{{ empresa.nomefantasia }}</h5>
-                        <p class="light center blue-grey-text darken-4">{{ empresa.descricao }}</p>
+                        <h5 class="center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.nomefantasia }}</a></h5>
+                        <p class="light center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.descricao }}</a></p>
                     </div>
                 {% endfor %}
             </div>
@@ -57,9 +57,9 @@
             <div class="row">
                 {% for promocao in promocoes %}
                 <div class="col s12 m3">
-                        <h5 class="center">{{ promocao.nome }}</h5>
-                        <p class="light center">{{ promocao.descricao }}</p>
-                        <span class="right">{{ promocao.empresa.nomefantasia }}</span>
+                        <h5 class="center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.nome }}</a></h5>
+                        <p class="light center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.descricao }}</a></p>
+                        <span class="right"><a class="black-text" href="{{ path('instituicao_show', { 'id': promocao.instituicao.id }) }}">{{ promocao.instituicao.nomefantasia }}</a></span>
                 </div>
                 {% endfor %}
             </div>
@@ -70,7 +70,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBi3pBExnVG5i49pC4arKt5_vHCQp79Wl0"></script>
     <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/infobox.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/mapa.js') }}"></script>
 {% endblock %}

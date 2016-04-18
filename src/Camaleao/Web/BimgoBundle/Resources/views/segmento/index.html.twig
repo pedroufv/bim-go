@@ -2,42 +2,22 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2>Segmentos</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            {# sorting of properties based on query components #}
-                            <th>{{ knp_pagination_sortable(pagination, 'ID', 'a.id') }}</th>
-                            <th{% if pagination.isSorted('a.nome') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nome', 'a.nome') }}</th>
-                            <th{% if pagination.isSorted('a.descricao') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Descrição', 'a.descricao') }}</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for segmento in pagination %}
-                        <tr>
-                            <td><a href="{{ path('segmento_show', { 'id': segmento.id }) }}">{{ segmento.id }}</a></td>
-                            <td>{{ segmento.nome }}</td>
-                            <td>{{ segmento.descricao }}</td>
-                            <td>
-                                <a href="{{ path('segmento_show', { 'id': segmento.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">play_arrow</i>Exibir</a>
-                                <a href="{{ path('segmento_edit', { 'id': segmento.id }) }}"class="waves-effect waves-light btn blue"><i class="material-icons left">edit</i>Editar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <div class="navigation center">
-                    {{ knp_pagination_render(pagination) }}
+        <div class="section">
+            <div class="row">
+                <h2>Encontre empresas por segmento</h2>
+                {% for segmento in pagination %}
+                <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h3 class="center blue-text"><a href="{{ path('instituicao_segmento', {'id': segmento.id}) }}"><i class="fa {{ segmento.icone.nome }}"></i></a></h3>
+                            <h5 class="center"><a href="{{ path('instituicao_segmento', {'id': segmento.id}) }}" class="black-text">{{ segmento.nome }}</a></h5>
+                            <p><a href="{{ path('instituicao_segmento', {'id': segmento.id}) }}" class="black-text">{{ segmento.descricao }}</a></p>
+                        </div>
                 </div>
-            </div> <!-- end col s12 -->
-        </div> <!-- end row -->
-    </div> <!-- end container -->
-    <div class="fixed-action-btn" style="bottom:45px; right:24px;">
-        <a class="waves-effect waves-light btn btn-floating btn-large orange darken-1" href="{{ path('segmento_new') }}">
-            <i class="large material-icons">add</i>
-        </a>
+                {% endfor %}
+            </div>
+            <div class="navigation center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

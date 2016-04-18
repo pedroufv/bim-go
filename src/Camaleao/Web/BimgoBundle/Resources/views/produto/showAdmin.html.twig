@@ -1,31 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Grupoempresas</h1>
+    <h1>Produto</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ grupoempresa.id }}</td>
+                <td>{{ produto.id }}</td>
             </tr>
             <tr>
                 <th>Nome</th>
-                <td>{{ grupoempresa.nome }}</td>
+                <td>{{ produto.nome }}</td>
             </tr>
             <tr>
                 <th>Descricao</th>
-                <td>{{ grupoempresa.descricao }}</td>
+                <td>{{ produto.descricao }}</td>
+            </tr>
+            <tr>
+                <th>Preco</th>
+                <td>{{ produto.preco }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('grupoempresas_index') }}">Back to the list</a>
+            <a href="{{ path('produto_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('grupoempresas_edit', { 'id': grupoempresa.id }) }}">Edit</a>
+            <a href="{{ path('produto_edit', { 'id': produto.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

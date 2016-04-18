@@ -48,24 +48,24 @@ class Segmento
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Empresa", inversedBy="segmento")
-     * @ORM\JoinTable(name="segmento_empresa",
+     * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="segmento")
+     * @ORM\JoinTable(name="instituicao_segmento",
      *   joinColumns={
      *     @ORM\JoinColumn(name="segmento", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      *   }
      * )
      */
-    private $empresa;
+    private $instituicao;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -149,35 +149,35 @@ class Segmento
     }
 
     /**
-     * Add empresa
+     * Add instituicao
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
      * @return Segmento
      */
-    public function addEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
+    public function addInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
     {
-        $this->empresa[] = $empresa;
+        $this->instituicao[] = $instituicao;
 
         return $this;
     }
 
     /**
-     * Remove empresa
+     * Remove instituicao
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
      */
-    public function removeEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
+    public function removeInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
     {
-        $this->empresa->removeElement($empresa);
+        $this->instituicao->removeElement($instituicao);
     }
 
     /**
-     * Get empresa
+     * Get instituicao
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getEmpresa()
+    public function getInstituicao()
     {
-        return $this->empresa;
+        return $this->instituicao;
     }
 }
