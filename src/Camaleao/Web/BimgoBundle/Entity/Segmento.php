@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Segmento
  *
- * @ORM\Table(name="segmento")
+ * @ORM\Table(name="segmento", indexes={@ORM\Index(name="icone", columns={"icone"})})
  * @ORM\Entity
  */
 class Segmento
@@ -36,26 +36,36 @@ class Segmento
     private $descricao;
 
     /**
+     * @var \Icone
+     *
+     * @ORM\ManyToOne(targetEntity="Icone")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="icone", referencedColumnName="id")
+     * })
+     */
+    private $icone;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Empresa", inversedBy="segmento")
-     * @ORM\JoinTable(name="segmento_empresa",
+     * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="segmento")
+     * @ORM\JoinTable(name="instituicao_segmento",
      *   joinColumns={
      *     @ORM\JoinColumn(name="segmento", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      *   }
      * )
      */
-    private $empresa;
+    private $instituicao;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -116,35 +126,58 @@ class Segmento
     }
 
     /**
-     * Add empresa
+     * Set icone
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Icone $icone
      * @return Segmento
      */
-    public function addEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
+    public function setIcone(\Camaleao\Web\BimgoBundle\Entity\Icone $icone = null)
     {
-        $this->empresa[] = $empresa;
+        $this->icone = $icone;
 
         return $this;
     }
 
     /**
-     * Remove empresa
+     * Get icone
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @return \Camaleao\Web\BimgoBundle\Entity\Icone 
      */
-    public function removeEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa)
+    public function getIcone()
     {
-        $this->empresa->removeElement($empresa);
+        return $this->icone;
     }
 
     /**
-     * Get empresa
+     * Add instituicao
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
+     * @return Segmento
+     */
+    public function addInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
+    {
+        $this->instituicao[] = $instituicao;
+
+        return $this;
+    }
+
+    /**
+     * Remove instituicao
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
+     */
+    public function removeInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao)
+    {
+        $this->instituicao->removeElement($instituicao);
+    }
+
+    /**
+     * Get instituicao
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getEmpresa()
+    public function getInstituicao()
     {
-        return $this->empresa;
+        return $this->instituicao;
     }
 }

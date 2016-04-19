@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Produto
  *
- * @ORM\Table(name="produto", indexes={@ORM\Index(name="empresa", columns={"empresa"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
+ * @ORM\Table(name="produto", indexes={@ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
  * @ORM\Entity
  */
 class Produto
@@ -43,6 +43,13 @@ class Produto
     private $preco;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="string", length=13, nullable=true)
+     */
+    private $ean;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
@@ -57,14 +64,14 @@ class Produto
     private $datamodificacao;
 
     /**
-     * @var \Empresa
+     * @var \Instituicao
      *
-     * @ORM\ManyToOne(targetEntity="Empresa")
+     * @ORM\ManyToOne(targetEntity="Instituicao")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="empresa", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
      * })
      */
-    private $empresa;
+    private $instituicao;
 
     /**
      * @var \Usuario
@@ -86,28 +93,6 @@ class Produto
      */
     private $modificadopor;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Promocao", inversedBy="produto")
-     * @ORM\JoinTable(name="produto_promocao",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="produto", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="promocao", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $promocao;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->promocao = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -190,6 +175,29 @@ class Produto
     }
 
     /**
+     * Set ean
+     *
+     * @param string $ean
+     * @return Produto
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+
+        return $this;
+    }
+
+    /**
+     * Get ean
+     *
+     * @return string 
+     */
+    public function getEan()
+    {
+        return $this->ean;
+    }
+
+    /**
      * Set datacriado
      *
      * @param \DateTime $datacriado
@@ -236,26 +244,26 @@ class Produto
     }
 
     /**
-     * Set empresa
+     * Set instituicao
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Empresa $empresa
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao
      * @return Produto
      */
-    public function setEmpresa(\Camaleao\Web\BimgoBundle\Entity\Empresa $empresa = null)
+    public function setInstituicao(\Camaleao\Web\BimgoBundle\Entity\Instituicao $instituicao = null)
     {
-        $this->empresa = $empresa;
+        $this->instituicao = $instituicao;
 
         return $this;
     }
 
     /**
-     * Get empresa
+     * Get instituicao
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Empresa 
+     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
      */
-    public function getEmpresa()
+    public function getInstituicao()
     {
-        return $this->empresa;
+        return $this->instituicao;
     }
 
     /**
@@ -302,38 +310,5 @@ class Produto
     public function getModificadopor()
     {
         return $this->modificadopor;
-    }
-
-    /**
-     * Add promocao
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Promocao $promocao
-     * @return Produto
-     */
-    public function addPromocao(\Camaleao\Web\BimgoBundle\Entity\Promocao $promocao)
-    {
-        $this->promocao[] = $promocao;
-
-        return $this;
-    }
-
-    /**
-     * Remove promocao
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Promocao $promocao
-     */
-    public function removePromocao(\Camaleao\Web\BimgoBundle\Entity\Promocao $promocao)
-    {
-        $this->promocao->removeElement($promocao);
-    }
-
-    /**
-     * Get promocao
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPromocao()
-    {
-        return $this->promocao;
     }
 }

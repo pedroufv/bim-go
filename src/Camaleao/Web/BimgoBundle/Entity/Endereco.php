@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="endereco", indexes={@ORM\Index(name="cidade", columns={"cidade"})})
  * @ORM\Entity
- * @JMS\Serializer\Annotation\ExclusionPolicy("all")
  */
 class Endereco
 {
@@ -61,7 +60,6 @@ class Endereco
      * @var string
      *
      * @ORM\Column(name="latitude", type="decimal", precision=9, scale=6, nullable=true)
-     * @JMS\Serializer\Annotation\Expose
      */
     private $latitude;
 
@@ -69,7 +67,6 @@ class Endereco
      * @var string
      *
      * @ORM\Column(name="longitude", type="decimal", precision=9, scale=6, nullable=true)
-     * @JMS\Serializer\Annotation\Expose
      */
     private $longitude;
 

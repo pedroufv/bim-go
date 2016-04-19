@@ -51,7 +51,7 @@
                         <h5 class="white-text">Novas Empresas</h5>
                         <ul>
                             {% for empresa in empresas %}
-                                <li class="white-text" href="#!">{{ empresa.nomefantasia }}</li>
+                                <li class="white-text"><a class="white-text" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.nomefantasia }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>

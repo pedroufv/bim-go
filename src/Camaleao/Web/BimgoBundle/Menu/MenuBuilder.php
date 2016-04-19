@@ -19,10 +19,14 @@ class MenuBuilder implements ContainerAwareInterface
             $menu->setChildrenAttribute('class',  $options['class']);
 
         $menu->addChild('Home', array('route' => 'default_index'));
-        $menu->addChild('Papel', array('route' => 'papel_index'));
-        $menu->addChild('Usuário', array('route' => 'usuario_index'));
-        $menu->addChild('Segmento', array('route' => 'segmento_index'));
-        $menu->addChild('Empresa', array('route' => 'empresa_index'));
+        //$menu->addChild('Papel', array('route' => 'papel_index'));
+        //$menu->addChild('Usuário', array('route' => 'usuario_index'));
+        //$menu->addChild('Segmento', array('route' => 'segmento_index'));
+        $menu->addChild('Segmentos', array('route' => 'segmento_index'));
+        $menu->addChild('Empresas', array('route' => 'instituicao_index'));
+        $menu->addChild('Promoções', array('route' => 'promocao_index'));
+        $menu->addChild('Produtos', array('route' => 'produto_index'));
+
 
         return $menu;
     }
