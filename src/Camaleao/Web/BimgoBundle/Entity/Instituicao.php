@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Instituicao
  *
  * @ORM\Table(name="instituicao", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="IDX_7CFF8F698F3195FB", columns={"criadoPor"})})
- * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\InstituicaoRepository")
+ * @ORM\Entity
  */
 class Instituicao
 {
@@ -71,6 +71,13 @@ class Instituicao
     private $grupo;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
@@ -83,26 +90,6 @@ class Instituicao
      * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
      */
     private $datamodificacao;
-
-    /**
-     * @var \Endereco
-     *
-     * @ORM\ManyToOne(targetEntity="Endereco")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
-     * })
-     */
-    private $endereco;
-
-    /**
-     * @var \Instituicao
-     *
-     * @ORM\ManyToOne(targetEntity="Instituicao")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="vinculada", referencedColumnName="id")
-     * })
-     */
-    private $vinculada;
 
     /**
      * @var \Usuario
@@ -123,6 +110,26 @@ class Instituicao
      * })
      */
     private $modificadopor;
+
+    /**
+     * @var \Endereco
+     *
+     * @ORM\ManyToOne(targetEntity="Endereco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
+     * })
+     */
+    private $endereco;
+
+    /**
+     * @var \Instituicao
+     *
+     * @ORM\ManyToOne(targetEntity="Instituicao")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vinculada", referencedColumnName="id")
+     * })
+     */
+    private $vinculada;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -328,6 +335,29 @@ class Instituicao
     }
 
     /**
+     * Set ativo
+     *
+     * @param boolean $ativo
+     * @return Instituicao
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+
+        return $this;
+    }
+
+    /**
+     * Get ativo
+     *
+     * @return boolean 
+     */
+    public function getAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
      * Set datacriado
      *
      * @param \DateTime $datacriado
@@ -374,52 +404,6 @@ class Instituicao
     }
 
     /**
-     * Set endereco
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
-     * @return Instituicao
-     */
-    public function setEndereco(\Camaleao\Web\BimgoBundle\Entity\Endereco $endereco = null)
-    {
-        $this->endereco = $endereco;
-
-        return $this;
-    }
-
-    /**
-     * Get endereco
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Endereco 
-     */
-    public function getEndereco()
-    {
-        return $this->endereco;
-    }
-
-    /**
-     * Set vinculada
-     *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada
-     * @return Instituicao
-     */
-    public function setVinculada(\Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada = null)
-    {
-        $this->vinculada = $vinculada;
-
-        return $this;
-    }
-
-    /**
-     * Get vinculada
-     *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
-     */
-    public function getVinculada()
-    {
-        return $this->vinculada;
-    }
-
-    /**
      * Set criadopor
      *
      * @param \Camaleao\Web\BimgoBundle\Entity\Usuario $criadopor
@@ -463,6 +447,52 @@ class Instituicao
     public function getModificadopor()
     {
         return $this->modificadopor;
+    }
+
+    /**
+     * Set endereco
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Endereco $endereco
+     * @return Instituicao
+     */
+    public function setEndereco(\Camaleao\Web\BimgoBundle\Entity\Endereco $endereco = null)
+    {
+        $this->endereco = $endereco;
+
+        return $this;
+    }
+
+    /**
+     * Get endereco
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Endereco 
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * Set vinculada
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada
+     * @return Instituicao
+     */
+    public function setVinculada(\Camaleao\Web\BimgoBundle\Entity\Instituicao $vinculada = null)
+    {
+        $this->vinculada = $vinculada;
+
+        return $this;
+    }
+
+    /**
+     * Get vinculada
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Instituicao 
+     */
+    public function getVinculada()
+    {
+        return $this->vinculada;
     }
 
     /**
