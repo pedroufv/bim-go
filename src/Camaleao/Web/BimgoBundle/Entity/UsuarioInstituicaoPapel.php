@@ -7,22 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UsuarioInstituicaoPapel
  *
- * @ORM\Table(name="usuario_instituicao_papel", indexes={@ORM\Index(name="idUsuario", columns={"usuario", "instituicao", "papel"}), @ORM\Index(name="idEmpresa", columns={"instituicao", "papel"}), @ORM\Index(name="idPapel", columns={"papel"}), @ORM\Index(name="IDX_EA8BB57F2265B05D", columns={"usuario"}), @ORM\Index(name="IDX_EA8BB57F7CFF8F69", columns={"instituicao"})})
+ * @ORM\Table(name="usuario_instituicao_papel", indexes={@ORM\Index(name="usuario", columns={"usuario"}), @ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="papel", columns={"papel"})})
  * @ORM\Entity
  */
 class UsuarioInstituicaoPapel
 {
     /**
-     * @var \Papel
+     * @var boolean
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Papel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="seguindo", type="boolean", nullable=false)
      */
-    private $papel;
+    private $seguindo;
 
     /**
      * @var \Usuario
@@ -48,29 +43,39 @@ class UsuarioInstituicaoPapel
      */
     private $instituicao;
 
+    /**
+     * @var \Papel
+     *
+     * @ORM\ManyToOne(targetEntity="Papel")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
+     * })
+     */
+    private $papel;
+
 
 
     /**
-     * Set papel
+     * Set seguindo
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Papel $papel
+     * @param boolean $seguindo
      * @return UsuarioInstituicaoPapel
      */
-    public function setPapel(\Camaleao\Web\BimgoBundle\Entity\Papel $papel)
+    public function setSeguindo($seguindo)
     {
-        $this->papel = $papel;
+        $this->seguindo = $seguindo;
 
         return $this;
     }
 
     /**
-     * Get papel
+     * Get seguindo
      *
-     * @return \Camaleao\Web\BimgoBundle\Entity\Papel 
+     * @return boolean 
      */
-    public function getPapel()
+    public function getSeguindo()
     {
-        return $this->papel;
+        return $this->seguindo;
     }
 
     /**
@@ -117,5 +122,28 @@ class UsuarioInstituicaoPapel
     public function getInstituicao()
     {
         return $this->instituicao;
+    }
+
+    /**
+     * Set papel
+     *
+     * @param \Camaleao\Web\BimgoBundle\Entity\Papel $papel
+     * @return UsuarioInstituicaoPapel
+     */
+    public function setPapel(\Camaleao\Web\BimgoBundle\Entity\Papel $papel = null)
+    {
+        $this->papel = $papel;
+
+        return $this;
+    }
+
+    /**
+     * Get papel
+     *
+     * @return \Camaleao\Web\BimgoBundle\Entity\Papel 
+     */
+    public function getPapel()
+    {
+        return $this->papel;
     }
 }

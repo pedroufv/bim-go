@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="pesquisa" class="overmap">
+        <form>
+            <div class="input-field">
+              <input id="search" type="search">
+              <label for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
     <div class="section no-pad-bot">
         <div id="mapa" class="col s12 m12" style="height: 500px; margin: -10px 0;"></div>
     </div>
