@@ -103,24 +103,16 @@ class Promocao
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Produtopromocional", inversedBy="promocao")
-     * @ORM\JoinTable(name="promocao_produtoPromocional",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="promocao", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="produtoPromocional", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Oferta", mappedBy="promocao")
      */
-    private $produtopromocional;
+    private $oferta;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->produtopromocional = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->oferta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -365,35 +357,35 @@ class Promocao
     }
 
     /**
-     * Add produtopromocional
+     * Add oferta
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional
+     * @param \Camaleao\Web\BimgoBundle\Entity\Oferta $oferta
      * @return Promocao
      */
-    public function addProdutopromocional(\Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional)
+    public function addOfertum(\Camaleao\Web\BimgoBundle\Entity\Oferta $oferta)
     {
-        $this->produtopromocional[] = $produtopromocional;
+        $this->oferta[] = $oferta;
 
         return $this;
     }
 
     /**
-     * Remove produtopromocional
+     * Remove oferta
      *
-     * @param \Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional
+     * @param \Camaleao\Web\BimgoBundle\Entity\Oferta $oferta
      */
-    public function removeProdutopromocional(\Camaleao\Web\BimgoBundle\Entity\Produtopromocional $produtopromocional)
+    public function removeOfertum(\Camaleao\Web\BimgoBundle\Entity\Oferta $oferta)
     {
-        $this->produtopromocional->removeElement($produtopromocional);
+        $this->oferta->removeElement($oferta);
     }
 
     /**
-     * Get produtopromocional
+     * Get oferta
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProdutopromocional()
+    public function getOferta()
     {
-        return $this->produtopromocional;
+        return $this->oferta;
     }
 }
