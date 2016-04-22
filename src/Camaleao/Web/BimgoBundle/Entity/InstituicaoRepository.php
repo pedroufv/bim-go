@@ -32,6 +32,8 @@ class InstituicaoRepository extends EntityRepository
             ->createQueryBuilder('instituicao')
             ->innerJoin('instituicao.segmento', 'segmento')
             ->where("segmento.id = $id")
+            ->setFirstResult($index_inicial)
+            ->setMaxResults($quantidade)
             ->getQuery()
             ->getResult();
 
