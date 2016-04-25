@@ -24,6 +24,136 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AndroidController extends Controller
 {
 	/**
+     * select em usuario instituicao papel
+     *
+     * @Route("/getusuarioseguir", name="android_getusuarioseguir")
+     * @Method("POST")
+     */
+    public function getUsuarioSeguirAction(Request $request)
+    {
+
+	$jsonObject = json_decode($request->get('jsonObject'));
+
+	$filtros = array();
+	$filtros = $jsonObject->object->filtros;
+	
+	$filter = array();
+	foreach($filtros as $registro) {
+            $filter[$registro->campo] = $registro->valor;
+        }
+	
+	$filter['seguindo'] = '1';
+	
+	$em = $this->getDoctrine()->getManager();
+	
+	$usuarioInstituicaoPapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+		->findBy($filter);
+	
+	$empresas = array();
+        foreach ($usuarioInstituicaoPapel as $registro)
+            array_push($empresas, $registro->getInstituicao()->getId());
+        
+        $array = array('empresas' => $empresas);
+
+
+            
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+	
+	/**
+     * set seguindo false em usuario instituicao papel
+     *
+     * @Route("/remusuarioseguir", name="android_remusuarioseguir")
+     * @Method("POST")
+     */
+    public function remUsuarioSeguirAction(Request $request)
+    {
+		$jsonObject = json_decode($request->get('jsonObject'));
+		
+		$resultado = false;
+
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
+		
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
+		
+		$em = $this->getDoctrine()->getManager();
+		
+		$usuarioInstituicaoPapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+			->findOneBy($filter);
+		
+		$usuarioInstituicaoPapel->setSeguindo(0);
+		
+		if ($usuarioInstituicaoPapel) {
+			$em->merge($usuarioInstituicaoPapel);
+			$em->flush();
+			
+			$resultado = true;
+		}
+
+        $array = array('resultado' => $resultado);
+
+        return new Response(json_encode($array), Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+	
+	/**
+     * new em usuario instituicao papel seguindo true papel 1
+     *
+     * @Route("/newusuarioseguir", name="android_newusuarioseguir")
+     * @Method("POST")
+     */
+    public function newUsuarioSeguirAction(Request $request)
+    {
+		$jsonObject = json_decode($request->get('jsonObject'));
+
+		$resultado = false;
+
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;		
+		
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
+		
+		$em = $this->getDoctrine()->getManager();
+		
+		$usuarioInstituicaoPapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+			->findOneBy($filter);
+		
+		if ($usuarioInstituicaoPapel) {
+			$usuarioInstituicaoPapel->setSeguindo(1);
+			
+			$em->merge($usuarioInstituicaoPapel);
+			$em->flush();
+			
+			$resultado = true;
+		} else {
+			$usuarioInstituicaoPapel = new UsuarioInstituicaoPapel();
+			$usuarioInstituicaoPapel->setUsuario($em->getReference('CamaleaoWebBimgoBundle:Usuario', $filter['usuario']));
+			$usuarioInstituicaoPapel->setInstituicao($em->getReference('CamaleaoWebBimgoBundle:Instituicao', $filter['instituicao']));
+			$usuarioInstituicaoPapel->setPapel($em->getReference('CamaleaoWebBimgoBundle:Papel', 1));
+			$usuarioInstituicaoPapel->setSeguindo(1);			
+
+			$em->persist($usuarioInstituicaoPapel);
+			$em->flush();
+			
+			$resultado = true;
+		}
+
+        $array = array('resultado' => $resultado);
+
+        return new Response(json_encode($array), Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+	
+	/**
      *  select em usuarios
      *
      * @Route("/checklogin", name="android_checklogin")
@@ -1123,9 +1253,9 @@ class AndroidController extends Controller
         $notificacao->setInstituicao($em->getReference('CamaleaoWebBimgoBundle:Instituicao', $jsonObject->object->instituicao->id));
         $notificacao->setMensagem($jsonObject->object->mensagem);
 		
-		/*$now = new DateTime();
-		$now_format = $now->format('Y-m-d H:i:s');
-		$notificacao->setData($now_format);*/
+		$now = new \DateTime();
+		//$now_format = $now->format('Y-m-d H:i:s');
+		$notificacao->setData($now);
 
         $em->persist($notificacao);
         $em->flush();
