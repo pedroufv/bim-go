@@ -29,8 +29,8 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
             ->createQueryBuilder('uip')
-            ->where("uip.instituicao != $instituicao")
-            ->where("uip.papel != $papel")
+            ->where("uip.instituicao = $instituicao")
+            ->andwhere("uip.papel != $papel")
             ->getQuery()
             ->getResult();
 
