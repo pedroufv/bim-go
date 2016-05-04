@@ -10,6 +10,7 @@ use Camaleao\Web\BimgoBundle\Entity\Notificacao;
 use Camaleao\Web\BimgoBundle\Entity\Mensagemtipo;
 use Camaleao\Web\BimgoBundle\Entity\Destinatariotipo;
 use Camaleao\Web\BimgoBundle\Entity\UsuarioInstituicaoPapel;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -1423,6 +1424,39 @@ class AndroidController extends Controller
         $result = $serializer->serialize($funcionario, 'json');
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+    }
+
+    /**
+     * s3
+     *
+     * @Route("/s3", name="android_s3")
+     * @Method("GET")
+     */
+    public function s3Action(Request $request)
+    {
+        $s3 = $this->get('aws.s3');
+
+        foreach($request->files as $file) {
+            $file
+        }
+
+        $pathToFile = 'bundles/camaleaowebbimgo/img/favicon.ico';
+
+        //'Key'    => $_FILES['file']['name'],
+        //'SourceFile' => $_FILES['file']['tmp_name'],
+
+        $response = $s3->putObject(array(
+            'Bucket' => 'camaleao',
+            'Key'    => 'bim-go/favicon.ico',
+            'Body'   => fopen($pathToFile, 'r+')
+        ));
+
+        $result = array('result' => false);
+        if($response) {
+            $result = array('result' => true);
+        }
+
+        return new JsonResponse(json_encode($result));
     }
 
     /**
