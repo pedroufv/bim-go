@@ -1436,9 +1436,6 @@ class AndroidController extends Controller
     {
         $s3 = $this->get('aws.s3');
 
-        foreach($request->files as $file) {
-            $file
-        }
 
         $pathToFile = 'bundles/camaleaowebbimgo/img/favicon.ico';
 
