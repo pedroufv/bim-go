@@ -541,7 +541,7 @@ class AndroidController extends Controller
 
         $result = $serializer->serialize($array, 'json');
 
-        return new JsonResponse($result);
+        return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
 
     /**
