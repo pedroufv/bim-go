@@ -32,11 +32,11 @@ class AndroidController extends Controller
      */
     public function uplImagensAction(Request $request)
     {
-	$mypicture = $request->get('mypicture');
+		$mypicture = $request->get('mypicture');
 
-	$array = array('mypicture' => $mypicture);
+		$array = array('mypicture' => $mypicture);
 
-	return new Response(json_encode($array), Response::HTTP_OK, array('content-type' => 'application/json'));
+		return new Response(json_encode($array), Response::HTTP_OK, array('content-type' => 'application/json'));
 
     }
 
@@ -50,19 +50,19 @@ class AndroidController extends Controller
     public function chkAppUpdatesAction(Request $request)
     {
 
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$versaoInstalada = $jsonObject->object;
+		$versaoInstalada = $jsonObject->object;
 
-	$versaoAtual = 2;
-	$urlAtualizacao = "www.google.com.br";
+		$versaoAtual = 2;
+		$urlAtualizacao = "www.google.com.br";
 
-	$resultado = true;
+		$resultado = true;
 
-	if ($versaoAtual > $versaoInstalada)
-	    $resultado = false; 
+		if ($versaoAtual > $versaoInstalada)
+			$resultado = false;
 
-	$array = array('resultado' => $resultado, 'url' => $urlAtualizacao);
+		$array = array('resultado' => $resultado, 'url' => $urlAtualizacao);
 
         return new Response(json_encode($array), Response::HTTP_OK, array('content-type' => 'application/json'));
     }
@@ -76,24 +76,24 @@ class AndroidController extends Controller
     public function getUsuarioSeguirAction(Request $request)
     {
 
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$filtros = array();
-	$filtros = $jsonObject->object->filtros;
-	
-	$filter = array();
-	foreach($filtros as $registro) {
-            $filter[$registro->campo] = $registro->valor;
-        }
-	
-	$filter['seguindo'] = '1';
-	
-	$em = $this->getDoctrine()->getManager();
-	
-	$usuarioInstituicaoPapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
-		->findBy($filter);
-	
-	$empresas = array();
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
+
+		$filter = array();
+		foreach($filtros as $registro) {
+				$filter[$registro->campo] = $registro->valor;
+			}
+
+		$filter['seguindo'] = '1';
+
+		$em = $this->getDoctrine()->getManager();
+
+		$usuarioInstituicaoPapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+			->findBy($filter);
+
+		$empresas = array();
         foreach ($usuarioInstituicaoPapel as $registro)
             array_push($empresas, $registro->getInstituicao()->getId());
         
@@ -208,7 +208,7 @@ class AndroidController extends Controller
         $jsonObject = json_decode($request->get('jsonObject'));
 
         $email = $jsonObject->object->email;
-	$senha = md5($jsonObject->object->senha);
+		$senha = md5($jsonObject->object->senha);
 
         $em = $this->getDoctrine()->getManager();
 
@@ -256,28 +256,28 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 		
-	$idUsuario = $jsonObject->object->usuario->id;
-	$idInstituicao = $jsonObject->object->instituicao->id;
-	$idPapel = $jsonObject->object->papel->id;
+		$idUsuario = $jsonObject->object->usuario->id;
+		$idInstituicao = $jsonObject->object->instituicao->id;
+		$idPapel = $jsonObject->object->papel->id;
 
-	$filter = array();
-	$filter['usuario'] = $idUsuario;
-	$filter['instituicao'] = $idInstituicao;
-	
-	$resultado = false;
+		$filter = array();
+		$filter['usuario'] = $idUsuario;
+		$filter['instituicao'] = $idInstituicao;
 
-        $em = $this->getDoctrine()->getManager();
+		$resultado = false;
 
-        $usuarioInstituicaoPapel = $em->getPartialReference('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel', $filter);
+			$em = $this->getDoctrine()->getManager();
 
-	if ($usuarioInstituicaoPapel) {
-		$usuarioInstituicaoPapel->setPapel($em->getReference('CamaleaoWebBimgoBundle:Papel', $idPapel));
+			$usuarioInstituicaoPapel = $em->getPartialReference('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel', $filter);
 
-		$em->merge($usuarioInstituicaoPapel);
-		$em->flush();
-		
-		$resultado = true;
-	}
+		if ($usuarioInstituicaoPapel) {
+			$usuarioInstituicaoPapel->setPapel($em->getReference('CamaleaoWebBimgoBundle:Papel', $idPapel));
+
+			$em->merge($usuarioInstituicaoPapel);
+			$em->flush();
+
+			$resultado = true;
+		}
 
         $array = array('resultado' => $resultado);
 
@@ -294,26 +294,26 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 		
-	$idUsuario = $jsonObject->object->usuario->id;
-	$idInstituicao = $jsonObject->object->instituicao->id;
-	//$idPapel = $jsonObject->object->papel->id;
+		$idUsuario = $jsonObject->object->usuario->id;
+		$idInstituicao = $jsonObject->object->instituicao->id;
+		//$idPapel = $jsonObject->object->papel->id;
 
-	$filter = array();
-	$filter['usuario'] = $idUsuario;
-	$filter['instituicao'] = $idInstituicao;
-	
-	$resultado = false;
+		$filter = array();
+		$filter['usuario'] = $idUsuario;
+		$filter['instituicao'] = $idInstituicao;
+
+		$resultado = false;
 
         $em = $this->getDoctrine()->getManager();
 
         $usuarioInstituicaoPapel = $em->getPartialReference('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel', $filter);
 
-	if ($usuarioInstituicaoPapel) {
-		$em->remove($usuarioInstituicaoPapel);
-		$em->flush();
-		
-		$resultado = true;
-	}
+		if ($usuarioInstituicaoPapel) {
+			$em->remove($usuarioInstituicaoPapel);
+			$em->flush();
+
+			$resultado = true;
+		}
 
         $array = array('resultado' => $resultado);
 
@@ -417,9 +417,9 @@ class AndroidController extends Controller
      */
     public function newUsuarioInstituicaoPapelAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 
         $usuarioinstituicaopapel = new UsuarioInstituicaoPapel();
         $usuarioinstituicaopapel->setUsuario($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->usuario->id));
@@ -429,7 +429,7 @@ class AndroidController extends Controller
         $em->persist($usuarioinstituicaopapel);
         $em->flush();
 
-	$serializer = $this->container->get('jms_serializer');
+		$serializer = $this->container->get('jms_serializer');
 
         $result = $serializer->serialize($usuarioinstituicaopapel, 'json');
 
@@ -669,7 +669,7 @@ class AndroidController extends Controller
      */
     public function getPromocoesLazyAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
         $index_inicial = $jsonObject->object->index_inicial;
         $quantidade = $jsonObject->object->quantidade;
@@ -717,7 +717,7 @@ class AndroidController extends Controller
      */
     public function getProdutosLazyAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
         $index_inicial = $jsonObject->object->index_inicial;
         $quantidade = $jsonObject->object->quantidade;
@@ -744,26 +744,26 @@ class AndroidController extends Controller
      */
     public function getProdutosFilterAction(Request $request)
     {
-	/*
-	$criteria = new \Doctrine\Common\Collections\Criteria();
-	$criteria
-	  ->orWhere($criteria->expr()->contains('domains', 'a'))
-	  ->orWhere($criteria->expr()->contains('domains', 'b'));
+		/*
+		$criteria = new \Doctrine\Common\Collections\Criteria();
+		$criteria
+		  ->orWhere($criteria->expr()->contains('domains', 'a'))
+		  ->orWhere($criteria->expr()->contains('domains', 'b'));
 
-	$groups = $em
-	  ->getRepository('Group')
-	  ->matching($criteria);
-	*/
+		$groups = $em
+		  ->getRepository('Group')
+		  ->matching($criteria);
+		*/
 
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$filtros = array();
-	$filtros = $jsonObject->object->filtros;
-	
-	$filter = array();
-	foreach($filtros as $registro) {
-		$filter[$registro->campo] = $registro->valor;
-	}
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
+
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
 	
         $em = $this->getDoctrine()->getManager();
 
@@ -904,21 +904,21 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 
-	$filtros = array();
-	$filtros = $jsonObject->object->filtros;
-	
-	$filter = array();
-	foreach($filtros as $registro) {
-		$filter[$registro->campo] = $registro->valor;
-	}
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
 
-	$index_inicial = $jsonObject->object->intervalo->index_inicial;
-        $quantidade = $jsonObject->object->intervalo->quantidade;
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
 
-	$em = $this->getDoctrine()->getManager();
+		$index_inicial = $jsonObject->object->intervalo->index_inicial;
+			$quantidade = $jsonObject->object->intervalo->quantidade;
 
-	$usuarioinstituicaopapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
-		->findUsuariosMembroPorInstituicaoLazy($filter['instituicao'], $index_inicial, $quantidade);
+		$em = $this->getDoctrine()->getManager();
+
+		$usuarioinstituicaopapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+			->findUsuariosMembroPorInstituicaoLazy($filter['instituicao'], $index_inicial, $quantidade);
 
         $array = array('usuarioinstituicaopapel' => $usuarioinstituicaopapel);
 
@@ -939,20 +939,20 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 
-	$filtros = array();
-	$filtros = $jsonObject->object->filtros;
-	
-	$filter = array();
-	foreach($filtros as $registro) {
-		$filter[$registro->campo] = $registro->valor;
-	}
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
 
-	$em = $this->getDoctrine()->getManager();
+		$filter = array();
+		foreach($filtros as $registro) {
+			$filter[$registro->campo] = $registro->valor;
+		}
+
+		$em = $this->getDoctrine()->getManager();
 
         /*$usuarioinstituicaopapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
 		->findBy($filter);*/
 
-	$usuarioinstituicaopapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+		$usuarioinstituicaopapel = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
 		->findInstituicoesPorUsuarioMembro($filter['usuario']);
 
         $array = array('usuarioinstituicaopapel' => $usuarioinstituicaopapel);
@@ -984,6 +984,29 @@ class AndroidController extends Controller
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
+
+	/**
+	 *  select em instituicoes
+	 *
+	 * @Route("/getinstituicoesbycidade", name="android_getinstituicoesbycidade")
+	 * @Method({"GET", "POST"})
+	 */
+	public function getInstituicoesByCidadeAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findInstituicaoByCidade();
+
+		dump($instituicoes); exit;
+
+		$array = array('instituicoes' => $instituicoes);
+
+		$serializer = $this->container->get('jms_serializer');
+
+		$result = $serializer->serialize($array, 'json');
+
+		return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+	}
 	
 	/**
      *  get instituicoes por segmento
@@ -1104,20 +1127,20 @@ class AndroidController extends Controller
     {
         $jsonObject = json_decode($request->get('jsonObject'));
 		
-	$filtros = array();
-	$filtros = $jsonObject->object->filtros;
-	
-	$filter = array();
-	foreach($filtros as $registro) {
-		if ($registro->campo == 'entidade')
-			$entidade = $registro->valor;
-		else
-			$filter[$registro->campo] = $registro->valor;
-	}
+		$filtros = array();
+		$filtros = $jsonObject->object->filtros;
+
+		$filter = array();
+		foreach($filtros as $registro) {
+			if ($registro->campo == 'entidade')
+				$entidade = $registro->valor;
+			else
+				$filter[$registro->campo] = $registro->valor;
+		}
 	
         $em = $this->getDoctrine()->getManager();
 
-	$entidade = $em->getRepository('CamaleaoWebBimgoBundle:' . $entidade)
+		$entidade = $em->getRepository('CamaleaoWebBimgoBundle:' . $entidade)
                 ->findOneBy($filter);
 
         $serializer = $this->container->get('jms_serializer');
@@ -1235,9 +1258,9 @@ class AndroidController extends Controller
      */
     public function getPapel($filter)
     {
-	$em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 
-	$papel = $em->getRepository('CamaleaoWebBimgoBundle:Papel')
+		$papel = $em->getRepository('CamaleaoWebBimgoBundle:Papel')
 		->findOneBy($filter);
 
         return $papel;
@@ -1251,23 +1274,23 @@ class AndroidController extends Controller
      */
     public function newUsuarioAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
         $usuario = new Usuario();
         $usuario->setNome($jsonObject->object->nome);
         $usuario->setEmail($jsonObject->object->email);
         $usuario->setSenha($jsonObject->object->senha);
-	$chave = $jsonObject->object->email . $jsonObject->object->senha;
-	$usuario->setToken($chave);
+		$chave = $jsonObject->object->email . $jsonObject->object->senha;
+		$usuario->setToken($chave);
 	
-	$em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 	
-	$usuario->setPapel($em->getReference('CamaleaoWebBimgoBundle:Papel', 1));
+		$usuario->setPapel($em->getReference('CamaleaoWebBimgoBundle:Papel', 1));
         
         $em->persist($usuario);
         $em->flush();
 
-	$serializer = $this->container->get('jms_serializer');
+		$serializer = $this->container->get('jms_serializer');
 
         $result = $serializer->serialize($usuario, 'json');
 
@@ -1413,7 +1436,7 @@ class AndroidController extends Controller
 
         $notificacao = new Notificacao();
 		
-	$em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 		
         $notificacao->setMensagemtipo($em->getReference('CamaleaoWebBimgoBundle:Mensagemtipo', $jsonObject->object->mensagemtipo->id));
         $notificacao->setDestinatariotipo($em->getReference('CamaleaoWebBimgoBundle:Destinatariotipo', $jsonObject->object->destinatariotipo->id));
@@ -1421,13 +1444,13 @@ class AndroidController extends Controller
         $notificacao->setInstituicao($em->getReference('CamaleaoWebBimgoBundle:Instituicao', $jsonObject->object->instituicao->id));
         $notificacao->setMensagem($jsonObject->object->mensagem);
 		
-	$now = new \DateTime();
-	$notificacao->setData($now);
+		$now = new \DateTime();
+		$notificacao->setData($now);
 
         $em->persist($notificacao);
         $em->flush();
 		
-	$serializer = $this->container->get('jms_serializer');
+		$serializer = $this->container->get('jms_serializer');
 
         $result = $serializer->serialize($notificacao, 'json');
 
@@ -1442,23 +1465,23 @@ class AndroidController extends Controller
      */
     public function newInstituicaoAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
-		
-	$serializer = $this->container->get('jms_serializer');
-	
-	$instituicao = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Instituicao', 'json');
-	
-	$now = new \DateTime();
-	$instituicao->setDatacriado($now);
-		
-	$em = $this->getDoctrine()->getManager();
+		$jsonData = json_encode($jsonObject->object);
+
+		$serializer = $this->container->get('jms_serializer');
+
+		$instituicao = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Instituicao', 'json');
+
+		$now = new \DateTime();
+		$instituicao->setDatacriado($now);
+
+		$em = $this->getDoctrine()->getManager();
 		
         $instituicao->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
-	$instituicao->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
+		$instituicao->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
 
-	$em->merge($instituicao->getEndereco());
+		$em->merge($instituicao->getEndereco());
         $instituicao = $em->merge($instituicao);
         $em->flush();
 
@@ -1477,20 +1500,20 @@ class AndroidController extends Controller
      */
     public function uptInstituicaoAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
-		
-	$serializer = $this->container->get('jms_serializer');
-	
-	$instituicao = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Instituicao', 'json');
-		
-	$em = $this->getDoctrine()->getManager();
-		
-        //$instituicao->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
-	//$instituicao->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
+		$jsonData = json_encode($jsonObject->object);
 
-	$em->merge($instituicao->getEndereco());
+		$serializer = $this->container->get('jms_serializer');
+
+		$instituicao = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Instituicao', 'json');
+
+		$em = $this->getDoctrine()->getManager();
+
+			//$instituicao->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
+		//$instituicao->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
+
+		$em->merge($instituicao->getEndereco());
         $em->merge($instituicao);
         $em->flush();
 
@@ -1509,23 +1532,23 @@ class AndroidController extends Controller
      */
     public function newProdutoAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
-	
-	$serializer = $this->container->get('jms_serializer');
-	
-	$produto = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Produto', 'json');
+		$jsonData = json_encode($jsonObject->object);
 
-	$now = new \DateTime();
-	$produto->setDatacriado($now);
-	
-	$em = $this->getDoctrine()->getManager();
+		$serializer = $this->container->get('jms_serializer');
 
-	/*$produto->setInstituicao($em->getReference('CamaleaoWebBimgoBundle:Instituicao', $jsonObject->object->instituicao->id));
-	$produto->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
-	$produto->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));*/
-	
+		$produto = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Produto', 'json');
+
+		$now = new \DateTime();
+		$produto->setDatacriado($now);
+
+		$em = $this->getDoctrine()->getManager();
+
+		/*$produto->setInstituicao($em->getReference('CamaleaoWebBimgoBundle:Instituicao', $jsonObject->object->instituicao->id));
+		$produto->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
+		$produto->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));*/
+
         $produto = $em->merge($produto);
         $em->flush();
 
@@ -1542,15 +1565,15 @@ class AndroidController extends Controller
      */
     public function uptProdutoAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
-	
-	$serializer = $this->container->get('jms_serializer');
-	
-	$produto = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Produto', 'json');
-	
-	$em = $this->getDoctrine()->getManager();
+		$jsonData = json_encode($jsonObject->object);
+
+		$serializer = $this->container->get('jms_serializer');
+
+		$produto = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Produto', 'json');
+
+		$em = $this->getDoctrine()->getManager();
 	
         $em->merge($produto);
         $em->flush();
@@ -1568,24 +1591,24 @@ class AndroidController extends Controller
      */
     public function newFuncionarioAction(Request $request)
     {
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
+		$jsonData = json_encode($jsonObject->object);
 
-	$serializer = $this->container->get('jms_serializer');
-	
-	$funcionario = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Funcionario', 'json');
+		$serializer = $this->container->get('jms_serializer');
 
-	$now = new \DateTime();
-	$funcionario->setDatacriacao($now);
+		$funcionario = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Funcionario', 'json');
 
-	$em = $this->getDoctrine()->getManager();
-	
-	//$funcionario->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
-	//$funcionario->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
-	$funcionario->getEndereco()->setCidade($em->getReference('CamaleaoWebBimgoBundle:Cidade', $jsonObject->object->endereco->cidade->id));	
-        
-	$em->persist($funcionario->getEndereco());
+		$now = new \DateTime();
+		$funcionario->setDatacriacao($now);
+
+		$em = $this->getDoctrine()->getManager();
+
+		//$funcionario->setCriadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->criadopor->id));
+		//$funcionario->setModificadopor($em->getReference('CamaleaoWebBimgoBundle:Usuario', $jsonObject->object->modificadopor->id));
+		$funcionario->getEndereco()->setCidade($em->getReference('CamaleaoWebBimgoBundle:Cidade', $jsonObject->object->endereco->cidade->id));
+
+		$em->persist($funcionario->getEndereco());
         $funcionario = $em->merge($funcionario);
         $em->flush();
 
@@ -1602,16 +1625,16 @@ class AndroidController extends Controller
      */
     public function uptFuncionarioAction(Request $request)
     {	
-	$jsonObject = json_decode($request->get('jsonObject'));
+		$jsonObject = json_decode($request->get('jsonObject'));
 
-	$jsonData = json_encode($jsonObject->object);
+		$jsonData = json_encode($jsonObject->object);
 
-	$serializer = $this->container->get('jms_serializer');
-	
-	$funcionario = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Funcionario', 'json');
+		$serializer = $this->container->get('jms_serializer');
 
-	$em = $this->getDoctrine()->getManager();
-	
+		$funcionario = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Funcionario', 'json');
+
+		$em = $this->getDoctrine()->getManager();
+
         $em->merge($funcionario->getEndereco());
         $em->merge($funcionario);
         $em->flush();

@@ -39,4 +39,21 @@ class InstituicaoRepository extends EntityRepository
 
         return $result;
     }
+
+    /**
+     * obter empresas de uma cidade
+     * @return mixed
+     */
+    public function findInstituicaoByCidade($cidade)
+    {
+        $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
+            ->createQueryBuilder('instituicao')
+            ->innerJoin('instituicao.endereco', 'endereco')
+            ->innerJoin('endereco.cidade', 'cidade')
+            ->where("cidade.id = $cidade")
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
 }
