@@ -1311,6 +1311,17 @@ class AndroidController extends Controller
         $em->persist($usuario);
         $em->flush();
 
+		$message = \Swift_Message::newInstance()
+			->setSubject('Bem vindo ao Bim-go!')
+			->setFrom('cpe.feroz@gmail.com')
+			->setTo($usuario->getEmail())
+			->setBody(
+				$this->renderView('CamaleaoWebBimgoBundle:usuario:emailnew.html.twig', array('usuario' => $usuario)),
+				"text/html"
+			)
+		;
+		$this->get('mailer')->send($message);
+
 		$serializer = $this->container->get('jms_serializer');
 
         $result = $serializer->serialize($usuario, 'json');
@@ -1694,6 +1705,33 @@ class AndroidController extends Controller
 
         return new JsonResponse(json_encode($result));
     }
+
+	/**
+	 * teste envio de email
+	 *
+	 * @Route("/testeenvioemail", name="android_testeenvioemail")
+	 * @Method("GET")
+	 */
+	public function testeEnvioEmailAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$usuario = $em->getRepository('CamaleaoWebBimgoBundle:Usuario')
+			->findOneBy(array('email' => 'pams.pedro@gmail.com'));
+
+		$message = \Swift_Message::newInstance()
+			->setSubject('Bem vindo ao Bim-go!')
+			->setFrom('cpe.feroz@gmail.com')
+			->setTo($usuario->getEmail())
+			->setBody(
+				$this->renderView('CamaleaoWebBimgoBundle:usuario:emailnew.html.twig', array('usuario' => $usuario)),
+				"text/html"
+			)
+		;
+		$this->get('mailer')->send($message);
+
+		return $this->render('CamaleaoWebBimgoBundle:usuario:emailnew.html.twig', array('usuario' => $usuario));
+	}
 
     /**
      * dispara o insert
