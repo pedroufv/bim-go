@@ -134,7 +134,7 @@ class Instituicao
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="instituicao")
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="instituicao", cascade={"all"})
      * @ORM\JoinTable(name="instituicao_contato",
      *   joinColumns={
      *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")

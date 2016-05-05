@@ -92,7 +92,7 @@ class Funcionario
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="funcionario")
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="funcionario", cascade={"all"})
      * @ORM\JoinTable(name="funcionario_contato",
      *   joinColumns={
      *     @ORM\JoinColumn(name="funcionario", referencedColumnName="id")

@@ -31,7 +31,7 @@ class Contato
     /**
      * @var \Contatotipo
      *
-     * @ORM\ManyToOne(targetEntity="Contatotipo")
+     * @ORM\ManyToOne(targetEntity="Contatotipo", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="contatoTipo", referencedColumnName="id")
      * })
