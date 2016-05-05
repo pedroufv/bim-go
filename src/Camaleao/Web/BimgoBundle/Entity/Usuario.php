@@ -61,7 +61,7 @@ class Usuario
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $ativo = 1;
+    private $ativo = 0;
 
     /**
      * @var \Papel

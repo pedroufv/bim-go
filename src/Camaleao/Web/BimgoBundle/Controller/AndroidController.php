@@ -1328,6 +1328,35 @@ class AndroidController extends Controller
 
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
+
+    /**
+     * ativa usuario
+     *
+     * @Route("/ativarusuario/{token}", name="android_ativarusuario")
+     * @Method("GET")
+     */
+    public function ativarUsuarioAction(Request $request) 
+	{
+		$token = $request->get('token');
+
+		$em = $this->getDoctrine()->getManager();
+
+        	$usuario = $em->getRepository('CamaleaoWebBimgoBundle:Usuario')
+			->findOneBy(array('token' => $token));
+
+		if($usuario) {
+			$usuario->setAtivo(1);
+			$em->persist($usuario);
+			$em->flush();
+
+			// checar se ja foi ativado
+			return new Response($usuario->getAtivo(), Response::HTTP_OK, array('content-type' => 'application/json'));			
+		} else {
+			return new Response($usuario->getAtivo(), Response::HTTP_OK, array('content-type' => 'application/json'));			
+		}
+
+	}
+
 	
     public function getSeguidas($id) {
 		$em = $this->getDoctrine()->getManager();
