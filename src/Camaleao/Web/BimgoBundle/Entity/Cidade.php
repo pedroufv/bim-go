@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cidade
  *
  * @ORM\Table(name="cidade", indexes={@ORM\Index(name="estado", columns={"estado"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\CidadeRepository")
  */
 class Cidade
 {

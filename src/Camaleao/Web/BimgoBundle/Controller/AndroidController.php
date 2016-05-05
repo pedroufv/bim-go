@@ -416,6 +416,27 @@ class AndroidController extends Controller
     }
 
     /**
+     *  select em estados
+     *
+     * @Route("/getestadosparticipantes", name="android_getestadosparticipantes")
+     * @Method({"GET", "POST"})
+     */
+    public function getEstadosParticipantesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $estados = $em->getRepository('CamaleaoWebBimgoBundle:Cidade')->findByEstadosParticipantes();
+
+        $array = array('estados' => $estados);
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($array, 'json');
+
+        return new JsonResponse($result);
+    }
+
+    /**
      *  select em notificacoes
      *
      * @Route("/getnotificacoeslazy", name="android_getnotificacoeslazy")
