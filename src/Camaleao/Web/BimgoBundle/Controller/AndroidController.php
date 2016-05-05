@@ -709,6 +709,27 @@ class AndroidController extends Controller
         return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
     }
 
+	/**
+	 *  select em produtos
+	 *
+	 * @Route("/getprodutosbycidade", name="android_getprodutosbycidade")
+	 * @Method({"GET", "POST"})
+	 */
+	public function getProdutosByCidadeAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findProdutoByCidade(1);
+
+		$array = array('produtos' => $produtos);
+
+		$serializer = $this->container->get('jms_serializer');
+
+		$result = $serializer->serialize($array, 'json');
+
+		return new Response($result, Response::HTTP_OK, array('content-type' => 'application/json'));
+	}
+
     /**
      *  select em produtos por faixa
      *
