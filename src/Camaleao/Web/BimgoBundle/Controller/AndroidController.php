@@ -1018,8 +1018,6 @@ class AndroidController extends Controller
 
 		$instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findInstituicaoByCidade();
 
-		dump($instituicoes); exit;
-
 		$array = array('instituicoes' => $instituicoes);
 
 		$serializer = $this->container->get('jms_serializer');
