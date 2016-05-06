@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CidadeController extends Controller
 {
     /**
-     * Lists cidades
+     * Lists Cidade
      *
      * @param Request $request
      * @return Response
@@ -50,7 +50,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Lists instituicoes
+     * Lists Instituicao
      *
      * @param Request $request
      * @return Response

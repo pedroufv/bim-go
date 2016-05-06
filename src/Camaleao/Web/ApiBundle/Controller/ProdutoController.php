@@ -10,19 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Cidade controller.
+ * Produto controller.
  *
- * @Route("/instituicoes")
+ * @Route("/produtos")
  */
-class InstituicaoController extends Controller
+class ProdutoController extends Controller
 {
     /**
-     * Lists instituicoes
+     * Lists produto
      *
      * @param Request $request
      * @return Response
      *
-     * @Route("", name="api_instituicoes_index")
+     * @Route("", name="api_produtos_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -30,40 +30,6 @@ class InstituicaoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-        $order = $request->get('order') ? $request->get('order') : array();
-        $limit = $request->get('limit') ? $request->get('limit') : null;
-        $offset = $request->get('offset') ? $request->get('offset') : null;
-
-        $list = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy($criteria, $order, $limit, $offset);
-
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
-
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
-    /**
-     * Lists produtos
-     *
-     * @param Request $request
-     * @return Response
-     *
-     * @Route("/{id}/produtos", name="api_instituicoes_produtos")
-     * @Method("GET")
-     */
-    public function produtosAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-        $criteria['instituicao'] = $request->get('id');
         $order = $request->get('order') ? $request->get('order') : array();
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
