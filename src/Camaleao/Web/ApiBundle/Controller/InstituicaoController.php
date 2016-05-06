@@ -12,17 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Cidade controller.
  *
- * @Route("/cidades")
+ * @Route("/instituicoes")
  */
-class CidadeController extends Controller
+class InstituicaoController extends Controller
 {
     /**
-     * Lists cidades
+     * Lists instituicoes
      *
      * @param Request $request
      * @return Response
      *
-     * @Route("", name="api_cidades_index")
+     * @Route("/", name="api_instituicoes_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -34,7 +34,7 @@ class CidadeController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoWebBimgoBundle:Cidade')->findBy($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -50,25 +50,25 @@ class CidadeController extends Controller
     }
 
     /**
-     * Lists instituicoes
+     * Lists produtos
      *
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/instituicoes", name="api_cidades_instituicoes")
+     * @Route("/{id}/produtos", name="api_instituicoes_produtos")
      * @Method("GET")
      */
-    public function instituicoesAction(Request $request)
+    public function produtosAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-        $criteria['cidade'] = $request->get('id');
+        $criteria['instituicao'] = $request->get('id');
         $order = $request->get('order') ? $request->get('order') : array();
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findInstituicaoByCidade($criteria['cidade'], $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);

@@ -32,8 +32,6 @@ class InstituicaoRepository extends EntityRepository
             ->createQueryBuilder('instituicao')
             ->innerJoin('instituicao.segmento', 'segmento')
             ->where("segmento.id = $id")
-            ->setFirstResult($index_inicial)
-            ->setMaxResults($quantidade)
             ->getQuery()
             ->getResult();
 
@@ -44,16 +42,26 @@ class InstituicaoRepository extends EntityRepository
      * obter empresas de uma cidade
      * @return mixed
      */
-    public function findInstituicaoByCidade($cidade)
+    public function findInstituicaoByCidade($cidade, $order = array(), $limit = null, $offset = null)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
             ->createQueryBuilder('instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
-            ->where("cidade.id = $cidade")
-            ->getQuery()
-            ->getResult();
+            ->where("cidade.id = $cidade");
 
-        return $result;
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
     }
 }
