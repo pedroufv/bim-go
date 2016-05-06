@@ -48,4 +48,37 @@ class ProdutoController extends Controller
 
         return $response;
     }
+
+    /**
+     * insert Produto
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("", name="api_produtos_new")
+     * @Method("POST")
+     */
+    public function newAction(Request $request)
+    {
+        $serializer = $this->container->get('jms_serializer');
+
+        $jsonObject = json_decode($request->get('jsonObject'));
+        $jsonData = json_encode($jsonObject->object);
+        $produto = $serializer->deserialize($jsonData, 'Camaleao\Web\BimgoBundle\Entity\Produto', 'json');
+
+        $now = new \DateTime();
+        $produto->setDatacriado($now);
+
+        $em = $this->getDoctrine()->getManager();
+        $produto = $em->merge($produto);
+        $em->flush();
+
+        $result = $serializer->serialize($produto, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }
