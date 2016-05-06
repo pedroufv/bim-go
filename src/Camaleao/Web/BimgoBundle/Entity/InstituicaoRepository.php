@@ -42,7 +42,7 @@ class InstituicaoRepository extends EntityRepository
      * obter empresas de uma cidade
      * @return mixed
      */
-    public function findInstituicaoByCidade($cidade, $order = array(), $limit = null, $offset = null)
+    public function findByCidade($cidade, $order = array(), $limit = null, $offset = null)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
             ->createQueryBuilder('instituicao')
