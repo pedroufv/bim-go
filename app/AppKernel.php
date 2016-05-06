@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Endroid\Bundle\GcmBundle\EndroidGcmBundle(),
             new Aws\Symfony\AwsBundle(),
+            new Camaleao\Web\ApiBundle\CamaleaoWebApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
