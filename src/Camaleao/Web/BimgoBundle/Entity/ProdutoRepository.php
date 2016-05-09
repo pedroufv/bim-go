@@ -10,7 +10,7 @@ class ProdutoRepository extends EntityRepository
      * Get Estados participantes
      * @return mixed
      */
-    public function findProdutoByCidade($cidade)
+    public function findByCidade($cidade)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Produto')
             ->createQueryBuilder('produto')
