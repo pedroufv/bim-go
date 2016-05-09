@@ -17,9 +17,13 @@ class ProdutoType extends AbstractType
         $builder
             ->add('nome')
             ->add('descricao')
+            ->add('ean')
             ->add('preco')
-            ->add('empresa')
-            ->add('promocao')
+            ->add('datacriado')
+            ->add('datamodificacao')
+            ->add('instituicao')
+            ->add('criadopor')
+            ->add('modificadopor')
         ;
     }
     
@@ -29,6 +33,8 @@ class ProdutoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
+            'cascade_validation' => false,
             'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Produto'
         ));
     }

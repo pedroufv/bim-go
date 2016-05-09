@@ -205,6 +205,9 @@ class Produto
      */
     public function setDatacriado($datacriado)
     {
+        if(!$datacriado)
+            $datacriado = new \DateTime();
+
         $this->datacriado = $datacriado;
 
         return $this;
