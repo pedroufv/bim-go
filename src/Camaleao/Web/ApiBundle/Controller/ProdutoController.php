@@ -62,15 +62,18 @@ class ProdutoController extends Controller
     public function newAction(Request $request)
     {
         $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+        $serializer = $this->container->get('jms_serializer');
 
         if(!$request->getContent()){
             $response->setStatusCode(400);
             return $response;
         }
 
-        $content = json_decode($request->getContent(), true);
-        $request->request->replace($content);
+        if($request->getContentType() == 'json') {
+            $response->headers->set('Content-Type', 'application/json');
+            $requestContent = json_decode($request->getContent(), true);
+            $request->request->replace($requestContent);
+        }
 
         $produto = new Produto();
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
@@ -78,6 +81,8 @@ class ProdutoController extends Controller
 
         if(!$form->isValid()){
             $response->setStatusCode(412);
+            $responseContent = $serializer->serialize($form->getErrors(), 'json');
+            $response->setContent($responseContent);
             return $response;
         }
 
@@ -85,9 +90,8 @@ class ProdutoController extends Controller
         $produto = $em->merge($produto);
         $em->flush();
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($produto, 'json');
-        $response->setContent($result);
+        $responseContent = $serializer->serialize($produto, 'json');
+        $response->setContent($responseContent);
         $response->setStatusCode(201);
 
         return $response;
