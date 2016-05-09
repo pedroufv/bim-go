@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ProdutoController extends Controller
 {
     /**
-     * Lists produto
+     * Lists all Produto entities
      *
      * @param Request $request
      * @return Response
@@ -50,28 +50,7 @@ class ProdutoController extends Controller
     }
 
     /**
-     * Get produto
-     *
-     * @param Produto $produto
-     * @return Response
-     *
-     * @Route("/{id}", name="api_produtos_show")
-     * @Method("GET")
-     */
-    public function showAction(Produto $produto)
-    {
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($produto, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-    }
-
-    /**
-     * insert Produto
+     * Creates a new Produto entity
      *
      * @param Request $request
      * @return Response
@@ -100,6 +79,66 @@ class ProdutoController extends Controller
         $form->handleRequest($request);
 
         if(!$form->isValid()){
+            $response->setStatusCode(412);
+            $responseContent = $serializer->serialize($form->getErrors(), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $produto = $em->merge($produto);
+        $em->flush();
+
+        $responseContent = $serializer->serialize($produto, 'json');
+        $response->setContent($responseContent);
+        $response->setStatusCode(201);
+        $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
+
+        return $response;
+    }
+
+    /**
+     * Get a Produto entity
+     *
+     * @param Produto $produto
+     * @return Response
+     *
+     * @Route("/{id}", name="api_produtos_show")
+     * @Method("GET")
+     */
+    public function showAction(Produto $produto)
+    {
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($produto, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Edit an existing Produto entity.
+     *
+     * @Route("/{id}", name="api_produtos_edit")
+     * @Method("PUT")
+     */
+    public function editAction(Request $request, Produto $produto)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+
+        if($request->getContentType() == 'json') {
+            $response->headers->set('Content-Type', 'application/json');
+            $requestContent = json_decode($request->getContent(), true);
+            $request->request->replace($requestContent);
+        }
+
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
             $response->setStatusCode(412);
             $responseContent = $serializer->serialize($form->getErrors(), 'json');
             $response->setContent($responseContent);
