@@ -6,7 +6,6 @@ use Camaleao\Web\BimgoBundle\Entity\Produto;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -42,6 +41,27 @@ class ProdutoController extends Controller
 
         $serializer = $this->container->get('jms_serializer');
         $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Get produto
+     *
+     * @param Produto $produto
+     * @return Response
+     *
+     * @Route("/{id}", name="api_produtos_show")
+     * @Method("GET")
+     */
+    public function showAction(Produto $produto)
+    {
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($produto, 'json');
 
         $response = new Response($result);
         $response->setStatusCode(200);
@@ -93,6 +113,7 @@ class ProdutoController extends Controller
         $responseContent = $serializer->serialize($produto, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(201);
+        $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
 
         return $response;
     }

@@ -34,7 +34,7 @@ class ProdutoType extends AbstractType
     {
         $resolver->setDefaults(array(
             'csrf_protection' => false,
-            'cascade_validation' => false,
+            'cascade_validation' => true,
             'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Produto'
         ));
     }
