@@ -43,7 +43,7 @@ class CidadeController extends Controller
         $result = $serializer->serialize($content, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
@@ -77,7 +77,7 @@ class CidadeController extends Controller
         $result = $serializer->serialize($content, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
@@ -111,7 +111,7 @@ class CidadeController extends Controller
         $result = $serializer->serialize($content, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
@@ -145,7 +145,7 @@ class CidadeController extends Controller
         $result = $serializer->serialize($content, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
