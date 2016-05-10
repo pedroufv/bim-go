@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,11 +20,9 @@ class ProdutoType extends AbstractType
             ->add('descricao')
             ->add('ean')
             ->add('preco')
-            ->add('datacriado')
-            ->add('datamodificacao')
-            ->add('instituicao')
-            ->add('criadopor')
-            ->add('modificadopor')
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'))
+            ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
         ;
     }
     
@@ -34,7 +33,6 @@ class ProdutoType extends AbstractType
     {
         $resolver->setDefaults(array(
             'csrf_protection' => false,
-            'cascade_validation' => true,
             'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Produto'
         ));
     }

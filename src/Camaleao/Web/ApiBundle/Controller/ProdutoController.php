@@ -43,7 +43,7 @@ class ProdutoController extends Controller
         $result = $serializer->serialize($content, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
@@ -64,7 +64,7 @@ class ProdutoController extends Controller
         $serializer = $this->container->get('jms_serializer');
 
         if(!$request->getContent()){
-            $response->setStatusCode(400);
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
             return $response;
         }
 
@@ -79,7 +79,7 @@ class ProdutoController extends Controller
         $form->handleRequest($request);
 
         if(!$form->isValid()){
-            $response->setStatusCode(412);
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
             $responseContent = $serializer->serialize($form->getErrors(), 'json');
             $response->setContent($responseContent);
             return $response;
@@ -91,7 +91,7 @@ class ProdutoController extends Controller
 
         $responseContent = $serializer->serialize($produto, 'json');
         $response->setContent($responseContent);
-        $response->setStatusCode(201);
+        $response->setStatusCode(Response::HTTP_CREATED);
         $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
 
         return $response;
@@ -112,18 +112,23 @@ class ProdutoController extends Controller
         $result = $serializer->serialize($produto, 'json');
 
         $response = new Response($result);
-        $response->setStatusCode(200);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
 
     /**
-     * Edit an existing Produto entity.
+     * * Edit an existing Produto entity.
+     *
+     * @param Request $request
+     * @param Produto $produto
+     * @return Response
      *
      * @Route("/{id}", name="api_produtos_edit")
      * @Method("PUT")
      */
+
     public function editAction(Request $request, Produto $produto)
     {
         $response = new Response();
@@ -135,12 +140,12 @@ class ProdutoController extends Controller
             $request->request->replace($requestContent);
         }
 
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto, array('method' => 'PUT'));
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
-            $response->setStatusCode(412);
-            $responseContent = $serializer->serialize($form->getErrors(), 'json');
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(true), 'json');
             $response->setContent($responseContent);
             return $response;
         }
@@ -151,8 +156,26 @@ class ProdutoController extends Controller
 
         $responseContent = $serializer->serialize($produto, 'json');
         $response->setContent($responseContent);
-        $response->setStatusCode(201);
+        $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
+
+        return $response;
+    }
+
+    /**
+     * Delete a Produto entity.
+     *
+     * @Route("/{id}", name="api_produtos_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Produto $produto)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($produto);
+        $em->flush();
+
+        $response = new Response();
+        $response->setStatusCode(Response::HTTP_NO_CONTENT);
 
         return $response;
     }
