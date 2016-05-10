@@ -1,7 +1,7 @@
 camaleao_web_api:
     resource: "@CamaleaoWebApiBundle/Controller/"
     type:     annotation
-    prefix:   /v1/api/
+    prefix:   /api/v1
 
 camaleao_web_bimgo_estado:
     resource: "@CamaleaoWebBimgoBundle/Controller/EstadoController.php"

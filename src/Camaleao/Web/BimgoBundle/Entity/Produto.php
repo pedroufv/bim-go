@@ -94,6 +94,15 @@ class Produto
     private $modificadopor;
 
 
+    /**
+     * Class constructor
+     *
+     * initialize datacriado with now
+     */
+    public function __construct()
+    {
+        $this->datacriado = new \DateTime();
+    }
 
     /**
      * Get id
@@ -205,9 +214,6 @@ class Produto
      */
     public function setDatacriado($datacriado)
     {
-        if(!$datacriado)
-            $datacriado = new \DateTime();
-
         $this->datacriado = $datacriado;
 
         return $this;

@@ -22,7 +22,7 @@ class ProdutoController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("", name="api_produtos_index")
+     * @Route(name="api_v1_produtos_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -55,7 +55,7 @@ class ProdutoController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("", name="api_produtos_new")
+     * @Route(name="api_v1_produtos_new")
      * @Method("POST")
      */
     public function newAction(Request $request)
@@ -70,8 +70,10 @@ class ProdutoController extends Controller
 
         if($request->getContentType() == 'json') {
             $response->headers->set('Content-Type', 'application/json');
-            $requestContent = json_decode($request->getContent(), true);
-            $request->request->replace($requestContent);
+            if($request->getContent()) {
+                $requestContent = json_decode($request->getContent(), true);
+                $request->request->replace($requestContent);
+            }
         }
 
         $produto = new Produto();
@@ -92,7 +94,7 @@ class ProdutoController extends Controller
         $responseContent = $serializer->serialize($produto, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
-        $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_produtos_show', array('id' => $produto->getId()), true));
 
         return $response;
     }
@@ -103,7 +105,7 @@ class ProdutoController extends Controller
      * @param Produto $produto
      * @return Response
      *
-     * @Route("/{id}", name="api_produtos_show")
+     * @Route("/{id}", name="api_v1_produtos_show")
      * @Method("GET")
      */
     public function showAction(Produto $produto)
@@ -125,7 +127,7 @@ class ProdutoController extends Controller
      * @param Produto $produto
      * @return Response
      *
-     * @Route("/{id}", name="api_produtos_edit")
+     * @Route("/{id}", name="api_v1_produtos_edit")
      * @Method("PUT")
      */
 
@@ -136,8 +138,10 @@ class ProdutoController extends Controller
 
         if($request->getContentType() == 'json') {
             $response->headers->set('Content-Type', 'application/json');
-            $requestContent = json_decode($request->getContent(), true);
-            $request->request->replace($requestContent);
+            if($request->getContent()) {
+                $requestContent = json_decode($request->getContent(), true);
+                $request->request->replace($requestContent);
+            }
         }
 
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto, array('method' => 'PUT'));
@@ -168,7 +172,7 @@ class ProdutoController extends Controller
      * @param Produto $produto
      * @return Response
      *
-     * @Route("/{id}", name="api_produtos_delete")
+     * @Route("/{id}", name="api_v1_produtos_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Produto $produto)
