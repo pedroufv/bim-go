@@ -22,7 +22,7 @@ class CidadeController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("", name="api_cidades_index")
+     * @Route(name="api_v1_cidades_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -55,7 +55,7 @@ class CidadeController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/instituicoes", name="api_cidades_instituicoes")
+     * @Route("/{id}/instituicoes", name="api_v1_cidades_instituicoes")
      * @Method("GET")
      */
     public function instituicoesAction(Request $request)
@@ -89,7 +89,7 @@ class CidadeController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/produtos", name="api_cidades_produtos")
+     * @Route("/{id}/produtos", name="api_v1_cidades_produtos")
      * @Method("GET")
      */
     public function produtosAction(Request $request)
@@ -123,7 +123,7 @@ class CidadeController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/promocoes", name="api_cidades_promocoes")
+     * @Route("/{id}/promocoes", name="api_v1_cidades_promocoes")
      * @Method("GET")
      */
     public function promocoessAction(Request $request)

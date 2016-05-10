@@ -161,7 +161,7 @@ class ProdutoController extends Controller
         $responseContent = $serializer->serialize($produto, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Location', $this->generateUrl('api_produtos_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_produtos_show', array('id' => $produto->getId()), true));
 
         return $response;
     }
