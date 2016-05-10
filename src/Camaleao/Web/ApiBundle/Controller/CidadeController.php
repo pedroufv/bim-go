@@ -84,7 +84,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Lists Produto
+     * Lists Produto entities in Cidade entity
      *
      * @param Request $request
      * @return Response
@@ -103,6 +103,40 @@ class CidadeController extends Controller
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
         $list = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findByCidade($criteria['cidade'], $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Lists Promocao entities in Cidade entity
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/{id}/promocoes", name="api_cidades_promocoes")
+     * @Method("GET")
+     */
+    public function promocoessAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['cidade'] = $request->get('id');
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findByCidade($criteria['cidade'], $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);

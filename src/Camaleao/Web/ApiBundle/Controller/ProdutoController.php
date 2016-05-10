@@ -165,6 +165,9 @@ class ProdutoController extends Controller
     /**
      * Delete a Produto entity.
      *
+     * @param Produto $produto
+     * @return Response
+     *
      * @Route("/{id}", name="api_produtos_delete")
      * @Method("DELETE")
      */
