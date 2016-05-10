@@ -5,7 +5,6 @@ namespace Camaleao\Web\ApiBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -68,7 +67,7 @@ class CidadeController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findByCidade($criteria['cidade'], $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -126,7 +125,7 @@ class CidadeController extends Controller
      * @Route("/{id}/promocoes", name="api_v1_cidades_promocoes")
      * @Method("GET")
      */
-    public function promocoessAction(Request $request)
+    public function promocoesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 

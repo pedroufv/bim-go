@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,8 +20,11 @@ class PromocaoType extends AbstractType
             ->add('descricao')
             ->add('datainicio', 'date')
             ->add('datafim', 'date')
-            ->add('empresa')
-            ->add('produto')
+            ->add('publicada')
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'))
+            ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('oferta')
         ;
     }
     
@@ -30,6 +34,7 @@ class PromocaoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
             'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Promocao'
         ));
     }

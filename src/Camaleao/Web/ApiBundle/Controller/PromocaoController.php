@@ -2,7 +2,7 @@
 
 namespace Camaleao\Web\ApiBundle\Controller;
 
-use Camaleao\Web\BimgoBundle\Entity\Produto;
+use Camaleao\Web\BimgoBundle\Entity\Promocao;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,19 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Produto controller.
+ * Promocao controller.
  *
- * @Route("/produtos")
+ * @Route("/promocoes")
  */
-class ProdutoController extends Controller
+class PromocaoController extends Controller
 {
     /**
-     * Lists all Produto entities
+     * Lists all Promocao entities
      *
      * @param Request $request
      * @return Response
      *
-     * @Route(name="api_v1_produtos_index")
+     * @Route(name="api_v1_promocoes_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -34,7 +34,7 @@ class ProdutoController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findBy($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findByPublicada($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -50,12 +50,12 @@ class ProdutoController extends Controller
     }
 
     /**
-     * Creates a new Produto entity
+     * Creates a new Promocao entity
      *
      * @param Request $request
      * @return Response
      *
-     * @Route(name="api_v1_produtos_new")
+     * @Route(name="api_v1_promocoes_new")
      * @Method("POST")
      */
     public function newAction(Request $request)
@@ -76,8 +76,8 @@ class ProdutoController extends Controller
             }
         }
 
-        $produto = new Produto();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
+        $promocao = new Promocao();
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao);
         $form->handleRequest($request);
 
         if(!$form->isValid()){
@@ -88,30 +88,30 @@ class ProdutoController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $produto = $em->merge($produto);
+        $promocao = $em->merge($promocao);
         $em->flush();
 
-        $responseContent = $serializer->serialize($produto, 'json');
+        $responseContent = $serializer->serialize($promocao, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
-        $response->headers->set('Location', $this->generateUrl('api_v1_produtos_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_promocoes_show', array('id' => $promocao->getId()), true));
 
         return $response;
     }
 
     /**
-     * Get a Produto entity
+     * Get a Promocao entity
      *
-     * @param Produto $produto
+     * @param Promocao $promocao
      * @return Response
      *
-     * @Route("/{id}", name="api_v1_produtos_show")
+     * @Route("/{id}", name="api_v1_promocoes_show")
      * @Method("GET")
      */
-    public function showAction(Produto $produto)
+    public function showAction(Promocao $promocao)
     {
         $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($produto, 'json');
+        $result = $serializer->serialize($promocao, 'json');
 
         $response = new Response($result);
         $response->setStatusCode(Response::HTTP_OK);
@@ -121,16 +121,16 @@ class ProdutoController extends Controller
     }
 
     /**
-     * Edit an existing Produto entity.
+     * Edit an existing Promocao entity.
      *
      * @param Request $request
-     * @param Produto $produto
+     * @param Promocao $promocao
      * @return Response
      *
-     * @Route("/{id}", name="api_v1_produtos_edit")
+     * @Route("/{id}", name="api_v1_promocoes_edit")
      * @Method("PUT")
      */
-    public function editAction(Request $request, Produto $produto)
+    public function editAction(Request $request, Promocao $promocao)
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
@@ -143,7 +143,7 @@ class ProdutoController extends Controller
             }
         }
 
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto, array('method' => 'PUT'));
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao, array('method' => 'PUT'));
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
@@ -154,30 +154,75 @@ class ProdutoController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $produto = $em->merge($produto);
+        $promocao = $em->merge($promocao);
         $em->flush();
 
-        $responseContent = $serializer->serialize($produto, 'json');
+        $responseContent = $serializer->serialize($promocao, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Location', $this->generateUrl('api_v1_produtos_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_promocoes_show', array('id' => $promocao->getId()), true));
 
         return $response;
     }
 
     /**
-     * Delete a Produto entity.
+     * Update an field from existing Promocao entity.
      *
-     * @param Produto $produto
+     * @param Request $request
+     * @param Promocao $promocao
      * @return Response
      *
-     * @Route("/{id}", name="api_v1_produtos_delete")
+     * @Route("/{id}", name="api_v1_promocoes_update")
+     * @Method("PATCH")
+     */
+    public function updateAction(Request $request, Promocao $promocao)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+
+        if($request->getContentType() == 'json') {
+            $response->headers->set('Content-Type', 'application/json');
+            if($request->getContent()) {
+                $requestContent = json_decode($request->getContent(), true);
+                $request->request->replace($requestContent);
+            }
+        }
+
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao, array('method' => 'PATCH'));
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(true), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $promocao = $em->merge($promocao);
+        $em->flush();
+
+        $responseContent = $serializer->serialize($promocao, 'json');
+        $response->setContent($responseContent);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Location', $this->generateUrl('api_v1_promocoes_show', array('id' => $promocao->getId()), true));
+
+        return $response;
+    }
+
+    /**
+     * Delete a Promocao entity.
+     *
+     * @param Promocao $promocao
+     * @return Response
+     *
+     * @Route("/{id}", name="api_v1_promocoes_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Produto $produto)
+    public function deleteAction(Promocao $promocao)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($produto);
+        $em->remove($promocao);
         $em->flush();
 
         $response = new Response();

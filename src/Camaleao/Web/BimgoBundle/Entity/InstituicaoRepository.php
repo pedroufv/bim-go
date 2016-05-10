@@ -23,32 +23,30 @@ class InstituicaoRepository extends EntityRepository
     }
 
     /**
-     * obter empresas de determinado segmento
+     * obter empresas de uma cidade
      * @return mixed
      */
-    public function getInstituicaoBySegmento($id)
+    public function findByCidade($criteria, $order = array(), $limit = null, $offset = null)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
             ->createQueryBuilder('instituicao')
             ->innerJoin('instituicao.segmento', 'segmento')
-            ->where("segmento.id = $id")
-            ->getQuery()
-            ->getResult();
-
-        return $result;
-    }
-
-    /**
-     * obter empresas de uma cidade
-     * @return mixed
-     */
-    public function findByCidade($cidade, $order = array(), $limit = null, $offset = null)
-    {
-        $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Instituicao')
-            ->createQueryBuilder('instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
-            ->where("cidade.id = $cidade");
+            ->where("cidade.id = ".$criteria["cidade"]);
+
+        unset($criteria['cidade']);
+
+        if($criteria['segmento']) {
+            $result->andWhere("segmento.id in (".$criteria['segmento'].")");
+            unset($criteria['segmento']);
+        }
+
+        if(count($criteria) > 0) {
+            foreach($criteria as $key => $value) {
+                $result->andWhere("instituicao.$key = $value");
+            }
+        }
 
         if(count($order) > 0) {
             foreach($order as $key => $value){

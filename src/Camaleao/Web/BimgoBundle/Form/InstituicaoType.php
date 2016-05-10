@@ -21,10 +21,23 @@ class InstituicaoType extends AbstractType
             ->add('descricao', 'textarea', array('label' => 'Descrição'))
             ->add('cnpj')
             ->add('inscricaoestadual', 'text', array('label' => 'Inscrição Estadual'))
-            ->add('telefone')
-            //->add('criadoPor', new UsuarioType())
-            ->add('endereco', new EnderecoType(), array(
-                'label_attr'    => array('class' => 'fieldset')))
+            ->add('site')
+            ->add('grupo')
+            ->add('ativo')
+            ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('endereco', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Endereco'))
+            ->add('vinculada', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'))
+            ->add('contato', EntityType::class, array(
+                'class'         => 'Camaleao\Web\BimgoBundle\Entity\Contato',
+                'label'         => 'Contato(s)',
+                'multiple'      => true,
+                'expanded'      => true,
+                'label_attr'    => array('class' => 'fieldset checkbox-inline'),
+                'choice_label'  => function ($contato) {
+                    return $contato->getContato();
+                }
+            ))
             ->add('segmento', EntityType::class, array(
                 'class'         => 'Camaleao\Web\BimgoBundle\Entity\Segmento',
                 'label'         => 'Segmento(s)',
@@ -44,7 +57,8 @@ class InstituicaoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Empresa'
+            'csrf_protection' => false,
+            'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'
         ));
     }
 }
