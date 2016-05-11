@@ -38,14 +38,14 @@ class Promocao
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataInicio", type="date", nullable=false)
+     * @ORM\Column(name="dataInicio", type="datetime", nullable=false)
      */
     private $datainicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataFim", type="date", nullable=false)
+     * @ORM\Column(name="dataFim", type="datetime", nullable=false)
      */
     private $datafim;
 
@@ -107,14 +107,15 @@ class Promocao
      */
     private $oferta;
 
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->datacriado = new \DateTime();
         $this->oferta = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id

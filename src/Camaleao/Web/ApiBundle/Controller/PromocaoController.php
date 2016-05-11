@@ -69,11 +69,13 @@ class PromocaoController extends Controller
         }
 
         if($request->getContentType() == 'json') {
-            $response->headers->set('Content-Type', 'application/json');
-            if($request->getContent()) {
-                $requestContent = json_decode($request->getContent(), true);
-                $request->request->replace($requestContent);
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
             }
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
         }
 
         $promocao = new Promocao();
@@ -136,11 +138,13 @@ class PromocaoController extends Controller
         $serializer = $this->container->get('jms_serializer');
 
         if($request->getContentType() == 'json') {
-            $response->headers->set('Content-Type', 'application/json');
-            if($request->getContent()) {
-                $requestContent = json_decode($request->getContent(), true);
-                $request->request->replace($requestContent);
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
             }
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
         }
 
         $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao, array('method' => $request->getMethod()));

@@ -18,8 +18,16 @@ class PromocaoType extends AbstractType
         $builder
             ->add('nome')
             ->add('descricao')
-            ->add('datainicio', 'date')
-            ->add('datafim', 'date')
+            ->add('datainicio', 'datetime', array(
+                    'widget' => 'single_text',
+                    'input' => 'datetime'
+                )
+            )
+            ->add('datafim', 'datetime', array(
+                    'widget' => 'single_text',
+                    'input' => 'datetime'
+                )
+            )
             ->add('publicada')
             ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'))
             ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))

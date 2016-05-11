@@ -69,11 +69,13 @@ class ProdutoController extends Controller
         }
 
         if($request->getContentType() == 'json') {
-            $response->headers->set('Content-Type', 'application/json');
-            if($request->getContent()) {
-                $requestContent = json_decode($request->getContent(), true);
-                $request->request->replace($requestContent);
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
             }
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
         }
 
         $produto = new Produto();
@@ -128,7 +130,7 @@ class ProdutoController extends Controller
      * @return Response
      *
      * @Route("/{id}", name="api_v1_produtos_edit")
-     * @Method("PUT")
+     * @Method({"PATCH", "PUT"})
      */
     public function editAction(Request $request, Produto $produto)
     {
@@ -136,14 +138,16 @@ class ProdutoController extends Controller
         $serializer = $this->container->get('jms_serializer');
 
         if($request->getContentType() == 'json') {
-            $response->headers->set('Content-Type', 'application/json');
-            if($request->getContent()) {
-                $requestContent = json_decode($request->getContent(), true);
-                $request->request->replace($requestContent);
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
             }
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
         }
 
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto, array('method' => 'PUT'));
+        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto, array('method' => $request->getMethod()));
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
