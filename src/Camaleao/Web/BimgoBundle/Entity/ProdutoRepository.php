@@ -14,7 +14,6 @@ class ProdutoRepository extends EntityRepository
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:Produto')
             ->createQueryBuilder('produto')
-            ->select('produto.id, produto.nome, produto.preco, produto.ean, produto.datacriado, produto.datamodificacao')
             ->innerJoin('produto.instituicao', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
