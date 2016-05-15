@@ -2,6 +2,7 @@
 
 namespace Camaleao\Web\BimgoBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,10 +18,11 @@ class FuncionarioType extends AbstractType
         $builder
             ->add('nome')
             ->add('cpf')
-            ->add('telefone')
-            ->add('usuario')
-            ->add('empresa')
-            ->add('endereco')
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Instituicao'))
+            ->add('endereco', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Endereco'))
+            ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Web\BimgoBundle\Entity\Usuario'))
+            ->add('contato')
         ;
     }
     
@@ -30,6 +32,7 @@ class FuncionarioType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
             'data_class' => 'Camaleao\Web\BimgoBundle\Entity\Funcionario'
         ));
     }
