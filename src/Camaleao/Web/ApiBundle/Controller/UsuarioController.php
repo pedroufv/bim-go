@@ -189,4 +189,74 @@ class UsuarioController extends Controller
 
         return $response;
     }
+
+    /**
+     * List Instituicao entities that user is following
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/{id}/instituicoes-seguidas", name="api_v1_usuarios_instituicoes_seguidas")
+     * @Method("GET")
+     */
+    public function instituicoesSeguidasAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['usuario'] = $request->get('id');
+        $criteria['seguindo'] = true;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')->findBy($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * List Instituicao entities that user is admin
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/{id}/instituicoes-administradas", name="api_v1_usuarios_instituicoes_administradas")
+     * @Method("GET")
+     */
+    public function instituicoesAdministradasAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['usuario'] = $request->get('id');
+        $criteria['papel'] = 1;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }

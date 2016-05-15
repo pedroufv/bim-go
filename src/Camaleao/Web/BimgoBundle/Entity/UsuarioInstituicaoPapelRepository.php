@@ -103,4 +103,30 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
 
         return $result;
     }
+
+    /**
+     * Get not equal papel
+     * @return mixed
+     */
+    public function findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset)
+    {
+        $result = $this->getEntityManager()->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')
+            ->createQueryBuilder('uip')
+            ->where("uip.usuario = ".$criteria['usuario'])
+            ->andWhere("uip.papel != ".$criteria['papel']);
+
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+    }
 }
