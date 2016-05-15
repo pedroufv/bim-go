@@ -226,6 +226,42 @@ class UsuarioController extends Controller
     }
 
     /**
+     * List Instituicao entities that user is following in one city
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/{usuario}/instituicoes-seguidas/cidades/{cidade}", name="api_v1_usuarios_instituicoes_seguidas_cidade")
+     * @Method("GET")
+     */
+    public function instituicoesSeguidasCidadeAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['usuario'] = $request->get('usuario');
+        $criteria['cidade'] = $request->get('cidade');
+        $criteria['seguindo'] = true;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoWebBimgoBundle:UsuarioInstituicaoPapel')->findByCidade($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
      * List Instituicao entities that user is admin
      *
      * @param Request $request
