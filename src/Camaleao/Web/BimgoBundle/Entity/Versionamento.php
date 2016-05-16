@@ -5,12 +5,12 @@ namespace Camaleao\Web\BimgoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Android
+ * Versionamento
  *
- * @ORM\Table(name="android", uniqueConstraints={@ORM\UniqueConstraint(name="versao", columns={"versao"})})
+ * @ORM\Table(name="versionamento", uniqueConstraints={@ORM\UniqueConstraint(name="versao", columns={"versao"})})
  * @ORM\Entity
  */
-class Android
+class Versionamento
 {
     /**
      * @var integer
@@ -27,6 +27,13 @@ class Android
      * @ORM\Column(name="versao", type="string", length=4, nullable=false)
      */
     private $versao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plataforma", type="string", length=7, nullable=false)
+     */
+    private $plataforma;
 
     /**
      * @var \DateTime
