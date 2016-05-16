@@ -19,10 +19,6 @@ camaleao_web_bimgo_endereco:
     resource: "@CamaleaoWebBimgoBundle/Controller/EnderecoController.php"
     type:     annotation
 
-camaleao_web_bimgo_cliente:
-    resource: "@CamaleaoWebBimgoBundle/Controller/ClienteController.php"
-    type:     annotation
-
 camaleao_web_bimgo_cidade:
     resource: "@CamaleaoWebBimgoBundle/Controller/CidadeController.php"
     type:     annotation
@@ -45,10 +41,6 @@ camaleao_web_bimgo_papel:
 
 camaleao_web_bimgo_promocao:
     resource: "@CamaleaoWebBimgoBundle/Controller/PromocaoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_empresa:
-    resource: "@CamaleaoWebBimgoBundle/Controller/EmpresaController.php"
     type:     annotation
 
 camaleao_web_bimgo_segmento:

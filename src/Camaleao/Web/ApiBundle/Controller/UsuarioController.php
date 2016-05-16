@@ -251,6 +251,16 @@ class UsuarioController extends Controller
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
 
+        $array = array();
+        $formato = $request->get('formato');
+        if(isset($formato) AND $formato == 'listids') {
+            foreach($list as $item) {
+                array_push($array, $item->getInstituicao()->getId());
+            }
+
+            $content['results'] = $array;
+        }
+
         $serializer = $this->container->get('jms_serializer');
         $result = $serializer->serialize($content, 'json');
 

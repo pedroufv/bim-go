@@ -37,7 +37,7 @@ class InstituicaoRepository extends EntityRepository
 
         unset($criteria['cidade']);
 
-        if($criteria['segmento']) {
+        if(isset($criteria['segmento'])) {
             $result->andWhere("segmento.id in (".$criteria['segmento'].")");
             unset($criteria['segmento']);
         }
