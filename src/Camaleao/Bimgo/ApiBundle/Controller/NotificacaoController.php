@@ -62,6 +62,7 @@ class NotificacaoController extends Controller
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
+        $options = array();
 
         if(!$request->getContent()){
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -74,12 +75,13 @@ class NotificacaoController extends Controller
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
                 return $response;
             }
+            $options = array('csrf_protection' => false);
             $response->headers->set('Content-Type', 'application/json');
             $request->request->replace($requestContent);
         }
 
         $notificacao = new Notificacao();
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao, $options);
         $form->handleRequest($request);
 
         if(!$form->isValid()){
@@ -136,6 +138,7 @@ class NotificacaoController extends Controller
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
+        $options = array();
 
         if($request->getContentType() == 'json') {
             $requestContent = json_decode($request->getContent(), true);
@@ -143,11 +146,13 @@ class NotificacaoController extends Controller
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
                 return $response;
             }
+            $options = array('csrf_protection' => false);
             $response->headers->set('Content-Type', 'application/json');
             $request->request->replace($requestContent);
         }
 
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao, array('method' => $request->getMethod()));
+        $options['method'] = $request->getMethod();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao, $options);
         $form->handleRequest($request);
 
         if (!$form->isValid()) {

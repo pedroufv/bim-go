@@ -32,7 +32,6 @@ class FuncionarioType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'csrf_protection' => false,
             'data_class' => 'Camaleao\Bimgo\CoreBundle\Entity\Funcionario'
         ));
     }

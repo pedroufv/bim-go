@@ -62,6 +62,7 @@ class InstituicaoController extends Controller
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
+        $options = array();
 
         if(!$request->getContent()){
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
@@ -74,12 +75,13 @@ class InstituicaoController extends Controller
                 $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
                 return $response;
             }
+            $options = array('csrf_protection' => false);
             $response->headers->set('Content-Type', 'application/json');
             $request->request->replace($requestContent);
         }
 
         $instituicao = new Instituicao();
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao, $options);
         $form->handleRequest($request);
 
         if(!$form->isValid()){
@@ -137,6 +139,7 @@ class InstituicaoController extends Controller
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
+        $options = array();
 
         if($request->getContentType() == 'json') {
             $requestContent = json_decode($request->getContent(), true);
@@ -144,11 +147,13 @@ class InstituicaoController extends Controller
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
                 return $response;
             }
+            $options = array('csrf_protection' => false);
             $response->headers->set('Content-Type', 'application/json');
             $request->request->replace($requestContent);
         }
 
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao, array('method' => $request->getMethod()));
+        $options['method'] = $request->getMethod();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao, $options);
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
