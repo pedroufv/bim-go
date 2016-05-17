@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Web\BimgoBundle\Entity\Promocao;
 use Camaleao\Web\BimgoBundle\Form\PromocaoType;
 
@@ -140,5 +141,23 @@ class PromocaoController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Lists recent Promocao entities.
+     *
+     * @Route(name="promocao_recentsection")
+     * @Method("GET")
+     * @Template()
+     */
+    public function recentSectionAction($max = 4)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findBy(array('publicada' => true), array('id' => 'DESC'), $max);
+
+        return $this->render('CamaleaoWebBimgoBundle:promocao:recentSection.html.twig', array(
+            'promocoes' => $promocoes,
+        ));
     }
 }

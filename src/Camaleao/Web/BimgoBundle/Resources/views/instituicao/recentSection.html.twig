@@ -1,0 +1,14 @@
+{% if instituicoes %}
+    <div class="section no-pad-bot blue-grey lighten-5">
+        <div class="container">
+            <div class="row">
+                {% for instituicao in instituicoes %}
+                    <div class="col s12 m3">
+                        <h5 class="center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">{{ instituicao.nomefantasia }}</a></h5>
+                        <p class="light center"><a class="blue-grey-text darken-4" href="{{ path('instituicao_show', { 'id': instituicao.id }) }}">{{ instituicao.descricao }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

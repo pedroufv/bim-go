@@ -11,7 +11,7 @@ camaleao_web_bimgo_cidade:
     resource: "@CamaleaoWebBimgoBundle/Controller/CidadeController.php"
     type:     annotation
 
-camaleao_web_bimgo:
+camaleao_web_bimgo_default:
     resource: "@CamaleaoWebBimgoBundle/Controller/DefaultController.php"
     type:     annotation
 

@@ -1,0 +1,15 @@
+{% if promocoes %}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                {% for promocao in promocoes %}
+                    <div class="col s12 m3">
+                        <h5 class="center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.nome }}</a></h5>
+                        <p class="light center"><a class="black-text" href="{{ path('promocao_show', { 'id': promocao.id }) }}">{{ promocao.descricao }}</a></p>
+                        <span class="right"><a class="black-text" href="{{ path('instituicao_show', { 'id': promocao.instituicao.id }) }}">{{ promocao.instituicao.nomefantasia }}</a></span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -48,12 +48,7 @@
                         </p>
                     </div>
                     <div class="col l3 s12">
-                        <h5 class="white-text">Novas Empresas</h5>
-                        <ul>
-                            {% for empresa in empresas %}
-                                <li class="white-text"><a class="white-text" href="{{ path('instituicao_show', { 'id': empresa.id }) }}">{{ empresa.nomefantasia }}</a></li>
-                            {% endfor %}
-                        </ul>
+                        {{ render(controller('CamaleaoWebBimgoBundle:Instituicao:recentList', { 'max': 4 } )) }}
                     </div>
                     <div class="col l3 s12">
                         <h5 class="white-text">Social</h5>

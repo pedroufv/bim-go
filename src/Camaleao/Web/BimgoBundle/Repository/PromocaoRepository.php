@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Web\BimgoBundle\Entity;
+namespace Camaleao\Web\BimgoBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

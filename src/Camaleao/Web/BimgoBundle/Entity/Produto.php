@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produto
  *
  * @ORM\Table(name="produto", indexes={@ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
- * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Entity\ProdutoRepository")
+ * @ORM\Entity(repositoryClass="Camaleao\Web\BimgoBundle\Repository\ProdutoRepository")
  */
 class Produto
 {

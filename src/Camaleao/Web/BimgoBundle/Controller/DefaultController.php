@@ -16,7 +16,7 @@ class DefaultController extends Controller
     /**
      * homepage
      *
-     * @Route("/", name="default_index")
+     * @Route(name="default_index")
      * @Method("GET")
      */
     public function indexAction()

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Web\BimgoBundle\Entity\Instituicao;
 use Camaleao\Web\BimgoBundle\Form\InstituicaoType;
 
@@ -190,6 +191,42 @@ class InstituicaoController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Lists recent Instituicao entities.
+     *
+     * @Route(name="instituicao_recent_list")
+     * @Method("GET")
+     * @Template()
+     */
+    public function recentListAction($max = 4)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
+
+        return $this->render('CamaleaoWebBimgoBundle:instituicao:recentList.html.twig', array(
+            'instituicoes' => $instituicoes,
+        ));
+    }
+
+    /**
+     * Lists recent Instituicao entities.
+     *
+     * @Route(name="instituicao_recent_section")
+     * @Method("GET")
+     * @Template()
+     */
+    public function recentSectionAction($max = 4)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
+
+        return $this->render('CamaleaoWebBimgoBundle:instituicao:recentSection.html.twig', array(
+            'instituicoes' => $instituicoes,
+        ));
     }
 
     /**

@@ -5,18 +5,6 @@ services:
       tags:
         - { name: twig.extension }
 
-  camaleao_web_bimgo.empresatwigextensio:
-    class: Camaleao\Web\BimgoBundle\Twig\Extension\InstituicaoExtension
-    arguments: ["@doctrine.orm.entity_manager"]
-    tags:
-      - { name: twig.extension }
-
-  camaleao_web_bimgo.promocaotwigextensio:
-      class: Camaleao\Web\BimgoBundle\Twig\Extension\PromocaoExtension
-      arguments: ["@doctrine.orm.entity_manager"]
-      tags:
-        - { name: twig.extension }
-
   camaleao_web_bimgo.menu.voter.request:
       class: Camaleao\Web\BimgoBundle\Menu\RequestVoter
       arguments:
