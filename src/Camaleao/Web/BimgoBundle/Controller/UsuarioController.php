@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Usuario;
-use Camaleao\Web\BimgoBundle\Form\UsuarioType;
+use Camaleao\Bimgo\CoreBundle\Form\UsuarioType;
 
 /**
  * Usuario controller.
@@ -46,7 +46,7 @@ class UsuarioController extends Controller
     public function newAction(Request $request)
     {
         $usuario = new Usuario();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\UsuarioType', $usuario);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,7 +88,7 @@ class UsuarioController extends Controller
     public function editAction(Request $request, Usuario $usuario)
     {
         $deleteForm = $this->createDeleteForm($usuario);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\UsuarioType', $usuario);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $usuario);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

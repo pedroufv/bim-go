@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Papel;
-use Camaleao\Web\BimgoBundle\Form\PapelType;
+use Camaleao\Bimgo\CoreBundle\Form\PapelType;
 
 /**
  * Papel controller.
@@ -46,7 +46,7 @@ class PapelController extends Controller
     public function newAction(Request $request)
     {
         $papel = new Papel();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PapelType', $papel);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PapelType', $papel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,7 +88,7 @@ class PapelController extends Controller
     public function editAction(Request $request, Papel $papel)
     {
         $deleteForm = $this->createDeleteForm($papel);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\PapelType', $papel);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PapelType', $papel);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

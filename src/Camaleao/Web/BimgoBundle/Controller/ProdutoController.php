@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Produto;
-use Camaleao\Web\BimgoBundle\Form\ProdutoType;
+use Camaleao\Bimgo\CoreBundle\Form\ProdutoType;
 
 /**
  * Produto controller.
@@ -26,7 +26,7 @@ class ProdutoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $produtos = $em->getRepository('CamaleaoWebBimgoBundle:Produto')->findAll();
+        $produtos = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findAll();
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -46,7 +46,7 @@ class ProdutoController extends Controller
     public function newAction(Request $request)
     {
         $produto = new Produto();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\ProdutoType', $produto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,7 +88,7 @@ class ProdutoController extends Controller
     public function editAction(Request $request, Produto $produto)
     {
         $deleteForm = $this->createDeleteForm($produto);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\ProdutoType', $produto);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\ProdutoType', $produto);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

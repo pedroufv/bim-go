@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Estado;
-use Camaleao\Web\BimgoBundle\Form\EstadoType;
+use Camaleao\Bimgo\CoreBundle\Form\EstadoType;
 
 /**
  * Estado controller.
@@ -46,7 +46,7 @@ class EstadoController extends Controller
     public function newAction(Request $request)
     {
         $estado = new Estado();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\EstadoType', $estado);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,7 +88,7 @@ class EstadoController extends Controller
     public function editAction(Request $request, Estado $estado)
     {
         $deleteForm = $this->createDeleteForm($estado);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\EstadoType', $estado);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\EstadoType', $estado);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

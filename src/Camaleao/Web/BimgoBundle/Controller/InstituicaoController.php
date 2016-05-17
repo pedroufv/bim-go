@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Web\BimgoBundle\Entity\Instituicao;
-use Camaleao\Web\BimgoBundle\Form\InstituicaoType;
+use Camaleao\Bimgo\CoreBundle\Form\InstituicaoType;
 
 /**
  * Instituicao controller.
@@ -28,7 +28,7 @@ class InstituicaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findAll();
+        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findAll();
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -51,7 +51,7 @@ class InstituicaoController extends Controller
 
         $segmentoId = $request->attributes->get('id');
 
-        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->getInstituicaoBySegmento($segmentoId);
+        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getInstituicaoBySegmento($segmentoId);
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -92,7 +92,7 @@ class InstituicaoController extends Controller
     public function newAction(Request $request)
     {
         $instituicao = new Instituicao();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\InstituicaoType', $instituicao);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -139,7 +139,7 @@ class InstituicaoController extends Controller
     public function editAction(Request $request, Instituicao $instituicao)
     {
         $deleteForm = $this->createDeleteForm($instituicao);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\InstituicaoType', $instituicao);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\InstituicaoType', $instituicao);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -204,7 +204,7 @@ class InstituicaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
+        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
 
         return $this->render('CamaleaoWebBimgoBundle:instituicao:recentList.html.twig', array(
             'instituicoes' => $instituicoes,
@@ -222,7 +222,7 @@ class InstituicaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $instituicoes = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
+        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findBy(array('grupo' => false, 'ativo' => true), array('id' => 'DESC'), $max);
 
         return $this->render('CamaleaoWebBimgoBundle:instituicao:recentSection.html.twig', array(
             'instituicoes' => $instituicoes,
@@ -239,7 +239,7 @@ class InstituicaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $instituicaos = $em->getRepository('CamaleaoWebBimgoBundle:Instituicao')->getMapData();
+        $instituicaos = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getMapData();
 
         $serializer = $this->container->get('jms_serializer');
 

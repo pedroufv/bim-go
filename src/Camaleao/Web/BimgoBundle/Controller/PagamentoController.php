@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Pagamento;
-use Camaleao\Web\BimgoBundle\Form\PagamentoType;
+use Camaleao\Bimgo\CoreBundle\Form\PagamentoType;
 
 /**
  * Pagamento controller.
@@ -26,7 +26,7 @@ class PagamentoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $pagamentos = $em->getRepository('CamaleaoWebBimgoBundle:Pagamento')->findAll();
+        $pagamentos = $em->getRepository('CamaleaoBimgoCoreBundle:Pagamento')->findAll();
 
         return $this->render('CamaleaoWebBimgoBundle:pagamento:index.html.twig', array(
             'pagamentos' => $pagamentos,
@@ -42,7 +42,7 @@ class PagamentoController extends Controller
     public function newAction(Request $request)
     {
         $pagamento = new Pagamento();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PagamentoType', $pagamento);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PagamentoType', $pagamento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +84,7 @@ class PagamentoController extends Controller
     public function editAction(Request $request, Pagamento $pagamento)
     {
         $deleteForm = $this->createDeleteForm($pagamento);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\PagamentoType', $pagamento);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PagamentoType', $pagamento);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Segmento;
-use Camaleao\Web\BimgoBundle\Form\SegmentoType;
+use Camaleao\Bimgo\CoreBundle\Form\SegmentoType;
 
 /**
  * Segmento controller.
@@ -26,7 +26,7 @@ class SegmentoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $segmentos = $em->getRepository('CamaleaoWebBimgoBundle:Segmento')->findAll();
+        $segmentos = $em->getRepository('CamaleaoBimgoCoreBundle:Segmento')->findAll();
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -67,7 +67,7 @@ class SegmentoController extends Controller
     public function newAction(Request $request)
     {
         $segmento = new Segmento();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\SegmentoType', $segmento);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\SegmentoType', $segmento);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -109,7 +109,7 @@ class SegmentoController extends Controller
     public function editAction(Request $request, Segmento $segmento)
     {
         $deleteForm = $this->createDeleteForm($segmento);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\SegmentoType', $segmento);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\SegmentoType', $segmento);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

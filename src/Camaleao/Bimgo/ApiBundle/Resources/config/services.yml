@@ -1,0 +1,4 @@
+services:
+#    camaleao_bimgo_api.example:
+#        class: Camaleao\Bimgo\ApiBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

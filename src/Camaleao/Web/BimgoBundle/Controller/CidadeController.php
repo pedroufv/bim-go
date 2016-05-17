@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Cidade;
-use Camaleao\Web\BimgoBundle\Form\CidadeType;
+use Camaleao\Bimgo\CoreBundle\Form\CidadeType;
 
 /**
  * Cidade controller.
@@ -26,7 +26,7 @@ class CidadeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $cidades = $em->getRepository('CamaleaoWebBimgoBundle:Cidade')->findAll();
+        $cidades = $em->getRepository('CamaleaoBimgoCoreBundle:Cidade')->findAll();
 
         return $this->render('CamaleaoWebBimgoBundle:cidade:index.html.twig', array(
             'cidades' => $cidades,
@@ -42,7 +42,7 @@ class CidadeController extends Controller
     public function newAction(Request $request)
     {
         $cidade = new Cidade();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\CidadeType', $cidade);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\CidadeType', $cidade);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +84,7 @@ class CidadeController extends Controller
     public function editAction(Request $request, Cidade $cidade)
     {
         $deleteForm = $this->createDeleteForm($cidade);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\CidadeType', $cidade);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\CidadeType', $cidade);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

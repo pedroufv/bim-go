@@ -1,5 +1,5 @@
-camaleao_web_api:
-    resource: "@CamaleaoWebApiBundle/Controller/"
+camaleao_bimgo_api:
+    resource: "@CamaleaoBimgoApiBundle/Controller/"
     type:     annotation
     prefix:   /api/v1
 

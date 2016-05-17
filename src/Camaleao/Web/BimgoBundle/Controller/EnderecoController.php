@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Endereco;
-use Camaleao\Web\BimgoBundle\Form\EnderecoType;
+use Camaleao\Bimgo\CoreBundle\Form\EnderecoType;
 
 /**
  * Endereco controller.
@@ -26,7 +26,7 @@ class EnderecoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $enderecos = $em->getRepository('CamaleaoWebBimgoBundle:Endereco')->findAll();
+        $enderecos = $em->getRepository('CamaleaoBimgoCoreBundle:Endereco')->findAll();
 
         return $this->render('CamaleaoWebBimgoBundle:endereco:index.html.twig', array(
             'enderecos' => $enderecos,
@@ -42,7 +42,7 @@ class EnderecoController extends Controller
     public function newAction(Request $request)
     {
         $endereco = new Endereco();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\EnderecoType', $endereco);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\EnderecoType', $endereco);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +84,7 @@ class EnderecoController extends Controller
     public function editAction(Request $request, Endereco $endereco)
     {
         $deleteForm = $this->createDeleteForm($endereco);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\EnderecoType', $endereco);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\EnderecoType', $endereco);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Notificacao;
-use Camaleao\Web\BimgoBundle\Form\NotificacaoType;
+use Camaleao\Bimgo\CoreBundle\Form\NotificacaoType;
 
 /**
  * Notificacao controller.
@@ -26,7 +26,7 @@ class NotificacaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $notificacaos = $em->getRepository('CamaleaoWebBimgoBundle:Notificacao')->findAll();
+        $notificacaos = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findAll();
 
         return $this->render('CamaleaoWebBimgoBundle:notificacao:index.html.twig', array(
             'notificacaos' => $notificacaos,
@@ -42,7 +42,7 @@ class NotificacaoController extends Controller
     public function newAction(Request $request)
     {
         $notificacao = new Notificacao();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\NotificacaoType', $notificacao);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +84,7 @@ class NotificacaoController extends Controller
     public function editAction(Request $request, Notificacao $notificacao)
     {
         $deleteForm = $this->createDeleteForm($notificacao);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\NotificacaoType', $notificacao);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\NotificacaoType', $notificacao);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

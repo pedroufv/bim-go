@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Web\BimgoBundle\Entity\Promocao;
-use Camaleao\Web\BimgoBundle\Form\PromocaoType;
+use Camaleao\Bimgo\CoreBundle\Form\PromocaoType;
 
 /**
  * Promocao controller.
@@ -27,7 +27,7 @@ class PromocaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
+        $promocoes = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findAll();
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -47,7 +47,7 @@ class PromocaoController extends Controller
     public function newAction(Request $request)
     {
         $promocao = new Promocao();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PromocaoType', $promocao);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,7 +89,7 @@ class PromocaoController extends Controller
     public function editAction(Request $request, Promocao $promocao)
     {
         $deleteForm = $this->createDeleteForm($promocao);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\PromocaoType', $promocao);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\PromocaoType', $promocao);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -154,7 +154,7 @@ class PromocaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findBy(array('publicada' => true), array('id' => 'DESC'), $max);
+        $promocoes = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findBy(array('publicada' => true), array('id' => 'DESC'), $max);
 
         return $this->render('CamaleaoWebBimgoBundle:promocao:recentSection.html.twig', array(
             'promocoes' => $promocoes,

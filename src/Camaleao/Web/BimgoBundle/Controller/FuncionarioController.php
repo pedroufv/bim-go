@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Camaleao\Web\BimgoBundle\Entity\Funcionario;
-use Camaleao\Web\BimgoBundle\Form\FuncionarioType;
+use Camaleao\Bimgo\CoreBundle\Form\FuncionarioType;
 
 /**
  * Funcionario controller.
@@ -26,7 +26,7 @@ class FuncionarioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $funcionarios = $em->getRepository('CamaleaoWebBimgoBundle:Funcionario')->findAll();
+        $funcionarios = $em->getRepository('CamaleaoBimgoCoreBundle:Funcionario')->findAll();
 
         return $this->render('CamaleaoWebBimgoBundle:funcionario:index.html.twig', array(
             'funcionarios' => $funcionarios,
@@ -42,7 +42,7 @@ class FuncionarioController extends Controller
     public function newAction(Request $request)
     {
         $funcionario = new Funcionario();
-        $form = $this->createForm('Camaleao\Web\BimgoBundle\Form\FuncionarioType', $funcionario);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\FuncionarioType', $funcionario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +84,7 @@ class FuncionarioController extends Controller
     public function editAction(Request $request, Funcionario $funcionario)
     {
         $deleteForm = $this->createDeleteForm($funcionario);
-        $editForm = $this->createForm('Camaleao\Web\BimgoBundle\Form\FuncionarioType', $funcionario);
+        $editForm = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\FuncionarioType', $funcionario);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

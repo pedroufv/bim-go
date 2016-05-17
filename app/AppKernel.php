@@ -16,12 +16,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Camaleao\Web\BimgoBundle\CamaleaoWebBimgoBundle(),
+            new Camaleao\Bimgo\ApiBundle\CamaleaoBimgoApiBundle(),
+            new Camaleao\Bimgo\CoreBundle\CamaleaoBimgoCoreBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Endroid\Bundle\GcmBundle\EndroidGcmBundle(),
             new Aws\Symfony\AwsBundle(),
-            new Camaleao\Web\ApiBundle\CamaleaoWebApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
