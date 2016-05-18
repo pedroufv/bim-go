@@ -4,7 +4,7 @@ namespace Camaleao\Web\BimgoBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class EmpresaControllerTest extends WebTestCase
+class UsuarioControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class EmpresaControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/empresa/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /empresa/");
+        $crawler = $client->request('GET', '/usuario/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /usuario/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'camaleao_web_bimgobundle_empresa[field_name]'  => 'Test',
+            'camaleao_web_bimgobundle_usuario[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class EmpresaControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'camaleao_web_bimgobundle_empresa[field_name]'  => 'Foo',
+            'camaleao_web_bimgobundle_usuario[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

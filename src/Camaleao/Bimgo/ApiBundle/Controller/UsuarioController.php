@@ -310,4 +310,59 @@ class UsuarioController extends Controller
 
         return $response;
     }
+
+    /**
+     * Check Usuario entity by token
+     *
+     * @Route("/checktoken", name="android_checktoken")
+     * @Method("POST")
+     */
+    public function checkTokenAction(Request $request)
+    {
+        $jsonObject = json_decode($request->get('usuario'));
+
+        $token = $jsonObject->token;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneBy(array('token' => $token));
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($usuario, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Check Usuario entity by login and senha
+     *
+     * @Route("/checklogin", name="android_checklogin")
+     * @Method("POST")
+     */
+    public function checkLoginAction(Request $request)
+    {
+        $jsonObject = json_decode($request->get('usuario'));
+
+        $email = $jsonObject->email;
+        $senha = $jsonObject->senha;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneBy(array('email' => $email, 'senha' => $senha));
+
+        $serializer = $this->container->get('jms_serializer');
+
+        $result = $serializer->serialize($usuario, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }
