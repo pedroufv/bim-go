@@ -80,8 +80,8 @@ class UsuarioController extends Controller
             $request->request->replace($requestContent);
         }
 
-        $produto = new Usuario();
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $produto, $options);
+        $usuario = new Usuario();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $usuario, $options);
         $form->handleRequest($request);
 
         if(!$form->isValid()){
@@ -92,13 +92,13 @@ class UsuarioController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $produto = $em->merge($produto);
+        $usuario = $em->merge($usuario);
         $em->flush();
 
-        $responseContent = $serializer->serialize($produto, 'json');
+        $responseContent = $serializer->serialize($usuario, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
-        $response->headers->set('Location', $this->generateUrl('api_v1_usuarios_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_usuarios_show', array('id' => $usuario->getId()), true));
 
         return $response;
     }
@@ -106,16 +106,16 @@ class UsuarioController extends Controller
     /**
      * Get a Usuario entity
      *
-     * @param Usuario $produto
+     * @param Usuario $usuario
      * @return Response
      *
      * @Route("/{id}", name="api_v1_usuarios_show")
      * @Method("GET")
      */
-    public function showAction(Usuario $produto)
+    public function showAction(Usuario $usuario)
     {
         $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($produto, 'json');
+        $result = $serializer->serialize($usuario, 'json');
 
         $response = new Response($result);
         $response->setStatusCode(Response::HTTP_OK);
@@ -128,13 +128,13 @@ class UsuarioController extends Controller
      * Edit an existing Usuario entity.
      *
      * @param Request $request
-     * @param Usuario $produto
+     * @param Usuario $usuario
      * @return Response
      *
      * @Route("/{id}", name="api_v1_usuarios_edit")
      * @Method({"PATCH", "PUT"})
      */
-    public function editAction(Request $request, Usuario $produto)
+    public function editAction(Request $request, Usuario $usuario)
     {
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
@@ -152,7 +152,7 @@ class UsuarioController extends Controller
         }
 
         $options['method'] = $request->getMethod();
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $produto, $options);
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioType', $usuario, $options);
         $form->handleRequest($request);
 
         if (!$form->isValid()) {
@@ -163,13 +163,13 @@ class UsuarioController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $produto = $em->merge($produto);
+        $usuario = $em->merge($usuario);
         $em->flush();
 
-        $responseContent = $serializer->serialize($produto, 'json');
+        $responseContent = $serializer->serialize($usuario, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Location', $this->generateUrl('api_v1_usuarios_show', array('id' => $produto->getId()), true));
+        $response->headers->set('Location', $this->generateUrl('api_v1_usuarios_show', array('id' => $usuario->getId()), true));
 
         return $response;
     }
@@ -177,16 +177,16 @@ class UsuarioController extends Controller
     /**
      * Delete a Usuario entity.
      *
-     * @param Usuario $produto
+     * @param Usuario $usuario
      * @return Response
      *
      * @Route("/{id}", name="api_v1_usuarios_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Usuario $produto)
+    public function deleteAction(Usuario $usuario)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($produto);
+        $em->remove($usuario);
         $em->flush();
 
         $response = new Response();
@@ -314,10 +314,13 @@ class UsuarioController extends Controller
     /**
      * Check Usuario entity by token
      *
-     * @Route("/checktoken", name="android_checktoken")
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/check/token", name="api_v1_usuarios_check_token")
      * @Method("POST")
      */
-    public function checkTokenAction(Request $request)
+    public function checkTokenAction(Request $request, Usuario $usuario)
     {
         $jsonObject = json_decode($request->get('usuario'));
 
@@ -341,7 +344,10 @@ class UsuarioController extends Controller
     /**
      * Check Usuario entity by login and senha
      *
-     * @Route("/checklogin", name="android_checklogin")
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/check/login", name="api_v1_usuarios_check_login")
      * @Method("POST")
      */
     public function checkLoginAction(Request $request)
