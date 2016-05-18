@@ -30,7 +30,7 @@ class InstituicaoRepository extends EntityRepository
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Instituicao')
             ->createQueryBuilder('instituicao')
-            ->innerJoin('instituicao.segmento', 'segmento')
+            ->leftJoin('instituicao.segmento', 'segmento')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
             ->where("cidade.id = ".$criteria["cidade"]);
