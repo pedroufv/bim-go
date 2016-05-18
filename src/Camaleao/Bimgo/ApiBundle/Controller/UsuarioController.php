@@ -320,7 +320,7 @@ class UsuarioController extends Controller
      * @Route("/check/token", name="api_v1_usuarios_check_token")
      * @Method("POST")
      */
-    public function checkTokenAction(Request $request, Usuario $usuario)
+    public function checkTokenAction(Request $request)
     {
         $jsonObject = json_decode($request->getContent());
 
