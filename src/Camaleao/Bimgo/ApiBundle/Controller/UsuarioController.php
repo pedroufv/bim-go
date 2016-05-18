@@ -322,9 +322,9 @@ class UsuarioController extends Controller
      */
     public function checkTokenAction(Request $request, Usuario $usuario)
     {
-        $jsonObject = json_decode($request->get('usuario'));
+        $jsonObject = json_decode($request->getContent());
 
-        $token = $jsonObject->token;
+        $token = $jsonObject->usuario->token;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -352,10 +352,10 @@ class UsuarioController extends Controller
      */
     public function checkLoginAction(Request $request)
     {
-        $jsonObject = json_decode($request->get('usuario'));
+        $jsonObject = json_decode($request->getContent());
 
-        $email = $jsonObject->email;
-        $senha = $jsonObject->senha;
+        $email = $jsonObject->usuario->email;
+        $senha = $jsonObject->usuario->senha;
 
         $em = $this->getDoctrine()->getManager();
 
