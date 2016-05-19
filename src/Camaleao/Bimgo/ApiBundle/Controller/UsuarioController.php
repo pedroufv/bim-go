@@ -317,7 +317,7 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/check/token", name="api_v1_usuarios_check_token")
+     * @Route("/check-token", name="api_v1_usuarios_check_token")
      * @Method("POST")
      */
     public function checkTokenAction(Request $request)
@@ -347,7 +347,7 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/check/login", name="api_v1_usuarios_check_login")
+     * @Route("/check-login", name="api_v1_usuarios_check_login")
      * @Method("POST")
      */
     public function checkLoginAction(Request $request)
