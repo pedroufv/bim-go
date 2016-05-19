@@ -10,19 +10,37 @@ class PromocaoRepository extends EntityRepository
      * Find Promocao by Cidade
      * @return mixed
      */
-    public function findByCidade($cidade)
+    public function findByCidade($criteria, $order = array(), $limit = null, $offset = null)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Promocao')
             ->createQueryBuilder('promocao')
             ->innerJoin('promocao.instituicao', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
-            ->where("cidade.id = $cidade")
-            ->andWhere('promocao.publicada = true')
-            ->getQuery()
-            ->getResult();
+            ->where("cidade.id = ".$criteria['cidade'])
+            ->andWhere('promocao.publicada = true');
 
-        return $result;
+        unset($criteria['cidade']);
+
+        if(count($criteria) > 0) {
+            foreach($criteria as $key => $value) {
+                $result->andWhere("promocao.$key = $value");
+            }
+        }
+
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
     }
 
     /**

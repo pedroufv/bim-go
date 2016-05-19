@@ -101,7 +101,7 @@ class CidadeController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findByCidade($criteria['cidade'], $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findByCidade($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -135,7 +135,7 @@ class CidadeController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findByCidade($criteria['cidade'], $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findByCidade($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
