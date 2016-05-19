@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Notificacao
  *
  * @ORM\Table(name="notificacao", indexes={@ORM\Index(name="remetente", columns={"remetente", "destinatarioTipo"}), @ORM\Index(name="destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_destinatario", columns={"destinatarioTipo"}), @ORM\Index(name="tipo_mensagem", columns={"mensagemTipo"}), @ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="IDX_5ACD938626676CDF", columns={"remetente"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\NotificacaoRepository")
  */
 class Notificacao
 {

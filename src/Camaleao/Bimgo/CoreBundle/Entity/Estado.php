@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Estado
  *
  * @ORM\Table(name="estado")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\EstadoRepository")
  */
 class Estado
 {
