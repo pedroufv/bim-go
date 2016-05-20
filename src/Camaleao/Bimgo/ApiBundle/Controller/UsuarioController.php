@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
 use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
+use Camaleao\Bimgo\CoreBundle\Entity\UsuarioInstituicaoPapel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -368,6 +369,59 @@ class UsuarioController extends Controller
         $response = new Response($result);
         $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Creates or Edit UsuarioInstituicaoPapel entity
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/seguir", name="api_v1_usuarios_follow")
+     * @Method("POST")
+     */
+    public function followAction(Request $request)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+        $options = array();
+
+        if(!$request->getContent()){
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $usuarioInstituicaoPapel = new UsuarioInstituicaoPapel();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioInstituicaoPapelType', $usuarioInstituicaoPapel, $options);
+        $form->handleRequest($request);
+
+        if(!$form->isValid()){
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $usuarioInstituicaoPapel = $em->merge($usuarioInstituicaoPapel);
+        $em->flush();
+
+        $responseContent = $serializer->serialize($usuarioInstituicaoPapel, 'json');
+        $response->setContent($responseContent);
+        $response->setStatusCode(Response::HTTP_CREATED);
 
         return $response;
     }
