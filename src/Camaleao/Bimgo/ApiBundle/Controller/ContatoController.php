@@ -34,7 +34,7 @@ class ContatoController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Contato')->findByPublicada($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Contato')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -191,6 +191,39 @@ class ContatoController extends Controller
 
         $response = new Response();
         $response->setStatusCode(Response::HTTP_NO_CONTENT);
+
+        return $response;
+    }
+
+    /**
+     * Lists all ContatoTipo entities
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("-tipos", name="api_v1_contatos_tipos")
+     * @Method("GET")
+     */
+    public function tiposAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Contatotipo')->findBy($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
