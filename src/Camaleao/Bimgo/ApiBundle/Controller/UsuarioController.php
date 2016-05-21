@@ -318,7 +318,7 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/check-token", name="api_v1_usuarios_check_token")
+     * @Route("/verifica-token", name="api_v1_usuarios_verifica_token")
      * @Method("POST")
      */
     public function checkTokenAction(Request $request)
@@ -348,10 +348,10 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/check-login", name="api_v1_usuarios_check_login")
+     * @Route("/verifica-credenciais", name="api_v1_usuarios_verifica_credenciais")
      * @Method("POST")
      */
-    public function checkLoginAction(Request $request)
+    public function checkCredentialsAction(Request $request)
     {
         $jsonObject = json_decode($request->getContent());
 
@@ -379,7 +379,7 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/seguir", name="api_v1_usuarios_follow")
+     * @Route("/acompanhamento", name="api_v1_usuarios_acompanhamento")
      * @Method("POST")
      */
     public function followAction(Request $request)
