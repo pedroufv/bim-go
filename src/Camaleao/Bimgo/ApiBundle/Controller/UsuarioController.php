@@ -205,7 +205,7 @@ class UsuarioController extends Controller
      * @Route("/{id}/instituicoes-seguidas", name="api_v1_usuarios_instituicoes_seguidas")
      * @Method("GET")
      */
-    public function instituicoesSeguidasAction(Request $request)
+    public function institutionsFollowedAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -240,7 +240,7 @@ class UsuarioController extends Controller
      * @Route("/{usuario}/instituicoes-seguidas/cidades/{cidade}", name="api_v1_usuarios_instituicoes_seguidas_cidade")
      * @Method("GET")
      */
-    public function instituicoesSeguidasCidadeAction(Request $request)
+    public function institutionsFollowedInTheCityAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -283,10 +283,10 @@ class UsuarioController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/instituicoes-administradas", name="api_v1_usuarios_instituicoes_administradas")
+     * @Route("/{id}/instituicoes-gerenciadas", name="api_v1_usuarios_instituicoes_gerenciadas")
      * @Method("GET")
      */
-    public function instituicoesAdministradasAction(Request $request)
+    public function institutionsManagedAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 

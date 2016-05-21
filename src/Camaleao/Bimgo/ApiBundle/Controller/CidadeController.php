@@ -57,7 +57,7 @@ class CidadeController extends Controller
      * @Route("/{id}/instituicoes", name="api_v1_cidades_instituicoes")
      * @Method("GET")
      */
-    public function instituicoesAction(Request $request)
+    public function institutionsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -91,7 +91,7 @@ class CidadeController extends Controller
      * @Route("/{id}/notificacoes", name="api_v1_cidades_notificacoes")
      * @Method("GET")
      */
-    public function notificacoesAction(Request $request)
+    public function notificationsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -125,7 +125,7 @@ class CidadeController extends Controller
      * @Route("/{id}/produtos", name="api_v1_cidades_produtos")
      * @Method("GET")
      */
-    public function produtosAction(Request $request)
+    public function productsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -159,7 +159,7 @@ class CidadeController extends Controller
      * @Route("/{id}/promocoes", name="api_v1_cidades_promocoes")
      * @Method("GET")
      */
-    public function promocoesAction(Request $request)
+    public function promotionsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 

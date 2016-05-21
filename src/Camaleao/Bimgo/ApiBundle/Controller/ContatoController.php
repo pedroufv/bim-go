@@ -204,7 +204,7 @@ class ContatoController extends Controller
      * @Route("-tipos", name="api_v1_contatos_tipos")
      * @Method("GET")
      */
-    public function tiposAction(Request $request)
+    public function typesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 

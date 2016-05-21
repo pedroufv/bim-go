@@ -10,15 +10,33 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      * Get not equal papel
      * @return mixed
      */
-    public function findByNotEqualPapel($papel)
+    public function findByNotEqualPapel($criteria, $order, $limit, $offset)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
             ->createQueryBuilder('uip')
-            ->where("uip.papel != $papel")
-            ->getQuery()
-            ->getResult();
+            ->where("uip.papel != ".$criteria['papel']);
 
-        return $result;
+        unset($criteria['papel']);
+
+        if(count($criteria) > 0) {
+            foreach($criteria as $key => $value) {
+                $result->andWhere("uip.$key = $value");
+            }
+        }
+
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
     }
 
     /**

@@ -205,7 +205,7 @@ class InstituicaoController extends Controller
      * @Route("/{id}/notificacoes", name="api_v1_instituicoes_notificacoes")
      * @Method("GET")
      */
-    public function notificacoesAction(Request $request)
+    public function notificationsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -239,7 +239,7 @@ class InstituicaoController extends Controller
      * @Route("/{id}/produtos", name="api_v1_instituicoes_produtos")
      * @Method("GET")
      */
-    public function produtosAction(Request $request)
+    public function productsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -273,7 +273,7 @@ class InstituicaoController extends Controller
      * @Route("/{id}/promocoes", name="api_v1_instituicoes_promocoes")
      * @Method("GET")
      */
-    public function promocoesAction(Request $request)
+    public function promotionsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -307,7 +307,7 @@ class InstituicaoController extends Controller
      * @Route("/{id}/funcionarios", name="api_v1_instituicoes_funcionarios")
      * @Method("GET")
      */
-    public function funcionariosAction(Request $request)
+    public function employeesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -338,10 +338,10 @@ class InstituicaoController extends Controller
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/usuarios-seguidores", name="api_v1_usuarios_usuarios_seguidores")
+     * @Route("/{id}/seguidores", name="api_v1_instituicoes_seguidores")
      * @Method("GET")
      */
-    public function usuariosSeguidoresAction(Request $request)
+    public function followersAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -353,6 +353,41 @@ class InstituicaoController extends Controller
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findBy($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * List Usuario entities that are members of the institution
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/{id}/membros", name="api_v1_usuarios_mebros")
+     * @Method("GET")
+     */
+    public function membersAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['instituicao'] = $request->get('id');
+        $criteria['papel'] = 1;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findByNotEqualPapel($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);

@@ -204,7 +204,7 @@ class NotificacaoController extends Controller
      * @Route("/mensagens/tipos", name="api_v1_contatos_mensagens_tipos")
      * @Method("GET")
      */
-    public function mensagensTiposAction(Request $request)
+    public function typesOfMessagesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -237,7 +237,7 @@ class NotificacaoController extends Controller
      * @Route("/destinatarios/tipos", name="api_v1_contatos_destinatarios_tipos")
      * @Method("GET")
      */
-    public function destinatariosTiposAction(Request $request)
+    public function typesOfRecipientsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
