@@ -4,7 +4,7 @@ namespace Camaleao\Bimgo\CoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class UsuarioInstituicaoPapelRepository extends EntityRepository
+class MembroRepository extends EntityRepository
 {
     /**
      * Get not equal papel
@@ -12,15 +12,15 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findByNotEqualPapel($criteria, $order, $limit, $offset)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.papel != ".$criteria['papel']);
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.papel != ".$criteria['papel']);
 
         unset($criteria['papel']);
 
         if(count($criteria) > 0) {
             foreach($criteria as $key => $value) {
-                $result->andWhere("uip.$key = $value");
+                $result->andWhere("membro.$key = $value");
             }
         }
 
@@ -45,10 +45,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findByInstituicaoAndNotEqualPapel($instituicao, $papel)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.instituicao = $instituicao")
-            ->andWhere("uip.papel != $papel")
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.instituicao = $instituicao")
+            ->andWhere("membro.papel != $papel")
             ->getQuery()
             ->getResult();
 
@@ -61,10 +61,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findInstituicoesPorUsuarioMembro($usuario)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.usuario = $usuario")
-            ->andWhere('uip.papel != 1')
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.usuario = $usuario")
+            ->andWhere('membro.papel != 1')
             ->getQuery()
             ->getResult();
 
@@ -77,10 +77,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findUsuariosMembroPorInstituicao($instituicao)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.instituicao = $instituicao")
-            ->andWhere('uip.papel != 1')
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.instituicao = $instituicao")
+            ->andWhere('membro.papel != 1')
             ->getQuery()
             ->getResult();
 
@@ -93,10 +93,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findUsuariosMembroPorInstituicaoLazy($instituicao, $index_inicial, $quantidade)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.instituicao = $instituicao")
-            ->andWhere('uip.papel != 1')
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.instituicao = $instituicao")
+            ->andWhere('membro.papel != 1')
             ->setFirstResult($index_inicial)
             ->setMaxResults($quantidade)
             ->getQuery()
@@ -111,10 +111,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findUsuarioEhMembroDeAlgumaInstituicao($usuario)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.usuario = $usuario")
-            ->andWhere('uip.papel != 1')
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.usuario = $usuario")
+            ->andWhere('membro.papel != 1')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
@@ -128,10 +128,10 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->where("uip.usuario = ".$criteria['usuario'])
-            ->andWhere("uip.papel != ".$criteria['papel']);
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->where("membro.usuario = ".$criteria['usuario'])
+            ->andWhere("membro.papel != ".$criteria['papel']);
 
         if(count($order) > 0) {
             foreach($order as $key => $value){
@@ -154,9 +154,9 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
      */
     public function findByCidade($criteria, $order = array(), $limit = null, $offset = null)
     {
-        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')
-            ->createQueryBuilder('uip')
-            ->innerJoin('uip.instituicao', 'instituicao')
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->innerJoin('membro.instituicao', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
             ->where("cidade.id = ".$criteria["cidade"]);
@@ -165,7 +165,7 @@ class UsuarioInstituicaoPapelRepository extends EntityRepository
 
         if(count($criteria) > 0) {
             foreach($criteria as $key => $value) {
-                $result->andWhere("uip.$key = $value");
+                $result->andWhere("membro.$key = $value");
             }
         }
 
