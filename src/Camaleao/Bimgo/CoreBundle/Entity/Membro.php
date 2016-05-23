@@ -39,9 +39,7 @@ class Membro
     /**
      * @var \Papel
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Papel")
+     * @ORM\ManyToOne(targetEntity="Papel")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
      * })
@@ -102,7 +100,7 @@ class Membro
      * @param \Camaleao\Bimgo\CoreBundle\Entity\Papel $papel
      * @return Membro
      */
-    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel)
+    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel = null)
     {
         $this->papel = $papel;
 
