@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Instituicao
  *
- * @ORM\Table(name="instituicao", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="IDX_7CFF8F698F3195FB", columns={"criadoPor"})})
+ * @ORM\Table(name="instituicao", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="plano", columns={"plano"}), @ORM\Index(name="IDX_7CFF8F698F3195FB", columns={"criadoPor"})})
  * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\InstituicaoRepository")
  */
 class Instituicao
@@ -80,9 +80,9 @@ class Instituicao
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
+     * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
      */
-    private $datacriado;
+    private $datacriacao;
 
     /**
      * @var \DateTime
@@ -132,9 +132,19 @@ class Instituicao
     private $vinculada;
 
     /**
+     * @var \Plano
+     *
+     * @ORM\ManyToOne(targetEntity="Plano")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="plano", referencedColumnName="id")
+     * })
+     */
+    private $plano;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="instituicao", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Contato", inversedBy="instituicao")
      * @ORM\JoinTable(name="instituicao_contato",
      *   joinColumns={
      *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
@@ -154,19 +164,27 @@ class Instituicao
     private $segmento;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="instituicao")
+     */
+    private $usuario;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -189,7 +207,7 @@ class Instituicao
     /**
      * Get razaosocial
      *
-     * @return string
+     * @return string 
      */
     public function getRazaosocial()
     {
@@ -212,7 +230,7 @@ class Instituicao
     /**
      * Get nomefantasia
      *
-     * @return string
+     * @return string 
      */
     public function getNomefantasia()
     {
@@ -235,7 +253,7 @@ class Instituicao
     /**
      * Get descricao
      *
-     * @return string
+     * @return string 
      */
     public function getDescricao()
     {
@@ -258,7 +276,7 @@ class Instituicao
     /**
      * Get cnpj
      *
-     * @return integer
+     * @return integer 
      */
     public function getCnpj()
     {
@@ -281,7 +299,7 @@ class Instituicao
     /**
      * Get inscricaoestadual
      *
-     * @return integer
+     * @return integer 
      */
     public function getInscricaoestadual()
     {
@@ -304,7 +322,7 @@ class Instituicao
     /**
      * Get site
      *
-     * @return string
+     * @return string 
      */
     public function getSite()
     {
@@ -327,7 +345,7 @@ class Instituicao
     /**
      * Get grupo
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getGrupo()
     {
@@ -350,7 +368,7 @@ class Instituicao
     /**
      * Get ativo
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getAtivo()
     {
@@ -358,26 +376,26 @@ class Instituicao
     }
 
     /**
-     * Set datacriado
+     * Set datacriacao
      *
-     * @param \DateTime $datacriado
+     * @param \DateTime $datacriacao
      * @return Instituicao
      */
-    public function setDatacriado($datacriado)
+    public function setDatacriacao($datacriacao)
     {
-        $this->datacriado = $datacriado;
+        $this->datacriacao = $datacriacao;
 
         return $this;
     }
 
     /**
-     * Get datacriado
+     * Get datacriacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
-    public function getDatacriado()
+    public function getDatacriacao()
     {
-        return $this->datacriado;
+        return $this->datacriacao;
     }
 
     /**
@@ -396,7 +414,7 @@ class Instituicao
     /**
      * Get datamodificacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDatamodificacao()
     {
@@ -419,7 +437,7 @@ class Instituicao
     /**
      * Get criadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getCriadopor()
     {
@@ -442,7 +460,7 @@ class Instituicao
     /**
      * Get modificadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getModificadopor()
     {
@@ -465,7 +483,7 @@ class Instituicao
     /**
      * Get endereco
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Endereco
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Endereco 
      */
     public function getEndereco()
     {
@@ -488,11 +506,34 @@ class Instituicao
     /**
      * Get vinculada
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao 
      */
     public function getVinculada()
     {
         return $this->vinculada;
+    }
+
+    /**
+     * Set plano
+     *
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Plano $plano
+     * @return Instituicao
+     */
+    public function setPlano(\Camaleao\Bimgo\CoreBundle\Entity\Plano $plano = null)
+    {
+        $this->plano = $plano;
+
+        return $this;
+    }
+
+    /**
+     * Get plano
+     *
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Plano 
+     */
+    public function getPlano()
+    {
+        return $this->plano;
     }
 
     /**
@@ -521,7 +562,7 @@ class Instituicao
     /**
      * Get contato
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getContato()
     {
@@ -554,10 +595,43 @@ class Instituicao
     /**
      * Get segmento
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getSegmento()
     {
         return $this->segmento;
+    }
+
+    /**
+     * Add usuario
+     *
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario
+     * @return Instituicao
+     */
+    public function addUsuario(\Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario[] = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuario
+     *
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario
+     */
+    public function removeUsuario(\Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario)
+    {
+        $this->usuario->removeElement($usuario);
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

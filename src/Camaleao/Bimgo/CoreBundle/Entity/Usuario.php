@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Usuario
  *
- * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nome", columns={"nome"}), @ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="papel", columns={"papel"})})
- * @ORM\Entity
+ * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nome", columns={"nome"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\UsuarioRepository")
  */
 class Usuario
 {
@@ -59,26 +59,45 @@ class Usuario
     /**
      * @var boolean
      *
-     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     * @ORM\Column(name="administrador", type="boolean", nullable=false)
      */
-    private $ativo = 0;
+    private $administrador;
 
     /**
-     * @var \Papel
+     * @var boolean
      *
-     * @ORM\ManyToOne(targetEntity="Papel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $papel;
+    private $ativo = 1;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="usuario")
+     * @ORM\JoinTable(name="seguidor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $instituicao;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -101,7 +120,7 @@ class Usuario
     /**
      * Get nome
      *
-     * @return string
+     * @return string 
      */
     public function getNome()
     {
@@ -124,7 +143,7 @@ class Usuario
     /**
      * Get email
      *
-     * @return string
+     * @return string 
      */
     public function getEmail()
     {
@@ -139,7 +158,7 @@ class Usuario
      */
     public function setSenha($senha)
     {
-        $this->senha = md5($senha);
+        $this->senha = $senha;
 
         return $this;
     }
@@ -147,7 +166,7 @@ class Usuario
     /**
      * Get senha
      *
-     * @return string
+     * @return string 
      */
     public function getSenha()
     {
@@ -162,7 +181,7 @@ class Usuario
      */
     public function setToken($token)
     {
-        $this->token = md5($token);
+        $this->token = $token;
 
         return $this;
     }
@@ -170,7 +189,7 @@ class Usuario
     /**
      * Get token
      *
-     * @return string
+     * @return string 
      */
     public function getToken()
     {
@@ -193,11 +212,34 @@ class Usuario
     /**
      * Get registrationid
      *
-     * @return string
+     * @return string 
      */
     public function getRegistrationid()
     {
         return $this->registrationid;
+    }
+
+    /**
+     * Set administrador
+     *
+     * @param boolean $administrador
+     * @return Usuario
+     */
+    public function setAdministrador($administrador)
+    {
+        $this->administrador = $administrador;
+
+        return $this;
+    }
+
+    /**
+     * Get administrador
+     *
+     * @return boolean 
+     */
+    public function getAdministrador()
+    {
+        return $this->administrador;
     }
 
     /**
@@ -216,7 +258,7 @@ class Usuario
     /**
      * Get ativo
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getAtivo()
     {
@@ -224,25 +266,35 @@ class Usuario
     }
 
     /**
-     * Set papel
+     * Add instituicao
      *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Papel $papel
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao
      * @return Usuario
      */
-    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel = null)
+    public function addInstituicao(\Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao)
     {
-        $this->papel = $papel;
+        $this->instituicao[] = $instituicao;
 
         return $this;
     }
 
     /**
-     * Get papel
+     * Remove instituicao
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Papel
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao
      */
-    public function getPapel()
+    public function removeInstituicao(\Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao)
     {
-        return $this->papel;
+        $this->instituicao->removeElement($instituicao);
+    }
+
+    /**
+     * Get instituicao
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInstituicao()
+    {
+        return $this->instituicao;
     }
 }

@@ -38,14 +38,14 @@ class Promocao
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataInicio", type="datetime", nullable=false)
+     * @ORM\Column(name="dataInicio", type="date", nullable=false)
      */
     private $datainicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataFim", type="datetime", nullable=false)
+     * @ORM\Column(name="dataFim", type="date", nullable=false)
      */
     private $datafim;
 
@@ -54,14 +54,14 @@ class Promocao
      *
      * @ORM\Column(name="publicada", type="boolean", nullable=false)
      */
-    private $publicada;
+    private $publicada = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
+     * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
      */
-    private $datacriado;
+    private $datacriacao;
 
     /**
      * @var \DateTime
@@ -107,20 +107,19 @@ class Promocao
      */
     private $oferta;
 
-
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->datacriado = new \DateTime();
         $this->oferta = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -143,7 +142,7 @@ class Promocao
     /**
      * Get nome
      *
-     * @return string
+     * @return string 
      */
     public function getNome()
     {
@@ -166,7 +165,7 @@ class Promocao
     /**
      * Get descricao
      *
-     * @return string
+     * @return string 
      */
     public function getDescricao()
     {
@@ -189,7 +188,7 @@ class Promocao
     /**
      * Get datainicio
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDatainicio()
     {
@@ -212,7 +211,7 @@ class Promocao
     /**
      * Get datafim
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDatafim()
     {
@@ -235,7 +234,7 @@ class Promocao
     /**
      * Get publicada
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getPublicada()
     {
@@ -243,26 +242,26 @@ class Promocao
     }
 
     /**
-     * Set datacriado
+     * Set datacriacao
      *
-     * @param \DateTime $datacriado
+     * @param \DateTime $datacriacao
      * @return Promocao
      */
-    public function setDatacriado($datacriado)
+    public function setDatacriacao($datacriacao)
     {
-        $this->datacriado = $datacriado;
+        $this->datacriacao = $datacriacao;
 
         return $this;
     }
 
     /**
-     * Get datacriado
+     * Get datacriacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
-    public function getDatacriado()
+    public function getDatacriacao()
     {
-        return $this->datacriado;
+        return $this->datacriacao;
     }
 
     /**
@@ -281,7 +280,7 @@ class Promocao
     /**
      * Get datamodificacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDatamodificacao()
     {
@@ -304,7 +303,7 @@ class Promocao
     /**
      * Get instituicao
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao 
      */
     public function getInstituicao()
     {
@@ -327,7 +326,7 @@ class Promocao
     /**
      * Get criadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getCriadopor()
     {
@@ -350,7 +349,7 @@ class Promocao
     /**
      * Get modificadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getModificadopor()
     {
@@ -383,7 +382,7 @@ class Promocao
     /**
      * Get oferta
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getOferta()
     {

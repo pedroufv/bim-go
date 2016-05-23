@@ -52,9 +52,9 @@ class Produto
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dataCriado", type="datetime", nullable=false)
+     * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
      */
-    private $datacriado;
+    private $datacriacao;
 
     /**
      * @var \DateTime
@@ -94,20 +94,11 @@ class Produto
     private $modificadopor;
 
 
-    /**
-     * Class constructor
-     *
-     * initialize datacriado with now
-     */
-    public function __construct()
-    {
-        $this->datacriado = new \DateTime();
-    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -130,7 +121,7 @@ class Produto
     /**
      * Get nome
      *
-     * @return string
+     * @return string 
      */
     public function getNome()
     {
@@ -153,7 +144,7 @@ class Produto
     /**
      * Get descricao
      *
-     * @return string
+     * @return string 
      */
     public function getDescricao()
     {
@@ -176,7 +167,7 @@ class Produto
     /**
      * Get preco
      *
-     * @return string
+     * @return string 
      */
     public function getPreco()
     {
@@ -199,7 +190,7 @@ class Produto
     /**
      * Get ean
      *
-     * @return string
+     * @return string 
      */
     public function getEan()
     {
@@ -207,26 +198,26 @@ class Produto
     }
 
     /**
-     * Set datacriado
+     * Set datacriacao
      *
-     * @param \DateTime $datacriado
+     * @param \DateTime $datacriacao
      * @return Produto
      */
-    public function setDatacriado($datacriado)
+    public function setDatacriacao($datacriacao)
     {
-        $this->datacriado = $datacriado;
+        $this->datacriacao = $datacriacao;
 
         return $this;
     }
 
     /**
-     * Get datacriado
+     * Get datacriacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
-    public function getDatacriado()
+    public function getDatacriacao()
     {
-        return $this->datacriado;
+        return $this->datacriacao;
     }
 
     /**
@@ -245,7 +236,7 @@ class Produto
     /**
      * Get datamodificacao
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDatamodificacao()
     {
@@ -268,7 +259,7 @@ class Produto
     /**
      * Get instituicao
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao 
      */
     public function getInstituicao()
     {
@@ -291,7 +282,7 @@ class Produto
     /**
      * Get criadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getCriadopor()
     {
@@ -314,7 +305,7 @@ class Produto
     /**
      * Get modificadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getModificadopor()
     {

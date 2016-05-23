@@ -5,20 +5,13 @@ namespace Camaleao\Bimgo\CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UsuarioInstituicaoPapel
+ * Membro
  *
- * @ORM\Table(name="usuario_instituicao_papel", indexes={@ORM\Index(name="usuario", columns={"usuario"}), @ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="papel", columns={"papel"})})
- * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\UsuarioInstituicaoPapelRepository")
+ * @ORM\Table(name="membro", indexes={@ORM\Index(name="usuario", columns={"usuario"}), @ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="papel", columns={"papel"})})
+ * @ORM\Entity
  */
-class UsuarioInstituicaoPapel
+class Membro
 {
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="seguindo", type="boolean", nullable=false)
-     */
-    private $seguindo;
-
     /**
      * @var \Usuario
      *
@@ -46,43 +39,22 @@ class UsuarioInstituicaoPapel
     /**
      * @var \Papel
      *
-     * @ORM\ManyToOne(targetEntity="Papel")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Papel")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
      * })
      */
-    private $papel = 1;
+    private $papel;
 
 
-
-    /**
-     * Set seguindo
-     *
-     * @param boolean $seguindo
-     * @return UsuarioInstituicaoPapel
-     */
-    public function setSeguindo($seguindo)
-    {
-        $this->seguindo = $seguindo;
-
-        return $this;
-    }
-
-    /**
-     * Get seguindo
-     *
-     * @return boolean
-     */
-    public function getSeguindo()
-    {
-        return $this->seguindo;
-    }
 
     /**
      * Set usuario
      *
      * @param \Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario
-     * @return UsuarioInstituicaoPapel
+     * @return Membro
      */
     public function setUsuario(\Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario)
     {
@@ -94,7 +66,7 @@ class UsuarioInstituicaoPapel
     /**
      * Get usuario
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
      */
     public function getUsuario()
     {
@@ -105,7 +77,7 @@ class UsuarioInstituicaoPapel
      * Set instituicao
      *
      * @param \Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao
-     * @return UsuarioInstituicaoPapel
+     * @return Membro
      */
     public function setInstituicao(\Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao)
     {
@@ -117,7 +89,7 @@ class UsuarioInstituicaoPapel
     /**
      * Get instituicao
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao 
      */
     public function getInstituicao()
     {
@@ -128,9 +100,9 @@ class UsuarioInstituicaoPapel
      * Set papel
      *
      * @param \Camaleao\Bimgo\CoreBundle\Entity\Papel $papel
-     * @return UsuarioInstituicaoPapel
+     * @return Membro
      */
-    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel = null)
+    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel)
     {
         $this->papel = $papel;
 
@@ -140,7 +112,7 @@ class UsuarioInstituicaoPapel
     /**
      * Get papel
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Papel
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Papel 
      */
     public function getPapel()
     {
