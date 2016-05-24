@@ -24,9 +24,9 @@ class Oferta
     /**
      * @var string
      *
-     * @ORM\Column(name="precoPromocional", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="preco", type="decimal", precision=10, scale=2, nullable=false)
      */
-    private $precopromocional;
+    private $preco;
 
     /**
      * @var \Produto
