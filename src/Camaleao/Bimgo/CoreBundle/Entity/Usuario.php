@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Usuario
  *
  * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nome", columns={"nome"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
- * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\UsuarioRepository")
+ * @ORM\Entity
  */
 class Usuario
 {
@@ -97,7 +97,7 @@ class Usuario
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -120,7 +120,7 @@ class Usuario
     /**
      * Get nome
      *
-     * @return string 
+     * @return string
      */
     public function getNome()
     {
@@ -143,7 +143,7 @@ class Usuario
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -166,7 +166,7 @@ class Usuario
     /**
      * Get senha
      *
-     * @return string 
+     * @return string
      */
     public function getSenha()
     {
@@ -189,7 +189,7 @@ class Usuario
     /**
      * Get token
      *
-     * @return string 
+     * @return string
      */
     public function getToken()
     {
@@ -212,7 +212,7 @@ class Usuario
     /**
      * Get registrationid
      *
-     * @return string 
+     * @return string
      */
     public function getRegistrationid()
     {
@@ -235,7 +235,7 @@ class Usuario
     /**
      * Get administrador
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAdministrador()
     {
@@ -258,7 +258,7 @@ class Usuario
     /**
      * Get ativo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAtivo()
     {
@@ -291,7 +291,7 @@ class Usuario
     /**
      * Get instituicao
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInstituicao()
     {

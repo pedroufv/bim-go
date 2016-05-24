@@ -352,7 +352,7 @@ class InstituicaoController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findBy($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Seguidor')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -387,7 +387,7 @@ class InstituicaoController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findByNotEqualPapel($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByNotEqualPapel($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);

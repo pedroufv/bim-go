@@ -2,8 +2,8 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Entity\Seguidor;
 use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
-use Camaleao\Bimgo\CoreBundle\Entity\UsuarioInstituicaoPapel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -216,7 +216,7 @@ class UsuarioController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findBy($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Seguidor')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -262,7 +262,7 @@ class UsuarioController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findByCidade($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Seguidor')->findByCidade($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -307,7 +307,7 @@ class UsuarioController extends Controller
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:UsuarioInstituicaoPapel')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
@@ -414,8 +414,8 @@ class UsuarioController extends Controller
             $request->request->replace($requestContent);
         }
 
-        $usuarioInstituicaoPapel = new UsuarioInstituicaoPapel();
-        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\UsuarioInstituicaoPapelType', $usuarioInstituicaoPapel, $options);
+        $seguidor = new Seguidor();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\SeguidorType', $seguidor, $options);
         $form->handleRequest($request);
 
         if(!$form->isValid()){
@@ -426,10 +426,10 @@ class UsuarioController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $usuarioInstituicaoPapel = $em->merge($usuarioInstituicaoPapel);
+        $seguidor = $em->merge($seguidor);
         $em->flush();
 
-        $responseContent = $serializer->serialize($usuarioInstituicaoPapel, 'json');
+        $responseContent = $serializer->serialize($seguidor, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
 

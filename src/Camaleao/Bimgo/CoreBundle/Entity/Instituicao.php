@@ -184,7 +184,7 @@ class Instituicao
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -207,7 +207,7 @@ class Instituicao
     /**
      * Get razaosocial
      *
-     * @return string 
+     * @return string
      */
     public function getRazaosocial()
     {
@@ -230,7 +230,7 @@ class Instituicao
     /**
      * Get nomefantasia
      *
-     * @return string 
+     * @return string
      */
     public function getNomefantasia()
     {
@@ -253,7 +253,7 @@ class Instituicao
     /**
      * Get descricao
      *
-     * @return string 
+     * @return string
      */
     public function getDescricao()
     {
@@ -276,7 +276,7 @@ class Instituicao
     /**
      * Get cnpj
      *
-     * @return integer 
+     * @return integer
      */
     public function getCnpj()
     {
@@ -299,7 +299,7 @@ class Instituicao
     /**
      * Get inscricaoestadual
      *
-     * @return integer 
+     * @return integer
      */
     public function getInscricaoestadual()
     {
@@ -322,7 +322,7 @@ class Instituicao
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -345,7 +345,7 @@ class Instituicao
     /**
      * Get grupo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getGrupo()
     {
@@ -368,7 +368,7 @@ class Instituicao
     /**
      * Get ativo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAtivo()
     {
@@ -391,7 +391,7 @@ class Instituicao
     /**
      * Get datacriacao
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatacriacao()
     {
@@ -414,7 +414,7 @@ class Instituicao
     /**
      * Get datamodificacao
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDatamodificacao()
     {
@@ -437,7 +437,7 @@ class Instituicao
     /**
      * Get criadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
      */
     public function getCriadopor()
     {
@@ -460,7 +460,7 @@ class Instituicao
     /**
      * Get modificadopor
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario 
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Usuario
      */
     public function getModificadopor()
     {
@@ -483,7 +483,7 @@ class Instituicao
     /**
      * Get endereco
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Endereco 
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Endereco
      */
     public function getEndereco()
     {
@@ -506,7 +506,7 @@ class Instituicao
     /**
      * Get vinculada
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao 
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Instituicao
      */
     public function getVinculada()
     {
@@ -529,7 +529,7 @@ class Instituicao
     /**
      * Get plano
      *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Plano 
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Plano
      */
     public function getPlano()
     {
@@ -562,7 +562,7 @@ class Instituicao
     /**
      * Get contato
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContato()
     {
@@ -595,7 +595,7 @@ class Instituicao
     /**
      * Get segmento
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSegmento()
     {
@@ -628,7 +628,7 @@ class Instituicao
     /**
      * Get usuario
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsuario()
     {
