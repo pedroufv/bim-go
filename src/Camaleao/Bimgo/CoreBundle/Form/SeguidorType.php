@@ -28,7 +28,7 @@ class UsuarioInstituicaoPapelType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Camaleao\Bimgo\CoreBundle\Entity\UsuarioInstituicaoPapel'
+            'data_class' => 'Camaleao\Bimgo\CoreBundle\Entity\Seguidor'
         ));
     }
 }
