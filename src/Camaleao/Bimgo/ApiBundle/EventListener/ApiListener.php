@@ -8,11 +8,11 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class ApiListener
 {
-    private $api_key;
+    private $apikey;
 
-    public function __construct($tokens)
+    public function __construct($options)
     {
-        $this->api_key = $tokens['api_key'];
+        $this->apikey = $options['apikey'];
     }
 
     public function onKernelController(FilterControllerEvent $event)
@@ -29,8 +29,8 @@ class ApiListener
         }
 
         if ($controller[0] instanceof ApiController) {
-            $api_key = $event->getRequest()->headers->get('api_key');
-            if ($api_key != $this->api_key) {
+            $apikey = $event->getRequest()->headers->get('apikey');
+            if ($apikey != $this->apikey) {
                 throw new AccessDeniedHttpException('This action needs a valid token!');
             }
         }
