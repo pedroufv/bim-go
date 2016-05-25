@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/segmentos")
  */
-class SegmentoController extends Controller
+class SegmentoController extends Controller implements ApiController
 {
     /**
      * List all Segmento entities

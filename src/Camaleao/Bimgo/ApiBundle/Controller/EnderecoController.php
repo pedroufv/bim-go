@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/enderecos")
  */
-class EnderecoController extends Controller
+class EnderecoController extends Controller implements ApiController
 {
     /**
      * Lists all Endereco entities

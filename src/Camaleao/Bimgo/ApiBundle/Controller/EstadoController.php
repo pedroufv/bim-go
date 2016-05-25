@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/estados")
  */
-class EstadoController extends Controller
+class EstadoController extends Controller implements ApiController
 {
     /**
      * Lists Estado

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/promocoes")
  */
-class PromocaoController extends Controller
+class PromocaoController extends Controller implements ApiController
 {
     /**
      * Lists all Promocao entities

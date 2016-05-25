@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/contatos")
  */
-class ContatoController extends Controller
+class ContatoController extends Controller implements ApiController
 {
     /**
      * Lists all Contato entities

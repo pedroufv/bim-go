@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/seguidores")
  */
-class SeguidorController extends Controller
+class SeguidorController extends Controller implements ApiController
 {
     /**
      * List all Seguidor entities

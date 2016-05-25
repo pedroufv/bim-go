@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/cidades")
  */
-class CidadeController extends Controller
+class CidadeController extends Controller implements ApiController
 {
     /**
      * Lists Cidade

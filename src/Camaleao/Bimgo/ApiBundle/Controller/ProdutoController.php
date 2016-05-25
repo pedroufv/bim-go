@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/produtos")
  */
-class ProdutoController extends Controller
+class ProdutoController extends Controller implements ApiController
 {
     /**
      * Lists all Produto entities

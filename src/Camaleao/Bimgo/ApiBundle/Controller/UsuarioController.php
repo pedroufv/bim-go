@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/usuarios")
  */
-class UsuarioController extends Controller
+class UsuarioController extends Controller implements ApiController
 {
     /**
      * List all Usuario entities
