@@ -5,7 +5,6 @@ namespace Camaleao\Bimgo\ApiBundle\Controller;
 use Camaleao\Bimgo\CoreBundle\Entity\Contato;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/contatos")
  */
-class ContatoController extends Controller implements ApiController
+class ContatoController extends ApiController
 {
     /**
      * Lists all Contato entities
@@ -36,17 +35,9 @@ class ContatoController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Contato')->findBy($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 
     /**
@@ -215,16 +206,8 @@ class ContatoController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Contatotipo')->findBy($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 }

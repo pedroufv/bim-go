@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/funcionarios")
  */
-class FuncionarioController extends Controller implements ApiController
+class FuncionarioController extends ApiController
 {
     /**
      * Lists all Funcionario entities

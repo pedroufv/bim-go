@@ -19,11 +19,6 @@ class ApiListener
     {
         $controller = $event->getController();
 
-        /*
-         * $controller passed can be either a class or a Closure.
-         * This is not usual in Symfony but it may happen.
-         * If it is a class, it comes in array format
-         */
         if (!is_array($controller)) {
             return;
         }
@@ -31,7 +26,7 @@ class ApiListener
         if ($controller[0] instanceof ApiController) {
             $apikey = $event->getRequest()->headers->get('apikey');
             if ($apikey != $this->apikey) {
-                throw new AccessDeniedHttpException('This action needs a valid token!');
+                throw new AccessDeniedHttpException('Acesso negado!');
             }
         }
     }

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/papeis")
  */
-class PapelController extends Controller implements ApiController
+class PapelController extends ApiController
 {
     /**
      * Lists Papel

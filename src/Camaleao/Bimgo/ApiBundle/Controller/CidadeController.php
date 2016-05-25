@@ -4,16 +4,14 @@ namespace Camaleao\Bimgo\ApiBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Cidade controller.
  *
  * @Route("/cidades")
  */
-class CidadeController extends Controller implements ApiController
+class CidadeController extends ApiController
 {
     /**
      * Lists Cidade
@@ -35,17 +33,9 @@ class CidadeController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Cidade')->findBy($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 
     /**
@@ -69,17 +59,9 @@ class CidadeController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 
     /**
@@ -103,17 +85,9 @@ class CidadeController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCidade($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 
     /**
@@ -137,17 +111,9 @@ class CidadeController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findByCidade($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 
     /**
@@ -171,16 +137,8 @@ class CidadeController extends Controller implements ApiController
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findByCidade($criteria, $order, $limit, $offset);
 
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
+        $content = $this->createContent($list, $offset, $limit);
 
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->responseSuccess($content);
     }
 }

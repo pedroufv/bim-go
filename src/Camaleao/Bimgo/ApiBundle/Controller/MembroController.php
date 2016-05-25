@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/membros")
  */
-class MembroController extends Controller implements ApiController
+class MembroController extends ApiController
 {
     /**
      * List all Membro entities

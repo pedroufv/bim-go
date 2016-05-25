@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/instituicoes")
  */
-class InstituicaoController extends Controller implements ApiController
+class InstituicaoController extends ApiController
 {
     /**
      * Lists all instituicao entities

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/versionamentos")
  */
-class VersionamentoController extends Controller implements ApiController
+class VersionamentoController extends ApiController
 {
     /**
      * Lists all Versionamento entities

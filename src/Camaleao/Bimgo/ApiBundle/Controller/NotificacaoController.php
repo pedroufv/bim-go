@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @Route("/notificacoes")
  */
-class NotificacaoController extends Controller implements ApiController
+class NotificacaoController extends ApiController
 {
     /**
      * Lists all Notificacao entities
