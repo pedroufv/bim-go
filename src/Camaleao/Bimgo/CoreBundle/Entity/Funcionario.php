@@ -109,6 +109,7 @@ class Funcionario
      */
     public function __construct()
     {
+        $this->datacriacao = new \DateTime();
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

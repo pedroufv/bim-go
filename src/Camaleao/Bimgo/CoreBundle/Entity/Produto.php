@@ -93,7 +93,16 @@ class Produto
      */
     private $modificadopor;
 
-
+    
+    /**
+     * Class constructor
+     *
+     * initialize datacriacao with now
+     */
+    public function __construct()
+    {
+        $this->datacriacao = new \DateTime();
+    }
 
     /**
      * Get id

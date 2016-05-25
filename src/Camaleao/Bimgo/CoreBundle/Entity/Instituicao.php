@@ -175,6 +175,7 @@ class Instituicao
      */
     public function __construct()
     {
+        $this->datacriacao = new \DateTime();
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
         $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();

@@ -112,6 +112,7 @@ class Promocao
      */
     public function __construct()
     {
+        $this->datacriacao = new \DateTime();
         $this->oferta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
