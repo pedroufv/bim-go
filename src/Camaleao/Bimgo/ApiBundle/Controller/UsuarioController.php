@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Entity\Membro;
 use Camaleao\Bimgo\CoreBundle\Entity\Seguidor;
 use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -430,6 +431,59 @@ class UsuarioController extends ApiController
         $em->flush();
 
         $responseContent = $serializer->serialize($seguidor, 'json');
+        $response->setContent($responseContent);
+        $response->setStatusCode(Response::HTTP_CREATED);
+
+        return $response;
+    }
+
+    /**
+     * Creates or Edit Membro entity
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/membros", name="api_v1_usuarios_membros")
+     * @Method("POST")
+     */
+    public function memberAction(Request $request)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+        $options = array();
+
+        if(!$request->getContent()){
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $membro = new Membro();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\MembroType', $membro, $options);
+        $form->handleRequest($request);
+
+        if(!$form->isValid()){
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $membro = $em->merge($membro);
+        $em->flush();
+
+        $responseContent = $serializer->serialize($membro, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
 
