@@ -19,7 +19,7 @@ class FuncionarioType extends AbstractType
             ->add('nome')
             ->add('cpf')
             ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
-            ->add('endereco', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Endereco'))
+            ->add('endereco', new EnderecoType())
             ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('contato')
