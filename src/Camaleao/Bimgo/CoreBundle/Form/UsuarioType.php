@@ -24,19 +24,19 @@ class UsuarioType extends AbstractType
             ->add('senha', PasswordType::class)
             ->add('token', HiddenType::class)
             ->add('registrationid', HiddenType::class)
-            ->add('ativo', ChoiceType::class, array(
+            ->add('administrador', ChoiceType::class, array(
                 'choices'  => array(
                     'Sim' => true,
                     'Não' => false
                 ),
                 'choices_as_values' => true,
             ))
-            ->add('papel', EntityType::class, array(
-                'class'         => 'Camaleao\Bimgo\CoreBundle\Entity\Papel',
-                'label'         => 'Papel',
-                'choice_label'  => function ($papel) {
-                    return $papel->getNome();
-                }
+            ->add('ativo', ChoiceType::class, array(
+                'choices'  => array(
+                    'Sim' => true,
+                    'Não' => false
+                ),
+                'choices_as_values' => true,
             ))
         ;
     }
