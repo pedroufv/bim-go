@@ -73,26 +73,26 @@ class Oferta
     }
 
     /**
-     * Set precopromocional
+     * Set preco
      *
-     * @param string $precopromocional
+     * @param string $preco
      * @return Oferta
      */
-    public function setPrecopromocional($precopromocional)
+    public function setPreco($preco)
     {
-        $this->precopromocional = $precopromocional;
+        $this->preco = $preco;
 
         return $this;
     }
 
     /**
-     * Get precopromocional
+     * Get preco
      *
      * @return string
      */
-    public function getPrecopromocional()
+    public function getPreco()
     {
-        return $this->precopromocional;
+        return $this->preco;
     }
 
     /**
