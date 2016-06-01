@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Usuario
  *
  * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nome", columns={"nome"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\UsuarioRepository")
  */
 class Usuario
 {

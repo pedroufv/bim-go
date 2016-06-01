@@ -260,4 +260,42 @@ class NotificacaoController extends ApiController
 
         return $response;
     }
+
+    /**
+     * send push message
+     *
+     */
+    public function sendPushMessage($title, $message)
+    {
+        $client = $this->get('endroid.gcm.client');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $usuarios = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findByNotNullRegistrationid();
+
+        $registrationIds = array();
+        foreach ($usuarios as $registro)
+            array_push($registrationIds, $registro['registrationid']);
+
+        $data = array(
+            'title' => $title,
+            'message' => $message,
+        );
+
+        $options = [
+            'collapse_key'=>'PushMessageBim-go',
+            'delay_while_idle'=>false,
+            'time_to_live'=>(4 * 7 * 24 * 60 * 60),
+            'restricted_package_name'=>'br.com.camaleao.bim_go',
+            'dry_run'=>false
+        ];
+
+        $client->send($data, $registrationIds, $options);
+
+        $response = new Response(json_encode(array('result' => true)));
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 }
