@@ -41,7 +41,7 @@ class Seguidor
      *
      * @ORM\Column(name="seguindo", type="boolean", nullable=false)
      */
-    private $seguindo = 0;
+    private $seguindo = false;
 
 
     /**

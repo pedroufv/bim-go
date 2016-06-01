@@ -38,7 +38,7 @@ class Produto
     /**
      * @var string
      *
-     * @ORM\Column(name="preco", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="preco", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $preco;
 
