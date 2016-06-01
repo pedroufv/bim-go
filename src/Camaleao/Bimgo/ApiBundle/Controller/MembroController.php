@@ -103,6 +103,94 @@ class MembroController extends ApiController
     }
 
     /**
+     * Edit an existing Membro entity.
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route(name="api_v1_membros_edit")
+     * @Method({"PATCH", "PUT"})
+     */
+    public function editAction(Request $request)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+        $options = array();
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $options['method'] = $request->getMethod();
+        $membro = new Membro();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\MembroType', $membro, $options);
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(true), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $membro = $em->merge($membro);
+        $em->flush();
+
+        $responseContent = $serializer->serialize($membro, 'json');
+        $response->setContent($responseContent);
+        $response->setStatusCode(Response::HTTP_OK);
+
+        return $response;
+    }
+
+    /**
+     * Delete a Membro entity.
+     *
+     * @return Response
+     *
+     * @Route(name="api_v1_membros_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request)
+    {
+        $response = new Response();
+
+        if(!$request->getContent()){
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $membro = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findOneBy($requestContent['membro']);
+
+        $em->remove($membro);
+        $em->flush();
+
+        $response->setStatusCode(Response::HTTP_NO_CONTENT);
+
+        return $response;
+    }
+
+    /**
      * List Instituicao entities that user is admin
      *
      * @param Request $request
