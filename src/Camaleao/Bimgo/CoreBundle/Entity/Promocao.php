@@ -54,7 +54,7 @@ class Promocao
      *
      * @ORM\Column(name="publicada", type="boolean", nullable=false)
      */
-    private $publicada = 0;
+    private $publicada = false;
 
     /**
      * @var \DateTime

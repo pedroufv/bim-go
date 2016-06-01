@@ -61,14 +61,14 @@ class Usuario
      *
      * @ORM\Column(name="administrador", type="boolean", nullable=false)
      */
-    private $administrador;
+    private $administrador = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $ativo = 1;
+    private $ativo = true;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

@@ -33,7 +33,7 @@ class Cidade
      *
      * @ORM\Column(name="participante", type="boolean", nullable=false)
      */
-    private $participante;
+    private $participante = false;
 
     /**
      * @var \Estado

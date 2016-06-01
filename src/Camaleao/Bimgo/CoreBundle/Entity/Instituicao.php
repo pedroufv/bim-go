@@ -75,7 +75,7 @@ class Instituicao
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $ativo;
+    private $ativo = true;
 
     /**
      * @var \DateTime
