@@ -373,7 +373,7 @@ class InstituicaoController extends ApiController
      * @param Request $request
      * @return Response
      *
-     * @Route("/{id}/membros", name="api_v1_usuarios_membros")
+     * @Route("/{id}/membros", name="api_v1_instituicoes_membros")
      * @Method("GET")
      */
     public function membersAction(Request $request)
