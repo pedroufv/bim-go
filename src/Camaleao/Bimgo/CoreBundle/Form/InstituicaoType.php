@@ -28,6 +28,7 @@ class InstituicaoType extends AbstractType
             ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('endereco', new EnderecoType())
             ->add('vinculada', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
+            ->add('associada')
             ->add('contato', EntityType::class, array(
                 'class'         => 'Camaleao\Bimgo\CoreBundle\Entity\Contato',
                 'label'         => 'Contato(s)',

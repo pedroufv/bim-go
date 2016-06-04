@@ -46,6 +46,13 @@ class Membro
      */
     private $papel;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo = true;
+
 
 
     /**
@@ -115,5 +122,28 @@ class Membro
     public function getPapel()
     {
         return $this->papel;
+    }
+
+    /**
+     * Set ativo
+     *
+     * @param boolean $ativo
+     * @return Instituicao
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+
+        return $this;
+    }
+
+    /**
+     * Get ativo
+     *
+     * @return boolean
+     */
+    public function getAtivo()
+    {
+        return $this->ativo;
     }
 }

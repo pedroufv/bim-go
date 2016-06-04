@@ -19,6 +19,7 @@ class MembroType extends AbstractType
             ->add('usuario', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
             ->add('papel', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Papel'))
+            ->add('ativo')
         ;
     }
 

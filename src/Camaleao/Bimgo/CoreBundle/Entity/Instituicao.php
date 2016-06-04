@@ -132,6 +132,13 @@ class Instituicao
     private $vinculada;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="associada", type="boolean", nullable=false)
+     */
+    private $associada = false;
+
+    /**
      * @var \Plano
      *
      * @ORM\ManyToOne(targetEntity="Plano")
@@ -512,6 +519,22 @@ class Instituicao
     public function getVinculada()
     {
         return $this->vinculada;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAssociada()
+    {
+        return $this->associada;
+    }
+
+    /**
+     * @param boolean $associada
+     */
+    public function setAssociada($associada)
+    {
+        $this->associada = $associada;
     }
 
     /**
