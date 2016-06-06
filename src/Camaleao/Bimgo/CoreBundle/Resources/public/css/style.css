@@ -1,0 +1,108 @@
+.width-30-pct{
+    width:30%;
+}
+
+.text-align-center{
+    text-align:center;
+}
+
+.margin-bottom-1em{
+    margin-bottom:1em;
+}
+
+.display-inline{
+    display:inline;
+}
+
+
+input:focus:not([type]):not([readonly]), 
+input[type="text"]:focus:not([readonly]), 
+input[type="password"]:focus:not([readonly]), 
+input[type="email"]:focus:not([readonly]), 
+input[type="url"]:focus:not([readonly]), 
+input[type="time"]:focus:not([readonly]), 
+input[type="date"]:focus:not([readonly]), 
+input[type="datetime-local"]:focus:not([readonly]), 
+input[type="tel"]:focus:not([readonly]), 
+input[type="number"]:focus:not([readonly]), 
+input[type="search"]:focus:not([readonly]), 
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+
+.fieldset{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+/*
+** INFOBOX
+*/
+
+.infoBox { 
+	background-color: #FFF; 
+	width: 300px; 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 14px; 
+	border: 2px solid #3fa7d8; 
+	border-radius: 3px; 
+	margin-top: 10px }
+.infoBox p { 
+	padding: 0 15px 
+}
+.infoBox .nome{
+	font-weight: bold;
+	font-size: 105%;
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 8px;
+}
+.infoBox .latitude, .infoBox .longitude{
+	color:#06c;
+	font-size: 75%;
+}
+.infoBox .latitude:before{
+	content: "Latitude: ";
+	color:#202020;
+}
+.infoBox .longitude:before{
+	content: "Longitude: ";	
+	color:#202020;
+}
+.infoBox .nome{
+	font-weight: bold;
+}
+.infoBox:before { 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent; 
+	border-bottom: 10px solid #3fa7d8; 
+	top: -10px; 
+	content: ""; 
+	height: 0; 
+	position: 
+	absolute; 
+	width: 0; 
+	left: 138px 
+}
+/*
+** /end INFOBOX
+*/
+
+/*
+** PESQUISA
+*/
+#pesquisa.overmap {
+    position: absolute;
+    top: 30%;
+    width: 30%;
+    margin: 0 35%;
+    z-index: 1;
+    text-align: center;
+    background: rgba(255,225,100,.5);
+    border-radius: 10px;
+    padding: 18px 20px;
+}
+.overmap input#search {
+    background: #fff;
+}

@@ -18,20 +18,20 @@
 
         <link href="{{ asset('bundles/camaleaowebbimgo/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/camaleaowebbimgo/img/favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="https://s3-sa-east-1.amazonaws.com/bim-go/favicon.ico" />
     </head>
     <body>
         <header>
             <nav class="blue-grey lighten-5" role="navigation">
                 <div class="nav-wrapper container">
-                    <a href="{{ path('default_index') }}" id="logo-container" class="logo-containerbrand-logo">
-                        <img src="https://s3-sa-east-1.amazonaws.com/camaleao/bim-go/logo.png" title="Bim-go!" height="90%" style="vertical-align:middle"/>
+                    <a href="{{ path('inicial_index') }}" id="logo-container" class="logo-containerbrand-logo">
+                        <img src="https://s3-sa-east-1.amazonaws.com/bim-go/logo.png" title="Bim-go!" height="90%" style="vertical-align:middle"/>
                     </a>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                    {% set menu = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-down'}) %}
-                    {{ knp_menu_render(menu, {'currentClass': 'active', 'template': 'CamaleaoWebBimgoBundle:menu:knp_menu.html.twig'}) }}
-                    {% set menuSide = knp_menu_get('CamaleaoWebBimgoBundle:MenuBuilder:mainMenu', [], {'id': 'slide-out', 'class': 'side-nav'}) %}
-                    {{ knp_menu_render(menuSide, {'currentClass': 'active', 'template': 'CamaleaoWebBimgoBundle:menu:knp_menu.html.twig'}) }}
+                    {% set menu = knp_menu_get('CamaleaoBimgoCoreBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-down'}) %}
+                    {{ knp_menu_render(menu, {'currentClass': 'active', 'template': 'CamaleaoBimgoCoreBundle:menu:knp_menu.html.twig'}) }}
+                    {% set menuSide = knp_menu_get('CamaleaoBimgoCoreBundle:MenuBuilder:mainMenu', [], {'id': 'slide-out', 'class': 'side-nav'}) %}
+                    {{ knp_menu_render(menuSide, {'currentClass': 'active', 'template': 'CamaleaoBimgoCoreBundle:menu:knp_menu.html.twig'}) }}
                 </div>
             </nav>
         </header>
@@ -48,7 +48,7 @@
                         </p>
                     </div>
                     <div class="col l3 s12">
-                        {{ render(controller('CamaleaoWebBimgoBundle:Instituicao:recentList', { 'max': 4 } )) }}
+                        {{ render(controller('CamaleaoBimgoSiteBundle:Instituicao:recentList', { 'max': 4 } )) }}
                     </div>
                     <div class="col l3 s12">
                         <h5 class="white-text">Social</h5>
@@ -86,13 +86,13 @@
         </footer>
 
         <!-- include jquery -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/jquery-1.12.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/jquery-1.12.1.min.js') }}"></script>
 
         <!-- material design js -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/materialize.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/materialize.min.js') }}"></script>
 
         <!-- owner js -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaowebbimgo/js/script.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/script.js') }}"></script>
 
         {% block javascripts %}{% endblock %}
     </body>

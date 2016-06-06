@@ -1,0 +1,4 @@
+services:
+#    camaleao_bimgo_site.example:
+#        class: Camaleao\Bimgo\SiteBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

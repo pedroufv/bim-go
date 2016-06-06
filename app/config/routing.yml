@@ -1,60 +1,14 @@
+camaleao_bimgo_site:
+    resource: "@CamaleaoBimgoSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+camaleao_bimgo_admin:
+    resource: "@CamaleaoBimgoAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
 camaleao_bimgo_api:
     resource: "@CamaleaoBimgoApiBundle/Controller/"
     type:     annotation
     prefix:   /api/v1
-
-camaleao_web_bimgo_android:
-    resource: "@CamaleaoWebBimgoBundle/Controller/AndroidController.php"
-    type:     annotation
-
-camaleao_web_bimgo_cidade:
-    resource: "@CamaleaoWebBimgoBundle/Controller/CidadeController.php"
-    type:     annotation
-
-camaleao_web_bimgo_default:
-    resource: "@CamaleaoWebBimgoBundle/Controller/DefaultController.php"
-    type:     annotation
-
-camaleao_web_bimgo_endereco:
-    resource: "@CamaleaoWebBimgoBundle/Controller/EnderecoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_estado:
-    resource: "@CamaleaoWebBimgoBundle/Controller/EstadoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_funcionario:
-    resource: "@CamaleaoWebBimgoBundle/Controller/FuncionarioController.php"
-    type:     annotation
-
-camaleao_web_bimgo_instituicao:
-    resource: "@CamaleaoWebBimgoBundle/Controller/InstituicaoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_notificacao:
-    resource: "@CamaleaoWebBimgoBundle/Controller/NotificacaoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_pagamento:
-    resource: "@CamaleaoWebBimgoBundle/Controller/PagamentoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_papel:
-    resource: "@CamaleaoWebBimgoBundle/Controller/PapelController.php"
-    type:     annotation
-
-camaleao_web_bimgo_produto:
-    resource: "@CamaleaoWebBimgoBundle/Controller/ProdutoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_promocao:
-    resource: "@CamaleaoWebBimgoBundle/Controller/PromocaoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_segmento:
-    resource: "@CamaleaoWebBimgoBundle/Controller/SegmentoController.php"
-    type:     annotation
-
-camaleao_web_bimgo_usuario:
-    resource: "@CamaleaoWebBimgoBundle/Controller/UsuarioController.php"
-    type:     annotation

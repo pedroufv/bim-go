@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="pesquisa" class="overmap">
+        <form>
+            <div class="input-field">
+              <input id="search" type="search">
+              <label for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+    <div class="section no-pad-bot">
+        <div id="mapa" class="col s12 m12" style="height: 500px; margin: -10px 0;"></div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center blue-text"><i class="medium material-icons">search</i></h2>
+                        <h5 class="center">Encontre empresas</h5>
+                        <p class="light">
+                            Utilize a ferramenta de busca para encontrar empresas, promoções e produtos da sua região.
+                        </p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center blue-text"><i class="medium material-icons">place</i></h2>
+                        <h5 class="center">Descubra a localização</h5>
+                        <p class="light">
+                            Descubra a localização exata e informações de contato da empresa que você procura.
+                        </p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center blue-text"><i class="medium material-icons">star</i></h2>
+                        <h5 class="center">Acompanhe promoções</h5>
+                        <p class="light">
+                            Siga uma empresa para receber promoções exclusivas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBi3pBExnVG5i49pC4arKt5_vHCQp79Wl0"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/infobox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/mapa.js') }}"></script>
+{% endblock %}
