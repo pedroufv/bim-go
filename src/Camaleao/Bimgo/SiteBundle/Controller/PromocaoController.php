@@ -26,13 +26,13 @@ class PromocaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $promocoes = $em->getRepository('CamaleaoWebBimgoBundle:Promocao')->findAll();
+        $promocoes = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findAll();
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate($promocoes, $request->query->get('pagina', 1), 9);
 
-        return $this->render('CamaleaoWebBimgoBundle:promocao:index.html.twig', array(
+        return $this->render('CamaleaoBimgoSiteBundle:promocao:index.html.twig', array(
             'pagination' => $pagination,
         ));
     }
@@ -45,11 +45,8 @@ class PromocaoController extends Controller
      */
     public function showAction(Promocao $promocao)
     {
-        $deleteForm = $this->createDeleteForm($promocao);
-
         return $this->render('CamaleaoWebBimgoBundle:promocao:show.html.twig', array(
             'promocao' => $promocao,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
