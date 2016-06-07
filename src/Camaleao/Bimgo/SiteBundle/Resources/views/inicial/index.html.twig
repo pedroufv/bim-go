@@ -46,8 +46,8 @@
             </div>
         </div>
     </div>
-
-
+    {{ render(controller('CamaleaoBimgoSiteBundle:Instituicao:recentSection', { 'max': 5 } )) }}
+    {{ render(controller('CamaleaoBimgoSiteBundle:Promocao:recentSection', { 'max': 5 } )) }}
 {% endblock %}
 
 {% block javascripts %}
