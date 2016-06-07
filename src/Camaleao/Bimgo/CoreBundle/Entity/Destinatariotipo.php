@@ -35,17 +35,6 @@ class Destinatariotipo
      */
     private $descricao;
 
-    /**
-     * @var \Papel
-     *
-     * @ORM\ManyToOne(targetEntity="Papel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="papel", referencedColumnName="id")
-     * })
-     */
-    private $papel;
-
-
 
     /**
      * Get id
@@ -101,28 +90,5 @@ class Destinatariotipo
     public function getDescricao()
     {
         return $this->descricao;
-    }
-
-    /**
-     * Set papel
-     *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Papel $papel
-     * @return Destinatariotipo
-     */
-    public function setPapel(\Camaleao\Bimgo\CoreBundle\Entity\Papel $papel = null)
-    {
-        $this->papel = $papel;
-
-        return $this;
-    }
-
-    /**
-     * Get papel
-     *
-     * @return \Camaleao\Bimgo\CoreBundle\Entity\Papel
-     */
-    public function getPapel()
-    {
-        return $this->papel;
     }
 }
