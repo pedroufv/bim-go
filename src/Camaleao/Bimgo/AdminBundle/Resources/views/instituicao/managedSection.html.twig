@@ -1,0 +1,15 @@
+{% if list %}
+    <div class="section no-pad-bot">
+        <div class="container">
+            <h2>Instituições Gerenciadas</h2>
+            <div class="row">
+                {% for item in list %}
+                    <div class="col s12 m3">
+                        <h5 class="center"><a class="blue-grey-text darken-4" href="{{ path('admin_instituicao_show', { 'id': item.instituicao.id }) }}">{{ item.instituicao.nomefantasia }}</a></h5>
+                        <p class="light center"><a class="blue-grey-text darken-4" href="{{ path('admin_instituicao_show', { 'id': item.instituicao.id }) }}">{{ item.instituicao.descricao }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

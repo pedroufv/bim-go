@@ -143,4 +143,32 @@ class InstituicaoController extends Controller
             ->getForm()
             ;
     }
+
+    /**
+     * List Instituicao entities that user is admin
+     *
+     * @Route(name="site_instituicao_managed_section")
+     * @Method("GET")
+     * @Template()
+     */
+    public function managedSectionAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        // recuperar da sessao do usuario logado
+        $criteria['usuario'] = 4;
+        $criteria['papel'] = 1;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
+
+
+        return $this->render('CamaleaoBimgoAdminBundle:instituicao:managedSection.html.twig', array(
+            'list' => $list,
+        ));
+    }
 }
