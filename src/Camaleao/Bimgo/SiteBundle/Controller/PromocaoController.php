@@ -45,7 +45,7 @@ class PromocaoController extends Controller
      */
     public function showAction(Promocao $promocao)
     {
-        return $this->render('CamaleaoWebBimgoBundle:promocao:show.html.twig', array(
+        return $this->render('CamaleaoBimgoSiteBundle:promocao:show.html.twig', array(
             'promocao' => $promocao,
         ));
     }
