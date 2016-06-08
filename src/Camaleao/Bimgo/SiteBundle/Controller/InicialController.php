@@ -12,7 +12,7 @@ class InicialController extends Controller
     /**
      * homepage
      *
-     * @Route(name="inicial_index")
+     * @Route(name="site_inicial_index")
      * @Method("GET")
      */
     public function indexAction()

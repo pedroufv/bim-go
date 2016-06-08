@@ -1,0 +1,32 @@
+{% extends 'CamaleaoBimgoAdminBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <h2>Acesse o produto desejado</h2>
+                {% for produto in pagination %}
+                <div class="col s4">
+                    <div class="icon-block">
+                        <h3 class="center">
+                            <a href="{{ path('site_produto_show', { 'id': produto.id }) }}">
+                                {% set logo = 'bundles/camaleaowebbimgo/img/produto/' ~ produto.id ~ '.png' %}
+                                {% if file_exists(logo) %}
+                                    <img src="{{ asset(logo) }}" class="responsive-img">
+                                {% else %}
+                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
+                                {% endif %}
+                            </a>
+                        </h3>
+                        <h5 class="center"><a href="" class="black-text">{{ produto.nome }}</a></h5>
+                        <p><a href="" class="black-text">{{ produto.descricao }}</a></p>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="navigation center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

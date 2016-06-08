@@ -8,6 +8,11 @@ camaleao_bimgo_admin:
     type:     annotation
     prefix:   /admin
 
+camaleao_bimgo_user:
+    resource: "@CamaleaoBimgoUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
 camaleao_bimgo_api:
     resource: "@CamaleaoBimgoApiBundle/Controller/"
     type:     annotation

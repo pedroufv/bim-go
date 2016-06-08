@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Camaleao\Bimgo\ApiBundle\CamaleaoBimgoApiBundle(),
             new Camaleao\Bimgo\CoreBundle\CamaleaoBimgoCoreBundle(),
+            new Camaleao\Bimgo\UserBundle\CamaleaoBimgoUserBundle(),
             new Camaleao\Bimgo\SiteBundle\CamaleaoBimgoSiteBundle(),
             new Camaleao\Bimgo\AdminBundle\CamaleaoBimgoAdminBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),

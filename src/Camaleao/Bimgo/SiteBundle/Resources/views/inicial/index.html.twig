@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'CamaleaoBimgoSiteBundle::base.html.twig' %}
 
 {% block body %}
     <div id="pesquisa" class="overmap">
@@ -46,8 +46,8 @@
             </div>
         </div>
     </div>
-    {{ render(controller('CamaleaoBimgoSiteBundle:Instituicao:recentSection', { 'max': 5 } )) }}
-    {{ render(controller('CamaleaoBimgoSiteBundle:Promocao:recentSection', { 'max': 5 } )) }}
+    {{ render(controller('CamaleaoBimgoSiteBundle:Instituicao:recentSection', { 'max': 4 } )) }}
+    {{ render(controller('CamaleaoBimgoSiteBundle:Promocao:recentSection', { 'max': 4 } )) }}
 {% endblock %}
 
 {% block javascripts %}
