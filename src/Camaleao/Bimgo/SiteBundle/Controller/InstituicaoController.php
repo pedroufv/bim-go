@@ -3,7 +3,6 @@
 namespace Camaleao\Bimgo\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -48,9 +47,15 @@ class InstituicaoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $segmentoId = $request->attributes->get('id');
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $criteria['segmento'] = $request->get('id');
+        // recuperar cidade na sessao
+        $criteria['cidade'] = 4082;
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getInstituicaoBySegmento($segmentoId);
+        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -113,24 +118,5 @@ class InstituicaoController extends Controller
         return $this->render('CamaleaoBimgoSiteBundle:instituicao:recentSection.html.twig', array(
             'instituicoes' => $instituicoes,
         ));
-    }
-
-    /**
-     * load instituicaos
-     *
-     * @Route("/mapa/data", name="site_instituicao_getmapdata")
-     * @Method("GET")
-     */
-    public function getMapDataAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getMapData();
-
-        $serializer = $this->container->get('jms_serializer');
-
-        $reports = $serializer->serialize($instituicoes, 'json');
-
-        return new Response($reports);
     }
 }

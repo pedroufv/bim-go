@@ -1,7 +1,7 @@
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
-var pinImage = {bimgoDefault: '/bundles/camaleaobimgocore/img/pin_bim-go_45x51.png'};
+var pinImage = {bimgoDefault: 'bundles/camaleaobimgocore/img/pin_bim-go_45x51.png'};
 
 function initialize()
 {
@@ -49,7 +49,7 @@ function carregarPontos() {
     $.ajax({
         dataType: 'json',
         type: 'GET',
-        url: '/mapa',
+        url: 'mapa',
         success: function(response) {
 
             $.each(response, function(index, empresa){
