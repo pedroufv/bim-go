@@ -49,7 +49,7 @@ function carregarPontos() {
     $.ajax({
         dataType: 'json',
         type: 'GET',
-        url: '/mapa',
+        url: 'mapa',
         success: function(response) {
 
             $.each(response, function(index, empresa){
