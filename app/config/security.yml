@@ -4,8 +4,8 @@ security:
             pattern:    ^/
             anonymous: ~
             form_login:
-                login_path:  usuario_entrar
-                check_path:  usuario_autenticar
+                login_path:  user_usuario_entrar
+                check_path:  user_usuario_autenticar
             http_basic:
                 realm: "Secured Demo Area"
             logout:
@@ -13,7 +13,7 @@ security:
                 target: /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_CLIENTE }
+        - { path: ^/admin, roles: ROLE_ADMINISTRADOR }
 
     providers:
         main:

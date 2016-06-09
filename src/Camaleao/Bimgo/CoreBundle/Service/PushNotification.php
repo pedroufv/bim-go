@@ -146,13 +146,14 @@ class PushNotification
      * @param $empresa
      * @param $destinatarioTipo
      * @return array
+     * TODO:remover remetente para TIPO_DESTINATARIO_USUARIO e TIPO_DESTINATARIO_MEMBROS
      */
     public function mountRecipientList($empresa, $destinatarioTipo)
     {
         $repository = $this->em->getRepository('CamaleaoBimgoCoreBundle:Usuario');
 
         $results = array();
-        if ($destinatarioTipo == self::TIPO_DESTINATARIO_USUARIO) // remover remetente
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_USUARIO)
             $results = $repository->findByNotNullRegistrationid();
 
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_SEGUIDORES)
@@ -173,7 +174,7 @@ class PushNotification
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS)
             $results = $repository->findEmpresaNaoAssociadaByNotNullRegistrationid($empresa);
 
-        if ($destinatarioTipo == self::TIPO_DESTINATARIO_MEMBROS) // remover remetente
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_MEMBROS)
             $results = $repository->findMembersByNotNullRegistrationid($empresa);
 
         $registrationIds = array();

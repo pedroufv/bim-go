@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Security;
 class UserController extends Controller
 {
     /**
-     * @Route("/entrar", name="usuario_entrar")
+     * @Route("/entrar", name="user_usuario_entrar")
      * @Method({"GET", "POST"})
      */
     public function entrarAction(Request $request)
@@ -37,21 +37,14 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/autenticar", name="usuario_autenticar")
+     * @Route("/autenticar", name="user_usuario_autenticar")
      * @Method("POST")
      */
-    public function autenticarAction(Request $request)
-    {
-
-
-    }
+    public function autenticarAction(Request $request) { }
 
     /**
-     * @Route("/sair", name="usuario_sair")
+     * @Route("/sair", name="user_usuario_sair")
      * @Method("GET")
      */
-    public function sairAction()
-    {
-
-    }
+    public function sairAction() { }
 }
