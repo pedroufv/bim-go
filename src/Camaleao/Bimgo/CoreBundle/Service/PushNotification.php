@@ -12,6 +12,47 @@ use Endroid\Gcm\Client;
 class PushNotification
 {
     /**
+     * Todos os usuários
+     */
+    const TIPO_DESTINATARIO_USUARIO = 1;
+
+    /**
+     * Todos os seguidores
+     */
+    const TIPO_DESTINATARIO_SEGUIDORES = 2;
+
+    /**
+     * Todas as instituições
+     */
+    const TIPO_DESTINATARIO_INSTITUICOES = 3;
+
+    /**
+     * Todos os grupos
+     */
+    const TIPO_DESTINATARIO_GRUPOS = 4;
+
+    /**
+     * Todas as empresas
+     */
+    const TIPO_DESTINATARIO_EMPRESAS = 5;
+
+    /**
+     * Empresas associadas
+     */
+    const TIPO_DESTINATARIO_EMPRESAS_ASSOCIADAS = 6;
+
+    /**
+     * Empresas não associadas
+     */
+    const TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS = 7;
+
+    /**
+     * Todos os membros
+     */
+    const TIPO_DESTINATARIO_MEMBROS = 8;
+
+
+    /**
      * @var Client
      */
     protected $client;
@@ -102,11 +143,44 @@ class PushNotification
     }
 
     /**
-     * @param Destinatariotipo $destinatarioTipo
+     * @param $empresa
+     * @param $destinatarioTipo
+     * @return array
      */
-    public function mountRecipientList(Destinatariotipo $destinatarioTipo)
+    public function mountRecipientList($empresa, $destinatarioTipo)
     {
+        $repository = $this->em->getRepository('CamaleaoBimgoCoreBundle:Usuario');
 
+        $results = array();
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_USUARIO)
+            $results = $repository->findByNotNullRegistrationid();
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_SEGUIDORES)
+            $results = $repository->findByNotNullRegistrationidSeguidores($empresa);
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_INSTITUICOES)
+            $results = $repository->findManagerByNotNullRegistrationid();
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_GRUPOS)
+            $results = $repository->findGroupByNotNullRegistrationid();
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_EMPRESAS)
+            $results = $repository->findEmpresaByNotNullRegistrationid();
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_EMPRESAS_ASSOCIADAS)
+            $results = $repository->findEmpresaAssociadaByNotNullRegistrationid($empresa);
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS)
+            $results = $repository->findEmpresaNaoAssociadaByNotNullRegistrationid($empresa);
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_MEMBROS)
+            $results = $repository->findMembersByNotNullRegistrationid($empresa);
+
+        $registrationIds = array();
+        foreach ($results as $result)
+            array_push($registrationIds, $result['registrationid']);
+
+        $this->registrationIds = $registrationIds;
     }
 
     /**

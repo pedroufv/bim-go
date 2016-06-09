@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'CamaleaoBimgoSiteBundle::base.html.twig' %}
 
 {% block body %}
     {% if error %}
@@ -12,10 +12,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="_password" />
 
-        {#
-            If you want to control the URL the user is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
+        <input type="hidden" name="_target_path" value="/admin" />
 
         <input type="submit" name="login" />
     </form>

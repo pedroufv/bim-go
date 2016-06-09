@@ -101,11 +101,13 @@ class NotificacaoController extends ApiController
         );
         $push->setData($data);
 
-        $push->mountRecipientList($notificacao->getDestinatariotipo());
+        $push->mountRecipientList($notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
 
         $em = $this->getDoctrine()->getManager();
         $notificacao = $em->merge($notificacao);
         $em->flush();
+
+        $push->send();
 
         $responseContent = $serializer->serialize($notificacao, 'json');
         $response->setContent($responseContent);
