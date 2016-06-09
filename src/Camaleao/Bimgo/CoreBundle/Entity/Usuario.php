@@ -316,6 +316,8 @@ class Usuario implements UserInterface
      * return (Role|string)[] The user roles
      *
      * @return array
+     *
+     * TODO: verificar se o usuario é cliente administrador
      */
     public function getRoles()
     {
