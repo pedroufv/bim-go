@@ -91,23 +91,25 @@ class NotificacaoController extends ApiController
             return $response;
         }
 
-        $push = $this->get('camaleao_bimgo_core.push_notification');
-
-        $data = array(
-            'type' => 0,
-            'title' => $notificacao->getMensagemtipo()->getNome(),
-            'message' => $notificacao->getMensagem(),
-            'summary' => $notificacao->getInstituicao()->getNomefantasia(),
-        );
-        $push->setData($data);
-
-        $push->mountRecipientList($notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
-
         $em = $this->getDoctrine()->getManager();
         $notificacao = $em->merge($notificacao);
         $em->flush();
 
-        $push->send();
+        if(!empty($notificacao->getId())) {
+            $push = $this->get('camaleao_bimgo_core.push_notification');
+
+            $data = array(
+                'type' => 0,
+                'title' => $notificacao->getMensagemtipo()->getNome(),
+                'message' => $notificacao->getMensagem(),
+                'summary' => $notificacao->getInstituicao()->getNomefantasia(),
+            );
+            $push->setData($data);
+
+            $push->mountRecipientList($notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
+
+            $push->send();
+        }
 
         $responseContent = $serializer->serialize($notificacao, 'json');
         $response->setContent($responseContent);
