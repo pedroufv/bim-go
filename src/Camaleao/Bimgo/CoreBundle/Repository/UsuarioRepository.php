@@ -30,7 +30,7 @@ class UsuarioRepository extends EntityRepository
      * pega os ids de usuarios que tem relação na tabela seguidores com a empresa no parametro
      * seguindo true
      */
-    public function findByNotNullRegistrationidSeguidores($idEmpresa)
+    public function findSeguidoresByNotNullRegistrationid($idEmpresa)
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Seguidor')
             ->createQueryBuilder('seguidor')

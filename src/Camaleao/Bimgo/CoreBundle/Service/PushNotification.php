@@ -152,11 +152,11 @@ class PushNotification
         $repository = $this->em->getRepository('CamaleaoBimgoCoreBundle:Usuario');
 
         $results = array();
-        if ($destinatarioTipo == self::TIPO_DESTINATARIO_USUARIO)
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_USUARIO) // remover remetente
             $results = $repository->findByNotNullRegistrationid();
 
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_SEGUIDORES)
-            $results = $repository->findByNotNullRegistrationidSeguidores($empresa);
+            $results = $repository->findSeguidoresByNotNullRegistrationid($empresa);
 
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_INSTITUICOES)
             $results = $repository->findManagerByNotNullRegistrationid();
@@ -173,7 +173,7 @@ class PushNotification
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS)
             $results = $repository->findEmpresaNaoAssociadaByNotNullRegistrationid($empresa);
 
-        if ($destinatarioTipo == self::TIPO_DESTINATARIO_MEMBROS)
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_MEMBROS) // remover remetente
             $results = $repository->findMembersByNotNullRegistrationid($empresa);
 
         $registrationIds = array();
