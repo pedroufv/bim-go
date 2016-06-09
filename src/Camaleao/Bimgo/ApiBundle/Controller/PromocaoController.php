@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
 use Camaleao\Bimgo\CoreBundle\Entity\Promocao;
+use Camaleao\Bimgo\CoreBundle\Service\PushNotification;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -165,6 +166,23 @@ class PromocaoController extends ApiController
         $em = $this->getDoctrine()->getManager();
         $promocao = $em->merge($promocao);
         $em->flush();
+
+        if ($promocao->getPublicada()) {
+            $push = $this->get('camaleao_bimgo_core.push_notification');
+
+            $data = array(
+                'type' => 1,
+                'title' => $promocao->getNome(),
+                'message' => $promocao->getDescricao(),
+                'summary' => $promocao->getInstituicao()->getNomefantasia(),
+                'id' => $promocao->getId(),
+            );
+            $push->setData($data);
+
+            $push->mountRecipientList($promocao->getInstituicao()->getId(), PushNotification::TIPO_DESTINATARIO_SEGUIDORES);
+
+            $push->send();
+        }
 
         $responseContent = $serializer->serialize($promocao, 'json');
         $response->setContent($responseContent);

@@ -95,6 +95,25 @@ class MembroController extends ApiController
         $membro = $em->merge($membro);
         $em->flush();
 
+        if(!empty($membro->getId())) {
+            $push = $this->get('camaleao_bimgo_core.push_notification');
+
+            $data = array(
+                'type' => 2,
+                'title' => 'Permissão concedida',
+                'message' => 'Você foi adicionado com permissão de ' . $membro->getPapel()->getNome() . ' em ' . $membro->getInstituicao()->getNomefantasia() . '.',
+                //'summary' => 'Permissão concedida',
+            );
+            $push->setData($data);
+
+            $registrationIds = array();
+            array_push($registrationIds, $membro->getUsuario()->getRegistrationid());
+
+            $push->setRegistrationIds($registrationIds);
+
+            $push->send();
+        }
+
         $responseContent = $serializer->serialize($membro, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
