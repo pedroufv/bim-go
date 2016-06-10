@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\UserBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,6 +20,18 @@ class UserController extends Controller
      */
     public function entrarAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneById(4);
+
+        $list = $usuario->getActiveMembro();
+        foreach ($list as $item) {
+            dump($item->getInstituicao()->getRazaoSocial());
+        }
+        exit;
+
+
+
+
         //$request = $this->getRequest();
         $session = $request->getSession();
 

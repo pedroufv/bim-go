@@ -171,6 +171,11 @@ class Instituicao
     private $segmento;
 
     /**
+     * @ORM\OneToMany(targetEntity="Membro", mappedBy="instituicao")
+     */
+    private $membro;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="instituicao")
@@ -185,6 +190,7 @@ class Instituicao
         $this->datacriacao = new \DateTime();
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
         $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -624,6 +630,44 @@ class Instituicao
     public function getSegmento()
     {
         return $this->segmento;
+    }
+
+    /**
+     * Get Membros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembro()
+    {
+        return $this->membro;
+    }
+
+    /**
+     * Get Active Membros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActiveMembro()
+    {
+        return $this->membro->filter(
+            function($entry) {
+                return $entry->getAtivo() === true;
+            }
+        );
+    }
+
+    /**
+     * Get Active Membros by papel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActiveMembroByPapel($papel)
+    {
+        return $this->getActiveMembro()->filter(
+            function($entry) use ($papel) {
+                return $entry->getPapel()->getId() == $papel;
+            }
+        );
     }
 
     /**

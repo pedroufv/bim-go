@@ -72,6 +72,11 @@ class Usuario implements UserInterface
     private $ativo = true;
 
     /**
+     * @ORM\OneToMany(targetEntity="Membro", mappedBy="usuario")
+     */
+    private $membro;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="usuario")
@@ -91,6 +96,7 @@ class Usuario implements UserInterface
      */
     public function __construct()
     {
+        $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
         $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -264,6 +270,44 @@ class Usuario implements UserInterface
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    /**
+     * Get Membros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembro()
+    {
+        return $this->membro;
+    }
+
+    /**
+     * Get Active Membros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActiveMembro()
+    {
+        return $this->membro->filter(
+            function($entry) {
+                return $entry->getAtivo() === true;
+            }
+        );
+    }
+
+    /**
+     * Get Active Membros by papel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActiveMembroByPapel($papel)
+    {
+        return $this->getActiveMembro()->filter(
+            function($entry) use ($papel) {
+                return $entry->getPapel()->getId() == $papel;
+            }
+        );
     }
 
     /**
