@@ -382,12 +382,11 @@ class InstituicaoController extends ApiController
 
         $criteria = $request->get('criteria') ? $request->get('criteria') : array();
         $criteria['instituicao'] = $request->get('id');
-        $criteria['papel'] = 1;
         $order = $request->get('order') ? $request->get('order') : array();
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByNotEqualPapel($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);

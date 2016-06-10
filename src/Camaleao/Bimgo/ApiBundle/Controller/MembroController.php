@@ -5,7 +5,6 @@ namespace Camaleao\Bimgo\ApiBundle\Controller;
 use Camaleao\Bimgo\CoreBundle\Entity\Membro;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -161,6 +160,25 @@ class MembroController extends ApiController
         $membro = $em->merge($membro);
         $em->flush();
 
+        if ($membro->getAtivo() == false) {
+            $push = $this->get('camaleao_bimgo_core.push_notification');
+
+            $data = array(
+                'type' => 3,
+                'title' => 'Permissão removida',
+                'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi revogada em ' . $membro->getInstituicao()->getNomefantasia() . '.',
+                //'summary' => 'Permissão revogada',
+            );
+            $push->setData($data);
+
+            $registrationIds = array();
+            array_push($registrationIds, $membro->getUsuario()->getRegistrationid());
+
+            $push->setRegistrationIds($registrationIds);
+
+            $push->send();
+        }
+
         $responseContent = $serializer->serialize($membro, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_OK);
@@ -203,41 +221,6 @@ class MembroController extends ApiController
         $em->flush();
 
         $response->setStatusCode(Response::HTTP_NO_CONTENT);
-
-        return $response;
-    }
-
-    /**
-     * List Instituicao entities that user is admin
-     *
-     * @param Request $request
-     * @return Response
-     *
-     * @Route("/usuario/{id}/instituicoes-gerenciadas", name="api_v1_usuarios_instituicoes_gerenciadas")
-     * @Method("GET")
-     */
-    public function institutionsManagedAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-        $criteria['usuario'] = $request->get('id');
-        $criteria['papel'] = 1;
-        $order = $request->get('order') ? $request->get('order') : array();
-        $limit = $request->get('limit') ? $request->get('limit') : null;
-        $offset = $request->get('offset') ? $request->get('offset') : null;
-
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
-
-        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
-        $content = array('metadata' => $metadata, 'results' => $list);
-
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($content, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }

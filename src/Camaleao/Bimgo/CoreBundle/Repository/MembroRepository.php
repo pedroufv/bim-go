@@ -7,6 +7,41 @@ use Doctrine\ORM\EntityRepository;
 class MembroRepository extends EntityRepository
 {
     /**
+     *
+     */
+    public function findByGrupo($criteria = array(), $order = array(), $limit = null, $offset = null)
+    {
+        $result = $this->createQueryBuilder('membro')
+            ->innerJoin('membro.instituicao', 'instituicao');
+
+        if(isset($criteria['grupo'])) {
+            $result->andWhere("instituicao.grupo = ".$criteria['grupo']);
+            unset($criteria['grupo']);
+        }
+
+        if(count($criteria) > 0) {
+            foreach($criteria as $key => $value) {
+                $result->andWhere("membro.$key = $value");
+            }
+        }
+
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+    }
+
+
+    /**
      * Get not equal papel
      * @return mixed
      */

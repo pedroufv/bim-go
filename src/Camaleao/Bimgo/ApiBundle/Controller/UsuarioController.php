@@ -7,7 +7,6 @@ use Camaleao\Bimgo\CoreBundle\Entity\Seguidor;
 use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -303,12 +302,11 @@ class UsuarioController extends ApiController
 
         $criteria = $request->get('criteria') ? $request->get('criteria') : array();
         $criteria['usuario'] = $request->get('id');
-        $criteria['papel'] = 1;
         $order = $request->get('order') ? $request->get('order') : array();
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByUsuarioAndNotEqualPapel($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByGrupo($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
