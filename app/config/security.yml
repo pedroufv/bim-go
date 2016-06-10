@@ -9,7 +9,7 @@ security:
             http_basic:
                 realm: "Secured Demo Area"
             logout:
-                path:   usuario_sair
+                path:   user_usuario_sair
                 target: /
 
     access_control:

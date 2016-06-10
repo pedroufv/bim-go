@@ -351,12 +351,15 @@ class Usuario implements UserInterface
      *
      * @return array
      *
-     * TODO: verificar se o usuario é cliente administrador
+     * TODO: verificar se o usuario é membro (cliente administrador)
      */
     public function getRoles()
     {
         if($this->getAdministrador())
             return array('ROLE_ADMINISTRADOR');
+
+        if($this->getActiveMembro()->count() > 0)
+            return array('ROLE_MEMBRO');
 
         return array('ROLE_CLIENTE');
     }
