@@ -77,19 +77,9 @@ class Usuario implements UserInterface
     private $membro;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="usuario")
-     * @ORM\JoinTable(name="seguidor",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="Seguidor", mappedBy="usuario")
      */
-    private $instituicao;
+    private $seguidor;
 
     /**
      * Constructor
@@ -97,7 +87,7 @@ class Usuario implements UserInterface
     public function __construct()
     {
         $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->instituicao = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seguidor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -273,7 +263,7 @@ class Usuario implements UserInterface
     }
 
     /**
-     * Get Membros
+     * Get Membro
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -283,15 +273,18 @@ class Usuario implements UserInterface
     }
 
     /**
-     * Get Active Membros
+     * Get Active Membro
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getActiveMembro()
+    public function getActiveMembro($ativo = true)
     {
         return $this->membro->filter(
-            function($entry) {
-                return $entry->getAtivo() === true;
+            function($entry) use ($ativo) {
+                /**
+                 * @var Membro $entry
+                 */
+                return $entry->getAtivo() === $ativo;
             }
         );
     }
@@ -305,42 +298,39 @@ class Usuario implements UserInterface
     {
         return $this->getActiveMembro()->filter(
             function($entry) use ($papel) {
+                /**
+                 * @var Membro $entry
+                 */
                 return $entry->getPapel()->getId() == $papel;
             }
         );
     }
 
     /**
-     * Add instituicao
-     *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao
-     * @return Usuario
-     */
-    public function addInstituicao(\Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao)
-    {
-        $this->instituicao[] = $instituicao;
-
-        return $this;
-    }
-
-    /**
-     * Remove instituicao
-     *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao
-     */
-    public function removeInstituicao(\Camaleao\Bimgo\CoreBundle\Entity\Instituicao $instituicao)
-    {
-        $this->instituicao->removeElement($instituicao);
-    }
-
-    /**
-     * Get instituicao
+     * Get Seguidor
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getInstituicao()
+    public function getSeguidor()
     {
-        return $this->instituicao;
+        return $this->seguidor;
+    }
+
+    /**
+     * Get Seguindo Seguidor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeguindoSeguidor($seguindo = true)
+    {
+        return $this->seguidor->filter(
+            function($entry) use ($seguindo) {
+                /**
+                 * @var Seguidor $entry
+                 */
+                return $entry->getSeguindo() === $seguindo;
+            }
+        );
     }
 
     /**

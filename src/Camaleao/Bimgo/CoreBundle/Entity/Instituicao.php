@@ -176,11 +176,9 @@ class Instituicao
     private $membro;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Usuario", mappedBy="instituicao")
+     * @ORM\OneToMany(targetEntity="Seguidor", mappedBy="instituicao")
      */
-    private $usuario;
+    private $seguidor;
 
     /**
      * Constructor
@@ -191,7 +189,7 @@ class Instituicao
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
         $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seguidor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -633,7 +631,7 @@ class Instituicao
     }
 
     /**
-     * Get Membros
+     * Get Membro
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -643,15 +641,18 @@ class Instituicao
     }
 
     /**
-     * Get Active Membros
+     * Get Active Membro
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getActiveMembro()
+    public function getActiveMembro($ativo = true)
     {
         return $this->membro->filter(
-            function($entry) {
-                return $entry->getAtivo() === true;
+            function($entry) use ($ativo) {
+                /**
+                 * @var Membro $entry
+                 */
+                return $entry->getAtivo() === $ativo;
             }
         );
     }
@@ -665,41 +666,38 @@ class Instituicao
     {
         return $this->getActiveMembro()->filter(
             function($entry) use ($papel) {
+                /**
+                 * @var Membro $entry
+                 */
                 return $entry->getPapel()->getId() == $papel;
             }
         );
     }
 
     /**
-     * Add usuario
-     *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario
-     * @return Instituicao
-     */
-    public function addUsuario(\Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario[] = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Remove usuario
-     *
-     * @param \Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario
-     */
-    public function removeUsuario(\Camaleao\Bimgo\CoreBundle\Entity\Usuario $usuario)
-    {
-        $this->usuario->removeElement($usuario);
-    }
-
-    /**
-     * Get usuario
+     * Get Seguidor
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsuario()
+    public function getSeguidor()
     {
-        return $this->usuario;
+        return $this->seguidor;
+    }
+
+    /**
+     * Get Seguindo Seguidor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeguindoSeguidor($seguindo = true)
+    {
+        return $this->seguidor->filter(
+            function($entry) use ($seguindo) {
+                /**
+                 * @var Seguidor $entry
+                 */
+                return $entry->getSeguindo() === $seguindo;
+            }
+        );
     }
 }
