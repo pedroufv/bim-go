@@ -20,7 +20,6 @@ class UserController extends Controller
      */
     public function entrarAction(Request $request)
     {
-        //$request = $this->getRequest();
         $session = $request->getSession();
 
         // get the login error if there is one
@@ -41,7 +40,7 @@ class UserController extends Controller
      * @Route("/autenticar", name="user_usuario_autenticar")
      * @Method("POST")
      */
-    public function autenticarAction(Request $request) { }
+    public function autenticarAction() { }
 
     /**
      * @Route("/sair", name="user_usuario_sair")

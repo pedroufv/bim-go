@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Bimgo\CoreBundle\Menu;
+namespace Camaleao\Bimgo\CustomerBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;

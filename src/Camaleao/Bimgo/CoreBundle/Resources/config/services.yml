@@ -6,13 +6,6 @@ services:
     class:     %push_notification.class%
     arguments: [@endroid.gcm.client, @doctrine.orm.entity_manager]
 
-  camaleao_bimgo_core.menu.voter.request:
-    class: Camaleao\Bimgo\CoreBundle\Menu\RequestVoter
-    arguments:
-        - @service_container
-    tags:
-        - { name: knp_menu.voter }
-
   camaleao_bimgo_core.filetwigextensio:
     class: Camaleao\Bimgo\CoreBundle\Twig\Extension\FileExtension
     tags:

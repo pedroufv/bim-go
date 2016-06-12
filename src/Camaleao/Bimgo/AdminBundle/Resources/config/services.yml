@@ -1,4 +1,7 @@
 services:
-#    camaleao_bimgo_admin.example:
-#        class: Camaleao\Bimgo\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+  camaleao_bimgo_admin.menu.voter.request:
+    class: Camaleao\Bimgo\AdminBundle\Menu\RequestVoter
+    arguments:
+        - @service_container
+    tags:
+        - { name: knp_menu.voter }

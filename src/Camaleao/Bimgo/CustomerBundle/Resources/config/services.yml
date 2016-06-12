@@ -1,0 +1,7 @@
+services:
+  camaleao_bimgo_customer.menu.voter.request:
+    class: Camaleao\Bimgo\CustomerBundle\Menu\RequestVoter
+    arguments:
+        - @service_container
+    tags:
+        - { name: knp_menu.voter }

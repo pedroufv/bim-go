@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Bimgo\CoreBundle\Menu;
+namespace Camaleao\Bimgo\CustomerBundle\Menu;
 
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Matcher\Voter\VoterInterface;

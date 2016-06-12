@@ -1,19 +1,26 @@
 {% extends 'CamaleaoBimgoSiteBundle::base.html.twig' %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.message }}</div>
-    {% endif %}
+    <div class="container">
+        <h2>Informe e-mail e senha para acesso.</h2>
+        <div class="row">
+            {% if error %}
+                <div>{{ error.message }}</div>
+            {% endif %}
 
-    <form action="{{ path('user_usuario_autenticar') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            <form action="{{ path('user_usuario_autenticar') }}" method="post">
+                <label for="username">E-mail:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="_password" />
 
-        <input type="hidden" name="_target_path" value="/admin" />
+                <input type="hidden" name="_target_path" value="{{ path('site_inicial_index') }}" />
 
-        <input type="submit" name="login" />
-    </form>
+                <button class="btn waves-effect waves-light blue" type="submit" name="action">Entrar
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
