@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Camaleao\Bimgo\UserBundle\CamaleaoBimgoUserBundle(),
             new Camaleao\Bimgo\SiteBundle\CamaleaoBimgoSiteBundle(),
             new Camaleao\Bimgo\AdminBundle\CamaleaoBimgoAdminBundle(),
+            new Camaleao\Bimgo\MemberBundle\CamaleaoBimgoMemberBundle(),
+            new Camaleao\Bimgo\CustomerBundle\CamaleaoBimgoCustomerBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),

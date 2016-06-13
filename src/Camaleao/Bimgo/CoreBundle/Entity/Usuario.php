@@ -372,7 +372,6 @@ class Usuario implements UserInterface
      */
     public function getPassword() { return $this->getSenha(); }
 
-
     /**
      * Returns the salt that was originally used to encode the password.
      *

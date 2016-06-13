@@ -78,7 +78,7 @@ class PushNotification
     protected $options = array(
         'collapse_key'=>'PushMessageBim-go',
         'delay_while_idle'=>false,
-        'time_to_live'=>(4 * 7 * 24 * 60 * 60),
+        'time_to_live'=>2419200,
         'restricted_package_name'=>'br.com.camaleao.bim_go',
         'dry_run'=>false
     );

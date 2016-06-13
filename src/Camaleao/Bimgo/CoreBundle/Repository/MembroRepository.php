@@ -40,6 +40,43 @@ class MembroRepository extends EntityRepository
         return $result->getQuery()->getResult();
     }
 
+    /**
+     * Get membro ativo de grupo de empresa
+     * @return mixed
+     */
+    public function findAtivoByGrupo($criteria, $order, $limit, $offset)
+    {
+        $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
+            ->createQueryBuilder('membro')
+            ->innerJoin('membro.instituicao', 'instituicao')
+            ->where('membro.ativo = true');
+
+
+        if(isset($criteria['grupo'])) {
+            $result->andWhere("instituicao.grupo = ".$criteria['grupo']);
+            unset($criteria['grupo']);
+        }
+
+        if(count($criteria) > 0) {
+            foreach($criteria as $key => $value) {
+                $result->andWhere("membro.$key = $value");
+            }
+        }
+
+        if(count($order) > 0) {
+            foreach($order as $key => $value){
+                $result->addOrderBy($key, $value);
+            }
+        }
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+    }
 
     /**
      * Get not equal papel

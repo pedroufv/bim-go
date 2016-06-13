@@ -306,7 +306,7 @@ class UsuarioController extends ApiController
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findByGrupo($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Membro')->findAtivoByGrupo($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
