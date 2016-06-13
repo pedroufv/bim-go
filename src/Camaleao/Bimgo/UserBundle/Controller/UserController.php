@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -20,6 +21,24 @@ class UserController extends Controller
      */
     public function entrarAction(Request $request)
     {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        /**
+         * @var Usuario $usuario
+         */
+        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneById(4);
+
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($usuario, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+
+
         $session = $request->getSession();
 
         // get the login error if there is one

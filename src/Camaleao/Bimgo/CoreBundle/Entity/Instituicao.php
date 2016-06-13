@@ -171,14 +171,35 @@ class Instituicao
     private $segmento;
 
     /**
-     * @ORM\OneToMany(targetEntity="Membro", mappedBy="instituicao")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="gerenciadas")
+     * @ORM\JoinTable(name="membro",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   }
+     * )
      */
-    private $membro;
+    private $membros;
 
     /**
-     * @ORM\OneToMany(targetEntity="Seguidor", mappedBy="instituicao")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="seguidas")
+     * @ORM\JoinTable(name="seguidor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   }
+     * )
      */
-    private $seguidor;
+    private $seguidores;
+
 
     /**
      * Constructor
@@ -188,8 +209,8 @@ class Instituicao
         $this->datacriacao = new \DateTime();
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
         $this->segmento = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->seguidor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->membros = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seguidores = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -631,73 +652,22 @@ class Instituicao
     }
 
     /**
-     * Get Membro
+     * Get Membros
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMembro()
+    public function getMembros()
     {
-        return $this->membro;
+        return $this->membros;
     }
 
     /**
-     * Get Active Membro
+     * Get Seguidores
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getActiveMembro($ativo = true)
+    public function getSeguidores()
     {
-        return $this->membro->filter(
-            function($entry) use ($ativo) {
-                /**
-                 * @var Membro $entry
-                 */
-                return $entry->getAtivo() === $ativo;
-            }
-        );
-    }
-
-    /**
-     * Get Active Membros by papel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActiveMembroByPapel($papel)
-    {
-        return $this->getActiveMembro()->filter(
-            function($entry) use ($papel) {
-                /**
-                 * @var Membro $entry
-                 */
-                return $entry->getPapel()->getId() == $papel;
-            }
-        );
-    }
-
-    /**
-     * Get Seguidor
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeguidor()
-    {
-        return $this->seguidor;
-    }
-
-    /**
-     * Get Seguindo Seguidor
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeguindoSeguidor($seguindo = true)
-    {
-        return $this->seguidor->filter(
-            function($entry) use ($seguindo) {
-                /**
-                 * @var Seguidor $entry
-                 */
-                return $entry->getSeguindo() === $seguindo;
-            }
-        );
+        return $this->seguidores;
     }
 }

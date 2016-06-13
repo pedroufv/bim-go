@@ -16,8 +16,11 @@ class Seguidor
      * @var \Usuario
      *
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="seguidor")
-     * @ORM\JoinColumn(name="usuario", referencedColumnName="id", nullable=false)
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
      */
     private $usuario;
 
@@ -25,8 +28,11 @@ class Seguidor
      * @var \Instituicao
      *
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Instituicao", inversedBy="seguidor")
-     * @ORM\JoinColumn(name="instituicao", referencedColumnName="id", nullable=false)
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Instituicao")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
+     * })
      */
     private $instituicao;
 

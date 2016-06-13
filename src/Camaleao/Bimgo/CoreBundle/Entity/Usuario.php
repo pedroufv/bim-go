@@ -72,22 +72,26 @@ class Usuario implements UserInterface
     private $ativo = true;
 
     /**
-     * @ORM\OneToMany(targetEntity="Membro", mappedBy="usuario")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="membros")
      */
-    private $membro;
+    private $gerenciadas;
 
     /**
-     * @ORM\OneToMany(targetEntity="Seguidor", mappedBy="usuario")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="seguidores")
      */
-    private $seguidor;
+    private $seguidas;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->membro = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->seguidor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gerenciadas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seguidas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -263,75 +267,25 @@ class Usuario implements UserInterface
     }
 
     /**
-     * Get Membro
+     * Get Instituicoes Gerenciadas
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMembro()
+    public function getGerenciadas()
     {
-        return $this->membro;
+        return $this->gerenciadas;
     }
 
     /**
-     * Get Active Membro
+     * Get Instituicoes Seguidas
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getActiveMembro($ativo = true)
+    public function getSeguidas()
     {
-        return $this->membro->filter(
-            function($entry) use ($ativo) {
-                /**
-                 * @var Membro $entry
-                 */
-                return $entry->getAtivo() === $ativo;
-            }
-        );
+        return $this->seguidas;
     }
 
-    /**
-     * Get Active Membros by papel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActiveMembroByPapel($papel)
-    {
-        return $this->getActiveMembro()->filter(
-            function($entry) use ($papel) {
-                /**
-                 * @var Membro $entry
-                 */
-                return $entry->getPapel()->getId() == $papel;
-            }
-        );
-    }
-
-    /**
-     * Get Seguidor
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeguidor()
-    {
-        return $this->seguidor;
-    }
-
-    /**
-     * Get Seguindo Seguidor
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeguindoSeguidor($seguindo = true)
-    {
-        return $this->seguidor->filter(
-            function($entry) use ($seguindo) {
-                /**
-                 * @var Seguidor $entry
-                 */
-                return $entry->getSeguindo() === $seguindo;
-            }
-        );
-    }
 
     /**
      * Returns the roles granted to the user.
@@ -356,7 +310,7 @@ class Usuario implements UserInterface
         if($this->getAdministrador())
             return array('ROLE_ADMINISTRADOR');
 
-        if($this->getActiveMembro()->count() > 0)
+        if($this->getInstituicoesGerenciadas()->count() > 0)
             return array('ROLE_MEMBRO');
 
         return array('ROLE_CLIENTE');
