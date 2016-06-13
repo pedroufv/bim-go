@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Instituicao
@@ -182,6 +183,8 @@ class Instituicao
      *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
      *   }
      * )
+     *
+     * @Exclude
      */
     private $membros;
 
@@ -197,6 +200,7 @@ class Instituicao
      *     @ORM\JoinColumn(name="usuario", referencedColumnName="id")
      *   }
      * )
+     * @Exclude
      */
     private $seguidores;
 
