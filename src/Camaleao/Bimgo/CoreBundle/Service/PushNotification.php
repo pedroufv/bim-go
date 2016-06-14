@@ -148,7 +148,7 @@ class PushNotification
      * @return array
      * TODO:remover remetente para TIPO_DESTINATARIO_USUARIO e TIPO_DESTINATARIO_MEMBROS
      */
-    public function mountRecipientList($empresa, $destinatarioTipo)
+    public function mountRecipientList($empresa, $destinatarioTipo, $remetente = null)
     {
         $repository = $this->em->getRepository('CamaleaoBimgoCoreBundle:Usuario');
 

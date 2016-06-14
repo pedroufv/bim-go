@@ -4,6 +4,7 @@ namespace Camaleao\Bimgo\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Usuario
@@ -75,6 +76,7 @@ class Usuario implements UserInterface
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="membros")
+     * @Exclude
      */
     private $gerenciadas;
 
@@ -82,6 +84,7 @@ class Usuario implements UserInterface
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="seguidores")
+     * @Exclude
      */
     private $seguidas;
 
@@ -310,7 +313,7 @@ class Usuario implements UserInterface
         if($this->getAdministrador())
             return array('ROLE_ADMINISTRADOR');
 
-        if($this->getInstituicoesGerenciadas()->count() > 0)
+        if($this->getGerenciadas()->count() > 0)
             return array('ROLE_MEMBRO');
 
         return array('ROLE_CLIENTE');

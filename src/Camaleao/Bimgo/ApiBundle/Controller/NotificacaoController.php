@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
 use Camaleao\Bimgo\CoreBundle\Entity\Notificacao;
+use Proxies\__CG__\Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -295,6 +296,37 @@ class NotificacaoController extends ApiController
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
         $list = $em->getRepository('CamaleaoBimgoCoreBundle:NotificacaoPermissao')->findBy($criteria, $order, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para clientes:
+     * mostrar as que destinatarioTipo é 1 (todos os usuários), 2 (todos os seguidores, ou seja, caso sigam a empresa que enviou a notificação)
+     *
+     * @Route("-clientes/{id}", name="api_v1_notificacoes_clientes")
+     * @Method("GET")
+     */
+    public function clientsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        $order = $request->get('order') ? $request->get('order') : array();
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCliente($request->get('id'));
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
