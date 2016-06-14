@@ -76,6 +76,14 @@ class Notificacao
     private $mensagemtipo;
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = new \DateTime();
+    }
+
 
     /**
      * Get id
