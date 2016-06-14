@@ -8,7 +8,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class NotificacaoRepository extends EntityRepository
 {
 
-    public function findByCliente($id, $limit = null, $offset = null)
+    public function findByCliente($id, $criteria = null, $limit = null, $offset = null)
     {
         $rsm = new ResultSetMapping();
         $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Notificacao', 'n');
@@ -24,17 +24,27 @@ class NotificacaoRepository extends EntityRepository
         $rsm->addFieldResult('mt', 'mensagemTipo', 'id');
         $rsm->addFieldResult('n', 'mensagem', 'mensagem');
 
-        $sql = "SELECT n.*
-                FROM notificacao n
-                WHERE n.destinatarioTipo = 1
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                  INNER JOIN seguidor s ON s.instituicao = n.instituicao
-                  INNER JOIN usuario u ON u.id = s.usuario
-                WHERE n.destinatarioTipo = 2
-                  AND s.seguindo = true
-                  AND u.id = $id";
+
+        $cidade = $criteria['cidade'];
+
+        $sql = "SELECT *
+                FROM (
+                    SELECT n.*
+                    FROM notificacao n
+                      INNER JOIN instituicao i ON n.instituicao = i.id
+                      INNER JOIN endereco e ON i.endereco = e.id
+                    WHERE n.destinatarioTipo = 1
+                      AND e.cidade = $cidade
+                    UNION ALL
+                    SELECT n.*
+                    FROM notificacao n
+                      INNER JOIN seguidor s ON s.instituicao = n.instituicao
+                      INNER JOIN usuario u ON u.id = s.usuario
+                    WHERE n.destinatarioTipo = 2
+                      AND s.seguindo = true
+                      AND u.id = $id
+                  ) u
+                  ORDER BY id DESC";
 
         if($limit)
             $sql .= "\nLIMIT ".$limit;
@@ -72,7 +82,45 @@ class NotificacaoRepository extends EntityRepository
         return $query->getResult();
     }
 
-    public function findByEmpresa($instituicao)
+    public function findByEmpresaAssociada($instituicao)
+    {
+        $rsm = new ResultSetMapping();
+
+
+        $sql = "SELECT n.*
+                FROM notificacao n
+                WHERE n.instituicao = $instituicao
+                UNION ALL
+                SELECT n.*
+                FROM notificacao n
+                WHERE n.destinatarioTipo = 3
+                UNION ALL
+                SELECT n.*
+                FROM notificacao n
+                INNER JOIN instituicao i on i.id = n.instituicao
+                WHERE n.destinatarioTipo = 5
+                  AND i.grupo = false
+                UNION ALL
+                SELECT n.*
+                FROM notificacao n
+                INNER JOIN instituicao i on i.id = n.instituicao
+                WHERE n.destinatarioTipo = 6
+                  AND i.grupo = false
+                  AND i.associada = true
+                UNION ALL
+                SELECT n.*
+                FROM notificacao n
+                INNER JOIN instituicao i on i.id = n.instituicao
+                WHERE n.destinatarioTipo = 7
+                  AND i.grupo = false
+                  AND i.associada = false";
+
+        $query = $this->_em->createNativeQuery($sql, $rsm);
+
+        return $query->getResult();
+    }
+
+    public function findByEmpresaNaoAssociada($instituicao)
     {
         $rsm = new ResultSetMapping();
 

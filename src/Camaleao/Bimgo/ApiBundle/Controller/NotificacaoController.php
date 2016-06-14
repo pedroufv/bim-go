@@ -311,6 +311,18 @@ class NotificacaoController extends ApiController
     }
 
     /**
+     * Para administradores do sistema:
+     * mostrar todas as notificações
+     *
+     * @Route("-administradores-sistema", name="api_v1_notificacoes_administradores_sistema")
+     * @Method("GET")
+     */
+    public function administradoresSistemaAction(Request $request)
+    {
+        return $this->indexAction($request);
+    }
+
+    /**
      * Para clientes:
      * mostrar as que destinatarioTipo é 1 (todos os usuários), 2 (todos os seguidores, ou seja, caso sigam a empresa que enviou a notificação)
      *
@@ -322,11 +334,155 @@ class NotificacaoController extends ApiController
         $em = $this->getDoctrine()->getManager();
 
         $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-        $order = $request->get('order') ? $request->get('order') : array();
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCliente($request->get('id'), $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCliente($request->get('id'), $criteria, $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para administrador de grupo:
+     * mostrar as que ele enviou e destinatarioTipo é 3 (todas as instituições), 4 (todos os grupos)
+     *
+     * @Route("-grupo-administradores/{id}", name="api_v1_notificacoes_grupo_administradores")
+     * @Method("GET")
+     */
+    public function administradoresGrupoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByGrupo($request->get('id'), $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para administrador de empresa associada:
+     * mostrar as que ele enviou e destinatarioTipo é 3 (todas as instituições), 5 (todas as empresas), 6 (empresas associadas, se a empresa dele é associada)
+     *
+     * @Route("-empresa-associada-administradores/{id}", name="api_v1_notificacoes_empresa_associada_administradores")
+     * @Method("GET")
+     */
+    public function administradoresEmpresaAssociadaAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByEmpresaAssociada($request->get('id'), $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para administrador de empresa não associada:
+     * mostrar as que ele enviou e destinatarioTipo é 3 (todas as instituições), 5 (todas as empresas), 7 (empresas não associadas, se a empresa dele é não associada)
+     *
+     * @Route("-empresa-nao-associada-administradores/{id}", name="api_v1_notificacoes_empresa_nao_associada_administradores")
+     * @Method("GET")
+     */
+    public function administradoresEmpresaNaoAssociadaAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByEmpresaNaoAssociada($request->get('id'), $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para funcionário de grupo:
+     * mostrar as que destinatarioTipo é 8 (todos os membros, se a notificação é do grupo que ele trabalha)
+     *
+     * @Route("-grupo-funcionarios/{id}", name="api_v1_notificacoes_grupo_funcionarios")
+     * @Method("GET")
+     */
+    public function funcionariosGrupoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByMembroGrupo($request->get('id'), $limit, $offset);
+
+        $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
+        $content = array('metadata' => $metadata, 'results' => $list);
+
+        $serializer = $this->container->get('jms_serializer');
+        $result = $serializer->serialize($content, 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * Para funcionário de empresa:
+     * mostrar as que destinatarioTipo é 8 (todos os membros, se a notificação é da empresa que ele trabalha)
+     *
+     * @Route("-empresa-funcionarios/{id}", name="api_v1_notificacoes_empresa_funcionarios")
+     * @Method("GET")
+     */
+    public function funcionariosEmpresaAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = $request->get('limit') ? $request->get('limit') : null;
+        $offset = $request->get('offset') ? $request->get('offset') : null;
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByMembroEmpresa($request->get('id'), $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
