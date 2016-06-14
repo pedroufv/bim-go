@@ -8,7 +8,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class NotificacaoRepository extends EntityRepository
 {
 
-    public function findByCliente($id)
+    public function findByCliente($id, $limit = null, $offset = null)
     {
         $rsm = new ResultSetMapping();
         $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Notificacao', 'n');
@@ -35,6 +35,12 @@ class NotificacaoRepository extends EntityRepository
                 WHERE n.destinatarioTipo = 2
                   AND s.seguindo = true
                   AND u.id = $id";
+
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
 
         $query = $this->_em->createNativeQuery($sql, $rsm);
 

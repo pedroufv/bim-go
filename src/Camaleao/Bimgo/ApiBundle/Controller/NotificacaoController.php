@@ -326,7 +326,7 @@ class NotificacaoController extends ApiController
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCliente($request->get('id'));
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Notificacao')->findByCliente($request->get('id'), $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
