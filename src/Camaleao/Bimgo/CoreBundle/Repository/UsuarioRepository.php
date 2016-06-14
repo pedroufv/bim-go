@@ -39,8 +39,8 @@ class UsuarioRepository extends EntityRepository
             ->innerJoin('seguidor.instituicao', 'instituicao')
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
-            ->andWhere("seguidor.seguindo", true)
-            ->andWhere("instituicao.id", $idEmpresa)
+            ->andWhere("seguidor.seguindo = true")
+            ->andWhere("instituicao.id = ".$idEmpresa)
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();

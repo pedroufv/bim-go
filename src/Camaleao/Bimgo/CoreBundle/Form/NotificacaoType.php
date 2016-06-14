@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\CoreBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +17,10 @@ class NotificacaoType extends AbstractType
     {
         $builder
             ->add('mensagem')
-            ->add('destinatario')
-            ->add('remetente')
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
+            ->add('remetente', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
+            ->add('destinatariotipo', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Destinatariotipo'))
+            ->add('mensagemtipo', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Mensagemtipo'))
         ;
     }
 
