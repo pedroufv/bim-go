@@ -27,11 +27,48 @@ class NotificacaoRepository extends EntityRepository
             $result->setMaxResults($limit);
 
         return $result->getQuery()->getResult();
+
+        /*$cidade = $criteria['cidade'];
+
+        $sql = "SELECT DISTINCT n.*
+				FROM notificacao n
+				 INNER JOIN instituicao i ON i.id = n.instituicao
+				 INNER JOIN endereco e ON e.id = i.endereco
+				 INNER JOIN seguidor s ON s.instituicao = i.id
+				WHERE (n.destinatarioTipo = 1)
+				 OR (n.destinatarioTipo = 2
+                 AND s.usuario = $usuario
+				 AND s.seguindo = true
+				 AND e.cidade = $cidade)
+				ORDER BY id DESC";
+
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
+
+        return $query->getResult();*/
     }
 
     public function findByGrupo($instituicao, $limit = null, $offset = null)
     {
-        $sql = "SELECT n.*
+        $result = $this->createQueryBuilder('notificacao')
+            ->where("n.instituicao = $instituicao")
+            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 4")
+            ->orderBy('notificacao.id', 'DESC');
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+
+        /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 4)
@@ -45,12 +82,25 @@ class NotificacaoRepository extends EntityRepository
 
         $query = $this->_em->createQuery($sql);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     public function findByEmpresaAssociada($instituicao, $limit = null, $offset = null)
     {
-        $sql = "SELECT n.*
+        $result = $this->createQueryBuilder('notificacao')
+            ->where("n.instituicao = $instituicao")
+            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 6")
+            ->orderBy('notificacao.id', 'DESC');
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+
+        /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 6)
@@ -64,12 +114,25 @@ class NotificacaoRepository extends EntityRepository
 
         $query = $this->_em->createQuery($sql);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     public function findByEmpresaNaoAssociada($instituicao, $limit = null, $offset = null)
     {
-        $sql = "SELECT n.*
+        $result = $this->createQueryBuilder('notificacao')
+            ->where("n.instituicao = $instituicao")
+            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 7")
+            ->orderBy('notificacao.id', 'DESC');
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+
+        /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 7)
@@ -83,12 +146,25 @@ class NotificacaoRepository extends EntityRepository
 
         $query = $this->_em->createQuery($sql);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     public function findByMembroGrupo($instituicao, $limit = null, $offset = null)
     {
-        $sql = "SELECT n.*
+        $result = $this->createQueryBuilder('notificacao')
+            ->where("n.instituicao = $instituicao")
+            ->orWhere("n.destinatarioTipo = 8")
+            ->orderBy('notificacao.id', 'DESC');
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+
+        /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   AND n.destinatarioTipo = 8
@@ -102,12 +178,25 @@ class NotificacaoRepository extends EntityRepository
 
         $query = $this->_em->createQuery($sql);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     public function findByMembroEmpresa($instituicao, $limit = null, $offset = null)
     {
-        $sql = "SELECT n.*
+        $result = $this->createQueryBuilder('notificacao')
+            ->where("n.instituicao = $instituicao")
+            ->orWhere("n.destinatarioTipo = 8")
+            ->orderBy('notificacao.id', 'DESC');
+
+        if($offset)
+            $result->setFirstResult($offset);
+
+        if($limit)
+            $result->setMaxResults($limit);
+
+        return $result->getQuery()->getResult();
+
+        /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   AND n.destinatarioTipo = 8
@@ -121,7 +210,7 @@ class NotificacaoRepository extends EntityRepository
 
         $query = $this->_em->createQuery($sql);
 
-        return $query->getResult();
+        return $query->getResult();*/
     }
 
     /**
