@@ -57,7 +57,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 4")
+            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 4")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -89,7 +89,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 5 OR notificacao.destinatarioTipo = 6")
+            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 5 OR notificacao.destinatariotipo = 6")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -121,7 +121,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 5 OR notificacao.destinatarioTipo = 7")
+            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 5 OR notificacao.destinatariotipo = 7")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -153,7 +153,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatarioTipo = 8")
+            ->orWhere("notificacao.destinatariotipo = 8")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -185,7 +185,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatarioTipo = 8")
+            ->orWhere("notificacao.destinatariotipo = 8")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
