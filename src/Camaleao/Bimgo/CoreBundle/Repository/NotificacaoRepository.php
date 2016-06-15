@@ -56,8 +56,8 @@ class NotificacaoRepository extends EntityRepository
     public function findByGrupo($instituicao, $limit = null, $offset = null)
     {
         $result = $this->createQueryBuilder('notificacao')
-            ->where("n.instituicao = $instituicao")
-            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 4")
+            ->where("notificacao.instituicao = $instituicao")
+            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 4")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -88,8 +88,8 @@ class NotificacaoRepository extends EntityRepository
     public function findByEmpresaAssociada($instituicao, $limit = null, $offset = null)
     {
         $result = $this->createQueryBuilder('notificacao')
-            ->where("n.instituicao = $instituicao")
-            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 6")
+            ->where("notificacao.instituicao = $instituicao")
+            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 5 OR notificacao.destinatarioTipo = 6")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -120,8 +120,8 @@ class NotificacaoRepository extends EntityRepository
     public function findByEmpresaNaoAssociada($instituicao, $limit = null, $offset = null)
     {
         $result = $this->createQueryBuilder('notificacao')
-            ->where("n.instituicao = $instituicao")
-            ->orWhere("n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 7")
+            ->where("notificacao.instituicao = $instituicao")
+            ->orWhere("notificacao.destinatarioTipo = 3 OR notificacao.destinatarioTipo = 5 OR notificacao.destinatarioTipo = 7")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -152,8 +152,8 @@ class NotificacaoRepository extends EntityRepository
     public function findByMembroGrupo($instituicao, $limit = null, $offset = null)
     {
         $result = $this->createQueryBuilder('notificacao')
-            ->where("n.instituicao = $instituicao")
-            ->orWhere("n.destinatarioTipo = 8")
+            ->where("notificacao.instituicao = $instituicao")
+            ->orWhere("notificacao.destinatarioTipo = 8")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -184,8 +184,8 @@ class NotificacaoRepository extends EntityRepository
     public function findByMembroEmpresa($instituicao, $limit = null, $offset = null)
     {
         $result = $this->createQueryBuilder('notificacao')
-            ->where("n.instituicao = $instituicao")
-            ->orWhere("n.destinatarioTipo = 8")
+            ->where("notificacao.instituicao = $instituicao")
+            ->orWhere("notificacao.destinatarioTipo = 8")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
