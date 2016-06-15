@@ -14,8 +14,8 @@ class NotificacaoRepository extends EntityRepository
 
         $result = $this->createQueryBuilder('notificacao')
             ->innerJoin('notificacao.instituicao', 'instituicao')
-            ->innerJoin('CamaleaoBimgoCoreBundle:Seguidor', 'seguidor', 'WITH','instituicao.id = seguidor.instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
+            ->leftJoin('CamaleaoBimgoCoreBundle:Seguidor', 'seguidor', 'WITH','instituicao.id = seguidor.instituicao')
             ->where("notificacao.destinatariotipo = 1")
             ->orWhere("notificacao.destinatariotipo = 2 AND seguidor.usuario = $usuario AND seguidor.seguindo = true AND endereco.cidade = $cidade")
             ->orderBy('notificacao.id', 'DESC');
