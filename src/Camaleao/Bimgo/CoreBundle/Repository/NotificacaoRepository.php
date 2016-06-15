@@ -12,27 +12,21 @@ class NotificacaoRepository extends EntityRepository
     {
         $cidade = $criteria['cidade'];
 
-        $sql = "SELECT DISTINCT n.*
-				FROM notificacao n
-				 INNER JOIN instituicao i ON i.id = n.instituicao
-				 INNER JOIN endereco e ON e.id = i.endereco
-				 INNER JOIN seguidor s ON s.instituicao = i.id
-				WHERE (n.destinatarioTipo = 1)
-				 OR (n.destinatarioTipo = 2
-                 AND s.usuario = $usuario
-				 AND s.seguindo = true
-				 AND e.cidade = $cidade)
-				ORDER BY id DESC";
-
-        if($limit)
-            $sql .= "\nLIMIT ".$limit;
+        $result = $this->createQueryBuilder('notificacao')
+            ->innerJoin('notificacao.instituicao', 'instituicao')
+            ->innerJoin('CamaleaoBimgoCoreBundle:Seguidor', 'seguidor', 'WITH','instituicao.id = seguidor.instituicao')
+            ->innerJoin('instituicao.endereco', 'endereco')
+            ->where("notificacao.destinatariotipo = 1")
+            ->orWhere("notificacao.destinatariotipo = 2 AND seguidor.usuario = $usuario AND seguidor.seguindo = true AND endereco.cidade = $cidade")
+            ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
-            $sql .= "\nOFFSET ".$offset;
+            $result->setFirstResult($offset);
 
-        $query = $this->_em->createQuery($sql);
+        if($limit)
+            $result->setMaxResults($limit);
 
-        return $query->getResult();
+        return $result->getQuery()->getResult();
     }
 
     public function findByGrupo($instituicao, $limit = null, $offset = null)
