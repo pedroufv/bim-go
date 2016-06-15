@@ -8,43 +8,21 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class NotificacaoRepository extends EntityRepository
 {
 
-    public function findByCliente($id, $criteria = null, $limit = null, $offset = null)
+    public function findByCliente($usuario, $criteria = null, $limit = null, $offset = null)
     {
-        $rsm = new ResultSetMapping();
-        $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Notificacao', 'n');
-        $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Instituicao', 'i');
-        $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Usuario', 'u');
-        $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Destinatariotipo', 'dt');
-        $rsm->addEntityResult('CamaleaoBimgoCoreBundle:Mensagemtipo', 'mt');
-        $rsm->addFieldResult('n', 'id', 'id');
-        $rsm->addFieldResult('i', 'instituicao', 'id');
-        $rsm->addFieldResult('u', 'remetente', 'id');
-        $rsm->addFieldResult('n', 'data', 'data');
-        $rsm->addFieldResult('dt', 'destinatarioTipo', 'id');
-        $rsm->addFieldResult('mt', 'mensagemTipo', 'id');
-        $rsm->addFieldResult('n', 'mensagem', 'mensagem');
-
-
         $cidade = $criteria['cidade'];
 
-        $sql = "SELECT *
-                FROM (
-                    SELECT n.*
-                    FROM notificacao n
-                      INNER JOIN instituicao i ON n.instituicao = i.id
-                      INNER JOIN endereco e ON i.endereco = e.id
-                    WHERE n.destinatarioTipo = 1
-                      AND e.cidade = $cidade
-                    UNION ALL
-                    SELECT n.*
-                    FROM notificacao n
-                      INNER JOIN seguidor s ON s.instituicao = n.instituicao
-                      INNER JOIN usuario u ON u.id = s.usuario
-                    WHERE n.destinatarioTipo = 2
-                      AND s.seguindo = true
-                      AND u.id = $id
-                  ) u
-                  ORDER BY id DESC";
+        $sql = "SELECT DISTINCT n.*
+				FROM notificacao n
+				 INNER JOIN instituicao i ON i.id = n.instituicao
+				 INNER JOIN endereco e ON e.id = i.endereco
+				 INNER JOIN seguidor s ON s.instituicao = i.id
+				WHERE (n.destinatarioTipo = 1)
+				 OR (n.destinatarioTipo = 2
+                 AND s.usuario = $usuario
+				 AND s.seguindo = true
+				 AND e.cidade = $cidade)
+				ORDER BY id DESC";
 
         if($limit)
             $sql .= "\nLIMIT ".$limit;
@@ -52,141 +30,102 @@ class NotificacaoRepository extends EntityRepository
         if($offset)
             $sql .= "\nOFFSET ".$offset;
 
-        $query = $this->_em->createNativeQuery($sql, $rsm);
+        $query = $this->_em->createQuery($sql);
 
         return $query->getResult();
     }
 
-    public function findByGrupo($id, $instituicao)
+    public function findByGrupo($instituicao, $limit = null, $offset = null)
     {
-        $rsm = new ResultSetMapping();
-
-
-        $sql = "SELECT n.*
-                FROM notificacao n
-                WHERE n.remetente = $id
-                  AND n.instituicao = $instituicao
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                  INNER JOIN membro m ON m.instituicao = n.instituicao
-                  INNER JOIN usuario u ON u.id = m.usuario
-                WHERE n.destinatarioTipo = 3 OR n.destinatarioTipo = 4
-                  AND n.instituicao = $instituicao
-                  AND m.papel = 7
-                  AND m.ativo = true
-                  AND u.id = $id";
-
-        $query = $this->_em->createNativeQuery($sql, $rsm);
-
-        return $query->getResult();
-    }
-
-    public function findByEmpresaAssociada($instituicao)
-    {
-        $rsm = new ResultSetMapping();
-
-
         $sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                WHERE n.destinatarioTipo = 3
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 5
-                  AND i.grupo = false
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 6
-                  AND i.grupo = false
-                  AND i.associada = true
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 7
-                  AND i.grupo = false
-                  AND i.associada = false";
+                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 4)
+				ORDER BY id DESC";
 
-        $query = $this->_em->createNativeQuery($sql, $rsm);
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
 
         return $query->getResult();
     }
 
-    public function findByEmpresaNaoAssociada($instituicao)
+    public function findByEmpresaAssociada($instituicao, $limit = null, $offset = null)
     {
-        $rsm = new ResultSetMapping();
-
-
         $sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                WHERE n.destinatarioTipo = 3
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 5
-                  AND i.grupo = false
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 6
-                  AND i.grupo = false
-                  AND i.associada = true
-                UNION ALL
-                SELECT n.*
-                FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
-                WHERE n.destinatarioTipo = 7
-                  AND i.grupo = false
-                  AND i.associada = false";
+                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 6)
+				ORDER BY id DESC";
 
-        $query = $this->_em->createNativeQuery($sql, $rsm);
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
 
         return $query->getResult();
     }
 
-    public function findByMembroGrupo($instituicao)
+    public function findByEmpresaNaoAssociada($instituicao, $limit = null, $offset = null)
     {
-        $rsm = new ResultSetMapping();
-
-
         $sql = "SELECT n.*
                 FROM notificacao n
-                INNER JOIN instituicao i on i.id = n.instituicao
+                WHERE n.instituicao = $instituicao
+                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 7)
+				ORDER BY id DESC";
+
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
+
+        return $query->getResult();
+    }
+
+    public function findByMembroGrupo($instituicao, $limit = null, $offset = null)
+    {
+        $sql = "SELECT n.*
+                FROM notificacao n
                 WHERE n.instituicao = $instituicao
                   AND n.destinatarioTipo = 8
-                  AND i.grupo = true";
+				ORDER BY id DESC";
 
-        $query = $this->_em->createNativeQuery($sql, $rsm);
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
 
         return $query->getResult();
     }
 
-    public function findByMembroEmpresa($instituicao)
+    public function findByMembroEmpresa($instituicao, $limit = null, $offset = null)
     {
-        $rsm = new ResultSetMapping();
-
-
         $sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  AND n.destinatarioTipo = 5
-                  AND i.grupo = false";
+                  AND n.destinatarioTipo = 8
+				ORDER BY id DESC";
 
-        $query = $this->_em->createNativeQuery($sql, $rsm);
+        if($limit)
+            $sql .= "\nLIMIT ".$limit;
+
+        if($offset)
+            $sql .= "\nOFFSET ".$offset;
+
+        $query = $this->_em->createQuery($sql);
 
         return $query->getResult();
     }
