@@ -99,8 +99,8 @@ class MembroController extends ApiController
         $data = array(
             'type' => 2,
             'title' => 'Permissão concedida',
-            'message' => 'Você foi adicionado com permissão de ' . $membro->getPapel()->getNome() . ' em ' . $membro->getInstituicao()->getNomefantasia() . '.',
-            //'summary' => 'Permissão concedida',
+            'message' => 'Você foi adicionado com permissão de ' . $membro->getPapel()->getNome() . '.',
+            'summary' => $membro->getInstituicao()->getNomefantasia(),
         );
         $push->setData($data);
 
@@ -166,8 +166,8 @@ class MembroController extends ApiController
             $data = array(
                 'type' => 3,
                 'title' => 'Permissão removida',
-                'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi revogada em ' . $membro->getInstituicao()->getNomefantasia() . '.',
-                //'summary' => 'Permissão revogada',
+                'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi revogada.',
+                'summary' => $membro->getInstituicao()->getNomefantasia(),
             );
             $push->setData($data);
 
