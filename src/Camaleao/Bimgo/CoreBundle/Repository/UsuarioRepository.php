@@ -60,7 +60,7 @@ class UsuarioRepository extends EntityRepository
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
             ->andWhere("papel.id in (4,7)")
-            ->andWhere("membro.ativo", true)
+            ->andWhere("membro.ativo = true")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
@@ -80,7 +80,7 @@ class UsuarioRepository extends EntityRepository
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
             ->andWhere("papel.id", 7)
-            ->andWhere("membro.ativo", true)
+            ->andWhere("membro.ativo = true")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
@@ -100,7 +100,7 @@ class UsuarioRepository extends EntityRepository
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
             ->andWhere("papel.id", 4)
-            ->andWhere("membro.ativo", true)
+            ->andWhere("membro.ativo = true")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
@@ -122,9 +122,9 @@ class UsuarioRepository extends EntityRepository
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
             ->andWhere("papel.id", 4)
-            ->andWhere("membro.ativo", true)
-            ->andWhere("instituicao.associada", true)
-            ->andWhere("instituicao.vinculada", $idEmpresa)
+            ->andWhere("membro.ativo = true")
+            ->andWhere("instituicao.associada = true")
+            ->andWhere("instituicao.vinculada = $idEmpresa")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
@@ -146,9 +146,9 @@ class UsuarioRepository extends EntityRepository
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
             ->andWhere("papel.id", 4)
-            ->andWhere("membro.ativo", true)
-            ->andWhere("instituicao.associada", false)
-            ->andWhere("instituicao.vinculada", $idEmpresa)
+            ->andWhere("membro.ativo = true")
+            ->andWhere("instituicao.associada = false")
+            ->andWhere("instituicao.vinculada = $idEmpresa")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
@@ -167,9 +167,9 @@ class UsuarioRepository extends EntityRepository
             ->innerJoin('membro.instituicao', 'instituicao')
             ->where('usuario.registrationid IS NOT NULL')
             ->andWhere("usuario.registrationid != ''")
-            ->andWhere("membro.ativo", true)
-            ->andWhere("instituicao.associada", false)
-            ->andWhere("instituicao.id", $idEmpresa)
+            ->andWhere("membro.ativo = true")
+            ->andWhere("instituicao.associada = false")
+            ->andWhere("instituicao.id = $idEmpresa")
             ->distinct('usuario.registrationid');
 
         return $result->getQuery()->getResult();
