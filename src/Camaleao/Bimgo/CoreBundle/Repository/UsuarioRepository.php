@@ -7,11 +7,6 @@ use Doctrine\ORM\EntityRepository;
 class UsuarioRepository extends EntityRepository
 {
     /**
-     * Get user with registrationid is not null
-     * @return mixed
-     */
-
-    /**
      * pega os ids de usuarios que tem o aplicativo instalado, todos os usuários do sistema
      */
     public function findByNotNullRegistrationid()
