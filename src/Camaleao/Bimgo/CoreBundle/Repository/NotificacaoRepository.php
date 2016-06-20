@@ -17,7 +17,8 @@ class NotificacaoRepository extends EntityRepository
             ->innerJoin('instituicao.endereco', 'endereco')
             ->leftJoin('CamaleaoBimgoCoreBundle:Seguidor', 'seguidor', 'WITH','instituicao.id = seguidor.instituicao')
             ->where("notificacao.destinatariotipo = 1")
-            ->orWhere("notificacao.destinatariotipo = 2 AND seguidor.usuario = $usuario AND seguidor.seguindo = true AND endereco.cidade = $cidade")
+            ->orWhere("notificacao.destinatariotipo = 2 AND endereco.cidade = $cidade")
+            ->orWhere("notificacao.destinatariotipo = 3 AND seguidor.usuario = $usuario AND seguidor.seguindo = true AND endereco.cidade = $cidade")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -36,7 +37,7 @@ class NotificacaoRepository extends EntityRepository
 				 INNER JOIN endereco e ON e.id = i.endereco
 				 INNER JOIN seguidor s ON s.instituicao = i.id
 				WHERE (n.destinatarioTipo = 1)
-				 OR (n.destinatarioTipo = 2
+				 OR (n.destinatarioTipo = 3
                  AND s.usuario = $usuario
 				 AND s.seguindo = true
 				 AND e.cidade = $cidade)
@@ -57,7 +58,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 4")
+            ->orWhere("notificacao.destinatariotipo = 4 OR notificacao.destinatariotipo = 5")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -71,7 +72,7 @@ class NotificacaoRepository extends EntityRepository
         /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 4)
+                  OR (n.destinatarioTipo = 4 OR n.destinatarioTipo = 5)
 				ORDER BY id DESC";
 
         if($limit)
@@ -89,7 +90,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 5 OR notificacao.destinatariotipo = 6")
+            ->orWhere("notificacao.destinatariotipo = 4 OR notificacao.destinatariotipo = 6 OR notificacao.destinatariotipo = 7")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -103,7 +104,7 @@ class NotificacaoRepository extends EntityRepository
         /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 6)
+                  OR (n.destinatarioTipo = 4 OR n.destinatarioTipo = 6 OR n.destinatarioTipo = 7)
 				ORDER BY id DESC";
 
         if($limit)
@@ -121,7 +122,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatariotipo = 3 OR notificacao.destinatariotipo = 5 OR notificacao.destinatariotipo = 7")
+            ->orWhere("notificacao.destinatariotipo = 4 OR notificacao.destinatariotipo = 6 OR notificacao.destinatariotipo = 8")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -135,7 +136,7 @@ class NotificacaoRepository extends EntityRepository
         /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  OR (n.destinatarioTipo = 3 OR n.destinatarioTipo = 5 OR n.destinatarioTipo = 7)
+                  OR (n.destinatarioTipo = 4 OR n.destinatarioTipo = 6 OR n.destinatarioTipo = 8)
 				ORDER BY id DESC";
 
         if($limit)
@@ -153,7 +154,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatariotipo = 8")
+            ->orWhere("notificacao.destinatariotipo = 9")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -167,7 +168,7 @@ class NotificacaoRepository extends EntityRepository
         /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  AND n.destinatarioTipo = 8
+                  AND n.destinatarioTipo = 9
 				ORDER BY id DESC";
 
         if($limit)
@@ -185,7 +186,7 @@ class NotificacaoRepository extends EntityRepository
     {
         $result = $this->createQueryBuilder('notificacao')
             ->where("notificacao.instituicao = $instituicao")
-            ->orWhere("notificacao.destinatariotipo = 8")
+            ->orWhere("notificacao.destinatariotipo = 9")
             ->orderBy('notificacao.id', 'DESC');
 
         if($offset)
@@ -199,7 +200,7 @@ class NotificacaoRepository extends EntityRepository
         /*$sql = "SELECT n.*
                 FROM notificacao n
                 WHERE n.instituicao = $instituicao
-                  AND n.destinatarioTipo = 8
+                  AND n.destinatarioTipo = 9
 				ORDER BY id DESC";
 
         if($limit)
