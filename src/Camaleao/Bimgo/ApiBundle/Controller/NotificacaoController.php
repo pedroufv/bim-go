@@ -99,10 +99,11 @@ class NotificacaoController extends ApiController
             $push = $this->get('camaleao_bimgo_core.push_notification');
 
             $data = array(
-                'type' => 0,
-                'title' => $notificacao->getMensagemtipo()->getNome(),
-                'message' => $notificacao->getMensagem(),
-                'summary' => $notificacao->getInstituicao()->getNomefantasia(),
+                'type'      => 0,
+                'id'        => $notificacao->getId(),
+                'title'     => $notificacao->getMensagemtipo()->getNome(),
+                'message'   => $notificacao->getMensagem(),
+                'summary'   => $notificacao->getInstituicao()->getNomefantasia(),
             );
             $push->setData($data);
 
