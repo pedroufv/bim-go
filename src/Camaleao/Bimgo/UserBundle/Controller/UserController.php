@@ -6,6 +6,7 @@ use Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
@@ -21,24 +22,6 @@ class UserController extends Controller
      */
     public function entrarAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        /**
-         * @var Usuario $usuario
-         */
-        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneById(4);
-
-
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->serialize($usuario, 'json');
-
-        $response = new Response($result);
-        $response->setStatusCode(Response::HTTP_OK);
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
-
-
         $session = $request->getSession();
 
         // get the login error if there is one
@@ -53,6 +36,30 @@ class UserController extends Controller
             'last_username' => $session->get(Security::LAST_USERNAME),
             'error'         => $error,
         ));
+    }
+
+    /**
+     * @Route("/redirecionar", name="user_usuario_redirecionar")
+     * @Method("GET")
+     */
+    public function redirecionarAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $roles = $this->get('security.token_storage')->getToken()->getRoles();
+
+        $rolesTab = array_map(function($role){
+            return $role->getRole();
+        }, $roles);
+
+        if(in_array('ROLE_ADMINISTRADOR', $rolesTab))
+            return $this->redirectToRoute('admin_inicial_index');
+
+        if(in_array('ROLE_MEMBRO', $rolesTab))
+            return $this->redirectToRoute('site_inicial_index');
+
+        if(in_array('ROLE_CLIENTE', $rolesTab))
+            return $this->redirectToRoute('customer_inicial_index');
     }
 
     /**
