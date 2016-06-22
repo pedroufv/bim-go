@@ -167,7 +167,15 @@ class Instituicao
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Segmento", mappedBy="instituicao")
+     * @ORM\ManyToMany(targetEntity="Segmento", inversedBy="instituicao")
+     * @ORM\JoinTable(name="instituicao_segmento",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="segmento", referencedColumnName="id")
+     *   }
+     * )
      */
     private $segmento;
 

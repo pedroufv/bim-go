@@ -17,39 +17,44 @@ class PushNotification
     const TIPO_DESTINATARIO_USUARIO = 1;
 
     /**
+     * Todos os clientes da cidade da empresa
+     */
+    const TIPO_DESTINATARIO_CLIENTES = 2;
+
+    /**
      * Todos os seguidores
      */
-    const TIPO_DESTINATARIO_SEGUIDORES = 2;
+    const TIPO_DESTINATARIO_SEGUIDORES = 3;
 
     /**
      * Todas as instituições
      */
-    const TIPO_DESTINATARIO_INSTITUICOES = 3;
+    const TIPO_DESTINATARIO_INSTITUICOES = 4;
 
     /**
      * Todos os grupos
      */
-    const TIPO_DESTINATARIO_GRUPOS = 4;
+    const TIPO_DESTINATARIO_GRUPOS = 5;
 
     /**
      * Todas as empresas
      */
-    const TIPO_DESTINATARIO_EMPRESAS = 5;
+    const TIPO_DESTINATARIO_EMPRESAS = 6;
 
     /**
      * Empresas associadas
      */
-    const TIPO_DESTINATARIO_EMPRESAS_ASSOCIADAS = 6;
+    const TIPO_DESTINATARIO_EMPRESAS_ASSOCIADAS = 7;
 
     /**
      * Empresas não associadas
      */
-    const TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS = 7;
+    const TIPO_DESTINATARIO_EMPRESAS_NAO_ASSOCIADAS = 8;
 
     /**
      * Todos os membros
      */
-    const TIPO_DESTINATARIO_MEMBROS = 8;
+    const TIPO_DESTINATARIO_MEMBROS = 9;
 
 
     /**
@@ -157,6 +162,9 @@ class PushNotification
             $results = $repository->findByNotNullRegistrationid();
 
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_SEGUIDORES)
+            $results = $repository->findSeguidoresByNotNullRegistrationid($empresa);
+
+        if ($destinatarioTipo == self::TIPO_DESTINATARIO_CLIENTES)
             $results = $repository->findSeguidoresByNotNullRegistrationid($empresa);
 
         if ($destinatarioTipo == self::TIPO_DESTINATARIO_INSTITUICOES)
