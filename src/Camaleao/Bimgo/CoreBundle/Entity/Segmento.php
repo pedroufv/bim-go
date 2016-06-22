@@ -48,15 +48,7 @@ class Segmento
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Instituicao", inversedBy="segmento")
-     * @ORM\JoinTable(name="instituicao_segmento",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="segmento", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="instituicao", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="segmento", cascade={"all"})
      */
     private $instituicao;
 
