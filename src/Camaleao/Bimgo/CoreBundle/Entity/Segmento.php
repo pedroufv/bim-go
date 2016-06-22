@@ -48,7 +48,7 @@ class Segmento
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="segmento", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="segmento")
      */
     private $instituicao;
 
