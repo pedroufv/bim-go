@@ -12,13 +12,16 @@ class PromocaoRepository extends EntityRepository
      */
     public function findByCidade($criteria, $order = array(), $limit = null, $offset = null)
     {
+        $hoje = new \DateTime();
+
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Promocao')
             ->createQueryBuilder('promocao')
             ->innerJoin('promocao.instituicao', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
             ->where("cidade.id = ".$criteria['cidade'])
-            ->andWhere('promocao.publicada = true');
+            ->andWhere('promocao.publicada = true')
+            ->andWhere('promocao.datafim >= '.$hoje->format("Y-m-d"));
 
         unset($criteria['cidade']);
 
