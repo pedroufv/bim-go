@@ -136,6 +136,8 @@ class PromocaoController extends ApiController
      */
     public function editAction(Request $request, Promocao $promocao)
     {
+        $publicadaAtual = $promocao->getPublicada();
+
         $response = new Response();
         $serializer = $this->container->get('jms_serializer');
         $options = array();
@@ -166,7 +168,7 @@ class PromocaoController extends ApiController
         $promocao = $em->merge($promocao);
         $em->flush();
 
-        if ($promocao->getPublicada()) {
+        if (!$publicadaAtual AND $promocao->getPublicada()) {
             $push = $this->get('camaleao_bimgo_core.push_notification');
 
             $data = array(
