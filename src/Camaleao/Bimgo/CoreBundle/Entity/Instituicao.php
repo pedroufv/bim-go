@@ -115,7 +115,7 @@ class Instituicao
     /**
      * @var \Endereco
      *
-     * @ORM\ManyToOne(targetEntity="Endereco")
+     * @ORM\ManyToOne(targetEntity="Endereco", cascade="all")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })
