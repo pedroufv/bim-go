@@ -49,7 +49,8 @@ class MembroRepository extends EntityRepository
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Membro')
             ->createQueryBuilder('membro')
             ->innerJoin('membro.instituicao', 'instituicao')
-            ->where('membro.ativo = true');
+            ->where('instituicao.ativo = true')
+            ->andwhere('membro.ativo = true');
 
 
         if(isset($criteria['grupo'])) {
