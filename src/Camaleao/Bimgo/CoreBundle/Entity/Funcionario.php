@@ -104,6 +104,7 @@ class Funcionario
      */
     private $contato;
 
+
     /**
      * Constructor
      */
@@ -112,7 +113,6 @@ class Funcionario
         $this->datacriacao = new \DateTime();
         $this->contato = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id

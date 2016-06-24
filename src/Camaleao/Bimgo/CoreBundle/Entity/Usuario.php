@@ -73,6 +73,20 @@ class Usuario implements UserInterface
     private $ativo = false;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
+     */
+    private $datacriacao;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     */
+    private $datamodificacao;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="membros")
@@ -88,15 +102,16 @@ class Usuario implements UserInterface
      */
     private $seguidas;
 
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->datacriacao = new \DateTime();
         $this->gerenciadas = new \Doctrine\Common\Collections\ArrayCollection();
         $this->seguidas = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -269,6 +284,38 @@ class Usuario implements UserInterface
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatacriacao()
+    {
+        return $this->datacriacao;
+    }
+
+    /**
+     * @param \DateTime $datacriacao
+     */
+    public function setDatacriacao($datacriacao)
+    {
+        $this->datacriacao = $datacriacao;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatamodificacao()
+    {
+        return $this->datamodificacao;
+    }
+
+    /**
+     * @param \DateTime $datamodificacao
+     */
+    public function setDatamodificacao($datamodificacao)
+    {
+        $this->datamodificacao = $datamodificacao;
     }
 
     /**
