@@ -31,7 +31,7 @@ class Funcionario
     /**
      * @var string
      *
-     * @ORM\Column(name="cpf", type="string", length=11, nullable=false)
+     * @ORM\Column(name="cpf", type="string", length=11, nullable=true)
      */
     private $cpf;
 
@@ -62,7 +62,7 @@ class Funcionario
     /**
      * @var \Endereco
      *
-     * @ORM\ManyToOne(targetEntity="Endereco")
+     * @ORM\ManyToOne(targetEntity="Endereco", cascade="all")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endereco", referencedColumnName="id")
      * })

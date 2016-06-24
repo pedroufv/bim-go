@@ -38,7 +38,7 @@ class Endereco
     /**
      * @var string
      *
-     * @ORM\Column(name="complemento", type="string", length=200, nullable=false)
+     * @ORM\Column(name="complemento", type="string", length=200, nullable=true)
      */
     private $complemento;
 
@@ -52,7 +52,7 @@ class Endereco
     /**
      * @var string
      *
-     * @ORM\Column(name="cep", type="string", length=200, nullable=false)
+     * @ORM\Column(name="cep", type="string", length=200, nullable=true)
      */
     private $cep;
 

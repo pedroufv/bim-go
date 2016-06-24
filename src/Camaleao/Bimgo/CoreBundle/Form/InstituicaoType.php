@@ -23,32 +23,13 @@ class InstituicaoType extends AbstractType
             ->add('inscricaoestadual', 'text', array('label' => 'Inscrição Estadual'))
             ->add('site')
             ->add('grupo')
-            ->add('ativo')
             ->add('criadopor', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('modificadopor', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
             ->add('endereco', new EnderecoType())
             ->add('vinculada', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
             ->add('associada')
-            ->add('contato', EntityType::class, array(
-                'class'         => 'Camaleao\Bimgo\CoreBundle\Entity\Contato',
-                'label'         => 'Contato(s)',
-                'multiple'      => true,
-                'expanded'      => true,
-                'label_attr'    => array('class' => 'fieldset checkbox-inline'),
-                'choice_label'  => function ($contato) {
-                    return $contato->getContato();
-                }
-            ))
-            ->add('segmento', EntityType::class, array(
-                'class'         => 'Camaleao\Bimgo\CoreBundle\Entity\Segmento',
-                'label'         => 'Segmento(s)',
-                'multiple'      => true,
-                'expanded'      => true,
-                'label_attr'    => array('class' => 'fieldset checkbox-inline'),
-                'choice_label'  => function ($segmento) {
-                    return $segmento->getNome();
-                }
-            ))
+            ->add('contato')
+            ->add('segmento')
         ;
     }
 
