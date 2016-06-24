@@ -21,7 +21,8 @@ class PromocaoRepository extends EntityRepository
             ->innerJoin('endereco.cidade', 'cidade')
             ->where("cidade.id = ".$criteria['cidade'])
             ->andWhere('promocao.publicada = true')
-            ->andWhere("promocao.datafim >= '".$hoje->format("Y-m-d")."''");
+            ->andWhere('promocao.datafim >= :today')
+                ->setParameter('today', $hoje->format("Y-m-d"));
 
         unset($criteria['cidade']);
 
