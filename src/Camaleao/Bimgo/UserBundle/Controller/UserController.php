@@ -63,6 +63,27 @@ class UserController extends Controller
     }
 
     /**
+     * Active Usuario entity by token
+     *
+     * @Route("/ativar/{token}", name="android_ativarusuario")
+     * @Method("GET")
+     */
+    public function ativarAction(Request $request)
+    {
+        $token = $request->get('token');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $usuario = $em->getRepository('CamaleaoBimgoCoreBundle:Usuario')->findOneBy(array('token' => $token));
+
+        $usuario->setAtivo(1);
+        $em->persist($usuario);
+        $em->flush();
+
+        return $this->render('CamaleaoBimgoUserBundle:usuario:actived.html.twig');
+    }
+
+    /**
      * @Route("/autenticar", name="user_usuario_autenticar")
      * @Method("POST")
      */

@@ -96,6 +96,17 @@ class UsuarioController extends ApiController
         $usuario = $em->merge($usuario);
         $em->flush();
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Bem vindo ao Bim-go!')
+            ->setFrom('cpe.feroz@gmail.com')
+            ->setTo($usuario->getEmail())
+            ->setBody(
+                $this->renderView('CamaleaoBimgoUserBundle:email:new.html.twig', array('usuario' => $usuario)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($message);
+
         $responseContent = $serializer->serialize($usuario, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
