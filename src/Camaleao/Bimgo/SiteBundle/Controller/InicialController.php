@@ -18,20 +18,6 @@ class InicialController extends Controller
      */
     public function indexAction()
     {
-        /** @var \GuzzleHttp\Client $client */
-        $client   = $this->get('guzzle.client.api_bimgo');
-        $response = $client->get('cidades/4082/produtos');
-        $body = $response->getBody();
-        $body->rewind();
-
-        $apiResponse = new ApiResponse($body->getContents());
-
-        $serializer = $this->container->get('jms_serializer');
-        $result = $serializer->deserialize($apiResponse->getJsonResults(), 'Doctrine\Common\Collections\ArrayCollection<Camaleao\Bimgo\CoreBundle\Entity\Produto>', 'json');
-
-        dump($result);
-        exit;
-
         return $this->render('CamaleaoBimgoSiteBundle:inicial:index.html.twig');
     }
 
@@ -43,17 +29,17 @@ class InicialController extends Controller
      */
     public function mapaAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        //pegar cidade da sessao
+        $cidade = 4082;
 
-        // recuperar cidade na sessao
-        $criteria['cidade'] = 4082;
+        /** @var \GuzzleHttp\Client $client */
+        $client   = $this->get('guzzle.client.api_bimgo');
+        $response = $client->get("cidades/$cidade/instituicoes");
+        $body = $response->getBody();
+        $body->rewind();
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getMapData($criteria);
+        //content = $this->get(camaleao_bimgo_api.content_response)->toObject($body->getContents());
 
-        $serializer = $this->container->get('jms_serializer');
-
-        $reports = $serializer->serialize($list, 'json');
-
-        return new Response($reports);
+        return new Response($body->getContents());
     }
 }
