@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Promocao
@@ -60,6 +61,8 @@ class Promocao
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
+     *
+     * @Exclude
      */
     private $datacriacao;
 
@@ -67,6 +70,8 @@ class Promocao
      * @var \DateTime
      *
      * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     *
+     * @Exclude
      */
     private $datamodificacao;
 

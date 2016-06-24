@@ -82,6 +82,8 @@ class Instituicao
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
+     * 
+     * @Exclude
      */
     private $datacriacao;
 
@@ -89,6 +91,8 @@ class Instituicao
      * @var \DateTime
      *
      * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     *
+     * @Exclude
      */
     private $datamodificacao;
 

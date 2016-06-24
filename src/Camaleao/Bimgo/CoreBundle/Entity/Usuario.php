@@ -76,6 +76,8 @@ class Usuario implements UserInterface
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
+     *
+     * @Exclude
      */
     private $datacriacao;
 
@@ -83,6 +85,8 @@ class Usuario implements UserInterface
      * @var \DateTime
      *
      * @ORM\Column(name="dataModificacao", type="datetime", nullable=false)
+     *
+     * @Exclude
      */
     private $datamodificacao;
 
