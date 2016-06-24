@@ -29,7 +29,7 @@ class InicialController extends Controller
      */
     public function mapaAction()
     {
-        //pegar cidade da sessao
+        // recuperar cidade na sessao
         $cidade = 4082;
 
         /** @var \GuzzleHttp\Client $client */
@@ -38,7 +38,7 @@ class InicialController extends Controller
         $body = $response->getBody();
         $body->rewind();
 
-        //content = $this->get(camaleao_bimgo_api.content_response)->toObject($body->getContents());
+        //$content = $this->get('camaleao_bimgo_api.content_response')->toObject($body->getContents(), 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao');
 
         return new Response($body->getContents());
     }

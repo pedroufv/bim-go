@@ -1,9 +1,6 @@
 <?php
 
 namespace Camaleao\Bimgo\ApiBundle\Service;
-use Camaleao\Bimgo\ApiBundle\Model\Content;
-use Camaleao\Bimgo\ApiBundle\Model\Metadata;
-use Camaleao\Bimgo\ApiBundle\Model\Resultset;
 use JMS\Serializer\Serializer;
 
 /**
@@ -26,41 +23,44 @@ class ContentResponse
     }
 
     /**
-     * builds the content unserialize for return with resultset and metadata
+     * convert content object in json format
      *
      * @param $result
-     * @param string $format
      * @param null $offset
      * @param null $limit
      * @return array
      */
-    public function buildContent($result, $format = 'json', $offset = null, $limit = null)
+    public function toJson($result, $offset = null, $limit = null)
     {
         if(!$result instanceof \Doctrine\Common\Collections\ArrayCollection) {
-            return $this->serializer->serialize($result, $format);
+            return $this->serializer->serialize($result, 'json');
         }
 
-        $resultset = new Resultset($result->count(), $offset, $limit);
-        $metadata = new Metadata($resultset);
-        $content = new Content($metadata, $result);
+        $metadata = array('resultset' => array($result->count(), $offset, $limit));
 
-        return $this->serializer->serialize($content, $format);
+        $content = array('metadata' => $metadata, 'results' => $result);
+
+        return $this->serializer->serialize($content, 'json');
     }
 
-    public function jsonResults2ArrayCollection($contentJson, $resultsType = '')
+    /**
+     * convert content json in object format
+     *
+     * @param $contentJson
+     * @param string $type Exemple: Camaleao\Bimgo\CoreBundle\Entity\EntityName
+     * @return mixed
+     */
+    public function toObject($contentJson, $type = 'Doctrine\\Common\\Collections\\ArrayCollection')
     {
+        // se nao eh uma lista de resultados
         $contentObject = json_decode($contentJson);
+        if(!isset($contentObject->metadata) AND !isset($contentObject->results))
+            return $this->serializer->deserialize($contentJson, $type, 'json');
+
         $jsonResults = json_encode($contentObject->results);
-
-        $entityType = '';
-        if(!empty($resultsType)) {
-            $entityType .= "<".$resultsType.">";
-        }
-
-        $type = "Doctrine\\Common\\Collections\\ArrayCollection".$entityType;
+        $type = "Doctrine\\Common\\Collections\\ArrayCollection<$type>";
         $contentObject->results = $this->serializer->deserialize($jsonResults, $type, 'json');
 
         return $contentObject;
     }
-
 }

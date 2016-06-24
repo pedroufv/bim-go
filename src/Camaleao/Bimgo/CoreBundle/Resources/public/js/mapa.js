@@ -1,7 +1,7 @@
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
-var pinImage = {bimgoDefault: 'bundles/camaleaobimgocore/img/pin_bim-go_45x51.png'};
+var pinImage = {bimgoDefault: 'https://s3.amazonaws.com/bim-go/pin-45-51.png'};
 
 function initialize()
 {
@@ -45,22 +45,20 @@ function dadosInfoBox(nome,latitude,longitude){
 }
 
 function carregarPontos() {
-
     $.ajax({
         dataType: 'json',
         type: 'GET',
         url: 'mapa',
         success: function(response) {
-
-            $.each(response, function(index, empresa){
+            $.each(response.results, function(index, instituicao){
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(empresa.latitude, empresa.longitude),
-                    title: empresa.nomefantasia,
+                    position: new google.maps.LatLng(instituicao.endereco.latitude, instituicao.endereco.longitude),
+                    title: instituicao.nomefantasia,
                     map: map,
                     icon: pinImage.bimgoDefault
                 });
                      
-                infoBox[index] = new InfoBox(dadosInfoBox(empresa.nomefantasia,empresa.latitude,empresa.longitude));
+                infoBox[index] = new InfoBox(dadosInfoBox(instituicao.nomefantasia,instituicao.endereco.latitude,instituicao.endereco.longitude));
                 infoBox[index].marker = marker;
              
                 infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {
@@ -68,6 +66,5 @@ function carregarPontos() {
                 });
             });
         }
-        
     });
 }
