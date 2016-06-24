@@ -2,54 +2,127 @@
 
 namespace Camaleao\Bimgo\CoreBundle\Entity;
 
-use JMS\Serializer\Annotation\Type;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- *  Classe que recebe as repostas em json da api
+ * Cidade
+ *
+ * @ORM\Table(name="cidade", indexes={@ORM\Index(name="estado", columns={"estado"})})
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\CidadeRepository")
  */
-class MetadataResponse
+class Cidade
 {
     /**
-     * @var array
-     * @Type("array")
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $resultset;
+    private $id;
 
     /**
-     * @var array
-     * @Type("Doctrine\Common\Collections\ArrayCollection<Camaleao\Bimgo\CoreBundle\Entity\Produto>")
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=false)
      */
-    private $results;
+    private $nome;
 
     /**
-     * @return array
+     * @var boolean
+     *
+     * @ORM\Column(name="participante", type="boolean", nullable=false)
      */
-    public function getResultset()
+    private $participante = false;
+
+    /**
+     * @var \Estado
+     *
+     * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estado", referencedColumnName="id")
+     * })
+     */
+    private $estado;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        return $this->resultset;
+        return $this->id;
     }
 
     /**
-     * @param array $resultset
+     * Set nome
+     *
+     * @param string $nome
+     * @return Cidade
      */
-    public function setResultset($resultset)
+    public function setNome($nome)
     {
-        $this->resultset = $resultset;
+        $this->nome = $nome;
+
+        return $this;
     }
 
     /**
-     * @return array
+     * Get nome
+     *
+     * @return string
      */
-    public function getResults()
+    public function getNome()
     {
-        return $this->results;
+        return $this->nome;
     }
 
     /**
-     * @param array $results
+     * Set participante
+     *
+     * @param boolean $participante
+     * @return Cidade
      */
-    public function setResults($results)
+    public function setParticipante($participante)
     {
-        $this->results = $results;
+        $this->participante = $participante;
+
+        return $this;
+    }
+
+    /**
+     * Get participante
+     *
+     * @return boolean
+     */
+    public function getParticipante()
+    {
+        return $this->participante;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param \Camaleao\Bimgo\CoreBundle\Entity\Estado $estado
+     * @return Cidade
+     */
+    public function setEstado(\Camaleao\Bimgo\CoreBundle\Entity\Estado $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return \Camaleao\Bimgo\CoreBundle\Entity\Estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }
