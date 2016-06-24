@@ -4,3 +4,7 @@ services:
           arguments: ['%camaleao_bimgo_api%']
           tags:
               - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+  camaleao_bimgo_api.content_response:
+          class:     Camaleao\Bimgo\ApiBundle\Service\ContentResponse
+          arguments: [@jms_serializer]
