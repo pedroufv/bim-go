@@ -22,22 +22,6 @@ class UsuarioType extends AbstractType
             ->add('nome')
             ->add('email')
             ->add('senha', PasswordType::class)
-            ->add('token', HiddenType::class)
-            ->add('registrationid', HiddenType::class)
-            ->add('administrador', ChoiceType::class, array(
-                'choices'  => array(
-                    'Sim' => true,
-                    'Não' => false
-                ),
-                'choices_as_values' => true,
-            ))
-            ->add('ativo', ChoiceType::class, array(
-                'choices'  => array(
-                    'Sim' => true,
-                    'Não' => false
-                ),
-                'choices_as_values' => true,
-            ))
         ;
     }
 

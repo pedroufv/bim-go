@@ -70,7 +70,7 @@ class Usuario implements UserInterface
      *
      * @ORM\Column(name="ativo", type="boolean", nullable=false)
      */
-    private $ativo = true;
+    private $ativo = false;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -162,7 +162,9 @@ class Usuario implements UserInterface
      */
     public function setSenha($senha)
     {
-        $this->senha = $senha;
+        $this->senha = md5($senha);
+
+        $this->setToken($this->getEmail().$this->getSenha());
 
         return $this;
     }
@@ -185,7 +187,7 @@ class Usuario implements UserInterface
      */
     public function setToken($token)
     {
-        $this->token = $token;
+        $this->token = md5($token);
 
         return $this;
     }
