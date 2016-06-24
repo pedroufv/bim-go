@@ -100,6 +100,7 @@ class NotificacaoController extends ApiController
 
             $data = array(
                 'type'      => 0,
+                'date'      => $notificacao->getData()->format("d-m-Y H:i:s"),
                 'id'        => $notificacao->getId(),
                 'title'     => $notificacao->getMensagemtipo()->getNome(),
                 'message'   => $notificacao->getMensagem(),
