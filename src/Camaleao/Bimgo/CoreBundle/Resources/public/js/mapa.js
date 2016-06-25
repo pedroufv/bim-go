@@ -50,15 +50,15 @@ function carregarPontos() {
         type: 'GET',
         url: 'mapa',
         success: function(response) {
-            $.each(response.results, function(index, instituicao){
+            $.each(response, function(index, instituicao){
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(instituicao.endereco.latitude, instituicao.endereco.longitude),
+                    position: new google.maps.LatLng(instituicao.latitude, instituicao.longitude),
                     title: instituicao.nomefantasia,
                     map: map,
                     icon: pinImage.bimgoDefault
                 });
                      
-                infoBox[index] = new InfoBox(dadosInfoBox(instituicao.nomefantasia,instituicao.endereco.latitude,instituicao.endereco.longitude));
+                infoBox[index] = new InfoBox(dadosInfoBox(instituicao.nomefantasia,instituicao.latitude,instituicao.longitude));
                 infoBox[index].marker = marker;
              
                 infoBox[index].listener = google.maps.event.addListener(marker, 'click', function (e) {

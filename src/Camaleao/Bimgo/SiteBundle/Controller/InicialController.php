@@ -29,17 +29,17 @@ class InicialController extends Controller
      */
     public function mapaAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
         // recuperar cidade na sessao
-        $cidade = 4082;
+        $criteria['cidade'] = 4082;
 
-        /** @var \GuzzleHttp\Client $client */
-        $client   = $this->get('guzzle.client.api_bimgo');
-        $response = $client->get("cidades/$cidade/instituicoes");
-        $body = $response->getBody();
-        $body->rewind();
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->getMapData($criteria);
 
-        //$content = $this->get('camaleao_bimgo_api.content_response')->toObject($body->getContents(), 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao');
+        $serializer = $this->container->get('jms_serializer');
 
-        return new Response($body->getContents());
+        $reports = $serializer->serialize($list, 'json');
+
+        return new Response($reports);
     }
 }
