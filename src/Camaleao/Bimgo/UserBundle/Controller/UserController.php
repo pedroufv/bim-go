@@ -44,8 +44,6 @@ class UserController extends Controller
      */
     public function redirecionarAction(Request $request)
     {
-        $session = $request->getSession();
-
         $roles = $this->get('security.token_storage')->getToken()->getRoles();
 
         $rolesTab = array_map(function($role){

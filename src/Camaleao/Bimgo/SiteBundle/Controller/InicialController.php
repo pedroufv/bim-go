@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\SiteBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,7 +16,7 @@ class InicialController extends Controller
      * @Route(name="site_inicial_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         return $this->render('CamaleaoBimgoSiteBundle:inicial:index.html.twig');
     }

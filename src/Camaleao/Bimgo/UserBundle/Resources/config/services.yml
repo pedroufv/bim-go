@@ -1,4 +1,5 @@
 services:
-#    camaleao_bimgo_user.example:
-#        class: Camaleao\Bimgo\UserBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+  camaleao_bimgo_user.action_listener:
+      class: Camaleao\Bimgo\UserBundle\EventListener\UserListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
