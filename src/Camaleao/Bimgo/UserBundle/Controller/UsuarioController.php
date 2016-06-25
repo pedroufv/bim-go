@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Security;
 /**
  * Usuario controller.
  */
-class UserController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * @Route("/entrar", name="user_usuario_entrar")
@@ -63,7 +63,7 @@ class UserController extends Controller
     /**
      * Active Usuario entity by token
      *
-     * @Route("/ativar/{token}", name="android_ativarusuario")
+     * @Route("/ativar/{token}", name="user_usuario_ativar")
      * @Method("GET")
      */
     public function ativarAction(Request $request)
