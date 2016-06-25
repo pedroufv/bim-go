@@ -22,6 +22,7 @@ class UsuarioType extends AbstractType
             ->add('nome')
             ->add('email')
             ->add('senha', PasswordType::class)
+            ->add('registrationid')
         ;
     }
 
