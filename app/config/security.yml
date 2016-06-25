@@ -6,6 +6,8 @@ security:
             form_login:
                 login_path:  user_usuario_entrar
                 check_path:  user_usuario_autenticar
+                default_target_path: user_usuario_redirecionar
+                always_use_default_target_path: true
             http_basic:
                 realm: "Secured Demo Area"
             logout:

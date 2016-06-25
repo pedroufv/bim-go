@@ -2,7 +2,6 @@
 
 namespace Camaleao\Bimgo\SiteBundle\Controller;
 
-use Camaleao\Bimgo\CoreBundle\Model\ApiResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
