@@ -84,7 +84,7 @@ class PushNotification
         'collapse_key'=>'PushMessageBim-go',
         'delay_while_idle'=>false,
         'time_to_live'=>2419200,
-        'restricted_package_name'=>'br.com.camaleao.bim_go',
+        'restricted_package_name'=>'br.com.camaleaoferoz.bim_go',
         'dry_run'=>false
     );
 
