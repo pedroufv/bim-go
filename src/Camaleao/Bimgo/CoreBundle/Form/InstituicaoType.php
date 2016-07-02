@@ -30,6 +30,7 @@ class InstituicaoType extends AbstractType
             ->add('associada')
             ->add('contato')
             ->add('segmento')
+            ->add('ativo')
         ;
     }
 
