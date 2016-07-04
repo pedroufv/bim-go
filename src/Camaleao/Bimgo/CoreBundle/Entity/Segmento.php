@@ -3,6 +3,7 @@
 namespace Camaleao\Bimgo\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * Segmento
@@ -49,6 +50,8 @@ class Segmento
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Instituicao", mappedBy="segmento")
+     *
+     * @Exclude
      */
     private $instituicao;
 
@@ -173,3 +176,4 @@ class Segmento
         return $this->instituicao;
     }
 }
+
