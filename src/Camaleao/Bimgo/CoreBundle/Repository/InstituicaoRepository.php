@@ -35,9 +35,11 @@ class InstituicaoRepository extends EntityRepository
             ->leftJoin('instituicao.segmento', 'segmento')
             ->innerJoin('instituicao.endereco', 'endereco')
             ->innerJoin('endereco.cidade', 'cidade')
-            ->where("cidade.id = ".$criteria["cidade"]);
+            ->where("cidade.id = ".$criteria["cidade"])
+            ->groupBy('instituicao.id');
 
         unset($criteria['cidade']);
+
 
         if(isset($criteria['segmento'])) {
             $result->andWhere("segmento.id in (".$criteria['segmento'].")");
