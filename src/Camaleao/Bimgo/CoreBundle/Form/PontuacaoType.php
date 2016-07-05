@@ -16,8 +16,8 @@ class PontuacaoType extends AbstractType
     {
         $builder
             ->add('pontos')
-            ->add('usuario')
-            ->add('instituicao')
+            ->add('usuario', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
         ;
     }
     

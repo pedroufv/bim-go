@@ -45,7 +45,7 @@ class Historico
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="data", type="date", nullable=false)
+     * @ORM\Column(name="data", type="datetime", nullable=false)
      */
     private $data;
 
@@ -75,6 +75,15 @@ class Historico
      * })
      */
     private $instituicao;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = new \DateTime();
+    }
 
 
 

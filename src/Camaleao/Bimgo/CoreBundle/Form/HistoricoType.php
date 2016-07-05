@@ -16,12 +16,11 @@ class HistoricoType extends AbstractType
     {
         $builder
             ->add('valor')
-            ->add('detalhamento')
+            ->add('detalhamento', 'textarea', array('label' => 'Detalhamento'))
             ->add('operacao')
-            ->add('data', 'date')
             ->add('pontos')
-            ->add('usuario')
-            ->add('instituicao')
+            ->add('usuario', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Usuario'))
+            ->add('instituicao', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
         ;
     }
     
