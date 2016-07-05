@@ -107,7 +107,7 @@ class HistoricoController extends ApiController
      * @param Request $request
      * @return Response
      *
-     * @Route("/usuarios/{usuario}/historicos/instituicoes/{instituicao}", name="api_v1_historicos_usuarios_instituicao")
+     * @Route("/usuarios/{usuario}/instituicoes/{instituicao}", name="api_v1_historicos_usuarios_instituicao")
      * @Method("GET")
      */
     public function userHistoricInEnterpriseAction(Request $request)

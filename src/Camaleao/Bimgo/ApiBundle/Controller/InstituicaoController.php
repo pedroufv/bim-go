@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Cidade controller.
+ * Instituicao controller.
  *
  * @Route("/instituicoes")
  */

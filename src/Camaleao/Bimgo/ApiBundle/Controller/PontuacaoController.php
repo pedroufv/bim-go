@@ -107,7 +107,7 @@ class PontuacaoController extends ApiController
      * @param Request $request
      * @return Response
      *
-     * @Route("/instituicoes/{id}/pontuacoes", name="api_v1_pontuacoes_usuarios")
+     * @Route("/instituicoes/{id}", name="api_v1_pontuacoes_instituicoes")
      * @Method("GET")
      */
     public function pointsEnterpriseAction(Request $request)
@@ -141,7 +141,7 @@ class PontuacaoController extends ApiController
      * @param Request $request
      * @return Response
      *
-     * @Route("/usuarios/{usuario}/pontuacoes/cidades/{cidade}", name="api_v1_pontuacoes_usuarios_cidade")
+     * @Route("/usuarios/{usuario}/cidades/{cidade}", name="api_v1_pontuacoes_usuarios_cidade")
      * @Method("GET")
      */
     public function userPointsInTheCityAction(Request $request)
