@@ -16,8 +16,7 @@ class PontuacaoRepository extends EntityRepository
             ->createQueryBuilder('pontuacao')
             ->innerJoin('instituicao.id', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
-            ->innerJoin('endereco.cidade', 'cidade')
-            ->where("cidade.id = ".$criteria["cidade"]);
+            ->where("endereco.cidade = ".$criteria["cidade"]);
 
         unset($criteria['cidade']);
 
