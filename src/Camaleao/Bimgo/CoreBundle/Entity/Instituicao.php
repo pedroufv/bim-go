@@ -67,6 +67,13 @@ class Instituicao
     /**
      * @var boolean
      *
+     * @ORM\Column(name="fidelidade", type="boolean", nullable=false)
+     */
+    private $fidelidade;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="grupo", type="boolean", nullable=false)
      */
     private $grupo;
@@ -376,6 +383,29 @@ class Instituicao
     public function getSite()
     {
         return $this->site;
+    }
+
+    /**
+     * Set fidelidade
+     *
+     * @param boolean $fidelidade
+     * @return Instituicao
+     */
+    public function setFidelidade($fidelidade)
+    {
+        $this->fidelidade = $fidelidade;
+
+        return $this;
+    }
+
+    /**
+     * Get fidelidade
+     *
+     * @return boolean
+     */
+    public function getFidelidade()
+    {
+        return $this->fidelidade;
     }
 
     /**
