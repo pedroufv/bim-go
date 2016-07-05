@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Historico
  *
  * @ORM\Table(name="historico", indexes={@ORM\Index(name="usuario", columns={"usuario"}), @ORM\Index(name="instituicao", columns={"instituicao"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\HistoricoRepository")
  */
 class Historico
 {

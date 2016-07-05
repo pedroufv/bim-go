@@ -14,9 +14,9 @@ class PontuacaoRepository extends EntityRepository
     {
         $result = $this->getEntityManager()->getRepository('CamaleaoBimgoCoreBundle:Pontuacao')
             ->createQueryBuilder('pontuacao')
-            ->innerJoin('instituicao.id', 'instituicao')
+            ->innerJoin('pontuacao.instituicao', 'instituicao')
             ->innerJoin('instituicao.endereco', 'endereco')
-            ->where("endereco.cidade = ".$criteria["cidade"]);
+            ->where("endereco.cidade = ".$criteria['cidade']);
 
         unset($criteria['cidade']);
 
