@@ -110,7 +110,7 @@ class PontuacaoController extends ApiController
      * @Route("/instituicoes/{id}/pontuacoes", name="api_v1_pontuacoes_usuarios")
      * @Method("GET")
      */
-    public function institutionsFollowedAction(Request $request)
+    public function pointsEnterpriseAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -144,7 +144,7 @@ class PontuacaoController extends ApiController
      * @Route("/usuarios/{usuario}/pontuacoes/cidades/{cidade}", name="api_v1_pontuacoes_usuarios_cidade")
      * @Method("GET")
      */
-    public function institutionsFollowedInTheCityAction(Request $request)
+    public function userPointsInTheCityAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 

@@ -110,7 +110,7 @@ class HistoricoController extends ApiController
      * @Route("/usuarios/{usuario}/historicos/instituicoes/{instituicao}", name="api_v1_historicos_usuarios_instituicao")
      * @Method("GET")
      */
-    public function institutionsFollowedInTheCityAction(Request $request)
+    public function userHistoricInEnterpriseAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -121,7 +121,7 @@ class HistoricoController extends ApiController
         $limit = $request->get('limit') ? $request->get('limit') : null;
         $offset = $request->get('offset') ? $request->get('offset') : null;
 
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Historico')->findByCidade($criteria, $order, $limit, $offset);
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Historico')->findBy($criteria, $order, $limit, $offset);
 
         $metadata = array('resultset' => array('count' => count($list), 'offset' => $offset, 'limit' => $limit));
         $content = array('metadata' => $metadata, 'results' => $list);
