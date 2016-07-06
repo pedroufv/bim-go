@@ -10,3 +10,9 @@ services:
     class: Camaleao\Bimgo\CoreBundle\Twig\Extension\FileExtension
     tags:
       - { name: twig.extension }
+
+  camaleao_bimgo_core.logotipotwigextensio:
+    class: Camaleao\Bimgo\CoreBundle\Twig\Extension\LogotipoExtension
+    arguments: [@aws.s3]
+    tags:
+      - { name: twig.extension }
