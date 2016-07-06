@@ -27,15 +27,35 @@ class LogotipoExtension extends \Twig_Extension
 
     public function logotipoFunction($id, $nomeFantasia, $delimiter='-')
     {
-        $logotipo = $id."-".$nomeFantasia;
+        $text = $id."-".$nomeFantasia;
 
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        /*
         $url = iconv('UTF-8', 'ASCII//TRANSLIT', $logotipo);
         $url = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $url);
         $url = strtolower(trim($url, '-'));
         $url = preg_replace("/[\/_|+ -]+/", $delimiter, $url);
+        */
 
-        if($this->s3Cliente->doesObjectExist('bim-go', "logotipos/$url.png"))
-            return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/$url.png");
+        if($this->s3Cliente->doesObjectExist('bim-go', "logotipos/$text.png"))
+            return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/$text.png");
 
         return $this->s3Cliente->getObjectUrl('bim-go', "pin-150-150.png");
     }
