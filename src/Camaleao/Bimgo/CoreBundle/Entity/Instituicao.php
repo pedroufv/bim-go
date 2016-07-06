@@ -69,14 +69,14 @@ class Instituicao
      *
      * @ORM\Column(name="fidelidade", type="boolean", nullable=false)
      */
-    private $fidelidade;
+    private $fidelidade = false;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="grupo", type="boolean", nullable=false)
      */
-    private $grupo;
+    private $grupo = false;
 
     /**
      * @var boolean
