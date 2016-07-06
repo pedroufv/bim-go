@@ -27,6 +27,8 @@ class LogotipoExtension extends \Twig_Extension
 
     public function logotipoFunction($id, $nomeFantasia, $delimiter='-')
     {
+        setlocale(LC_CTYPE, 'en_US.UTF-8');
+
         $text = $id."-".$nomeFantasia;
 
         // replace non letter or digits by -
@@ -47,12 +49,6 @@ class LogotipoExtension extends \Twig_Extension
         // remove unwanted characters
         $text = preg_replace('#[^-\w]+#', '', $text);
 
-        /*
-        $url = iconv('UTF-8', 'ASCII//TRANSLIT', $logotipo);
-        $url = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $url);
-        $url = strtolower(trim($url, '-'));
-        $url = preg_replace("/[\/_|+ -]+/", $delimiter, $url);
-        */
 
         if($this->s3Cliente->doesObjectExist('bim-go', "logotipos/$text.png"))
             return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/$text.png");
