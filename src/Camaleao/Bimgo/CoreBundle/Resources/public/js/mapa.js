@@ -5,10 +5,10 @@ var pinImage = {bimgoDefault: 'https://s3.amazonaws.com/bim-go/pin-45-51.png'};
 
 function initialize()
 {
-    var latlng = new google.maps.LatLng(-20.7547815,-42.8789577);
+    var latlng = new google.maps.LatLng(-20.755789,-42.878299);
 
     var options = {
-        zoom: 14,
+        zoom: 18,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
