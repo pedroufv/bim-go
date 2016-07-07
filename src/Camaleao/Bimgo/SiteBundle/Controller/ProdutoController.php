@@ -23,9 +23,10 @@ class ProdutoController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $searchQuery = $request->get('search');
 
-        $produtos = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findAll();
+        $finder = $this->container->get('fos_elastica.finder.app.produto');
+        $produtos = $finder->createPaginatorAdapter($searchQuery);
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');

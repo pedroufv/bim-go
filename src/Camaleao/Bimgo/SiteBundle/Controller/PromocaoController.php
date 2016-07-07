@@ -24,9 +24,10 @@ class PromocaoController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $searchQuery = $request->get('search');
 
-        $promocoes = $em->getRepository('CamaleaoBimgoCoreBundle:Promocao')->findAll();
+        $finder = $this->container->get('fos_elastica.finder.app.promocao');
+        $promocoes = $finder->createPaginatorAdapter($searchQuery);
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');

@@ -4,7 +4,15 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <h2>Acesse o produto desejado</h2>
+                <form method="get">
+                    <div class="input-field">
+                        <input id="search" name="search" type="search" value="{{ app.request.get('search') }}">
+                        <label for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
                 {% for produto in pagination %}
                 <div class="card col s12 m4" style="height: 250px">
                     <div class="icon-block">

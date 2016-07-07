@@ -4,12 +4,15 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <form method="get" action="" class="form-inline" role="search">
-                    <div class="form-group">
-                        <input type="text" name="query" value="{{ app.request.get('query') }}" class="form-control" placeholder="{{'Search'|trans}}" required />
+                <form method="get">
+                    <div class="input-field">
+                        <input id="search" name="search" type="search" value="{{ app.request.get('search') }}">
+                        <label for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
                     </div>
-                    <input type="submit" value="{{ 'Search'|trans }}" class="btn btn-default">
                 </form>
+            </div>
+            <div class="row">
                 {% for instituicao in pagination %}
                 <div class="card col s12 m4" style="height: 350px">
                     <div class="icon-block">
