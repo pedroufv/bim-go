@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Endroid\Bundle\GcmBundle\EndroidGcmBundle(),
             new Aws\Symfony\AwsBundle(),
             new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

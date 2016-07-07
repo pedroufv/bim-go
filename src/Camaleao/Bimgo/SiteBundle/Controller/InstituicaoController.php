@@ -24,9 +24,16 @@ class InstituicaoController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $searchQuery = $request->get('query');
 
-        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findAll();
+        if(!empty($searchQuery)) {
+            $finder = $this->container->get('fos_elastica.finder.app.instituicao');
+            $instituicoes = $finder->createPaginatorAdapter($searchQuery);
+        } else   {
+            $em = $this->getDoctrine()->getManager();
+
+            $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findAll();
+        }
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');

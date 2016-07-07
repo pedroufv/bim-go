@@ -4,9 +4,8 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <h2>Acesse a promoção desejada</h2>
                 {% for promocao in pagination %}
-                <div class="col s4">
+                <div class="card col s12 m4" style="height: 250px">
                     <div class="icon-block">
                         <h3 class="center">
                             <a href="{{ path('site_promocao_show', { 'id': promocao.id }) }}">
