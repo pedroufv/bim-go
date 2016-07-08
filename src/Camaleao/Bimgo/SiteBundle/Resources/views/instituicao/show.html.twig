@@ -2,15 +2,10 @@
 
 {% block body %}
     <div class="container">
-        <h2>Instituição: {{ instituicao.nomefantasia }}</h2>
+        <h2>{{ instituicao.nomefantasia }}</h2>
         <div class="row">
             <div class="col s2">
-            {% set logo = 'bundles/camaleaobimgocore/img/logo/' ~ instituicao.id ~ '.png' %}
-            {% if file_exists(logo) %}
-                <img src="{{ asset(logo) }}" class="responsive-img">
-            {% else %}
-                <img src="{{ asset('bundles/camaleaobimgocore/img/logo/default.png') }}" class="responsive-img">
-            {% endif %}
+                <img src="{{ logotipo(instituicao.id, instituicao.nomefantasia) }}" class="responsive-img">
             </div>
             <div class="col s10">
                 <div class="col s4">

@@ -53,7 +53,7 @@ class LogotipoExtension extends \Twig_Extension
         if($this->s3Cliente->doesObjectExist('bim-go', "logotipos/$text.png"))
             return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/$text.png");
 
-        return $this->s3Cliente->getObjectUrl('bim-go', "pin-150-150.png");
+        return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/default.png");
     }
 
     public function getName()
