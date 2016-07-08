@@ -165,8 +165,8 @@ class MembroController extends ApiController
 
             $data = array(
                 'type' => 3,
-                'title' => 'Permissão removida',
-                'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi revogada.',
+                'title' => 'Permissão revogada',
+                'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi removida.',
                 'summary' => $membro->getInstituicao()->getNomefantasia(),
             );
             $push->setData($data);

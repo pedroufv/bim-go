@@ -28,6 +28,8 @@ class InstituicaoType extends AbstractType
             ->add('endereco', new EnderecoType())
             ->add('vinculada', EntityType::class, array('class' => 'Camaleao\Bimgo\CoreBundle\Entity\Instituicao'))
             ->add('associada')
+            ->add('fidelidade')
+            ->add('conversao')
             ->add('contato')
             ->add('segmento')
             ->add('ativo')

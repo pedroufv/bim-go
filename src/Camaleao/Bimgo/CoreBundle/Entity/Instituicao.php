@@ -72,6 +72,13 @@ class Instituicao
     private $fidelidade = false;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="conversao", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $conversao;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="grupo", type="boolean", nullable=false)
@@ -406,6 +413,29 @@ class Instituicao
     public function getFidelidade()
     {
         return $this->fidelidade;
+    }
+
+    /**
+     * Set conversao
+     *
+     * @param string $conversao
+     * @return Instituicao
+     */
+    public function setConversao($conversao)
+    {
+        $this->conversao = $conversao;
+
+        return $this;
+    }
+
+    /**
+     * Get conversao
+     *
+     * @return string
+     */
+    public function getConversao()
+    {
+        return $this->conversao;
     }
 
     /**

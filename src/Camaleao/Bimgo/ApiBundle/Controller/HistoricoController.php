@@ -94,6 +94,26 @@ class HistoricoController extends ApiController
         $historico = $em->merge($historico);
         $em->flush();
 
+        if(!empty($historico->getId())) {
+            $push = $this->get('camaleao_bimgo_core.push_notification');
+
+            $data = array(
+                'type'      => 4,
+                'title'     => ($historico->getOperacao() ? 'Crédito' : 'Débito') . ' na fidelidade',
+                'message'   => 'Você foi ' . ($historico->getOperacao() ? 'creditado' : 'debitado') . ' em ' . $historico->getPontos() . ' pontos!',
+                'summary'   => $historico->getInstituicao()->getNomefantasia(),
+                'date'      => $historico->getData()->format("d-m-Y"),
+            );
+            $push->setData($data);
+
+            $registrationIds = array();
+            array_push($registrationIds, $historico->getUsuario()->getRegistrationid());
+
+            $push->setRegistrationIds($registrationIds);
+
+            $push->send();
+        }
+
         $responseContent = $serializer->serialize($historico, 'json');
         $response->setContent($responseContent);
         $response->setStatusCode(Response::HTTP_CREATED);
