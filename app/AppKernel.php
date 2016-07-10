@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Endroid\Bundle\GcmBundle\EndroidGcmBundle(),
             new Aws\Symfony\AwsBundle(),
-            new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 
