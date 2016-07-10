@@ -58,6 +58,6 @@ class LogotipoExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'app_extension';
+        return 'logotipo_extension';
     }
 }

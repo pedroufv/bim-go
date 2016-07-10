@@ -46,17 +46,28 @@ class InstituicaoController extends Controller
      */
     public function segmentoAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+        // TODO: refatorar codigo para filtrar pesquisa por segmento
         $criteria['segmento'] = $request->get('id');
-        // recuperar cidade na sessao
-        $criteria['cidade'] = 4082;
-        $order = $request->get('order') ? $request->get('order') : array();
-        $limit = $request->get('limit') ? $request->get('limit') : null;
-        $offset = $request->get('offset') ? $request->get('offset') : null;
+        $searchQuery = $request->get('search');
 
-        $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
+        if(!empty($searchQuery)) {
+
+            $finder = $this->container->get('fos_elastica.finder.app.instituicao');
+            $instituicoes = $finder->createPaginatorAdapter($searchQuery);
+
+        } else {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+            // recuperar cidade na sessao
+            $criteria['cidade'] = 4082;
+            $order = $request->get('order') ? $request->get('order') : array();
+            $limit = $request->get('limit') ? $request->get('limit') : null;
+            $offset = $request->get('offset') ? $request->get('offset') : null;
+
+            $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
+        }
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');

@@ -6,12 +6,17 @@ services:
     class:     %push_notification.class%
     arguments: [@endroid.gcm.client, @doctrine.orm.entity_manager]
 
-  camaleao_bimgo_core.filetwigextensio:
+  camaleao_bimgo_core.contatotwigextension:
+      class: Camaleao\Bimgo\CoreBundle\Twig\Extension\ContatoExtension
+      tags:
+        - { name: twig.extension }
+
+  camaleao_bimgo_core.filetwigextension:
     class: Camaleao\Bimgo\CoreBundle\Twig\Extension\FileExtension
     tags:
       - { name: twig.extension }
 
-  camaleao_bimgo_core.logotipotwigextensio:
+  camaleao_bimgo_core.logotipotwigextension:
     class: Camaleao\Bimgo\CoreBundle\Twig\Extension\LogotipoExtension
     arguments: [@aws.s3]
     tags:
