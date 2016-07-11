@@ -5,7 +5,7 @@
         <h2>{{ instituicao.nomefantasia }}</h2>
         <div class="row">
             <div class="col s2">
-                <img src="{{ logotipo(instituicao.id, instituicao.nomefantasia) }}" class="responsive-img">
+                <img src="{{ getImgS3(instituicao.canonico, 'png', 'logotipos') }}" class="responsive-img">
             </div>
             <div class="col s10">
                 <div class="col s4">

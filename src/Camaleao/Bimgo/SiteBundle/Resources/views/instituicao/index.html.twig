@@ -19,7 +19,7 @@
                         <div class="col s6">
                             <h3>
                                 <a href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}">
-                                    <img src="{{ logotipo(instituicao.id, instituicao.nomefantasia) }}" class="responsive-img">
+                                    <img src="{{ getImgS3(instituicao.canonico, 'png', 'logotipos') }}" class="responsive-img">
                                 </a>
                             </h3>
                         </div>
