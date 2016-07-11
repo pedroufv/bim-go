@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\SiteBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Entity\Instituicao;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -41,5 +42,29 @@ class InicialController extends Controller
         $reports = $serializer->serialize($list, 'json');
 
         return new Response($reports);
+    }
+
+    /**
+     * homepage
+     *
+     * @Route("/canonico", name="site_inicial_index")
+     * @Method("GET")
+     */
+    public function canonicoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findAll();
+
+        /** @var Instituicao $item */
+        foreach($list as $item) {
+            $item->setDatamodificacao(new \DateTime());
+
+            $em->persist($item);
+        }
+
+        $em->flush();
+
+        return $this->render('CamaleaoBimgoSiteBundle:inicial:index.html.twig');
     }
 }
