@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation\Exclude;
  *
  * @ORM\Table(name="instituicao", indexes={@ORM\Index(name="endereco", columns={"endereco"}), @ORM\Index(name="criadoPor", columns={"criadoPor", "modificadoPor"}), @ORM\Index(name="modificadoPor", columns={"modificadoPor"}), @ORM\Index(name="grupo", columns={"vinculada"}), @ORM\Index(name="plano", columns={"plano"}), @ORM\Index(name="IDX_7CFF8F698F3195FB", columns={"criadoPor"})})
  * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\InstituicaoRepository")
+ * @ORM\EntityListeners({"Camaleao\Bimgo\CoreBundle\EventListener\InstituicaoListener"})
  */
 class Instituicao
 {
@@ -139,6 +140,13 @@ class Instituicao
      * })
      */
     private $endereco;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="canonico", type="string", length=250, nullable=true)
+     */
+    private $canonico;
 
     /**
      * @var \Instituicao
@@ -597,6 +605,25 @@ class Instituicao
     public function getEndereco()
     {
         return $this->endereco;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCanonico()
+    {
+        return $this->canonico;
+    }
+
+    /**
+     * @param string $canonico
+     * @return Instituicao
+     */
+    public function setCanonico($canonico)
+    {
+        $this->canonico = $canonico;
+
+        return $this;
     }
 
     /**

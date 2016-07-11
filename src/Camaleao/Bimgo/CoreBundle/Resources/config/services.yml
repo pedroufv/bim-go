@@ -1,7 +1,7 @@
-parameters:
-  push_notification.class: Camaleao\Bimgo\CoreBundle\Service\PushNotification
-
 services:
+  camaleao_bimgo_core.url_friendly:
+    class:     Camaleao\Bimgo\CoreBundle\Service\TextHelper
+
   camaleao_bimgo_core.push_notification:
-    class:     %push_notification.class%
+    class:     Camaleao\Bimgo\CoreBundle\Service\PushNotification
     arguments: [@endroid.gcm.client, @doctrine.orm.entity_manager]
