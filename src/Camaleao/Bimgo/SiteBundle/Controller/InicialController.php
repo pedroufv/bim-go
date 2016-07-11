@@ -43,28 +43,4 @@ class InicialController extends Controller
 
         return new Response($reports);
     }
-
-    /**
-     * homepage
-     *
-     * @Route("/canonico", name="site_inicial_index")
-     * @Method("GET")
-     */
-    public function canonicoAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findAll();
-
-        /** @var Instituicao $item */
-        foreach($list as $item) {
-            $item->setDatamodificacao(new \DateTime());
-
-            $em->persist($item);
-        }
-
-        $em->flush();
-
-        return $this->render('CamaleaoBimgoSiteBundle:inicial:index.html.twig');
-    }
 }

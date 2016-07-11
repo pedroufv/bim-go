@@ -144,7 +144,7 @@ class Instituicao
     /**
      * @var string
      *
-     * @ORM\Column(name="canonico", type="string", length=250, nullable=true)
+     * @ORM\Column(name="canonico", type="string", length=250, nullable=false)
      */
     private $canonico;
 
