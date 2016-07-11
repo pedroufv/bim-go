@@ -18,16 +18,16 @@
                     <div class="icon-block">
                         <div class="col s6">
                             <h3>
-                                <a href="{{ path('site_instituicao_show', { 'id': instituicao.id }) }}">
+                                <a href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}">
                                     <img src="{{ logotipo(instituicao.id, instituicao.nomefantasia) }}" class="responsive-img">
                                 </a>
                             </h3>
                         </div>
                         <div class="col s6">
-                            <h5 class="center"><a href="{{ path('site_instituicao_show', { 'id': instituicao.id }) }}" class="black-text">{{ instituicao.nomefantasia }}</a></h5>
+                            <h5 class="center"><a href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}" class="black-text">{{ instituicao.nomefantasia }}</a></h5>
                         </div>
                         <div class="col s12">
-                            <p><a href="{{ path('site_instituicao_show', { 'id': instituicao.id }) }}" class="black-text">{{ instituicao.descricao }}</a></p>
+                            <p><a href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}" class="black-text">{{ instituicao.descricao }}</a></p>
                         </div>
                         <div class="center-align col s12 card-action">
                             {% set telefone = contato(instituicao.contato, 'Telefone') %}
@@ -38,7 +38,7 @@
                             {% if email != false %}
                             <a href="mailto:{{ email }}"><i class="small fa fa-envelope grey-text text-darken-3"></i></a>
                             {% endif %}
-                            <a href="{{ path('site_instituicao_show', { 'id': instituicao.id }) }}"><i class="small fa fa-map-marker grey-text text-darken-3"></i></a>
+                            <a href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}"><i class="small fa fa-map-marker grey-text text-darken-3"></i></a>
                             <a href="#"><i class="small fa fa-star-o grey-text text-darken-3"></i></a>
                         </div>
                     </div>

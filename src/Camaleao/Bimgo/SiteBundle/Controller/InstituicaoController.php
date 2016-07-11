@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Bimgo\CoreBundle\Entity\Instituicao;
 
@@ -81,7 +82,8 @@ class InstituicaoController extends Controller
     /**
      * Finds and displays a Instituicao entity.
      *
-     * @Route("/{id}", name="site_instituicao_show")
+     * @Route("/{canonico}", name="site_instituicao_show")
+     * @ParamConverter("instituicao", class="CamaleaoBimgoCoreBundle:Instituicao")
      * @Method("GET")
      */
     public function showAction(Instituicao $instituicao)

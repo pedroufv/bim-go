@@ -1,6 +1,6 @@
 <h5 class="white-text">Novas Instituições</h5>
 <ul>
     {% for instituicao in instituicoes %}
-        <li class="white-text"><a class="white-text" href="{{ path('site_instituicao_show', { 'id': instituicao.id }) }}">{{ instituicao.nomefantasia }}</a></li>
+        <li class="white-text"><a class="white-text" href="{{ path('site_instituicao_show', { 'canonico': instituicao.canonico }) }}">{{ instituicao.nomefantasia }}</a></li>
     {% endfor %}
 </ul>
