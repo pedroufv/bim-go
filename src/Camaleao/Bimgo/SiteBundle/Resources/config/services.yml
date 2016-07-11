@@ -5,3 +5,25 @@ services:
         - @service_container
     tags:
         - { name: knp_menu.voter }
+
+  camaleao_bimgo_site.contatotwigextension:
+    class: Camaleao\Bimgo\SiteBundle\Twig\Extension\ContatoExtension
+    tags:
+      - { name: twig.extension }
+
+  camaleao_bimgo_site.filetwigextension:
+    class: Camaleao\Bimgo\SiteBundle\Twig\Extension\FileExtension
+    tags:
+      - { name: twig.extension }
+
+  camaleao_bimgo_site.images3twigextension:
+      class: Camaleao\Bimgo\SiteBundle\Twig\Extension\ImageS3Extension
+      arguments: [@aws.s3]
+      tags:
+        - { name: twig.extension }
+
+  camaleao_bimgo_site.logotipotwigextension:
+    class: Camaleao\Bimgo\SiteBundle\Twig\Extension\LogotipoExtension
+    arguments: [@aws.s3]
+    tags:
+      - { name: twig.extension }

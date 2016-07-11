@@ -8,7 +8,7 @@
         <title>{% block title %}Bim-go! Ao seu alcance{% endblock %}</title>
 
         <!-- include material design CSS -->
-        <link rel="stylesheet" href="{{ asset('bundles/camaleaobimgocore/css/materialize.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/camaleaobimgosite/css/materialize.min.css') }}" />
 
         <!-- include font-awesome CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -16,16 +16,17 @@
         <!-- include material design icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-        <link href="{{ asset('bundles/camaleaobimgocore/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{{ asset('bundles/camaleaobimgosite/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="https://s3.amazonaws.com/bim-go/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{{ getImgS3('favicon', 'ico') }}" />
     </head>
     <body>
+        {% block header %}
         <header>
             <nav class="blue-grey lighten-5" role="navigation">
                 <div class="nav-wrapper container">
                     <a href="{{ path('site_inicial_index') }}" id="logo-container" class="logo-containerbrand-logo">
-                        <img src="https://s3.amazonaws.com/bim-go/logo-slogan-188-60.png" title="Bim-go!" style="vertical-align:middle"/>
+                        <img src="{{ getImgS3('logo-slogan-188-60') }}" title="Bim-go!" style="vertical-align:middle"/>
                     </a>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
                     {% set menu = knp_menu_get('CamaleaoBimgoSiteBundle:MenuBuilder:mainMenu', [], {'id':'nav-mobile', 'class': 'right hide-on-med-and-down'}) %}
@@ -35,6 +36,7 @@
                 </div>
             </nav>
         </header>
+        {% endblock %}
 
         {% block body %}{% endblock %}
 
@@ -75,13 +77,13 @@
         </footer>
 
         <!-- include jquery -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/jquery-1.12.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgosite/js/jquery-1.12.1.min.js') }}"></script>
 
         <!-- material design js -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/materialize.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgosite/js/materialize.min.js') }}"></script>
 
         <!-- owner js -->
-        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgocore/js/script.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/camaleaobimgosite/js/script.js') }}"></script>
 
         {% block javascripts %}{% endblock %}
     </body>

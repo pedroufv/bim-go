@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Bimgo\CoreBundle\Twig\Extension;
+namespace Camaleao\Bimgo\SiteBundle\Twig\Extension;
 
 class ContatoExtension extends \Twig_Extension
 {

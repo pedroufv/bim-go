@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Bimgo\CoreBundle\Twig\Extension;
+namespace Camaleao\Bimgo\SiteBundle\Twig\Extension;
 
 use Doctrine\ORM\EntityManager;
 

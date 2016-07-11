@@ -1,6 +1,6 @@
 <?php
 
-namespace Camaleao\Bimgo\CoreBundle\Twig\Extension;
+namespace Camaleao\Bimgo\SiteBundle\Twig\Extension;
 
 use Aws\S3\S3Client;
 
@@ -50,10 +50,10 @@ class LogotipoExtension extends \Twig_Extension
         $text = preg_replace('#[^-\w]+#', '', $text);
 
 
-        if($this->s3Cliente->doesObjectExist('bim-go', "logotipos/$text.png"))
-            return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/$text.png");
+        if($this->s3Cliente->doesObjectExist('bim-go', "img/logotipos/$text.png"))
+            return $this->s3Cliente->getObjectUrl('bim-go', "img/logotipos/$text.png");
 
-        return $this->s3Cliente->getObjectUrl('bim-go', "logotipos/default.png");
+        return $this->s3Cliente->getObjectUrl('bim-go', "img/logotipos/default.png");
     }
 
     public function getName()

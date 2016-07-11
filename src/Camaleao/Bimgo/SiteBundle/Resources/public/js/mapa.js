@@ -1,7 +1,7 @@
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
-var pinImage = {bimgoDefault: 'https://s3.amazonaws.com/bim-go/pin-45-51.png'};
+var pinImage = {bimgoDefault: 'https://s3.amazonaws.com/bim-go/img/web/pin-45-51.png'};
 
 function initialize()
 {
