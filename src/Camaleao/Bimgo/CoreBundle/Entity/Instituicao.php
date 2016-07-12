@@ -477,7 +477,7 @@ class Instituicao
      */
     public function setAtivo($ativo)
     {
-        $this->ativo = $ativo == null ? true : $ativo;
+        $this->ativo = $ativo === null ? true : $ativo;
 
         return $this;
     }

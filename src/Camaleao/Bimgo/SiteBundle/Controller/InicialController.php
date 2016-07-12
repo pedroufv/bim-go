@@ -43,4 +43,25 @@ class InicialController extends Controller
 
         return new Response($reports);
     }
+
+    /**
+     *
+     * @Route("/canonico-segmento", name="site_cononico_segmento_index")
+     * @Method("GET")
+     */
+    public function canonicoSegmentoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $list = $em->getRepository('CamaleaoBimgoCoreBundle:Segmento')->findAll();
+
+        foreach($list as $item) {
+            $item->setAtivo(1);
+            $em->persist($item);
+        }
+
+        $em->flush();
+
+        return $this->render('CamaleaoBimgoSiteBundle:inicial:index.html.twig');
+    }
 }

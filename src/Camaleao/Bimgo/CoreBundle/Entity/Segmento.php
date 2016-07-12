@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation\Exclude;
  *
  * @ORM\Table(name="segmento", indexes={@ORM\Index(name="icone", columns={"icone"})})
  * @ORM\Entity
+ * @ORM\EntityListeners({"Camaleao\Bimgo\CoreBundle\EventListener\SegmentoListener"})
  */
 class Segmento
 {
@@ -37,6 +38,13 @@ class Segmento
     private $descricao;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="canonico", type="string", length=250, unique=true, nullable=false)
+     */
+    private $canonico;
+
+    /**
      * @var \Icone
      *
      * @ORM\ManyToOne(targetEntity="Icone")
@@ -45,6 +53,13 @@ class Segmento
      * })
      */
     private $icone;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ativo", type="boolean", nullable=false)
+     */
+    private $ativo = true;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -121,6 +136,25 @@ class Segmento
     }
 
     /**
+     * @return string
+     */
+    public function getCanonico()
+    {
+        return $this->canonico;
+    }
+
+    /**
+     * @param string $canonico
+     * @return Instituicao
+     */
+    public function setCanonico($canonico)
+    {
+        $this->canonico = $canonico;
+
+        return $this;
+    }
+
+    /**
      * Set icone
      *
      * @param \Camaleao\Bimgo\CoreBundle\Entity\Icone $icone
@@ -141,6 +175,29 @@ class Segmento
     public function getIcone()
     {
         return $this->icone;
+    }
+
+    /**
+     * Set ativo
+     *
+     * @param boolean $ativo
+     * @return Instituicao
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo === null ? true : $ativo;
+
+        return $this;
+    }
+
+    /**
+     * Get ativo
+     *
+     * @return boolean
+     */
+    public function getAtivo()
+    {
+        return $this->ativo;
     }
 
     /**

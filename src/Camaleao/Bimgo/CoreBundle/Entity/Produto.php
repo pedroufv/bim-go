@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation\Exclude;
  *
  * @ORM\Table(name="produto", indexes={@ORM\Index(name="instituicao", columns={"instituicao"}), @ORM\Index(name="fk_usuarioid_produto_criadopor", columns={"criadoPor"}), @ORM\Index(name="fk_usuarioid_produto_modificadopor", columns={"modificadoPor"})})
  * @ORM\Entity(repositoryClass="Camaleao\Bimgo\CoreBundle\Repository\ProdutoRepository")
+ * @ORM\EntityListeners({"Camaleao\Bimgo\CoreBundle\EventListener\ProdutoListener"})
  */
 class Produto
 {
@@ -35,6 +36,13 @@ class Produto
      * @ORM\Column(name="descricao", type="text", length=65535, nullable=false)
      */
     private $descricao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="canonico", type="string", length=250, unique=true, nullable=false)
+     */
+    private $canonico;
 
     /**
      * @var string
@@ -163,6 +171,25 @@ class Produto
     public function getDescricao()
     {
         return $this->descricao;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCanonico()
+    {
+        return $this->canonico;
+    }
+
+    /**
+     * @param string $canonico
+     * @return Instituicao
+     */
+    public function setCanonico($canonico)
+    {
+        $this->canonico = $canonico;
+
+        return $this;
     }
 
     /**
