@@ -48,10 +48,9 @@ class InstituicaoController extends Controller
     public function segmentoAction(Request $request)
     {
         // TODO: refatorar codigo para filtrar pesquisa por segmento
-        $criteria['segmento_canonico'] = $request->get('canonico');
         $searchQuery = $request->get('search');
 
-        if(!empty($searchQuery)) {
+        if(isset($searchQuery)) {
 
             $finder = $this->container->get('fos_elastica.finder.app.instituicao');
             $instituicoes = $finder->createPaginatorAdapter($searchQuery);
@@ -61,7 +60,8 @@ class InstituicaoController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $criteria = $request->get('criteria') ? $request->get('criteria') : array();
-            // recuperar cidade na sessao
+            $criteria['segmento_canonico'] = $request->get('canonico');
+            // TODO:  recuperar cidade na sessao
             $criteria['cidade'] = 4082;
             $order = $request->get('order') ? $request->get('order') : array();
             $limit = $request->get('limit') ? $request->get('limit') : null;
