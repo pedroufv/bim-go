@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 11, 2016 at 10:56 AM
--- Server version: 5.5.49-0ubuntu0.14.04.1
--- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
+-- Máquina: localhost
+-- Data de Criação: 12-Jul-2016 às 14:51
+-- Versão do servidor: 5.5.49-0ubuntu0.14.04.1
+-- versão do PHP: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `bim-go`
+-- Base de Dados: `bim-go`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cidade`
+-- Estrutura da tabela `cidade`
 --
 
 CREATE TABLE IF NOT EXISTS `cidade` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `cidade` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11897 ;
 
 --
--- Dumping data for table `cidade`
+-- Extraindo dados da tabela `cidade`
 --
 
 INSERT INTO `cidade` (`id`, `nome`, `estado`, `participante`) VALUES
@@ -5612,7 +5612,7 @@ INSERT INTO `cidade` (`id`, `nome`, `estado`, `participante`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contato`
+-- Estrutura da tabela `contato`
 --
 
 CREATE TABLE IF NOT EXISTS `contato` (
@@ -5624,7 +5624,7 @@ CREATE TABLE IF NOT EXISTS `contato` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=586 ;
 
 --
--- Dumping data for table `contato`
+-- Extraindo dados da tabela `contato`
 --
 
 INSERT INTO `contato` (`id`, `contato`, `contatoTipo`) VALUES
@@ -6217,7 +6217,7 @@ INSERT INTO `contato` (`id`, `contato`, `contatoTipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contatoTipo`
+-- Estrutura da tabela `contatoTipo`
 --
 
 CREATE TABLE IF NOT EXISTS `contatoTipo` (
@@ -6228,7 +6228,7 @@ CREATE TABLE IF NOT EXISTS `contatoTipo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `contatoTipo`
+-- Extraindo dados da tabela `contatoTipo`
 --
 
 INSERT INTO `contatoTipo` (`id`, `nome`, `descricao`) VALUES
@@ -6239,7 +6239,7 @@ INSERT INTO `contatoTipo` (`id`, `nome`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `destinatarioTipo`
+-- Estrutura da tabela `destinatarioTipo`
 --
 
 CREATE TABLE IF NOT EXISTS `destinatarioTipo` (
@@ -6250,7 +6250,7 @@ CREATE TABLE IF NOT EXISTS `destinatarioTipo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `destinatarioTipo`
+-- Extraindo dados da tabela `destinatarioTipo`
 --
 
 INSERT INTO `destinatarioTipo` (`id`, `nome`, `descricao`) VALUES
@@ -6267,7 +6267,7 @@ INSERT INTO `destinatarioTipo` (`id`, `nome`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `endereco`
+-- Estrutura da tabela `endereco`
 --
 
 CREATE TABLE IF NOT EXISTS `endereco` (
@@ -6285,7 +6285,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=591 ;
 
 --
--- Dumping data for table `endereco`
+-- Extraindo dados da tabela `endereco`
 --
 
 INSERT INTO `endereco` (`id`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `cep`, `latitude`, `longitude`) VALUES
@@ -6885,7 +6885,7 @@ INSERT INTO `endereco` (`id`, `logradouro`, `numero`, `complemento`, `bairro`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estado`
+-- Estrutura da tabela `estado`
 --
 
 CREATE TABLE IF NOT EXISTS `estado` (
@@ -6896,7 +6896,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
--- Dumping data for table `estado`
+-- Extraindo dados da tabela `estado`
 --
 
 INSERT INTO `estado` (`id`, `nome`, `uf`) VALUES
@@ -6931,7 +6931,7 @@ INSERT INTO `estado` (`id`, `nome`, `uf`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `funcionalidade`
+-- Estrutura da tabela `funcionalidade`
 --
 
 CREATE TABLE IF NOT EXISTS `funcionalidade` (
@@ -6944,7 +6944,7 @@ CREATE TABLE IF NOT EXISTS `funcionalidade` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `funcionario`
+-- Estrutura da tabela `funcionario`
 --
 
 CREATE TABLE IF NOT EXISTS `funcionario` (
@@ -6968,7 +6968,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `funcionario_contato`
+-- Estrutura da tabela `funcionario_contato`
 --
 
 CREATE TABLE IF NOT EXISTS `funcionario_contato` (
@@ -6981,7 +6981,7 @@ CREATE TABLE IF NOT EXISTS `funcionario_contato` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `historico`
+-- Estrutura da tabela `historico`
 --
 
 CREATE TABLE IF NOT EXISTS `historico` (
@@ -6999,7 +6999,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Triggers `historico`
+-- Acionadores `historico`
 --
 DROP TRIGGER IF EXISTS `atualiza_pontuacao`;
 DELIMITER //
@@ -7011,7 +7011,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `icone`
+-- Estrutura da tabela `icone`
 --
 
 CREATE TABLE IF NOT EXISTS `icone` (
@@ -7022,7 +7022,7 @@ CREATE TABLE IF NOT EXISTS `icone` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=695 ;
 
 --
--- Dumping data for table `icone`
+-- Extraindo dados da tabela `icone`
 --
 
 INSERT INTO `icone` (`id`, `nome`, `valor`) VALUES
@@ -7724,7 +7724,7 @@ INSERT INTO `icone` (`id`, `nome`, `valor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instituicao`
+-- Estrutura da tabela `instituicao`
 --
 
 CREATE TABLE IF NOT EXISTS `instituicao` (
@@ -7740,6 +7740,7 @@ CREATE TABLE IF NOT EXISTS `instituicao` (
   `fidelidade` tinyint(1) NOT NULL DEFAULT '0',
   `conversao` decimal(10,2) DEFAULT NULL,
   `endereco` int(11) NOT NULL,
+  `canonico` varchar(250) NOT NULL,
   `grupo` tinyint(1) NOT NULL DEFAULT '0',
   `plano` int(11) DEFAULT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
@@ -7748,6 +7749,7 @@ CREATE TABLE IF NOT EXISTS `instituicao` (
   `modificadoPor` int(11) NOT NULL,
   `dataModificacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `canonico` (`canonico`),
   KEY `endereco` (`endereco`),
   KEY `criadoPor` (`criadoPor`,`modificadoPor`),
   KEY `modificadoPor` (`modificadoPor`),
@@ -7756,608 +7758,608 @@ CREATE TABLE IF NOT EXISTS `instituicao` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=591 ;
 
 --
--- Dumping data for table `instituicao`
+-- Extraindo dados da tabela `instituicao`
 --
 
-INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
-(0, 'Equipe Bim-go!', 'Equipe Bim-go!', 'Gerencia o Bim-go!', NULL, NULL, 'http://bim-go.com/', NULL, 0, 0, NULL, 1, 0, NULL, 0, 1, '2016-03-13 23:00:00', 1, '2016-06-26 16:00:00'),
-(1, 'Camaleão Feroz', 'Camaleão Feroz', 'Empresa de Desenvolvimento Web e Mobile', NULL, NULL, 'http://camaleaoferoz.com.br/', NULL, 0, 1, 0.01, 1, 0, NULL, 1, 1, '2016-03-13 23:00:00', 1, '2016-06-26 16:00:00'),
-(2, NULL, 'CDL Viçosa', 'Grupo', NULL, NULL, NULL, NULL, 0, 0, NULL, 2, 1, NULL, 1, 1, '2016-06-29 17:15:31', 1, '2016-06-29 20:15:31'),
-(3, NULL, 'Oxford/Braspar', 'Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 3, 0, NULL, 1, 2, '2016-07-06 14:53:43', 2, '2016-07-06 17:53:43'),
-(4, NULL, 'Marmo Granito Brasil', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 4, 0, NULL, 1, 2, '2016-07-06 14:53:44', 3, '2016-07-06 17:53:44'),
-(5, NULL, 'Thesun Energy', 'Comércio Atacadista De Outras Máquinas E Equipamentos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 5, 0, NULL, 1, 2, '2016-07-06 14:53:44', 3, '2016-07-06 17:53:45'),
-(6, NULL, 'Dl Representações', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, 0.00, 6, 0, NULL, 1, 2, '2016-07-06 14:53:45', 3, '2016-07-06 17:53:45'),
-(7, NULL, 'Florestal Jr. - Consultoria UFV', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 7, 0, NULL, 1, 2, '2016-07-06 14:53:45', 3, '2016-07-06 17:53:46'),
-(8, NULL, 'Bob''s', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 8, 0, NULL, 1, 2, '2016-07-06 14:53:46', 3, '2016-07-06 17:53:46'),
-(9, NULL, 'No Bugs', 'Consultoria Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 9, 0, NULL, 1, 2, '2016-07-06 14:53:46', 3, '2016-07-06 17:53:47'),
-(10, NULL, 'Cecco Consultoria Contábil', 'Atividades De Consultoria E Auditoria Contábil E Tributária', NULL, NULL, NULL, 2, 1, 0, NULL, 10, 0, NULL, 1, 2, '2016-07-06 14:53:47', 2, '2016-07-06 17:53:47'),
-(11, NULL, 'Editora UFV - Facev', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 11, 0, NULL, 1, 2, '2016-07-06 14:53:47', 3, '2016-07-06 17:53:48'),
-(12, NULL, 'Ceempre', 'Atividades Associativas Não Especificada Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 12, 0, NULL, 1, 2, '2016-07-06 14:53:48', 2, '2016-07-06 17:53:48'),
-(13, NULL, 'Carmo E Arantes Advogados Associados', 'Atividades Auxiliares Da Justiça', NULL, NULL, NULL, 2, 1, 0, NULL, 13, 0, NULL, 1, 2, '2016-07-06 14:53:48', 3, '2016-07-06 17:53:48'),
-(14, NULL, 'Centro Automotivo Podium', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 14, 0, NULL, 1, 2, '2016-07-06 14:53:48', 3, '2016-07-06 17:53:49'),
-(15, NULL, 'Bye Bye Paper Viçosa', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 15, 0, NULL, 1, 2, '2016-07-06 14:53:49', 3, '2016-07-06 17:53:49'),
-(16, NULL, 'O Popular', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 16, 0, NULL, 1, 2, '2016-07-06 14:53:49', 2, '2016-07-06 17:53:50'),
-(17, NULL, 'Mercado São Silvestre', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 17, 0, NULL, 1, 2, '2016-07-06 14:53:50', 2, '2016-07-06 17:53:50'),
-(18, NULL, 'Antônio Walter Da Silva', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 18, 0, NULL, 1, 2, '2016-07-06 14:53:50', 3, '2016-07-06 17:53:50'),
-(19, NULL, 'Agroflor', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, NULL, 19, 0, NULL, 1, 2, '2016-07-06 14:53:50', 3, '2016-07-06 17:53:51'),
-(20, NULL, 'Banco Do Brasil', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 20, 0, NULL, 1, 2, '2016-07-06 14:53:51', 3, '2016-07-06 17:53:51'),
-(21, NULL, 'Verona Móveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 21, 0, NULL, 1, 2, '2016-07-06 14:53:51', 3, '2016-07-06 17:53:52'),
-(22, NULL, 'Du Campo', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 22, 0, NULL, 1, 2, '2016-07-06 14:53:52', 3, '2016-07-06 17:53:52'),
-(23, NULL, 'Andrade & Rodrigues Engenharia Ltda', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 23, 0, NULL, 1, 2, '2016-07-06 14:53:52', 3, '2016-07-06 17:53:53'),
-(24, NULL, 'Infortech', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 24, 0, NULL, 1, 2, '2016-07-06 14:53:53', 2, '2016-07-06 17:53:53'),
-(25, NULL, 'Alto Estilo', 'Aluguel De Objetos Do Vestuário Jóias E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 25, 0, NULL, 1, 2, '2016-07-06 14:53:53', 3, '2016-07-06 17:53:53'),
-(26, NULL, 'Casa Azul', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 26, 0, NULL, 1, 2, '2016-07-06 14:53:53', 3, '2016-07-06 17:53:54'),
-(27, NULL, 'Laboratório Santa Rita', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 27, 0, NULL, 1, 2, '2016-07-06 14:53:54', 3, '2016-07-06 17:53:54'),
-(28, NULL, 'Arte Da Carne', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 28, 0, NULL, 1, 2, '2016-07-06 14:53:54', 3, '2016-07-06 17:53:55'),
-(29, NULL, 'Fontur Viagens', 'Agências De Viagens', NULL, NULL, NULL, 2, 1, 0, 0.00, 29, 0, NULL, 1, 2, '2016-07-06 14:53:55', 3, '2016-07-06 17:53:55'),
-(30, NULL, 'Bradesco', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 30, 0, NULL, 1, 2, '2016-07-06 14:53:55', 2, '2016-07-06 17:53:56'),
-(31, NULL, 'Trigoleve', 'Fabricação De Massas Alimentícias', NULL, NULL, NULL, 2, 1, 0, NULL, 31, 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-06 17:53:56'),
-(32, NULL, 'Instituto Notare', 'Edição De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 32, 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-06 17:53:56'),
-(33, NULL, 'Irrizom', 'Comércio Atacadista De Máquinas Aparelhos E Equipamentos Para Uso Agropecuário', NULL, NULL, NULL, 2, 1, 0, 0.00, 33, 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-06 17:53:57'),
-(34, NULL, 'Recreio Viçosa', 'Comércio A Varejo De Automóveis Camionetas E Utilitários Novos', NULL, NULL, NULL, 2, 1, 0, NULL, 34, 0, NULL, 1, 2, '2016-07-06 14:53:57', 2, '2016-07-06 17:53:57'),
-(35, NULL, 'RM Veículos', 'Representantes Comerciais E Agentes Do Comércio De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 35, 0, NULL, 1, 2, '2016-07-06 14:53:57', 2, '2016-07-06 17:53:58'),
-(36, NULL, 'Rômulo Auto Mecânica', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 36, 0, NULL, 1, 2, '2016-07-06 14:53:58', 3, '2016-07-06 17:53:58'),
-(37, NULL, 'Pneuzeca', 'Comércio A Varejo De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, NULL, 37, 0, NULL, 1, 2, '2016-07-06 14:53:58', 2, '2016-07-06 17:53:59'),
-(38, NULL, 'Bulls Couro', 'Serviços De Capotaria', NULL, NULL, NULL, 2, 1, 0, NULL, 38, 0, NULL, 1, 2, '2016-07-06 14:53:59', 2, '2016-07-06 17:53:59'),
-(39, NULL, 'Cia Car Pneus Ltda.', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 39, 0, NULL, 1, 2, '2016-07-06 14:53:59', 3, '2016-07-06 17:53:59'),
-(40, NULL, 'Edgar Martelinho De Ouro', 'Serviços De Instalação Manutenção E Reparação De Acessórios Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 40, 0, NULL, 1, 2, '2016-07-06 14:53:59', 3, '2016-07-06 17:54:00'),
-(41, NULL, 'Alumikota Viçosa', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 41, 0, NULL, 1, 2, '2016-07-06 14:54:00', 3, '2016-07-06 17:54:00'),
-(42, NULL, 'Vimmac', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 42, 0, NULL, 1, 2, '2016-07-06 14:54:00', 3, '2016-07-06 17:54:01'),
-(43, NULL, 'Agrobil', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 43, 0, NULL, 1, 2, '2016-07-06 14:54:01', 2, '2016-07-06 17:54:01'),
-(44, NULL, 'JJ Comércio', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 44, 0, NULL, 1, 2, '2016-07-06 14:54:01', 3, '2016-07-06 17:54:01'),
-(45, NULL, 'Marmogranito Líder', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 45, 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-06 17:54:02'),
-(46, NULL, 'Liv Primícias - Planos Para A Vida', 'Assistência Médica E Odontológica/Assistência Jurídica/Assistência Psicológica/Transporte Social/Assistência Funerária', NULL, NULL, NULL, 2, 1, 0, 0.00, 46, 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-06 17:54:02'),
-(47, NULL, 'Clínica De Cirurgia Plástica Renato Del Giudice', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, NULL, 47, 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-06 17:54:03'),
-(48, NULL, 'Lapis De Cor', 'Educação Infantil - Pré-Escola', NULL, NULL, NULL, 2, 1, 0, 0.00, 48, 0, NULL, 1, 2, '2016-07-06 14:54:03', 3, '2016-07-06 17:54:03'),
-(49, NULL, 'Multifer', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 49, 0, NULL, 1, 2, '2016-07-06 14:54:04', 3, '2016-07-06 17:54:04'),
-(50, NULL, 'Shao Móveis', 'Fabricação De Móveis Com Predominância De Madeira', NULL, NULL, NULL, 2, 1, 0, NULL, 50, 0, NULL, 1, 2, '2016-07-06 14:54:04', 3, '2016-07-06 17:54:04'),
-(51, NULL, 'Vidraçaria Vidromarto', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 51, 0, NULL, 1, 2, '2016-07-06 14:54:05', 3, '2016-07-06 17:54:05'),
-(52, NULL, 'Buffet Panorama', 'Serviços De Alimentação Para Eventos E Recepções - Bufê', NULL, NULL, NULL, 2, 1, 0, NULL, 52, 0, NULL, 1, 2, '2016-07-06 14:54:06', 3, '2016-07-06 17:54:06'),
-(53, NULL, 'Oliveira E Irmãos Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 53, 0, NULL, 1, 2, '2016-07-06 14:54:06', 3, '2016-07-06 17:54:06'),
-(54, NULL, 'Impacto Som E Acessórios', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 54, 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-06 17:54:07'),
-(55, NULL, 'Microvet', 'Fabricação De Medicamentos Para Uso Veterinário', NULL, NULL, NULL, 2, 1, 0, 0.00, 55, 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-06 17:54:07'),
-(56, NULL, 'Santa Clara Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 56, 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-06 17:54:08'),
-(57, NULL, '95 Fm', 'Atividades De Rádio', NULL, NULL, NULL, 2, 1, 0, NULL, 57, 0, NULL, 1, 2, '2016-07-06 14:54:08', 3, '2016-07-06 17:54:08'),
-(58, NULL, 'Localiza Rent A Car', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, 0.00, 58, 0, NULL, 1, 2, '2016-07-06 14:54:08', 3, '2016-07-06 17:54:09'),
-(59, NULL, 'Vimag', 'Comércio Atacadista De Máquinas Aparelhos E Equipamentos Para Uso Agropecuário', NULL, NULL, NULL, 2, 1, 0, NULL, 59, 0, NULL, 1, 2, '2016-07-06 14:54:09', 3, '2016-07-06 17:54:09'),
-(60, NULL, 'Adelio Motos', 'Comércio A Varejo De Motocicletas E Motonetas Novas', NULL, NULL, NULL, 2, 1, 0, NULL, 60, 0, NULL, 1, 2, '2016-07-06 14:54:09', 2, '2016-07-06 17:54:10'),
-(61, NULL, 'Posto Millenniun', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 61, 0, NULL, 1, 2, '2016-07-06 14:54:10', 2, '2016-07-06 17:54:10'),
-(62, NULL, 'Auto Peças Bicalho', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 62, 0, NULL, 1, 2, '2016-07-06 14:54:10', 3, '2016-07-06 17:54:11'),
-(63, NULL, 'Dom Gás', 'Comércio Varejista De Gás Liquefeito De Petróleo (GLP)', NULL, NULL, NULL, 2, 1, 0, 0.00, 63, 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-06 17:54:11'),
-(64, NULL, 'Bobby Som', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 64, 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-06 17:54:11'),
-(65, NULL, 'Pneus Avenida', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 65, 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-06 17:54:12'),
-(66, NULL, 'Stilo Máquinas E Automóveis Ltda', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, NULL, 66, 0, NULL, 1, 2, '2016-07-06 14:54:12', 3, '2016-07-06 17:54:12'),
-(67, NULL, 'Academia Campus Fit', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 67, 0, NULL, 1, 2, '2016-07-06 14:54:12', 3, '2016-07-06 17:54:13'),
-(68, NULL, 'Ideal Auto Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 68, 0, NULL, 1, 2, '2016-07-06 14:54:13', 3, '2016-07-06 17:54:13'),
-(69, NULL, 'Carro E Cia', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, NULL, 69, 0, NULL, 1, 2, '2016-07-06 14:54:13', 3, '2016-07-06 17:54:14'),
-(70, NULL, 'Reginaldo Auto Peças', 'Comércio Por Atacado De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 70, 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-06 17:54:14'),
-(71, NULL, 'Nossa Loja', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, 0.00, 71, 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-06 17:54:14'),
-(72, NULL, 'Maxmoto', 'Comércio A Varejo De Motocicletas E Motonetas Novas', NULL, NULL, NULL, 2, 1, 0, 0.00, 72, 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-06 17:54:15'),
-(73, NULL, 'M M Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 73, 0, NULL, 1, 2, '2016-07-06 14:54:15', 3, '2016-07-06 17:54:15'),
-(74, NULL, 'Happy Day Festas', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 74, 0, NULL, 1, 2, '2016-07-06 14:54:15', 3, '2016-07-06 17:54:16'),
-(75, NULL, 'Farmácia Cotta', 'Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 75, 0, NULL, 1, 2, '2016-07-06 14:54:16', 3, '2016-07-06 17:54:16'),
-(76, NULL, 'Casa Da Lavoura', 'Comércio Atacadista De Defensivos Agrícolas Adubos Fertilizantes E Corretivos Do Solo', NULL, NULL, NULL, 2, 1, 0, NULL, 76, 0, NULL, 1, 2, '2016-07-06 14:54:16', 3, '2016-07-06 17:54:17'),
-(77, NULL, 'Aliança Assessoria', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 77, 0, NULL, 1, 2, '2016-07-06 14:54:17', 3, '2016-07-06 17:54:17'),
-(78, NULL, 'Magia Kids', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 78, 0, NULL, 1, 2, '2016-07-06 14:54:17', 3, '2016-07-06 17:54:18'),
-(79, NULL, 'São Geraldo Peças E Veículos', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 79, 0, NULL, 1, 2, '2016-07-06 14:54:18', 3, '2016-07-06 17:54:18'),
-(80, NULL, 'Central Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, NULL, 80, 0, NULL, 1, 2, '2016-07-06 14:54:18', 3, '2016-07-06 17:54:19'),
-(81, NULL, 'Parana Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 81, 0, NULL, 1, 2, '2016-07-06 14:54:19', 3, '2016-07-06 17:54:19'),
-(82, NULL, 'Visom', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 82, 0, NULL, 1, 2, '2016-07-06 14:54:19', 3, '2016-07-06 17:54:20'),
-(83, NULL, 'Viçosa Veículos', 'Serviços De Lavagem Lubrificação E Polimento De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 83, 0, NULL, 1, 2, '2016-07-06 14:54:20', 3, '2016-07-06 17:54:20'),
-(84, NULL, 'Multipeças Diesel', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 84, 0, NULL, 1, 2, '2016-07-06 14:54:20', 3, '2016-07-06 17:54:20'),
-(85, NULL, 'Posto Tip-Top', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 85, 0, NULL, 1, 2, '2016-07-06 14:54:21', 2, '2016-07-06 17:54:21'),
-(86, NULL, 'Serralheria Santa Clara', 'Fabricação De Produtos De Trefilados De Metal Exceto Padronizados', NULL, NULL, NULL, 2, 1, 0, NULL, 86, 0, NULL, 1, 2, '2016-07-06 14:54:21', 2, '2016-07-06 17:54:21'),
-(87, NULL, 'Maqtotal', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 87, 0, NULL, 1, 2, '2016-07-06 14:54:21', 3, '2016-07-06 17:54:22'),
-(88, NULL, 'Stop Car Pneus', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 88, 0, NULL, 1, 2, '2016-07-06 14:54:22', 3, '2016-07-06 17:54:22'),
-(89, NULL, 'Univiçosa', 'Educação Superior - Graduação E Pós-Graduação', NULL, NULL, NULL, 2, 1, 0, NULL, 89, 0, NULL, 1, 2, '2016-07-06 14:54:22', 2, '2016-07-06 17:54:23'),
-(90, NULL, 'Intelmarketing', 'Comércio Atacadista De Livros Jornais E Outras Publicações', NULL, NULL, NULL, 2, 1, 0, 0.00, 90, 0, NULL, 1, 2, '2016-07-06 14:54:23', 3, '2016-07-06 17:54:23'),
-(91, NULL, 'Volksville – Mecânica Especializada Em Volkswagen', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 91, 0, NULL, 1, 2, '2016-07-06 14:54:23', 2, '2016-07-06 17:54:24'),
-(92, NULL, 'Sementec', 'Comércio Varejista De Plantas E Flores Naturais', NULL, NULL, NULL, 2, 1, 0, NULL, 92, 0, NULL, 1, 2, '2016-07-06 14:54:24', 3, '2016-07-06 17:54:24'),
-(93, NULL, '3 Irmãos Corretora De Café', 'Representantes Comerciais E Agentes Do Comércio De Matérias-Primas Agrícolas E Animais Vivos', NULL, NULL, NULL, 2, 1, 0, NULL, 93, 0, NULL, 1, 2, '2016-07-06 14:54:24', 3, '2016-07-06 17:54:25'),
-(94, NULL, 'Igui', 'Fabricação De Artefatos De Cerâmica E Barro Cozido Para Uso Na Construção Exceto Azulejos E Pisos', NULL, NULL, NULL, 2, 1, 0, 0.00, 94, 0, NULL, 1, 2, '2016-07-06 14:54:25', 3, '2016-07-06 17:54:25'),
-(95, NULL, 'Magalhães Veículos', 'Comércio A Varejo De Automóveis Camionetas E Utilitários Usados', NULL, NULL, NULL, 2, 1, 0, 0.00, 95, 0, NULL, 1, 2, '2016-07-06 14:54:25', 3, '2016-07-06 17:54:26'),
-(96, NULL, 'Tonny''s Bar', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, NULL, 96, 0, NULL, 1, 2, '2016-07-06 14:54:26', 2, '2016-07-06 17:54:26'),
-(97, NULL, 'Paradiesel Peças E Acessórios', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 97, 0, NULL, 1, 2, '2016-07-06 14:54:27', 3, '2016-07-06 17:54:27'),
-(98, NULL, 'Viçosa Auto Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 98, 0, NULL, 1, 2, '2016-07-06 14:54:27', 2, '2016-07-06 17:54:28'),
-(99, NULL, 'Lanchonete JL', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 99, 0, NULL, 1, 2, '2016-07-06 14:54:28', 3, '2016-07-06 17:54:28'),
-(100, NULL, 'V2 Life Alimentos', 'Fabricação De Outros Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 100, 0, NULL, 1, 2, '2016-07-06 14:54:29', 2, '2016-07-06 17:54:29'),
-(101, NULL, 'Mundial Parque Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 101, 0, NULL, 1, 2, '2016-07-06 14:54:29', 3, '2016-07-06 17:54:30'),
-(102, NULL, 'Irrizom Estufas & Equipamentos Agrícolas', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 102, 0, NULL, 1, 2, '2016-07-06 14:54:30', 3, '2016-07-06 17:54:30'),
-(103, NULL, 'JB Lanternagem', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 103, 0, NULL, 1, 2, '2016-07-06 14:54:30', 3, '2016-07-06 17:54:31'),
-(104, NULL, 'Academia Ação E Água', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 104, 0, NULL, 1, 2, '2016-07-06 14:54:31', 3, '2016-07-06 17:54:31'),
-(105, NULL, 'Casa Mendes', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 105, 0, NULL, 1, 2, '2016-07-06 14:54:31', 3, '2016-07-06 17:54:32'),
-(106, NULL, 'Jungle', 'Desenvolvimento De Programas De Computador Sob Encomenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 106, 0, NULL, 1, 2, '2016-07-06 14:54:32', 3, '2016-07-06 17:54:32'),
-(107, NULL, 'Ther Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, NULL, 107, 0, NULL, 1, 2, '2016-07-06 14:54:32', 2, '2016-07-06 17:54:33'),
-(108, NULL, 'Retitec Retífica De Motores', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 108, 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-06 17:54:33'),
-(109, NULL, 'Delimit - Engenharia De Levantamento', 'Serviços De Cartografia Topografia E Geodésia', NULL, NULL, NULL, 2, 1, 0, NULL, 109, 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-06 17:54:33'),
-(110, NULL, 'Papelaria Barbosa', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 110, 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-06 17:54:34'),
-(111, NULL, 'Pinheiro Imóveis', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 111, 0, NULL, 1, 2, '2016-07-06 14:54:34', 2, '2016-07-06 17:54:34'),
-(112, NULL, 'Forno De Pedra', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 112, 0, NULL, 1, 2, '2016-07-06 14:54:34', 3, '2016-07-06 17:54:35'),
-(113, NULL, 'Boca Viçosa', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 113, 0, NULL, 1, 2, '2016-07-06 14:54:35', 3, '2016-07-06 17:54:35'),
-(114, NULL, 'Burguer Max', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 114, 0, NULL, 1, 2, '2016-07-06 14:54:35', 3, '2016-07-06 17:54:36'),
-(115, NULL, '100 Opções', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 115, 0, NULL, 1, 2, '2016-07-06 14:54:36', 3, '2016-07-06 17:54:36'),
-(116, NULL, 'Cientec', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, NULL, 116, 0, NULL, 1, 2, '2016-07-06 14:54:36', 3, '2016-07-06 17:54:37'),
-(117, NULL, 'Centro Ótico Fotográfico', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, NULL, 117, 0, NULL, 1, 2, '2016-07-06 14:54:37', 3, '2016-07-06 17:54:37'),
-(118, NULL, 'M G Eletrodomésticos E Bicicletas', 'Comércio Varejista De Bicicletas E Triciclos', NULL, NULL, NULL, 2, 1, 0, 0.00, 118, 0, NULL, 1, 2, '2016-07-06 14:54:37', 3, '2016-07-06 17:54:37'),
-(119, NULL, 'One Day Spa', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 119, 0, NULL, 1, 2, '2016-07-06 14:54:37', 2, '2016-07-06 17:54:38'),
-(120, NULL, 'Imobiliária Pimentel', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 120, 0, NULL, 1, 2, '2016-07-06 14:54:38', 2, '2016-07-06 17:54:38'),
-(121, NULL, 'Premium Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 121, 0, NULL, 1, 2, '2016-07-06 14:54:38', 3, '2016-07-06 17:54:39'),
-(122, NULL, 'Rei Do Celular', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 122, 0, NULL, 1, 2, '2016-07-06 14:54:39', 3, '2016-07-06 17:54:39'),
-(123, NULL, 'Sarsan Engenharia E Saneamento', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, 0.00, 123, 0, NULL, 1, 2, '2016-07-06 14:54:39', 3, '2016-07-06 17:54:40'),
-(124, NULL, 'Diferencial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 124, 0, NULL, 1, 2, '2016-07-06 14:54:40', 3, '2016-07-06 17:54:40'),
-(125, NULL, 'Vanderlei Ferreira', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 125, 0, NULL, 1, 2, '2016-07-06 14:54:40', 2, '2016-07-06 17:54:41'),
-(126, NULL, 'Imobiliária Líber', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 126, 0, NULL, 1, 2, '2016-07-06 14:54:41', 2, '2016-07-06 17:54:41'),
-(127, NULL, 'Ideal Negócios Imobiliários', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 127, 0, NULL, 1, 2, '2016-07-06 14:54:41', 3, '2016-07-06 17:54:42'),
-(128, NULL, 'NaMariah Massas Rápidas', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 128, 0, NULL, 1, 2, '2016-07-06 14:54:42', 3, '2016-07-06 17:54:42'),
-(129, NULL, 'Master Informática', 'Provedores De Acesso Às Redes De Comunicações', NULL, NULL, NULL, 2, 1, 0, NULL, 129, 0, NULL, 1, 2, '2016-07-06 14:54:42', 2, '2016-07-06 17:54:48'),
-(130, NULL, 'Casa Do Biscoito II', 'Comércio Varejista De Doces Balas Bombons E Semelhantes', NULL, NULL, NULL, 2, 1, 0, NULL, 130, 0, NULL, 1, 2, '2016-07-06 14:54:48', 3, '2016-07-06 17:54:48'),
-(131, NULL, 'Hakuna Batata Lanches', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 131, 0, NULL, 1, 2, '2016-07-06 14:54:48', 3, '2016-07-06 17:54:49'),
-(132, NULL, 'Imobiliária Invest', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 132, 0, NULL, 1, 2, '2016-07-06 14:54:49', 3, '2016-07-06 17:54:49'),
-(133, NULL, 'Essencial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 133, 0, NULL, 1, 2, '2016-07-06 14:54:49', 3, '2016-07-06 17:54:50'),
-(134, NULL, 'Artesania', 'Comércio Varejista De Suvenires Bijuterias E Artesanatos', NULL, NULL, NULL, 2, 1, 0, NULL, 134, 0, NULL, 1, 2, '2016-07-06 14:54:50', 3, '2016-07-06 17:54:50'),
-(135, NULL, 'Imobiliária Viçosa', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 135, 0, NULL, 1, 2, '2016-07-06 14:54:50', 3, '2016-07-06 17:54:51'),
-(136, NULL, 'Mundial Acabamentos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 136, 0, NULL, 1, 2, '2016-07-06 14:54:51', 2, '2016-07-06 17:54:51'),
-(137, NULL, 'Drogaria Atlas De Viçosa', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 137, 0, NULL, 1, 2, '2016-07-06 14:54:51', 3, '2016-07-06 17:54:52'),
-(138, NULL, 'Number One', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 138, 0, NULL, 1, 2, '2016-07-06 14:54:52', 3, '2016-07-06 17:54:52'),
-(139, NULL, 'Restaurante Japa Nobre', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 139, 0, NULL, 1, 2, '2016-07-06 14:54:52', 3, '2016-07-06 17:54:53'),
-(140, NULL, 'Arte Livros', 'Fotocópias', NULL, NULL, NULL, 2, 1, 0, NULL, 140, 0, NULL, 1, 2, '2016-07-06 14:54:53', 3, '2016-07-06 17:54:53'),
-(141, NULL, 'Posto Do Beto', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 141, 0, NULL, 1, 2, '2016-07-06 14:54:53', 2, '2016-07-06 17:54:54'),
-(142, NULL, 'Casa Das Loterias', 'Casas Lotéricas', NULL, NULL, NULL, 2, 1, 0, NULL, 142, 0, NULL, 1, 2, '2016-07-06 14:54:54', 3, '2016-07-06 17:54:54'),
-(143, NULL, 'Casa Da Lavoura Pet', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 143, 0, NULL, 1, 2, '2016-07-06 14:54:54', 3, '2016-07-06 17:54:55'),
-(144, NULL, 'Predial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 144, 0, NULL, 1, 2, '2016-07-06 14:54:55', 3, '2016-07-06 17:54:55'),
-(145, NULL, 'ICBEU', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 145, 0, NULL, 1, 2, '2016-07-06 14:54:55', 2, '2016-07-06 17:54:56'),
-(146, NULL, 'Residencia Imóveis', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 146, 0, NULL, 1, 2, '2016-07-06 14:54:56', 3, '2016-07-06 17:54:56'),
-(147, NULL, 'Drogaria Americana', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 147, 0, NULL, 1, 2, '2016-07-06 14:54:56', 3, '2016-07-06 17:54:57'),
-(148, NULL, 'Cia Do Corpo', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 148, 0, NULL, 1, 2, '2016-07-06 14:54:57', 3, '2016-07-06 17:54:57'),
-(149, NULL, 'Lanchonete Dce Piscina', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 149, 0, NULL, 1, 2, '2016-07-06 14:54:57', 3, '2016-07-06 17:54:58'),
-(150, NULL, 'Imobiliária Lovi', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 150, 0, NULL, 1, 2, '2016-07-06 14:54:58', 3, '2016-07-06 17:54:59'),
-(151, NULL, 'Cace Consultoria Jr', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 151, 0, NULL, 1, 2, '2016-07-06 14:54:59', 3, '2016-07-06 17:54:59'),
-(152, NULL, 'Ejesc', 'Atividades De Organizações Associativas Profissionais', NULL, NULL, NULL, 2, 1, 0, 0.00, 152, 0, NULL, 1, 2, '2016-07-06 14:54:59', 3, '2016-07-06 17:55:00'),
-(153, NULL, 'Apache Imóveis Viçosa', 'Corretagem Na Compra E Venda E Avaliação De Imóveis', NULL, NULL, NULL, 2, 1, 0, NULL, 153, 0, NULL, 1, 2, '2016-07-06 14:55:00', 3, '2016-07-06 17:55:00'),
-(154, NULL, 'TDNet', 'Provedores De Acesso Às Redes De Comunicações', NULL, NULL, NULL, 2, 1, 0, NULL, 154, 0, NULL, 1, 2, '2016-07-06 14:55:00', 2, '2016-07-06 17:55:01'),
-(155, NULL, 'Habitar Imobiliária', 'Corretagem No Aluguel De Imóveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 155, 0, NULL, 1, 2, '2016-07-06 14:55:01', 3, '2016-07-06 17:55:01'),
-(156, NULL, 'Prime Telefonia', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 156, 0, NULL, 1, 2, '2016-07-06 14:55:01', 2, '2016-07-06 17:55:02'),
-(157, NULL, 'Gastroclínica', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, 0.00, 157, 0, NULL, 1, 2, '2016-07-06 14:55:02', 3, '2016-07-06 17:55:02'),
-(158, NULL, 'Drogaria América Viçosense', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 158, 0, NULL, 1, 2, '2016-07-06 14:55:02', 3, '2016-07-06 17:55:03'),
-(159, NULL, 'Estacao Rolfs', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, NULL, 159, 0, NULL, 1, 2, '2016-07-06 14:55:03', 2, '2016-07-06 17:55:04'),
-(160, NULL, 'Deck 398 Bar E Restaurante', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 160, 0, NULL, 1, 2, '2016-07-06 14:55:04', 3, '2016-07-06 17:55:04'),
-(161, NULL, 'Posto Rejane', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 161, 0, NULL, 1, 2, '2016-07-06 14:55:04', 2, '2016-07-06 17:55:04'),
-(162, NULL, 'Mega Solucoes Em Ti', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 162, 0, NULL, 1, 2, '2016-07-06 14:55:05', 3, '2016-07-06 17:55:05'),
-(163, NULL, 'Tecnomol - Empresa Júnior De Bioquímica', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, NULL, 163, 0, NULL, 1, 2, '2016-07-06 14:55:05', 2, '2016-07-06 17:55:05'),
-(164, NULL, 'Sabor & Cia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 164, 0, NULL, 1, 2, '2016-07-06 14:55:06', 3, '2016-07-06 17:55:06'),
-(165, NULL, 'Dom Porco', 'Comércio Varejista De Carnes - Açougues', NULL, NULL, NULL, 2, 1, 0, 0.00, 165, 0, NULL, 1, 2, '2016-07-06 14:55:06', 3, '2016-07-06 17:55:07'),
-(166, NULL, 'Recicart', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 166, 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-06 17:55:07'),
-(167, NULL, 'Drogapharma', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 167, 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-06 17:55:07'),
-(168, NULL, 'Diviscrita', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 168, 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-06 17:55:08'),
-(169, NULL, 'Imobiliária Pereira', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 169, 0, NULL, 1, 2, '2016-07-06 14:55:08', 3, '2016-07-06 17:55:08'),
-(170, NULL, 'Lanchonete Do Denis', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 170, 0, NULL, 1, 2, '2016-07-06 14:55:09', 3, '2016-07-06 17:55:09'),
-(171, NULL, 'Floricultura Bicuíba', 'Comércio Varejista De Plantas E Flores Naturais', NULL, NULL, NULL, 2, 1, 0, 0.00, 171, 0, NULL, 1, 2, '2016-07-06 14:55:09', 3, '2016-07-06 17:55:10'),
-(172, NULL, 'Supermercado Vilela Avenida', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 172, 0, NULL, 1, 2, '2016-07-06 14:55:10', 2, '2016-07-06 17:55:10'),
-(173, NULL, 'Ar Condicionado Viçosa', 'Instalação E Manutenção De Sistemas Centrais De Ar Condicionado De Ventilação E Refrigeração', NULL, NULL, NULL, 2, 1, 0, NULL, 173, 0, NULL, 1, 2, '2016-07-06 14:55:10', 3, '2016-07-06 17:55:11'),
-(174, NULL, 'Casa Do PVC', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 174, 0, NULL, 1, 2, '2016-07-06 14:55:11', 3, '2016-07-06 17:55:12'),
-(175, NULL, 'Merco Paulo', 'Comércio Varejista De Hortifrutigranjeiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 175, 0, NULL, 1, 2, '2016-07-06 14:55:12', 3, '2016-07-06 17:55:12'),
-(176, NULL, 'Vivest Uniformes', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, NULL, 176, 0, NULL, 1, 2, '2016-07-06 14:55:12', 2, '2016-07-06 17:55:13'),
-(177, NULL, 'Fazendinha', 'Gestão De Espaços Para Artes Cênicas Espetáculos E Outras Atividades Artísticas', NULL, NULL, NULL, 2, 1, 0, 0.00, 177, 0, NULL, 1, 2, '2016-07-06 14:55:13', 3, '2016-07-06 17:55:13'),
-(178, NULL, 'Viva Linda', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 178, 0, NULL, 1, 2, '2016-07-06 14:55:14', 2, '2016-07-06 17:55:14'),
-(179, NULL, 'Posto Triunfo', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 179, 0, NULL, 1, 2, '2016-07-06 14:55:14', 2, '2016-07-06 17:55:15'),
-(180, NULL, 'Haskell Cosmética Natural', 'Fabricação De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 180, 0, NULL, 1, 2, '2016-07-06 14:55:15', 2, '2016-07-06 17:55:15'),
-(181, NULL, 'Editora Ultimato', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, 0.00, 181, 0, NULL, 1, 2, '2016-07-06 14:55:15', 3, '2016-07-06 17:55:15'),
-(182, NULL, 'Produtos Viçosa', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 182, 0, NULL, 1, 2, '2016-07-06 14:55:16', 2, '2016-07-06 17:55:16'),
-(183, NULL, 'Sec Jr. Consultoria', 'Atividades Associativas Não Especificada Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 183, 0, NULL, 1, 2, '2016-07-06 14:55:16', 2, '2016-07-06 17:55:16'),
-(184, NULL, 'Campic', 'Serviços De Agronomia E De Consultoria Às Atividades Agrícolas E Pecuárias', NULL, NULL, NULL, 2, 1, 0, NULL, 184, 0, NULL, 1, 2, '2016-07-06 14:55:17', 3, '2016-07-06 17:55:17'),
-(185, NULL, 'Sicoob UFVCredi', 'Cooperativas De Crédito Mútuo', NULL, NULL, NULL, 2, 1, 0, NULL, 185, 0, NULL, 1, 2, '2016-07-06 14:55:17', 2, '2016-07-06 17:55:18'),
-(186, NULL, 'MR Pneus', 'Comércio Por Atacado De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, 0.00, 186, 0, NULL, 1, 2, '2016-07-06 14:55:18', 3, '2016-07-06 17:55:19'),
-(187, NULL, 'Supermercado Escola', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 187, 0, NULL, 1, 2, '2016-07-06 14:55:19', 2, '2016-07-06 17:55:19'),
-(188, NULL, 'Alimentos Jr', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 188, 0, NULL, 1, 2, '2016-07-06 14:55:19', 3, '2016-07-06 17:55:20'),
-(189, NULL, 'Agregar', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 189, 0, NULL, 1, 2, '2016-07-06 14:55:20', 2, '2016-07-06 17:55:20'),
-(190, NULL, 'Construagro', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 190, 0, NULL, 1, 2, '2016-07-06 14:55:20', 3, '2016-07-06 17:55:21'),
-(191, NULL, 'Gestão Láctea - Consultoria E Projetos Agro-Industriais', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, 0.00, 191, 0, NULL, 1, 2, '2016-07-06 14:55:21', 3, '2016-07-06 17:55:21'),
-(192, NULL, 'Palpite', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 192, 0, NULL, 1, 2, '2016-07-06 14:55:22', 3, '2016-07-06 17:55:22'),
-(193, NULL, 'Agrojuris', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 193, 0, NULL, 1, 2, '2016-07-06 14:55:22', 3, '2016-07-06 17:55:22'),
-(194, NULL, 'Sacolão Center  Brasil', 'Comércio Varejista De Hortifrutigranjeiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 194, 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-06 17:55:23'),
-(195, NULL, 'Ladvet', 'Atividades Veterinárias', NULL, NULL, NULL, 2, 1, 0, 0.00, 195, 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-06 17:55:23'),
-(196, NULL, 'Englopes', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 196, 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-06 17:55:24'),
-(197, NULL, 'Viçosa Joias', 'Comércio Varejista De Artigos De Joalheria', NULL, NULL, NULL, 2, 1, 0, NULL, 197, 0, NULL, 1, 2, '2016-07-06 14:55:24', 2, '2016-07-06 17:55:24'),
-(198, NULL, 'Granja Real', 'Comércio Varejista De Laticínios E Frios', NULL, NULL, NULL, 2, 1, 0, 0.00, 198, 0, NULL, 1, 2, '2016-07-06 14:55:24', 3, '2016-07-06 17:55:25'),
-(199, NULL, 'Olbirayr Souza Rodrigues', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, 0.00, 199, 0, NULL, 1, 2, '2016-07-06 14:55:25', 3, '2016-07-06 17:55:25'),
-(200, NULL, 'Alfa Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, NULL, 200, 0, NULL, 1, 2, '2016-07-06 14:55:25', 3, '2016-07-06 17:55:26'),
-(201, NULL, 'Villa Alfa Restaurante', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 201, 0, NULL, 1, 2, '2016-07-06 14:55:26', 2, '2016-07-06 17:55:26'),
-(202, NULL, 'Célio Grossi Ferragens', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 202, 0, NULL, 1, 2, '2016-07-06 14:55:26', 3, '2016-07-06 17:55:27'),
-(203, NULL, 'Mercadinho Vilela', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 203, 0, NULL, 1, 2, '2016-07-06 14:55:27', 2, '2016-07-06 17:55:28'),
-(204, NULL, 'Camigue', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 204, 0, NULL, 1, 2, '2016-07-06 14:55:28', 3, '2016-07-06 17:55:28'),
-(205, NULL, 'Guarapiranga Tintas', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, 0.00, 205, 0, NULL, 1, 2, '2016-07-06 14:55:28', 3, '2016-07-06 17:55:29'),
-(206, NULL, 'ACF Colegial', 'Atividades De  franqueadas E Permissionárias Do Correio Nacional', NULL, NULL, NULL, 2, 1, 0, NULL, 206, 0, NULL, 1, 2, '2016-07-06 14:55:29', 2, '2016-07-06 17:55:29'),
-(207, NULL, 'Pão De Fátima', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 207, 0, NULL, 1, 2, '2016-07-06 14:55:29', 3, '2016-07-06 17:55:30'),
-(208, NULL, 'Saúde E Vida Drogaria', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, NULL, 208, 0, NULL, 1, 2, '2016-07-06 14:55:30', 2, '2016-07-06 17:55:31'),
-(209, NULL, 'Supermercado Parati', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 209, 0, NULL, 1, 2, '2016-07-06 14:55:31', 2, '2016-07-06 17:55:31'),
-(210, NULL, 'Pneus São Paulo', 'Comércio A Varejo De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, 0.00, 210, 0, NULL, 1, 2, '2016-07-06 14:55:31', 3, '2016-07-06 17:55:32'),
-(211, NULL, 'Dermaclin', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, NULL, 211, 0, NULL, 1, 2, '2016-07-06 14:55:32', 3, '2016-07-06 17:55:32'),
-(212, NULL, 'Casarão Do 10', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 212, 0, NULL, 1, 2, '2016-07-06 14:55:32', 3, '2016-07-06 17:55:33'),
-(213, NULL, 'Líder Eletromóveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 213, 0, NULL, 1, 2, '2016-07-06 14:55:33', 3, '2016-07-06 17:55:33'),
-(214, NULL, 'Ativa Moveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 214, 0, NULL, 1, 2, '2016-07-06 14:55:33', 3, '2016-07-06 17:55:34'),
-(215, NULL, 'Posto Canaã', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 215, 0, NULL, 1, 2, '2016-07-06 14:55:34', 2, '2016-07-06 17:55:34'),
-(216, NULL, 'Açaí Mix', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 216, 0, NULL, 1, 2, '2016-07-06 14:55:34', 3, '2016-07-06 17:55:35'),
-(217, NULL, 'Sudeste Colchoes', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 217, 0, NULL, 1, 2, '2016-07-06 14:55:35', 2, '2016-07-06 17:55:35'),
-(218, NULL, 'Rosa Emília Silva Vieira Soares', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 218, 0, NULL, 1, 2, '2016-07-06 14:55:35', 2, '2016-07-06 17:55:36'),
-(219, NULL, 'Rosimar Dos Reis Fialho', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 219, 0, NULL, 1, 2, '2016-07-06 14:55:36', 2, '2016-07-06 17:55:37'),
-(220, NULL, 'Universitária Locadora De Veículos', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, NULL, 220, 0, NULL, 1, 2, '2016-07-06 14:55:37', 2, '2016-07-06 17:55:37'),
-(221, NULL, 'Caixa Econômica Federal', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 221, 0, NULL, 1, 2, '2016-07-06 14:55:37', 3, '2016-07-06 17:55:38'),
-(222, NULL, 'Parati Eletrodomésticos', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 222, 0, NULL, 1, 2, '2016-07-06 14:55:38', 3, '2016-07-06 17:55:38'),
-(223, NULL, 'Confecção Santa Edwiges', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 223, 0, NULL, 1, 2, '2016-07-06 14:55:38', 3, '2016-07-06 17:55:39'),
-(224, NULL, 'Hospital Dos Óculos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 224, 0, NULL, 1, 2, '2016-07-06 14:55:39', 3, '2016-07-06 17:55:40'),
-(225, NULL, 'Casa Do Biscoito', 'Comércio Varejista De Doces Balas Bombons E Semelhantes', NULL, NULL, NULL, 2, 1, 0, NULL, 225, 0, NULL, 1, 2, '2016-07-06 14:55:40', 3, '2016-07-06 17:55:40'),
-(226, NULL, 'Estação Do Branco', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 226, 0, NULL, 1, 2, '2016-07-06 14:55:40', 3, '2016-07-06 17:55:41'),
-(227, NULL, 'Sintonia Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 227, 0, NULL, 1, 2, '2016-07-06 14:55:41', 2, '2016-07-06 17:55:41'),
-(228, NULL, 'Oriente Serviços Administrativos', 'Preparação De Documentos E Serviços Especializados De Apoio Administrativo Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 228, 0, NULL, 1, 2, '2016-07-06 14:55:41', 2, '2016-07-06 17:55:42'),
-(229, NULL, 'Farmácia Santa Maria', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 229, 0, NULL, 1, 2, '2016-07-06 14:55:42', 3, '2016-07-06 17:55:42'),
-(230, NULL, 'Ótica Visão Certa', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 230, 0, NULL, 1, 2, '2016-07-06 14:55:42', 3, '2016-07-06 17:55:43'),
-(231, NULL, 'Farmácia Santa Lúcia', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 231, 0, NULL, 1, 2, '2016-07-06 14:55:43', 3, '2016-07-06 17:55:43'),
-(232, NULL, 'Lojão Das Fábricas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 232, 0, NULL, 1, 2, '2016-07-06 14:55:44', 3, '2016-07-06 17:55:44'),
-(233, NULL, 'Amorim Contabilidade', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 233, 0, NULL, 1, 2, '2016-07-06 14:55:44', 3, '2016-07-06 17:55:45'),
-(234, NULL, 'Farmácia Duarte', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 234, 0, NULL, 1, 2, '2016-07-06 14:55:45', 3, '2016-07-06 17:55:45'),
-(235, NULL, 'Padaria Modelo', 'Fabricação De Produtos De Panificação', NULL, NULL, NULL, 2, 1, 0, 0.00, 235, 0, NULL, 1, 2, '2016-07-06 14:55:45', 3, '2016-07-06 17:55:46'),
-(236, NULL, 'Bem Me Quer', 'Comércio Varejista De Brinquedos E Artigos Recreativos', NULL, NULL, NULL, 2, 1, 0, NULL, 236, 0, NULL, 1, 2, '2016-07-06 14:55:46', 2, '2016-07-06 17:55:46'),
-(237, NULL, 'Clínica De Estética Bella Vitta', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 237, 0, NULL, 1, 2, '2016-07-06 14:55:46', 3, '2016-07-06 17:55:47'),
-(238, NULL, 'Innovago Consultoria E Assessoria Ltda - Me', 'Pesquisa E Desenvolvimento Experimental Em Ciências Físicas E Naturais', NULL, NULL, NULL, 2, 1, 0, 0.00, 238, 0, NULL, 1, 2, '2016-07-06 14:55:47', 3, '2016-07-06 17:55:47'),
-(239, NULL, 'Rizoflora', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 239, 0, NULL, 1, 2, '2016-07-06 14:55:47', 2, '2016-07-06 17:55:48'),
-(240, NULL, 'Fogão Paraíso', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 240, 0, NULL, 1, 2, '2016-07-06 14:55:48', 3, '2016-07-06 17:55:48'),
-(241, NULL, 'Labor Rural', 'Locação De Mão-De-Obra Temporária', NULL, NULL, NULL, 2, 1, 0, NULL, 241, 0, NULL, 1, 2, '2016-07-06 14:55:48', 2, '2016-07-06 17:55:49'),
-(242, NULL, 'Carlos Roberto Rocha', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 242, 0, NULL, 1, 2, '2016-07-06 14:55:49', 3, '2016-07-06 17:55:50'),
-(243, NULL, 'Núcleo Academia', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, 0.00, 243, 0, NULL, 1, 2, '2016-07-06 14:55:50', 3, '2016-07-06 17:55:50'),
-(244, NULL, 'Faculdade Estácio - Viçosa', 'Ensino Fundamental', NULL, NULL, NULL, 2, 1, 0, NULL, 244, 0, NULL, 1, 2, '2016-07-06 14:55:50', 2, '2016-07-06 17:55:51'),
-(245, NULL, 'Pansol Materiais De Construção', 'Fabricação De Artefatos De Cimento Para Uso Na Construção', NULL, NULL, NULL, 2, 1, 0, 0.00, 245, 0, NULL, 1, 2, '2016-07-06 14:55:51', 3, '2016-07-06 17:55:51'),
-(246, NULL, 'Estruturarte Serralheria', 'Fabricação De Esquadrias De Metal', NULL, NULL, NULL, 2, 1, 0, 0.00, 246, 0, NULL, 1, 2, '2016-07-06 14:55:51', 3, '2016-07-06 17:55:52'),
-(247, NULL, 'Batatas Fritas Palha Leve', 'Fabricação De Outros Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 247, 0, NULL, 1, 2, '2016-07-06 14:55:52', 3, '2016-07-06 17:55:53'),
-(248, NULL, 'Móveis E Eletrodomésticos Vilela', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 248, 0, NULL, 1, 2, '2016-07-06 14:55:53', 3, '2016-07-06 17:55:53'),
-(249, NULL, 'Silk Pena', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 249, 0, NULL, 1, 2, '2016-07-06 14:55:53', 2, '2016-07-06 17:55:54'),
-(250, NULL, 'Opção Consultoria E Gestão Empresarial', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, 0.00, 250, 0, NULL, 1, 2, '2016-07-06 14:55:54', 3, '2016-07-06 17:55:54'),
-(251, NULL, '4 D Alimentos', 'Fabricação De Sucos Concentrados De Frutas Hortaliças E Legumes', NULL, NULL, NULL, 2, 1, 0, NULL, 251, 0, NULL, 1, 2, '2016-07-06 14:55:54', 3, '2016-07-06 17:55:55'),
-(252, NULL, 'Cerimonial Parthenon', 'Serviços De Alimentação Para Eventos E Recepções - Bufê', NULL, NULL, NULL, 2, 1, 0, NULL, 252, 0, NULL, 1, 2, '2016-07-06 14:55:55', 3, '2016-07-06 17:55:55'),
-(253, NULL, 'Pizza Boka Loka', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 253, 0, NULL, 1, 2, '2016-07-06 14:55:55', 3, '2016-07-06 17:55:56'),
-(254, NULL, 'Di Durmi Baby', 'Fabricação De Artefatos Têxteis Para Uso Doméstico', NULL, NULL, NULL, 2, 1, 0, NULL, 254, 0, NULL, 1, 2, '2016-07-06 14:55:56', 3, '2016-07-06 17:55:56'),
-(255, NULL, 'Passarela', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 255, 0, NULL, 1, 2, '2016-07-06 14:55:56', 3, '2016-07-06 17:55:57');
-INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
-(256, NULL, 'Corum', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 256, 0, NULL, 1, 2, '2016-07-06 14:55:57', 3, '2016-07-06 17:55:57'),
-(257, NULL, 'Real Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 257, 0, NULL, 1, 2, '2016-07-06 14:55:57', 3, '2016-07-06 17:55:58'),
-(258, NULL, 'Cafeteria Viena', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 258, 0, NULL, 1, 2, '2016-07-06 14:55:58', 3, '2016-07-06 17:55:58'),
-(259, NULL, 'Informed', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 259, 0, NULL, 1, 2, '2016-07-06 14:55:58', 3, '2016-07-06 17:55:59'),
-(260, NULL, 'Segunda Pele Infantil', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 260, 0, NULL, 1, 2, '2016-07-06 14:55:59', 2, '2016-07-06 17:55:59'),
-(261, NULL, 'Ousadia', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 261, 0, NULL, 1, 2, '2016-07-06 14:55:59', 3, '2016-07-06 17:56:00'),
-(262, NULL, 'Tom E Guida', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 262, 0, NULL, 1, 2, '2016-07-06 14:56:00', 2, '2016-07-06 17:56:00'),
-(263, NULL, 'Fisk Idiomas', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 263, 0, NULL, 1, 2, '2016-07-06 14:56:00', 3, '2016-07-06 17:56:01'),
-(264, NULL, 'Caminho Livre', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 264, 0, NULL, 1, 2, '2016-07-06 14:56:01', 3, '2016-07-06 17:56:01'),
-(265, NULL, 'Mundi Center Men Wear', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 265, 0, NULL, 1, 2, '2016-07-06 14:56:01', 3, '2016-07-06 17:56:02'),
-(266, NULL, 'Mundi Shoes Mulher', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 266, 0, NULL, 1, 2, '2016-07-06 14:56:02', 3, '2016-07-06 17:56:03'),
-(267, NULL, 'Dara Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 267, 0, NULL, 1, 2, '2016-07-06 14:56:03', 3, '2016-07-06 17:56:03'),
-(268, NULL, 'Dentista Para Todos', 'Atividade Odontológica', NULL, NULL, NULL, 2, 1, 0, NULL, 268, 0, NULL, 1, 2, '2016-07-06 14:56:03', 3, '2016-07-06 17:56:04'),
-(269, NULL, 'Restaurante E Pizzaria Sabor E Cia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 269, 0, NULL, 1, 2, '2016-07-06 14:56:04', 3, '2016-07-06 17:56:04'),
-(270, NULL, 'Camisa E Cia', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 270, 0, NULL, 1, 2, '2016-07-06 14:56:04', 3, '2016-07-06 17:56:05'),
-(271, NULL, 'Mundi Tennis', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 271, 0, NULL, 1, 2, '2016-07-06 14:56:05', 3, '2016-07-06 17:56:05'),
-(272, NULL, 'Adesivar Comunicação Visual', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 272, 0, NULL, 1, 2, '2016-07-06 14:56:05', 3, '2016-07-06 17:56:06'),
-(273, NULL, 'Óptica Gorete', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 273, 0, NULL, 1, 2, '2016-07-06 14:56:06', 3, '2016-07-06 17:56:06'),
-(274, NULL, 'Óptica Lume', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 274, 0, NULL, 1, 2, '2016-07-06 14:56:06', 3, '2016-07-06 17:56:07'),
-(275, NULL, 'Delmo Calçados Femininos', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 275, 0, NULL, 1, 2, '2016-07-06 14:56:07', 3, '2016-07-06 17:56:07'),
-(276, NULL, 'Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, 0.00, 276, 0, NULL, 1, 2, '2016-07-06 14:56:07', 3, '2016-07-06 17:56:08'),
-(277, NULL, 'Foto Imagem', 'Laboratórios Fotográficos', NULL, NULL, NULL, 2, 1, 0, NULL, 277, 0, NULL, 1, 2, '2016-07-06 14:56:08', 2, '2016-07-06 17:56:08'),
-(278, NULL, 'Caca Dede', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 278, 0, NULL, 1, 2, '2016-07-06 14:56:08', 3, '2016-07-06 17:56:09'),
-(279, NULL, 'Lucrymais Distribuidora', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 279, 0, NULL, 1, 2, '2016-07-06 14:56:09', 3, '2016-07-06 17:56:10'),
-(280, NULL, 'Objetiva Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 280, 0, NULL, 1, 2, '2016-07-06 14:56:10', 3, '2016-07-06 17:56:10'),
-(281, NULL, 'Mega Byte Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 281, 0, NULL, 1, 2, '2016-07-06 14:56:10', 3, '2016-07-06 17:56:10'),
-(282, NULL, 'Mundial Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 282, 0, NULL, 1, 2, '2016-07-06 14:56:11', 3, '2016-07-06 17:56:11'),
-(283, NULL, 'Óticas Capixaba', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 283, 0, NULL, 1, 2, '2016-07-06 14:56:11', 3, '2016-07-06 17:56:12'),
-(284, NULL, 'Vermelho Pimenta', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 284, 0, NULL, 1, 2, '2016-07-06 14:56:12', 2, '2016-07-06 17:56:13'),
-(285, NULL, 'Vivo Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 285, 0, NULL, 1, 2, '2016-07-06 14:56:13', 2, '2016-07-06 17:56:13'),
-(286, NULL, 'Zeus TI', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 286, 0, NULL, 1, 2, '2016-07-06 14:56:13', 3, '2016-07-06 17:56:14'),
-(287, NULL, 'Lojas Mega Calçadão', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 287, 0, NULL, 1, 2, '2016-07-06 14:56:14', 3, '2016-07-06 17:56:14'),
-(288, NULL, 'Salão De Beleza Carisma', 'Cabeleireiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 288, 0, NULL, 1, 2, '2016-07-06 14:56:14', 3, '2016-07-06 17:56:15'),
-(289, NULL, 'Igara Artesanato', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, 0.00, 289, 0, NULL, 1, 2, '2016-07-06 14:56:15', 3, '2016-07-06 17:56:15'),
-(290, NULL, 'Cartório Machado', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 290, 0, NULL, 1, 2, '2016-07-06 14:56:15', 2, '2016-07-06 17:56:16'),
-(291, NULL, 'Sistema Equipe', 'Cursos Preparatórios Para Concursos', NULL, NULL, NULL, 2, 1, 0, NULL, 291, 0, NULL, 1, 2, '2016-07-06 14:56:16', 2, '2016-07-06 17:56:16'),
-(292, NULL, 'Fábrica De Óculos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, NULL, 292, 0, NULL, 1, 2, '2016-07-06 14:56:16', 2, '2016-07-06 17:56:17'),
-(293, NULL, 'Casa Silva', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 293, 0, NULL, 1, 2, '2016-07-06 14:56:17', 3, '2016-07-06 17:56:17'),
-(294, NULL, 'Mundial Calçados', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 294, 0, NULL, 1, 2, '2016-07-06 14:56:17', 2, '2016-07-06 17:56:18'),
-(295, NULL, 'Omega Sistema De Ensino', 'Cursos Preparatórios Para Concursos', NULL, NULL, NULL, 2, 1, 0, 0.00, 295, 0, NULL, 1, 2, '2016-07-06 14:56:18', 3, '2016-07-06 17:56:18'),
-(296, NULL, 'Lojas Sant Anna', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 296, 0, NULL, 1, 2, '2016-07-06 14:56:18', 2, '2016-07-06 17:56:19'),
-(297, NULL, 'Opção Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 297, 0, NULL, 1, 2, '2016-07-06 14:56:19', 3, '2016-07-06 17:56:19'),
-(298, NULL, 'Podium Moda Masculina', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 298, 0, NULL, 1, 2, '2016-07-06 14:56:19', 3, '2016-07-06 17:56:20'),
-(299, NULL, 'Magazine Luiza', 'Lojas De Departamentos Ou Magazines', NULL, NULL, NULL, 2, 1, 0, 0.00, 299, 0, NULL, 1, 2, '2016-07-06 14:56:20', 3, '2016-07-06 17:56:20'),
-(300, NULL, 'Da Laque', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 300, 0, NULL, 1, 2, '2016-07-06 14:56:21', 3, '2016-07-06 17:56:21'),
-(301, NULL, 'High Tech', 'Comércio Varejista Especializado De Peças E Acessórios Para Aparelhos Eletroeletrônicos Para Uso Doméstico Exceto Informática E Comunicação', NULL, NULL, NULL, 2, 1, 0, 0.00, 301, 0, NULL, 1, 2, '2016-07-06 14:56:21', 3, '2016-07-06 17:56:22'),
-(302, NULL, 'Mundial Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 302, 0, NULL, 1, 2, '2016-07-06 14:57:12', 3, '2016-07-06 17:57:13'),
-(303, NULL, 'Serovi - Serviço Especializado Em Radiologia Odontológica', 'Serviços De Diagnóstico Por Imagem Com Uso De Radiação Ionizante Exceto Tomografia', NULL, NULL, NULL, 2, 1, 0, NULL, 303, 0, NULL, 1, 2, '2016-07-06 14:57:13', 2, '2016-07-06 17:57:14'),
-(304, NULL, 'LL Pisos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 304, 0, NULL, 1, 2, '2016-07-06 14:57:14', 3, '2016-07-06 17:57:14'),
-(305, NULL, 'Tele Mais', 'Comércio Varejista De Bebidas', NULL, NULL, NULL, 2, 1, 0, NULL, 305, 0, NULL, 1, 2, '2016-07-06 14:57:14', 2, '2016-07-06 17:57:15'),
-(306, NULL, 'Bley Roupas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 306, 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-06 17:57:15'),
-(307, NULL, 'Papelaria Colegial', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 307, 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-06 17:57:15'),
-(308, NULL, 'Lab. De Análises Clínicas Dr. Sebastião Lopes Soares', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 308, 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-06 17:57:16'),
-(309, NULL, 'Master Marketing Digital De Resultados', 'Representantes Comerciais E Agentes Do Comércio De Mercadorias Em Geral Não Especializado', NULL, NULL, NULL, 2, 1, 0, NULL, 309, 0, NULL, 1, 2, '2016-07-06 14:57:16', 2, '2016-07-06 17:57:16'),
-(310, NULL, 'Mobiliadora São José', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 310, 0, NULL, 1, 2, '2016-07-06 14:57:16', 3, '2016-07-06 17:57:17'),
-(311, NULL, 'Resolve Imóveis', 'Serviços Combinados De Escritório E Apoio Administrativo', NULL, NULL, NULL, 2, 1, 0, NULL, 311, 0, NULL, 1, 2, '2016-07-06 14:57:18', 2, '2016-07-06 17:57:18'),
-(312, NULL, 'Drogarias Ultra Popular', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 312, 0, NULL, 1, 2, '2016-07-06 14:57:18', 3, '2016-07-06 17:57:19'),
-(313, NULL, 'Padaria Unida', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 313, 0, NULL, 1, 2, '2016-07-06 14:57:19', 3, '2016-07-06 17:57:19'),
-(314, NULL, 'Viçosa Embalagens', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 314, 0, NULL, 1, 2, '2016-07-06 14:57:19', 2, '2016-07-06 17:57:20'),
-(315, NULL, 'Casa Das Meias', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 315, 0, NULL, 1, 2, '2016-07-06 14:57:20', 3, '2016-07-06 17:57:20'),
-(316, NULL, 'Messias Materiais De Construção', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 316, 0, NULL, 1, 2, '2016-07-06 14:57:20', 3, '2016-07-06 17:57:21'),
-(317, NULL, 'Supermercado Viçosense', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 317, 0, NULL, 1, 2, '2016-07-06 14:57:21', 2, '2016-07-06 17:57:21'),
-(318, NULL, 'Edmar Lopes De Oliveira - Me', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 318, 0, NULL, 1, 2, '2016-07-06 14:57:21', 3, '2016-07-06 17:57:22'),
-(319, NULL, 'TD Software', 'Tratamento De Dados Provedores De Serviços De Aplicação E Serviços De Hospedagem Na Internet', NULL, NULL, NULL, 2, 1, 0, NULL, 319, 0, NULL, 1, 2, '2016-07-06 14:57:22', 2, '2016-07-06 17:57:22'),
-(320, NULL, 'Interodonto', 'Outras Atividades De Atenção À Saúde Humana Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 320, 0, NULL, 1, 2, '2016-07-06 14:57:22', 3, '2016-07-06 17:57:23'),
-(321, NULL, 'Caminhos Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 321, 0, NULL, 1, 2, '2016-07-06 14:57:23', 3, '2016-07-06 17:57:23'),
-(322, NULL, 'Óticas Precisão', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 322, 0, NULL, 1, 2, '2016-07-06 14:57:23', 3, '2016-07-06 17:57:24'),
-(323, NULL, 'Centro De Esteetica Dalva Lopes', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 323, 0, NULL, 1, 2, '2016-07-06 14:57:24', 2, '2016-07-06 17:57:24'),
-(324, NULL, 'Descubra Me', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 324, 0, NULL, 1, 2, '2016-07-06 14:57:24', 2, '2016-07-06 17:57:25'),
-(325, NULL, 'Muzza Calçados E Acessórios', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 325, 0, NULL, 1, 2, '2016-07-06 14:57:25', 3, '2016-07-06 17:57:25'),
-(326, NULL, 'Contato Jornal', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 326, 0, NULL, 1, 2, '2016-07-06 14:57:25', 3, '2016-07-06 17:57:26'),
-(327, NULL, 'Motokando', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 327, 0, NULL, 1, 2, '2016-07-06 14:57:26', 3, '2016-07-06 17:57:26'),
-(328, NULL, 'Visat Eletro Eletron', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 328, 0, NULL, 1, 2, '2016-07-06 14:57:26', 2, '2016-07-06 17:57:26'),
-(329, NULL, 'Cantinho Da Roca', 'Comércio Varejista De Produtos Alimentícios Em Geral Ou Especializado Em Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 329, 0, NULL, 1, 2, '2016-07-06 14:57:26', 3, '2016-07-06 17:57:27'),
-(330, NULL, 'Auto Escola Ideal', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 330, 0, NULL, 1, 2, '2016-07-06 14:57:27', 3, '2016-07-06 17:57:27'),
-(331, NULL, 'Mercado Do Bananeira', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 331, 0, NULL, 1, 2, '2016-07-06 14:57:27', 2, '2016-07-06 17:57:28'),
-(332, NULL, 'Padaria E Confeitaria Viçosense', 'Padaria E Confeitaria Com Predominância De Produção Própria', NULL, NULL, NULL, 2, 1, 0, 0.00, 332, 0, NULL, 1, 2, '2016-07-06 14:57:28', 3, '2016-07-06 17:57:29'),
-(333, NULL, 'Mg Motos', 'Manutenção E Reparação De Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 333, 0, NULL, 1, 2, '2016-07-06 14:57:29', 3, '2016-07-06 17:57:29'),
-(334, NULL, 'Supermercado Lider', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 334, 0, NULL, 1, 2, '2016-07-06 14:57:29', 2, '2016-07-06 17:57:30'),
-(335, NULL, 'Materiais De Construção São Judas Tadeu', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 335, 0, NULL, 1, 2, '2016-07-06 14:57:30', 3, '2016-07-06 17:57:30'),
-(336, NULL, 'Speed Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, NULL, 336, 0, NULL, 1, 2, '2016-07-06 14:57:30', 2, '2016-07-06 17:57:31'),
-(337, NULL, 'Moto Flex', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 337, 0, NULL, 1, 2, '2016-07-06 14:57:31', 3, '2016-07-06 17:57:31'),
-(338, NULL, 'Sic Tintas E Latarias', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 338, 0, NULL, 1, 2, '2016-07-06 14:57:31', 2, '2016-07-06 17:57:32'),
-(339, NULL, 'Globo Pao', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 339, 0, NULL, 1, 2, '2016-07-06 14:57:32', 3, '2016-07-06 17:57:32'),
-(340, NULL, 'Uptime Consultants', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, NULL, 340, 0, NULL, 1, 2, '2016-07-06 14:57:32', 2, '2016-07-06 17:57:33'),
-(341, NULL, 'Conservar Imóveis', 'Corretagem Na Compra E Venda E Avaliação De Imóveis', NULL, NULL, NULL, 2, 1, 0, NULL, 341, 0, NULL, 1, 2, '2016-07-06 14:57:33', 3, '2016-07-06 17:57:33'),
-(342, NULL, 'Távola Lúdica', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, NULL, 342, 0, NULL, 1, 2, '2016-07-06 14:57:33', 2, '2016-07-06 17:57:34'),
-(343, NULL, 'REC', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 343, 0, NULL, 1, 2, '2016-07-06 14:57:34', 3, '2016-07-06 17:57:34'),
-(344, NULL, 'Imobiliária Dos Estudantes', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 344, 0, NULL, 1, 2, '2016-07-06 14:57:34', 3, '2016-07-06 17:57:35'),
-(345, NULL, 'Eletrônica Alves', 'Reparação E Manutenção De Equipamentos Eletroeletrônicos De Uso Pessoal E Doméstico', NULL, NULL, NULL, 2, 1, 0, 0.00, 345, 0, NULL, 1, 2, '2016-07-06 14:57:35', 3, '2016-07-06 17:57:35'),
-(346, NULL, 'Drogaria Madre Paulina', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 346, 0, NULL, 1, 2, '2016-07-06 14:57:35', 3, '2016-07-06 17:57:36'),
-(347, NULL, 'Construpires', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 347, 0, NULL, 1, 2, '2016-07-06 14:57:36', 2, '2016-07-06 17:57:36'),
-(348, NULL, 'Disk Tudo Valente', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 348, 0, NULL, 1, 2, '2016-07-06 14:57:36', 3, '2016-07-06 17:57:37'),
-(349, NULL, 'Brasil Materiais Hidráulicos E Acabamentos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 349, 0, NULL, 1, 2, '2016-07-06 14:57:37', 3, '2016-07-06 17:57:37'),
-(350, NULL, 'Resolve Serviços', 'Serviços Combinados De Escritório E Apoio Administrativo', NULL, NULL, NULL, 2, 1, 0, NULL, 350, 0, NULL, 1, 2, '2016-07-06 14:57:37', 2, '2016-07-06 17:57:38'),
-(351, NULL, 'JB Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 351, 0, NULL, 1, 2, '2016-07-06 14:57:38', 3, '2016-07-06 17:57:38'),
-(352, NULL, 'Exclusiva', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 352, 0, NULL, 1, 2, '2016-07-06 14:57:38', 3, '2016-07-06 17:57:39'),
-(353, NULL, 'Posto Viçosa', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 353, 0, NULL, 1, 2, '2016-07-06 14:57:39', 2, '2016-07-06 17:57:39'),
-(354, NULL, 'RC Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 354, 0, NULL, 1, 2, '2016-07-06 14:57:39', 3, '2016-07-06 17:57:40'),
-(355, NULL, 'Mobiliadora São Cristovão', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 355, 0, NULL, 1, 2, '2016-07-06 14:57:40', 3, '2016-07-06 17:57:41'),
-(356, NULL, 'Ponto Por Ponto', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 356, 0, NULL, 1, 2, '2016-07-06 14:57:41', 3, '2016-07-06 17:57:41'),
-(357, NULL, 'Hyper 9 Academia', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, 0.00, 357, 0, NULL, 1, 2, '2016-07-06 14:57:41', 3, '2016-07-06 17:57:42'),
-(358, NULL, 'Centro De Formação De Condutores Aliança', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 358, 0, NULL, 1, 2, '2016-07-06 14:57:42', 3, '2016-07-06 17:57:43'),
-(359, NULL, 'SMC Consultoria Ambiental', 'Serviços De Agronomia E De Consultoria Às Atividades Agrícolas E Pecuárias', NULL, NULL, NULL, 2, 1, 0, NULL, 359, 0, NULL, 1, 2, '2016-07-06 14:57:43', 2, '2016-07-06 17:57:43'),
-(360, NULL, 'Fercon', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 360, 0, NULL, 1, 2, '2016-07-06 14:57:43', 2, '2016-07-06 17:57:44'),
-(361, NULL, 'Viação Viçosa Turismo', 'Transporte Rodoviário Coletivo De Passageiros Sob Regime De Fretamento Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, NULL, 361, 0, NULL, 1, 2, '2016-07-06 14:57:44', 2, '2016-07-06 17:57:44'),
-(362, NULL, 'Isomax', 'Fabricação De Esquadrias De Metal', NULL, NULL, NULL, 2, 1, 0, NULL, 362, 0, NULL, 1, 2, '2016-07-06 14:57:44', 2, '2016-07-06 17:57:45'),
-(363, NULL, 'Tok Clean Lavanderia', 'Lavanderias', NULL, NULL, NULL, 2, 1, 0, NULL, 363, 0, NULL, 1, 2, '2016-07-06 14:57:45', 2, '2016-07-06 17:57:46'),
-(364, NULL, 'Marmoraria Bella', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 364, 0, NULL, 1, 2, '2016-07-06 14:57:46', 3, '2016-07-06 17:57:46'),
-(365, NULL, 'ESUV', 'Educação Superior - Graduação E Pós-Graduação', NULL, NULL, NULL, 2, 1, 0, 0.00, 365, 0, NULL, 1, 2, '2016-07-06 14:57:46', 3, '2016-07-06 17:57:47'),
-(366, NULL, 'Contabilidade Faria', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 366, 0, NULL, 1, 2, '2016-07-06 14:57:47', 3, '2016-07-06 17:57:48'),
-(367, NULL, 'Dimensão Empreendimentos Imobiliários', 'Aluguel De Imóveis Próprios', NULL, NULL, NULL, 2, 1, 0, 0.00, 367, 0, NULL, 1, 2, '2016-07-06 14:57:48', 3, '2016-07-06 17:57:48'),
-(368, NULL, 'CPT', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, NULL, 368, 0, NULL, 1, 2, '2016-07-06 14:57:48', 3, '2016-07-06 17:57:49'),
-(369, NULL, 'Ferkal Ferragens', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 369, 0, NULL, 1, 2, '2016-07-06 14:57:49', 3, '2016-07-06 17:57:49'),
-(370, NULL, 'Podium Fashion', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 370, 0, NULL, 1, 2, '2016-07-06 14:57:49', 3, '2016-07-06 17:57:50'),
-(371, NULL, 'J.E.A - Máquinas E Ferramentas', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 371, 0, NULL, 1, 2, '2016-07-06 14:57:50', 3, '2016-07-06 17:57:50'),
-(372, NULL, 'Óticas Precisão II', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 372, 0, NULL, 1, 2, '2016-07-06 14:57:50', 3, '2016-07-06 17:57:51'),
-(373, NULL, 'Vital Alarme', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 373, 0, NULL, 1, 2, '2016-07-06 14:57:51', 2, '2016-07-06 17:57:51'),
-(374, NULL, 'Galvão Baby Kids', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 374, 0, NULL, 1, 2, '2016-07-06 14:57:51', 3, '2016-07-06 17:57:52'),
-(375, NULL, 'Naja', 'Treinamento Em Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 375, 0, NULL, 1, 2, '2016-07-06 14:57:53', 3, '2016-07-06 17:57:53'),
-(376, NULL, 'Planodente', 'Outras Atividades De Atenção À Saúde Humana Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 376, 0, NULL, 1, 2, '2016-07-06 14:57:53', 3, '2016-07-06 17:57:54'),
-(377, NULL, 'Mundial Interiores', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 377, 0, NULL, 1, 2, '2016-07-06 14:57:54', 3, '2016-07-06 17:57:54'),
-(378, NULL, 'Restaurante Papa Kilo', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 378, 0, NULL, 1, 2, '2016-07-06 14:57:54', 3, '2016-07-06 17:57:55'),
-(379, NULL, 'Cartório Fernandes', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 379, 0, NULL, 1, 2, '2016-07-06 14:57:55', 2, '2016-07-06 17:57:55'),
-(380, NULL, 'Paradella Ambientes', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 380, 0, NULL, 1, 2, '2016-07-06 14:57:55', 2, '2016-07-06 17:57:56'),
-(381, NULL, 'Construminas Acabamentos', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 381, 0, NULL, 1, 2, '2016-07-06 14:57:56', 3, '2016-07-06 17:57:56'),
-(382, NULL, 'Auto Escola Autotrans', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 382, 0, NULL, 1, 2, '2016-07-06 14:57:56', 3, '2016-07-06 17:57:57'),
-(383, NULL, 'Odontomed', 'Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 383, 0, NULL, 1, 2, '2016-07-06 14:57:57', 3, '2016-07-06 17:57:57'),
-(384, NULL, 'Jornal Folha Da Mata', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 384, 0, NULL, 1, 2, '2016-07-06 14:57:57', 2, '2016-07-06 17:57:58'),
-(385, NULL, 'Eletro Paulo', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, 0.00, 385, 0, NULL, 1, 2, '2016-07-06 14:57:58', 3, '2016-07-06 17:57:58'),
-(386, NULL, 'Exata Contabilidade', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, 0.00, 386, 0, NULL, 1, 2, '2016-07-06 14:57:58', 3, '2016-07-06 17:57:59'),
-(387, NULL, 'Agriminas', 'Comércio Varejista De Medicamentos Veterinários', NULL, NULL, NULL, 2, 1, 0, NULL, 387, 0, NULL, 1, 2, '2016-07-06 14:57:59', 3, '2016-07-06 17:57:59'),
-(388, NULL, 'Relojoaria Stylu''s', 'Comércio Varejista De Artigos De Joalheria', NULL, NULL, NULL, 2, 1, 0, 0.00, 388, 0, NULL, 1, 2, '2016-07-06 14:57:59', 3, '2016-07-06 17:58:00'),
-(389, NULL, 'Atual Ferragens E Acessórios', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 389, 0, NULL, 1, 2, '2016-07-06 14:58:00', 3, '2016-07-06 17:58:00'),
-(390, NULL, 'Contabilidade Ferreira', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 390, 0, NULL, 1, 2, '2016-07-06 14:58:00', 3, '2016-07-06 17:58:01'),
-(391, NULL, 'Restaurante Temperarte Grill', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 391, 0, NULL, 1, 2, '2016-07-06 14:58:01', 3, '2016-07-06 17:58:02'),
-(392, NULL, 'Lugi Comunicação Visual', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 392, 0, NULL, 1, 2, '2016-07-06 14:58:02', 2, '2016-07-06 17:58:02'),
-(393, NULL, 'Auto Escola Líder', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 393, 0, NULL, 1, 2, '2016-07-06 14:58:02', 3, '2016-07-06 17:58:03'),
-(394, NULL, 'Ita Persianas', 'Comércio Varejista De Artigos De Tapeçaria Cortinas E Persianas', NULL, NULL, NULL, 2, 1, 0, 0.00, 394, 0, NULL, 1, 2, '2016-07-06 14:58:03', 3, '2016-07-06 17:58:03'),
-(395, NULL, 'Quinze Automação Comercial', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 395, 0, NULL, 1, 2, '2016-07-06 14:58:03', 3, '2016-07-06 17:58:04'),
-(396, NULL, 'Plamhuv', 'Planos De Saúde', NULL, NULL, NULL, 2, 1, 0, 0.00, 396, 0, NULL, 1, 2, '2016-07-06 14:58:04', 3, '2016-07-06 17:58:04'),
-(397, NULL, 'Comunex', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 397, 0, NULL, 1, 2, '2016-07-06 14:58:04', 3, '2016-07-06 17:58:05'),
-(398, NULL, 'Bahamas', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 398, 0, NULL, 1, 2, '2016-07-06 14:58:05', 2, '2016-07-06 17:58:05'),
-(399, NULL, 'Colchões Ortobom', 'Comércio Varejista De Artigos De Colchoaria', NULL, NULL, NULL, 2, 1, 0, NULL, 399, 0, NULL, 1, 2, '2016-07-06 14:58:05', 3, '2016-07-06 17:58:06'),
-(400, NULL, 'Hércules Corretora De Seguros', 'Corretores E Agentes De Seguros De Planos De Previdência Complementar E De Saúde', NULL, NULL, NULL, 2, 1, 0, 0.00, 400, 0, NULL, 1, 2, '2016-07-06 14:58:06', 3, '2016-07-06 17:58:06'),
-(401, NULL, 'Ótica Da Fábrica', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 401, 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-06 17:58:07'),
-(402, NULL, 'Espaço Grazi Rocha', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, 0.00, 402, 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-06 17:58:07'),
-(403, NULL, 'Escritório De Contabilidade Ético', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, 0.00, 403, 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-06 17:58:08'),
-(404, NULL, 'Mobiliadora Paradela', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 404, 0, NULL, 1, 2, '2016-07-06 14:58:08', 3, '2016-07-06 17:58:08'),
-(405, NULL, 'Elétrica Júnior', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, NULL, 405, 0, NULL, 1, 2, '2016-07-06 14:58:08', 2, '2016-07-06 17:58:09'),
-(406, NULL, 'Colégio Anglo De Viçosa', 'Ensino Médio', NULL, NULL, NULL, 2, 1, 0, NULL, 406, 0, NULL, 1, 2, '2016-07-06 14:58:09', 3, '2016-07-06 17:58:09'),
-(407, NULL, 'Cicle Minas', 'Comércio Varejista De Bicicletas E Triciclos', NULL, NULL, NULL, 2, 1, 0, NULL, 407, 0, NULL, 1, 2, '2016-07-06 14:58:09', 3, '2016-07-06 17:58:10'),
-(408, NULL, 'Casa Dos Parafusos', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 408, 0, NULL, 1, 2, '2016-07-06 14:58:10', 3, '2016-07-06 17:58:10'),
-(409, NULL, 'Galvão Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 409, 0, NULL, 1, 2, '2016-07-06 14:58:10', 3, '2016-07-06 17:58:11'),
-(410, NULL, 'Oriontec Automação Comercial', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 410, 0, NULL, 1, 2, '2016-07-06 14:58:11', 3, '2016-07-06 17:58:11'),
-(411, NULL, 'Pro-Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 411, 0, NULL, 1, 2, '2016-07-06 14:58:13', 3, '2016-07-06 17:58:13'),
-(412, NULL, 'Santech Sistemas', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 412, 0, NULL, 1, 2, '2016-07-06 14:58:13', 3, '2016-07-06 17:58:13'),
-(413, NULL, 'Vimetra', 'Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 413, 0, NULL, 1, 2, '2016-07-06 14:58:13', 2, '2016-07-06 17:58:14'),
-(414, NULL, 'Ristorante La Coccinella', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 414, 0, NULL, 1, 2, '2016-07-06 14:58:14', 3, '2016-07-06 17:58:15'),
-(415, NULL, 'Imobiliária Leão Júnior', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 415, 0, NULL, 1, 2, '2016-07-06 14:58:15', 3, '2016-07-06 17:58:15'),
-(416, NULL, 'Tribuna Editora Gráfica', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, NULL, 416, 0, NULL, 1, 2, '2016-07-06 14:58:15', 2, '2016-07-06 17:58:16'),
-(417, NULL, 'Kumon', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 417, 0, NULL, 1, 2, '2016-07-06 14:58:16', 3, '2016-07-06 17:58:16'),
-(418, NULL, 'Fixit', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 418, 0, NULL, 1, 2, '2016-07-06 14:58:16', 3, '2016-07-06 17:58:17'),
-(419, NULL, 'Restaurante Pau Brasil', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 419, 0, NULL, 1, 2, '2016-07-06 14:58:17', 3, '2016-07-06 17:58:17'),
-(420, NULL, 'Interminas', 'Agências De Publicidade', NULL, NULL, NULL, 2, 1, 0, NULL, 420, 0, NULL, 1, 2, '2016-07-06 14:58:17', 2, '2016-07-06 17:58:18'),
-(421, NULL, 'Cartório De Registro E Imóveis', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 421, 0, NULL, 1, 2, '2016-07-06 14:58:18', 2, '2016-07-06 17:58:18'),
-(422, NULL, 'Radio Montanhesa', 'Atividades De Rádio', NULL, NULL, NULL, 2, 1, 0, NULL, 422, 0, NULL, 1, 2, '2016-07-06 14:58:18', 2, '2016-07-06 17:58:19'),
-(423, NULL, 'Auto Escola Rogério', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 423, 0, NULL, 1, 2, '2016-07-06 14:58:19', 3, '2016-07-06 17:58:19'),
-(424, NULL, 'Objetiva Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 424, 0, NULL, 1, 2, '2016-07-06 14:58:19', 3, '2016-07-06 17:58:20'),
-(425, NULL, 'Chaveiro Gerson', 'Chaveiros', NULL, NULL, NULL, 2, 1, 0, NULL, 425, 0, NULL, 1, 2, '2016-07-06 14:58:20', 2, '2016-07-06 17:58:20'),
-(426, NULL, 'Ind E Com Pernalonga', 'Fabricação De Artigos De Serralheria Exceto Esquadrias', NULL, NULL, NULL, 2, 1, 0, 0.00, 426, 0, NULL, 1, 2, '2016-07-06 14:58:20', 3, '2016-07-06 17:58:21'),
-(427, NULL, 'Pontocom Consultoria', 'Atividades De Produção De Fotografias Exceto Aérea E Submarina', NULL, NULL, NULL, 2, 1, 0, 0.00, 427, 0, NULL, 1, 2, '2016-07-06 14:58:21', 3, '2016-07-06 17:58:21'),
-(428, NULL, 'Moto Som Rogério Dias', 'Outras Atividades De Publicidade Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 428, 0, NULL, 1, 2, '2016-07-06 14:58:21', 2, '2016-07-06 17:58:22'),
-(429, NULL, 'Padaria Progresso', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, NULL, 429, 0, NULL, 1, 2, '2016-07-06 14:58:22', 2, '2016-07-06 17:58:22'),
-(430, NULL, 'Construforte', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 430, 0, NULL, 1, 2, '2016-07-06 14:58:22', 3, '2016-07-06 17:58:23'),
-(431, NULL, 'Faculdade De Viçosa', 'Educação Superior - Graduação', NULL, NULL, NULL, 2, 1, 0, 0.00, 431, 0, NULL, 1, 2, '2016-07-06 14:58:23', 3, '2016-07-06 17:58:23'),
-(432, NULL, 'Botica Fontenelle', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, NULL, 432, 0, NULL, 1, 2, '2016-07-06 14:58:23', 3, '2016-07-06 17:58:24'),
-(433, NULL, 'Estrela Modas Unissex', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 433, 0, NULL, 1, 2, '2016-07-06 14:58:24', 3, '2016-07-06 17:58:24'),
-(434, NULL, 'Bullks Jet', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 434, 0, NULL, 1, 2, '2016-07-06 14:58:24', 3, '2016-07-06 17:58:25'),
-(435, NULL, 'Pro-Imagem', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, 0.00, 435, 0, NULL, 1, 2, '2016-07-06 14:58:25', 3, '2016-07-06 17:58:26'),
-(436, NULL, 'Bons Sonhos Colchoes', 'Comércio Varejista De Artigos De Colchoaria', NULL, NULL, NULL, 2, 1, 0, NULL, 436, 0, NULL, 1, 2, '2016-07-06 14:58:26', 3, '2016-07-06 17:58:26'),
-(437, NULL, 'Construtora Solar', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 437, 0, NULL, 1, 2, '2016-07-06 14:58:26', 3, '2016-07-06 17:58:27'),
-(438, NULL, 'Chique E Casual', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 438, 0, NULL, 1, 2, '2016-07-06 14:58:27', 3, '2016-07-06 17:58:27'),
-(439, NULL, 'Paparazzo Moveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 439, 0, NULL, 1, 2, '2016-07-06 14:58:27', 3, '2016-07-06 17:58:28'),
-(440, NULL, 'Estação Do Pet', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, 0.00, 440, 0, NULL, 1, 2, '2016-07-06 14:58:28', 3, '2016-07-06 17:58:28'),
-(441, NULL, 'Colégio Equipe', 'Ensino Médio', NULL, NULL, NULL, 2, 1, 0, NULL, 441, 0, NULL, 1, 2, '2016-07-06 14:58:28', 3, '2016-07-06 17:58:29'),
-(442, NULL, 'Marines Alchieri', 'Serviços Advocatícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 442, 0, NULL, 1, 2, '2016-07-06 14:58:29', 3, '2016-07-06 17:58:29'),
-(443, NULL, 'Unimed Viçosa', 'Planos De Saúde', NULL, NULL, NULL, 2, 1, 0, NULL, 443, 0, NULL, 1, 2, '2016-07-06 14:58:29', 2, '2016-07-06 17:58:30'),
-(444, NULL, 'Requinte Soluções Gráficas', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, NULL, 444, 0, NULL, 1, 2, '2016-07-06 14:58:30', 2, '2016-07-06 17:58:30'),
-(445, NULL, 'Gás Dois Irmãos', 'Comércio Varejista De Gás Liquefeito De Petróleo (GLP)', NULL, NULL, NULL, 2, 1, 0, 0.00, 445, 0, NULL, 1, 2, '2016-07-06 14:58:30', 3, '2016-07-06 17:58:31'),
-(446, NULL, 'Transvan', 'Transporte Rodoviário Coletivo De Passageiros Sob Regime De Fretamento Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, NULL, 446, 0, NULL, 1, 2, '2016-07-06 14:58:31', 2, '2016-07-06 17:58:31'),
-(447, NULL, 'Opção Informática', 'Reparação E Manutenção De Computadores E De Equipamentos Periféricos', NULL, NULL, NULL, 2, 1, 0, 0.00, 447, 0, NULL, 1, 2, '2016-07-06 14:58:31', 3, '2016-07-06 17:58:32'),
-(448, NULL, 'Imobiliária Chequer', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 448, 0, NULL, 1, 2, '2016-07-06 14:58:32', 3, '2016-07-06 17:58:32'),
-(449, NULL, 'Via Campus Club', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 449, 0, NULL, 1, 2, '2016-07-06 14:58:32', 2, '2016-07-06 17:58:33'),
-(450, NULL, 'Sabor & Cia 4 Pilastras', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 450, 0, NULL, 1, 2, '2016-07-06 14:58:33', 2, '2016-07-06 17:58:33'),
-(451, NULL, 'Papelaria Avenida', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 451, 0, NULL, 1, 2, '2016-07-06 14:58:33', 3, '2016-07-06 17:58:34'),
-(452, NULL, 'Bemed', 'Comércio Atacadista De Máquinas, Aparelhos E Equipamentos Para Uso Odonto-Medico-Hospitalar - Partes E Pecas', NULL, NULL, NULL, 2, 1, 0, NULL, 452, 0, NULL, 1, 2, '2016-07-06 14:58:34', 3, '2016-07-06 17:58:34'),
-(453, NULL, 'Casa Da Casa Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 453, 0, NULL, 1, 2, '2016-07-06 14:58:34', 3, '2016-07-06 17:58:34'),
-(454, NULL, 'Mercado Modelo', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 454, 0, NULL, 1, 2, '2016-07-06 14:58:35', 3, '2016-07-06 17:58:35'),
-(455, NULL, 'Bar E Mercearia Mais Em Conta', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 455, 0, NULL, 1, 2, '2016-07-06 14:58:35', 3, '2016-07-06 17:58:35'),
-(456, NULL, 'SCTV Super Cabo TV', 'Operadoras De Televisão Por Assinatura Por Cabo', NULL, NULL, NULL, 2, 1, 0, NULL, 456, 0, NULL, 1, 2, '2016-07-06 14:58:36', 2, '2016-07-06 17:58:36'),
-(457, NULL, 'Querhym Confecções', 'Confecção Sob Medida De Peças Do Vestuário Exceto Roupas Íntimas', NULL, NULL, NULL, 2, 1, 0, 0.00, 457, 0, NULL, 1, 2, '2016-07-06 14:58:36', 3, '2016-07-06 17:58:37'),
-(458, NULL, 'Quitéria Confecções', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, NULL, 458, 0, NULL, 1, 2, '2016-07-06 14:58:37', 2, '2016-07-06 17:58:37'),
-(459, NULL, 'Minas Propaganda', 'Novocnae', NULL, NULL, NULL, 2, 1, 0, NULL, 459, 0, NULL, 1, 2, '2016-07-06 14:58:37', 2, '2016-07-06 17:58:38'),
-(460, NULL, 'Viação União', 'Transporte Rodoviário Coletivo De Passageiros Com Itinerário Fixo Municipal', NULL, NULL, NULL, 2, 1, 0, NULL, 460, 0, NULL, 1, 2, '2016-07-06 14:58:38', 2, '2016-07-06 17:58:38'),
-(461, NULL, 'Armarinho Gonçalves', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 461, 0, NULL, 1, 2, '2016-07-06 14:58:38', 2, '2016-07-06 17:58:39'),
-(462, NULL, 'Indústria E Comércio De Máquinas Polidryer', 'Fabricação De Máquinas E Equipamentos Para A Agricultura E Pecuária Peças E Acessórios Exceto Para Irrigação', NULL, NULL, NULL, 2, 1, 0, 0.00, 462, 0, NULL, 1, 2, '2016-07-06 14:58:39', 3, '2016-07-06 17:58:39'),
-(463, NULL, 'Coca Cola E Kaiser', 'Comércio Atacadista De Cerveja Chope E Refrigerante', NULL, NULL, NULL, 2, 1, 0, NULL, 463, 0, NULL, 1, 2, '2016-07-06 14:58:39', 3, '2016-07-06 17:58:40'),
-(464, NULL, 'Drogaria Nova Opção', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, NULL, 464, 0, NULL, 1, 2, '2016-07-06 14:58:40', 2, '2016-07-06 17:58:40'),
-(465, NULL, 'Kadu Barman', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 465, 0, NULL, 1, 2, '2016-07-06 14:58:40', 3, '2016-07-06 17:58:41'),
-(466, NULL, 'Grupo Bms', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 466, 0, NULL, 1, 2, '2016-07-06 14:58:41', 3, '2016-07-06 17:58:41'),
-(467, NULL, 'Estilo Animal Pet Shop', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 467, 0, NULL, 1, 2, '2016-07-06 14:58:41', 2, '2016-07-06 17:58:41'),
-(468, NULL, 'Distribuidora Bela Ischia', 'Comércio Varejista De Produtos Alimentícios Em Geral Ou Especializado Em Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 468, 0, NULL, 1, 2, '2016-07-06 14:58:41', 3, '2016-07-06 17:58:42'),
-(469, NULL, 'Viação Viçosa', 'Transporte Rodoviário Coletivo De Passageiros Com Itinerário Fixo Intermunicipal Exceto Em Região Metropolitana', NULL, NULL, NULL, 2, 1, 0, NULL, 469, 0, NULL, 1, 2, '2016-07-06 14:58:42', 2, '2016-07-06 17:58:42'),
-(470, NULL, 'Casa De Carne Novo Horizonte', 'Comércio Varejista De Carnes - Açougues', NULL, NULL, NULL, 2, 1, 0, NULL, 470, 0, NULL, 1, 2, '2016-07-06 14:58:42', 3, '2016-07-06 17:58:43'),
-(471, NULL, 'Sabonete', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 471, 0, NULL, 1, 2, '2016-07-06 14:58:43', 2, '2016-07-06 17:58:43'),
-(472, NULL, 'Sabonete 02', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 472, 0, NULL, 1, 2, '2016-07-06 14:58:43', 2, '2016-07-06 17:58:44'),
-(473, NULL, 'Agrogenética', 'Atividades De Profissionais Da Área De Saúde Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 473, 0, NULL, 1, 2, '2016-07-06 14:58:44', 3, '2016-07-06 17:58:44'),
-(474, NULL, 'CPT Cursos Presenciais', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, NULL, 474, 0, NULL, 1, 2, '2016-07-06 14:58:44', 2, '2016-07-06 17:58:45'),
-(475, NULL, 'Viçosa Clube', 'Clubes Sociais Esportivos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 475, 0, NULL, 1, 2, '2016-07-06 14:58:45', 2, '2016-07-06 17:58:45'),
-(476, NULL, 'Mercadinho Nova Era', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 476, 0, NULL, 1, 2, '2016-07-06 14:58:45', 3, '2016-07-06 17:58:46'),
-(477, NULL, 'O Mapa Do Mundo', 'Agências De Viagens', NULL, NULL, NULL, 2, 1, 0, 0.00, 477, 0, NULL, 1, 2, '2016-07-06 14:58:46', 3, '2016-07-06 17:58:46'),
-(478, NULL, 'Restaurante Trem Bão', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 478, 0, NULL, 1, 2, '2016-07-06 14:58:46', 3, '2016-07-06 17:58:47'),
-(479, NULL, 'Livraria Do Conhecimento', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 479, 0, NULL, 1, 2, '2016-07-06 14:58:47', 3, '2016-07-06 17:58:47'),
-(480, NULL, 'Pele De Seda', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 480, 0, NULL, 1, 2, '2016-07-06 14:58:47', 3, '2016-07-06 17:58:48'),
-(481, NULL, 'Mundo Dos Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 481, 0, NULL, 1, 2, '2016-07-06 14:58:48', 3, '2016-07-06 17:58:48'),
-(482, NULL, 'Sport E Pesca', 'Comércio Varejista De Artigos De Caça Pesca E Camping', NULL, NULL, NULL, 2, 1, 0, NULL, 482, 0, NULL, 1, 2, '2016-07-06 14:58:48', 2, '2016-07-06 17:58:49'),
-(483, NULL, 'Eldorado Roupas & Calçados', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 483, 0, NULL, 1, 2, '2016-07-06 14:58:49', 3, '2016-07-06 17:58:49'),
-(484, NULL, 'Visual Das Noivas', 'Aluguel De Objetos Do Vestuário Jóias E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 484, 0, NULL, 1, 2, '2016-07-06 14:58:49', 2, '2016-07-06 17:58:50'),
-(485, NULL, 'Peta Peti Moda Baby E Infanto Juvenil', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 485, 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-06 17:58:50'),
-(486, NULL, 'Charme Mineiro', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 486, 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-06 17:58:50'),
-(487, NULL, 'CPT Softwares', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, NULL, 487, 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-06 17:58:51'),
-(488, NULL, 'Orquídea Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 488, 0, NULL, 1, 2, '2016-07-06 14:58:51', 3, '2016-07-06 17:58:51'),
-(489, NULL, 'Casa Souza', 'Comércio Varejista De Tecidos', NULL, NULL, NULL, 2, 1, 0, NULL, 489, 0, NULL, 1, 2, '2016-07-06 14:58:51', 2, '2016-07-06 17:58:52'),
-(490, NULL, 'Feminina', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 490, 0, NULL, 1, 2, '2016-07-06 14:58:52', 3, '2016-07-06 17:58:52'),
-(491, NULL, 'Casa Do Queijo', 'Comércio Varejista De Laticínios E Frios', NULL, NULL, NULL, 2, 1, 0, NULL, 491, 0, NULL, 1, 2, '2016-07-06 14:58:52', 3, '2016-07-06 17:58:53'),
-(492, NULL, 'Darshan Estilo Indiano', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 492, 0, NULL, 1, 2, '2016-07-06 14:58:53', 3, '2016-07-06 17:58:53'),
-(493, NULL, 'Elétrica Bicalho', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, 0.00, 493, 0, NULL, 1, 2, '2016-07-06 14:58:53', 3, '2016-07-06 17:58:54'),
-(494, NULL, 'Laticínios Minas Colonial', 'Fabricação De Laticínios', NULL, NULL, NULL, 2, 1, 0, NULL, 494, 0, NULL, 1, 2, '2016-07-06 14:58:54', 2, '2016-07-06 17:58:54'),
-(495, NULL, 'Dental Carneiro', 'Comércio Atacadista De Produtos Odontológicos', NULL, NULL, NULL, 2, 1, 0, NULL, 495, 0, NULL, 1, 2, '2016-07-06 14:58:54', 3, '2016-07-06 17:58:55'),
-(496, NULL, 'Dap Florestal', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, NULL, 496, 0, NULL, 1, 2, '2016-07-06 14:58:55', 3, '2016-07-06 17:58:55'),
-(497, NULL, 'Hinode Cosmeticos', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 497, 0, NULL, 1, 2, '2016-07-06 14:58:55', 2, '2016-07-06 17:58:56'),
-(498, NULL, 'Tintas E Cia', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, NULL, 498, 0, NULL, 1, 2, '2016-07-06 14:58:56', 2, '2016-07-06 17:58:56'),
-(499, NULL, 'Kaleb Car', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 499, 0, NULL, 1, 2, '2016-07-06 14:58:56', 3, '2016-07-06 17:58:57'),
-(500, NULL, '1 Tribunal De Justiça E Arbitragem', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 500, 0, NULL, 1, 2, '2016-07-06 14:58:57', 3, '2016-07-06 17:58:57'),
-(501, NULL, 'Roberta Finamore De Araújo', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 501, 0, NULL, 1, 2, '2016-07-06 14:58:57', 2, '2016-07-06 17:58:58'),
-(502, NULL, 'Mvc Empreendimentos Imobiliários', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 502, 0, NULL, 1, 2, '2016-07-06 14:58:58', 3, '2016-07-06 17:58:58'),
-(503, NULL, 'Chequer & Cia Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 503, 0, NULL, 1, 2, '2016-07-06 14:58:58', 3, '2016-07-06 17:58:59'),
-(504, NULL, 'Micro Center', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 504, 0, NULL, 1, 2, '2016-07-06 14:58:59', 3, '2016-07-06 17:58:59'),
-(505, NULL, 'Sobrancelhas Design Viçosa', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 505, 0, NULL, 1, 2, '2016-07-06 14:58:59', 2, '2016-07-06 17:59:00'),
-(506, NULL, 'Karak Rocha', 'Produção Musical', NULL, NULL, NULL, 2, 1, 0, NULL, 506, 0, NULL, 1, 2, '2016-07-06 14:59:00', 2, '2016-07-06 17:59:00'),
-(507, NULL, 'Maria & Antônio', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, 0.00, 507, 0, NULL, 1, 2, '2016-07-06 14:59:00', 3, '2016-07-06 17:59:01'),
-(508, NULL, 'B L Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 508, 0, NULL, 1, 2, '2016-07-06 14:59:01', 2, '2016-07-06 17:59:01'),
-(509, NULL, 'Arte Mecânica', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 509, 0, NULL, 1, 2, '2016-07-06 14:59:01', 3, '2016-07-06 17:59:02'),
-(510, NULL, 'Mercado Bom Jesus', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 510, 0, NULL, 1, 2, '2016-07-06 14:59:02', 2, '2016-07-06 17:59:02'),
-(511, NULL, 'Villemix', 'Transporte Rodoviário De Carga Exceto Produtos Perigosos E Mudanças Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, NULL, 511, 0, NULL, 1, 2, '2016-07-06 14:59:02', 2, '2016-07-06 17:59:03');
-INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
-(512, NULL, 'José Antônio Da Silva Araújo', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, 0.00, 512, 0, NULL, 1, 2, '2016-07-06 14:59:03', 3, '2016-07-06 17:59:03'),
-(513, NULL, 'Passo A Passo', 'Educação Infantil - Creche', NULL, NULL, NULL, 2, 1, 0, 0.00, 513, 0, NULL, 1, 2, '2016-07-06 14:59:03', 3, '2016-07-06 17:59:04'),
-(514, NULL, 'Magistech', 'Atividades De Consultoria Em Gestão Empresarial Exceto Consultoria Técnica Específica', NULL, NULL, NULL, 2, 1, 0, 0.00, 514, 0, NULL, 1, 2, '2016-07-06 14:59:04', 3, '2016-07-06 17:59:04'),
-(515, NULL, 'Saint Charbel Farmácia & Manipulação', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 515, 0, NULL, 1, 2, '2016-07-06 14:59:04', 3, '2016-07-06 17:59:05'),
-(516, NULL, 'Armas E Cia', 'Chaveiros', NULL, NULL, NULL, 2, 1, 0, NULL, 516, 0, NULL, 1, 2, '2016-07-06 14:59:05', 2, '2016-07-06 17:59:05'),
-(517, NULL, 'Estação Criança', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, 0.00, 517, 0, NULL, 1, 2, '2016-07-06 14:59:05', 3, '2016-07-06 17:59:06'),
-(518, NULL, 'Príncipe Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 518, 0, NULL, 1, 2, '2016-07-06 14:59:06', 3, '2016-07-06 17:59:06'),
-(519, NULL, 'Vicocred', 'Atividades De Cobranças E Informações Cadastrais', NULL, NULL, NULL, 2, 1, 0, NULL, 519, 0, NULL, 1, 2, '2016-07-06 14:59:06', 2, '2016-07-06 17:59:07'),
-(520, NULL, 'Nova Mania', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 520, 0, NULL, 1, 2, '2016-07-06 14:59:07', 3, '2016-07-06 17:59:08'),
-(521, NULL, 'Unopar', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 521, 0, NULL, 1, 2, '2016-07-06 14:59:08', 2, '2016-07-06 17:59:08'),
-(522, NULL, 'Bons Sonhos Enxovais', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 522, 0, NULL, 1, 2, '2016-07-06 14:59:08', 3, '2016-07-06 17:59:09'),
-(523, NULL, 'Óptica Cia Dos Olhos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 523, 0, NULL, 1, 2, '2016-07-06 14:59:09', 3, '2016-07-06 17:59:09'),
-(524, NULL, 'Bem Me Quer Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 524, 0, NULL, 1, 2, '2016-07-06 14:59:09', 3, '2016-07-06 17:59:10'),
-(525, NULL, 'Puro Charme', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 525, 0, NULL, 1, 2, '2016-07-06 14:59:10', 3, '2016-07-06 17:59:10'),
-(526, NULL, 'Vivo Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 526, 0, NULL, 1, 2, '2016-07-06 14:59:10', 2, '2016-07-06 17:59:11'),
-(527, NULL, 'Girassol Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 527, 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-06 17:59:11'),
-(528, NULL, 'Moranguinho', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 528, 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-06 17:59:11'),
-(529, NULL, 'Acessorium Bijuterias', 'Comércio Varejista De Suvenires Bijuterias E Artesanatos', NULL, NULL, NULL, 2, 1, 0, NULL, 529, 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-06 17:59:12'),
-(530, NULL, 'Sr. A Granel', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 530, 0, NULL, 1, 2, '2016-07-06 14:59:12', 2, '2016-07-06 17:59:12'),
-(531, NULL, 'Carolina Etz', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 531, 0, NULL, 1, 2, '2016-07-06 14:59:12', 3, '2016-07-06 17:59:13'),
-(532, NULL, 'Video Locadora Maciel', 'Distribuição Cinematográfica De Vídeo E De Programas De Televisão', NULL, NULL, NULL, 2, 1, 0, NULL, 532, 0, NULL, 1, 2, '2016-07-06 14:59:13', 2, '2016-07-06 17:59:13'),
-(533, NULL, 'Quero Quero Brinquedos', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 533, 0, NULL, 1, 2, '2016-07-06 14:59:13', 2, '2016-07-06 17:59:14'),
-(534, NULL, 'Infomaster Viçosa', 'Instalação E Manutenção Elétrica', NULL, NULL, NULL, 2, 1, 0, 0.00, 534, 0, NULL, 1, 2, '2016-07-06 14:59:14', 3, '2016-07-06 17:59:14'),
-(535, NULL, 'Hospital São João Batista', 'Atividades De Atendimento Em Pronto-Socorro E Unidades Hospitalares Para Atendimento A Urgências', NULL, NULL, NULL, 2, 1, 0, 0.00, 535, 0, NULL, 1, 2, '2016-07-06 14:59:14', 3, '2016-07-06 17:59:15'),
-(536, NULL, 'Kit Net Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 536, 0, NULL, 1, 2, '2016-07-06 14:59:15', 3, '2016-07-06 17:59:15'),
-(537, NULL, 'Centro Educacional Interativa', 'Educação Infantil - Creche', NULL, NULL, NULL, 2, 1, 0, NULL, 537, 0, NULL, 1, 2, '2016-07-06 14:59:15', 3, '2016-07-06 17:59:16'),
-(538, NULL, 'Hyperion Sport', 'Comércio Varejista De Artigos Esportivos', NULL, NULL, NULL, 2, 1, 0, 0.00, 538, 0, NULL, 1, 2, '2016-07-06 14:59:16', 3, '2016-07-06 17:59:16'),
-(539, NULL, 'A3 Publicidade', 'Agenciamento De Espaços Para Publicidade Exceto Em Veículos De Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 539, 0, NULL, 1, 2, '2016-07-06 14:59:17', 2, '2016-07-06 17:59:17'),
-(540, NULL, 'Cirúrgica Viçosa', 'Comércio Varejista De Artigos Médicos E Ortopédicos', NULL, NULL, NULL, 2, 1, 0, NULL, 540, 0, NULL, 1, 2, '2016-07-06 14:59:17', 3, '2016-07-06 17:59:18'),
-(541, NULL, 'Funerária Vitarelli', 'Serviços De Funerárias', NULL, NULL, NULL, 2, 1, 0, NULL, 541, 0, NULL, 1, 2, '2016-07-06 14:59:18', 2, '2016-07-06 17:59:18'),
-(542, NULL, 'Informe Contabilidade', 'Tratamento De Dados Provedores De Serviços De Aplicação E Serviços De Hospedagem Na Internet', NULL, NULL, NULL, 2, 1, 0, 0.00, 542, 0, NULL, 1, 2, '2016-07-06 14:59:19', 3, '2016-07-06 17:59:19'),
-(543, NULL, 'Droga Nossa', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 543, 0, NULL, 1, 2, '2016-07-06 14:59:19', 3, '2016-07-06 17:59:20'),
-(544, NULL, 'Espaço Animal', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, 0.00, 544, 0, NULL, 1, 2, '2016-07-06 14:59:20', 3, '2016-07-06 17:59:20'),
-(545, NULL, 'Brecho Infantil Cantinho Do Bebe', 'Comércio Varejista De Outros Artigos Usados', NULL, NULL, NULL, 2, 1, 0, NULL, 545, 0, NULL, 1, 2, '2016-07-06 14:59:20', 3, '2016-07-06 17:59:21'),
-(546, NULL, 'Hemolab', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 546, 0, NULL, 1, 2, '2016-07-06 14:59:21', 3, '2016-07-06 17:59:21'),
-(547, NULL, 'Mercado E Padaria Mais', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 547, 0, NULL, 1, 2, '2016-07-06 14:59:21', 3, '2016-07-06 17:59:22'),
-(548, NULL, 'Cartório Silvestre', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 548, 0, NULL, 1, 2, '2016-07-06 14:59:22', 2, '2016-07-06 17:59:22'),
-(549, NULL, 'Cachaças De Minas', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 549, 0, NULL, 1, 2, '2016-07-06 14:59:22', 3, '2016-07-06 17:59:23'),
-(550, NULL, 'Auge Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 550, 0, NULL, 1, 2, '2016-07-06 14:59:23', 3, '2016-07-06 17:59:23'),
-(551, NULL, 'As Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, NULL, 551, 0, NULL, 1, 2, '2016-07-06 14:59:23', 3, '2016-07-06 17:59:24'),
-(552, NULL, 'Auto Fusca Santa Rita', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 552, 0, NULL, 1, 2, '2016-07-06 14:59:24', 3, '2016-07-06 17:59:24'),
-(553, NULL, 'Kamilla Esportes', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 553, 0, NULL, 1, 2, '2016-07-06 14:59:24', 3, '2016-07-06 17:59:25'),
-(554, NULL, 'Amantino Supermercado', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 554, 0, NULL, 1, 2, '2016-07-06 14:59:25', 3, '2016-07-06 17:59:25'),
-(555, NULL, 'Companhia Do Bebe', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 555, 0, NULL, 1, 2, '2016-07-06 14:59:25', 3, '2016-07-06 17:59:26'),
-(556, NULL, 'Univep Ensino Profissional', 'Treinamento Em Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 556, 0, NULL, 1, 2, '2016-07-06 14:59:26', 2, '2016-07-06 17:59:27'),
-(557, NULL, 'Luciana Jung Cerimonial E Eventos', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 557, 0, NULL, 1, 2, '2016-07-06 14:59:27', 3, '2016-07-06 17:59:27'),
-(558, NULL, 'Sonalle - Bolos E Doces', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, NULL, 558, 0, NULL, 1, 2, '2016-07-06 14:59:27', 2, '2016-07-06 17:59:28'),
-(559, NULL, 'Cedrus Gastronomia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 559, 0, NULL, 1, 2, '2016-07-06 14:59:28', 3, '2016-07-06 17:59:29'),
-(560, NULL, 'Foto Viçosa', 'Atividades De Produção De Fotografias Exceto Aérea E Submarina', NULL, NULL, NULL, 2, 1, 0, NULL, 560, 0, NULL, 1, 2, '2016-07-06 14:59:29', 2, '2016-07-06 17:59:29'),
-(561, NULL, 'Convite Real', 'Fabricação De Produtos De Pastas Celulósicas Papel Cartolina Papel-Cartão E Papelão Ondulado Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 561, 0, NULL, 1, 2, '2016-07-06 14:59:29', 3, '2016-07-06 17:59:30'),
-(562, NULL, 'Casa Do Frango', 'Abate De Aves', NULL, NULL, NULL, 2, 1, 0, NULL, 562, 0, NULL, 1, 2, '2016-07-06 14:59:30', 3, '2016-07-06 17:59:30'),
-(563, NULL, 'Vivenda Naturales', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 563, 0, NULL, 1, 2, '2016-07-06 14:59:31', 2, '2016-07-06 17:59:31'),
-(564, NULL, 'Rivelli Shoes', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 564, 0, NULL, 1, 2, '2016-07-06 14:59:31', 3, '2016-07-06 17:59:32'),
-(565, NULL, 'Mil Pecas', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 565, 0, NULL, 1, 2, '2016-07-06 14:59:32', 3, '2016-07-06 17:59:32'),
-(566, NULL, 'Rivelli', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 566, 0, NULL, 1, 2, '2016-07-06 14:59:32', 3, '2016-07-06 17:59:33'),
-(567, NULL, 'Frigor Alimentos', 'Fabricação De Produtos De Carne', NULL, NULL, NULL, 2, 1, 0, 0.00, 567, 0, NULL, 1, 2, '2016-07-06 14:59:33', 3, '2016-07-06 17:59:33'),
-(568, NULL, 'Hyperion Casual', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 568, 0, NULL, 1, 2, '2016-07-06 14:59:34', 3, '2016-07-06 17:59:34'),
-(569, NULL, 'Sicoob Coopemata', 'Cooperativas De Crédito Mútuo', NULL, NULL, NULL, 2, 1, 0, NULL, 569, 0, NULL, 1, 2, '2016-07-06 14:59:34', 2, '2016-07-06 17:59:35'),
-(570, NULL, 'Ifour Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 570, 0, NULL, 1, 2, '2016-07-06 14:59:35', 3, '2016-07-06 17:59:35'),
-(571, NULL, 'Livraria E Papelaria Nobel (Praça Silviano Brandão)', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, NULL, 571, 0, NULL, 1, 2, '2016-07-06 14:59:35', 2, '2016-07-06 17:59:36'),
-(572, NULL, 'Zammir Digital', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 572, 0, NULL, 1, 2, '2016-07-06 14:59:36', 2, '2016-07-06 17:59:36'),
-(573, NULL, 'T & G', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 573, 0, NULL, 1, 2, '2016-07-06 14:59:36', 2, '2016-07-06 17:59:37'),
-(574, NULL, 'Livraria E Papelaria Nobel (Praça Do Rosário)', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 574, 0, NULL, 1, 2, '2016-07-06 14:59:37', 3, '2016-07-06 17:59:37'),
-(575, NULL, 'Le Parfum', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, 0.00, 575, 0, NULL, 1, 2, '2016-07-06 14:59:37', 3, '2016-07-06 17:59:38'),
-(576, NULL, 'Nobel Livraria E Papelaria', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 576, 0, NULL, 1, 2, '2016-07-06 14:59:38', 3, '2016-07-06 17:59:38'),
-(577, NULL, 'Manipulart', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 577, 0, NULL, 1, 2, '2016-07-06 14:59:38', 3, '2016-07-06 17:59:39'),
-(578, NULL, 'Nativa Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 578, 0, NULL, 1, 2, '2016-07-06 14:59:39', 3, '2016-07-06 17:59:39'),
-(579, NULL, 'Mundial For Men', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 579, 0, NULL, 1, 2, '2016-07-06 14:59:39', 2, '2016-07-06 17:59:40'),
-(580, NULL, 'Lazuli', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 580, 0, NULL, 1, 2, '2016-07-06 14:59:40', 3, '2016-07-06 17:59:40'),
-(581, NULL, 'Mundi Center', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 581, 0, NULL, 1, 2, '2016-07-06 14:59:40', 3, '2016-07-06 17:59:41'),
-(582, NULL, 'Aconchego Enxovais', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 582, 0, NULL, 1, 2, '2016-07-06 14:59:41', 3, '2016-07-06 17:59:41'),
-(583, NULL, 'Casa Maciel', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 583, 0, NULL, 1, 2, '2016-07-06 14:59:42', 3, '2016-07-06 17:59:42'),
-(584, NULL, 'Cido Viçosa', 'Serviços De Diagnóstico Por Imagem Com Uso De Radiação Ionizante Exceto Tomografia', NULL, NULL, NULL, 2, 1, 0, NULL, 584, 0, NULL, 1, 2, '2016-07-06 14:59:42', 3, '2016-07-06 17:59:42'),
-(585, NULL, 'Fios E Formas', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, 0.00, 585, 0, NULL, 1, 2, '2016-07-06 14:59:43', 3, '2016-07-06 17:59:43'),
-(586, NULL, 'Wed Atel', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 586, 0, NULL, 1, 2, '2016-07-06 14:59:43', 2, '2016-07-06 17:59:44'),
-(587, NULL, 'O Boticário', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 587, 0, NULL, 1, 2, '2016-07-06 14:59:44', 2, '2016-07-06 17:59:44'),
-(588, NULL, 'Armarinho Do Antônio', 'Comércio Varejista De Brinquedos E Artigos Recreativos', NULL, NULL, NULL, 2, 1, 0, NULL, 588, 0, NULL, 1, 2, '2016-07-06 14:59:44', 2, '2016-07-06 17:59:45'),
-(589, NULL, 'Family Store', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 589, 0, NULL, 1, 2, '2016-07-06 14:59:45', 3, '2016-07-06 17:59:45'),
-(590, NULL, 'Açaí Mix Mais', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 590, 0, NULL, 1, 2, '2016-07-06 14:59:45', 3, '2016-07-06 17:59:46');
+INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `canonico`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
+(0, 'Equipe Bim-go!', 'Equipe Bim-go!', 'Gerencia o Bim-go!', NULL, NULL, 'http://bim-go.com/', NULL, 0, 0, NULL, 1, '0-equipe-bim-go', 0, NULL, 0, 1, '2016-03-13 23:00:00', 1, '2016-07-11 21:18:01'),
+(1, 'Camaleão Feroz', 'Camaleão Feroz', 'Empresa de Desenvolvimento Web e Mobile', NULL, NULL, 'http://camaleaoferoz.com.br/', NULL, 0, 1, 0.01, 1, '1-camaleao-feroz', 0, NULL, 1, 1, '2016-03-13 23:00:00', 1, '2016-07-11 21:18:01'),
+(2, NULL, 'CDL Viçosa', 'Grupo', NULL, NULL, NULL, NULL, 0, 0, NULL, 2, '2-cdl-vicosa', 1, NULL, 1, 1, '2016-06-29 17:15:31', 1, '2016-07-11 21:18:01'),
+(3, NULL, 'Oxford/Braspar', 'Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 3, '3-oxford-braspar', 0, NULL, 1, 2, '2016-07-06 14:53:43', 2, '2016-07-11 21:18:01'),
+(4, NULL, 'Marmogranito Brasil', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 4, '4-marmogranito-brasil', 0, NULL, 1, 2, '2016-07-06 14:53:44', 3, '2016-07-11 21:18:01'),
+(5, NULL, 'Thesun Energy', 'Comércio Atacadista De Outras Máquinas E Equipamentos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 5, '5-thesun-energy', 0, NULL, 1, 2, '2016-07-06 14:53:44', 3, '2016-07-11 21:18:01'),
+(6, NULL, 'Dl Representações', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, 0.00, 6, '6-dl-representacoes', 0, NULL, 1, 2, '2016-07-06 14:53:45', 3, '2016-07-11 21:18:01'),
+(7, NULL, 'Florestal Jr. - Consultoria UFV', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 7, '7-florestal-jr-consultoria-ufv', 0, NULL, 1, 2, '2016-07-06 14:53:45', 3, '2016-07-11 21:18:01'),
+(8, NULL, 'Bob''s', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 8, '8-bob-s', 0, NULL, 1, 2, '2016-07-06 14:53:46', 3, '2016-07-11 21:18:01'),
+(9, NULL, 'No Bugs', 'Consultoria Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 9, '9-no-bugs', 0, NULL, 1, 2, '2016-07-06 14:53:46', 3, '2016-07-11 21:18:01'),
+(10, NULL, 'Cecco Consultoria Contábil', 'Atividades De Consultoria E Auditoria Contábil E Tributária', NULL, NULL, NULL, 2, 1, 0, NULL, 10, '10-cecco-consultoria-contabil', 0, NULL, 1, 2, '2016-07-06 14:53:47', 2, '2016-07-11 21:18:01'),
+(11, NULL, 'Editora UFV - Facev', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 11, '11-editora-ufv-facev', 0, NULL, 1, 2, '2016-07-06 14:53:47', 3, '2016-07-11 21:18:01'),
+(12, NULL, 'Ceempre', 'Atividades Associativas Não Especificada Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 12, '12-ceempre', 0, NULL, 1, 2, '2016-07-06 14:53:48', 2, '2016-07-11 21:18:01'),
+(13, NULL, 'Carmo E Arantes Advogados Associados', 'Atividades Auxiliares Da Justiça', NULL, NULL, NULL, 2, 1, 0, NULL, 13, '13-carmo-e-arantes-advogados-associados', 0, NULL, 1, 2, '2016-07-06 14:53:48', 3, '2016-07-11 21:18:01'),
+(14, NULL, 'Centro Automotivo Podium', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 14, '14-centro-automotivo-podium', 0, NULL, 1, 2, '2016-07-06 14:53:48', 3, '2016-07-11 21:18:01'),
+(15, NULL, 'Bye Bye Paper Viçosa', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 15, '15-bye-bye-paper-vicosa', 0, NULL, 1, 2, '2016-07-06 14:53:49', 3, '2016-07-11 21:18:01'),
+(16, NULL, 'O Popular', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 16, '16-o-popular', 0, NULL, 1, 2, '2016-07-06 14:53:49', 2, '2016-07-11 21:18:01'),
+(17, NULL, 'Mercado São Silvestre', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 17, '17-mercado-sao-silvestre', 0, NULL, 1, 2, '2016-07-06 14:53:50', 2, '2016-07-11 21:18:01'),
+(18, NULL, 'Antônio Walter Da Silva', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 18, '18-antonio-walter-da-silva', 0, NULL, 1, 2, '2016-07-06 14:53:50', 3, '2016-07-11 21:18:01'),
+(19, NULL, 'Agroflor', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, NULL, 19, '19-agroflor', 0, NULL, 1, 2, '2016-07-06 14:53:50', 3, '2016-07-11 21:18:01'),
+(20, NULL, 'Banco Do Brasil', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 20, '20-banco-do-brasil', 0, NULL, 1, 2, '2016-07-06 14:53:51', 3, '2016-07-11 21:18:01'),
+(21, NULL, 'Verona Móveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 21, '21-verona-moveis', 0, NULL, 1, 2, '2016-07-06 14:53:51', 3, '2016-07-11 21:18:01'),
+(22, NULL, 'Du Campo', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 22, '22-du-campo', 0, NULL, 1, 2, '2016-07-06 14:53:52', 3, '2016-07-11 21:18:01'),
+(23, NULL, 'Andrade & Rodrigues Engenharia Ltda', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 23, '23-andrade-rodrigues-engenharia-ltda', 0, NULL, 1, 2, '2016-07-06 14:53:52', 3, '2016-07-11 21:18:01'),
+(24, NULL, 'Infortech', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 24, '24-infortech', 0, NULL, 1, 2, '2016-07-06 14:53:53', 2, '2016-07-11 21:18:01'),
+(25, NULL, 'Alto Estilo', 'Aluguel De Objetos Do Vestuário Jóias E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 25, '25-alto-estilo', 0, NULL, 1, 2, '2016-07-06 14:53:53', 3, '2016-07-11 21:18:01'),
+(26, NULL, 'Casa Azul', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 26, '26-casa-azul', 0, NULL, 1, 2, '2016-07-06 14:53:53', 3, '2016-07-11 21:18:01'),
+(27, NULL, 'Laboratório Santa Rita', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 27, '27-laboratorio-santa-rita', 0, NULL, 1, 2, '2016-07-06 14:53:54', 3, '2016-07-11 21:18:01'),
+(28, NULL, 'Arte Da Carne', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 28, '28-arte-da-carne', 0, NULL, 1, 2, '2016-07-06 14:53:54', 3, '2016-07-11 21:18:01'),
+(29, NULL, 'Fontur Viagens', 'Agências De Viagens', NULL, NULL, NULL, 2, 1, 0, 0.00, 29, '29-fontur-viagens', 0, NULL, 1, 2, '2016-07-06 14:53:55', 3, '2016-07-11 21:18:01'),
+(30, NULL, 'Bradesco', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 30, '30-bradesco', 0, NULL, 1, 2, '2016-07-06 14:53:55', 2, '2016-07-11 21:18:01'),
+(31, NULL, 'Trigoleve', 'Fabricação De Massas Alimentícias', NULL, NULL, NULL, 2, 1, 0, NULL, 31, '31-trigoleve', 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-11 21:18:01'),
+(32, NULL, 'Instituto Notare', 'Edição De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 32, '32-instituto-notare', 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-11 21:18:01'),
+(33, NULL, 'Irrizom', 'Comércio Atacadista De Máquinas Aparelhos E Equipamentos Para Uso Agropecuário', NULL, NULL, NULL, 2, 1, 0, 0.00, 33, '33-irrizom', 0, NULL, 1, 2, '2016-07-06 14:53:56', 3, '2016-07-11 21:18:01'),
+(34, NULL, 'Recreio Viçosa', 'Comércio A Varejo De Automóveis Camionetas E Utilitários Novos', NULL, NULL, NULL, 2, 1, 0, NULL, 34, '34-recreio-vicosa', 0, NULL, 1, 2, '2016-07-06 14:53:57', 2, '2016-07-11 21:18:01'),
+(35, NULL, 'RM Veículos', 'Representantes Comerciais E Agentes Do Comércio De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 35, '35-rm-veiculos', 0, NULL, 1, 2, '2016-07-06 14:53:57', 2, '2016-07-11 21:18:01'),
+(36, NULL, 'Rômulo Auto Mecânica', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 36, '36-romulo-auto-mecanica', 0, NULL, 1, 2, '2016-07-06 14:53:58', 3, '2016-07-11 21:18:01'),
+(37, NULL, 'Pneuzeca', 'Comércio A Varejo De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, NULL, 37, '37-pneuzeca', 0, NULL, 1, 2, '2016-07-06 14:53:58', 2, '2016-07-11 21:18:01'),
+(38, NULL, 'Bulls Couro', 'Serviços De Capotaria', NULL, NULL, NULL, 2, 1, 0, NULL, 38, '38-bulls-couro', 0, NULL, 1, 2, '2016-07-06 14:53:59', 2, '2016-07-11 21:18:01'),
+(39, NULL, 'Cia Car Pneus Ltda.', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 39, '39-cia-car-pneus-ltda', 0, NULL, 1, 2, '2016-07-06 14:53:59', 3, '2016-07-11 21:18:01'),
+(40, NULL, 'Edgar Martelinho De Ouro', 'Serviços De Instalação Manutenção E Reparação De Acessórios Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 40, '40-edgar-martelinho-de-ouro', 0, NULL, 1, 2, '2016-07-06 14:53:59', 3, '2016-07-11 21:18:01'),
+(41, NULL, 'Alumikota Viçosa', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 41, '41-alumikota-vicosa', 0, NULL, 1, 2, '2016-07-06 14:54:00', 3, '2016-07-11 21:18:01'),
+(42, NULL, 'Vimmac', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 42, '42-vimmac', 0, NULL, 1, 2, '2016-07-06 14:54:00', 3, '2016-07-11 21:18:01'),
+(43, NULL, 'Agrobil', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 43, '43-agrobil', 0, NULL, 1, 2, '2016-07-06 14:54:01', 2, '2016-07-11 21:18:01'),
+(44, NULL, 'JJ Comércio', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 44, '44-jj-comercio', 0, NULL, 1, 2, '2016-07-06 14:54:01', 3, '2016-07-11 21:18:01'),
+(45, NULL, 'Marmogranito Líder', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 45, '45-marmogranito-lider', 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-11 21:18:01'),
+(46, NULL, 'Liv Primícias - Planos Para A Vida', 'Assistência Médica E Odontológica/Assistência Jurídica/Assistência Psicológica/Transporte Social/Assistência Funerária', NULL, NULL, NULL, 2, 1, 0, 0.00, 46, '46-liv-primicias-planos-para-a-vida', 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-11 21:18:01'),
+(47, NULL, 'Clínica De Cirurgia Plástica Renato Del Giudice', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, NULL, 47, '47-clinica-de-cirurgia-plastica-renato-del-giudice', 0, NULL, 1, 2, '2016-07-06 14:54:02', 3, '2016-07-11 21:18:01'),
+(48, NULL, 'Lapis De Cor', 'Educação Infantil - Pré-Escola', NULL, NULL, NULL, 2, 1, 0, 0.00, 48, '48-lapis-de-cor', 0, NULL, 1, 2, '2016-07-06 14:54:03', 3, '2016-07-11 21:18:01'),
+(49, NULL, 'Multifer', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 49, '49-multifer', 0, NULL, 1, 2, '2016-07-06 14:54:04', 3, '2016-07-11 21:18:01'),
+(50, NULL, 'Shao Móveis', 'Fabricação De Móveis Com Predominância De Madeira', NULL, NULL, NULL, 2, 1, 0, NULL, 50, '50-shao-moveis', 0, NULL, 1, 2, '2016-07-06 14:54:04', 3, '2016-07-11 21:18:01'),
+(51, NULL, 'Vidraçaria Vidromarto', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 51, '51-vidracaria-vidromarto', 0, NULL, 1, 2, '2016-07-06 14:54:05', 3, '2016-07-11 21:18:01'),
+(52, NULL, 'Buffet Panorama', 'Serviços De Alimentação Para Eventos E Recepções - Bufê', NULL, NULL, NULL, 2, 1, 0, NULL, 52, '52-buffet-panorama', 0, NULL, 1, 2, '2016-07-06 14:54:06', 3, '2016-07-11 21:18:01'),
+(53, NULL, 'Oliveira E Irmãos Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 53, '53-oliveira-e-irmaos-materiais-de-construcao', 0, NULL, 1, 2, '2016-07-06 14:54:06', 3, '2016-07-11 21:18:01'),
+(54, NULL, 'Impacto Som E Acessórios', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 54, '54-impacto-som-e-acessorios', 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-11 21:18:01'),
+(55, NULL, 'Microvet', 'Fabricação De Medicamentos Para Uso Veterinário', NULL, NULL, NULL, 2, 1, 0, 0.00, 55, '55-microvet', 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-11 21:18:01'),
+(56, NULL, 'Santa Clara Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 56, '56-santa-clara-materiais-de-construcao', 0, NULL, 1, 2, '2016-07-06 14:54:07', 3, '2016-07-11 21:18:01'),
+(57, NULL, '95 Fm', 'Atividades De Rádio', NULL, NULL, NULL, 2, 1, 0, NULL, 57, '57-95-fm', 0, NULL, 1, 2, '2016-07-06 14:54:08', 3, '2016-07-11 21:18:01'),
+(58, NULL, 'Localiza Rent A Car', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, 0.00, 58, '58-localiza-rent-a-car', 0, NULL, 1, 2, '2016-07-06 14:54:08', 3, '2016-07-11 21:18:01'),
+(59, NULL, 'Vimag', 'Comércio Atacadista De Máquinas Aparelhos E Equipamentos Para Uso Agropecuário', NULL, NULL, NULL, 2, 1, 0, NULL, 59, '59-vimag', 0, NULL, 1, 2, '2016-07-06 14:54:09', 3, '2016-07-11 21:18:01'),
+(60, NULL, 'Adelio Motos', 'Comércio A Varejo De Motocicletas E Motonetas Novas', NULL, NULL, NULL, 2, 1, 0, NULL, 60, '60-adelio-motos', 0, NULL, 1, 2, '2016-07-06 14:54:09', 2, '2016-07-11 21:18:01'),
+(61, NULL, 'Posto Millenniun', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 61, '61-posto-millenniun', 0, NULL, 1, 2, '2016-07-06 14:54:10', 2, '2016-07-11 21:18:01'),
+(62, NULL, 'Auto Peças Bicalho', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 62, '62-auto-pecas-bicalho', 0, NULL, 1, 2, '2016-07-06 14:54:10', 3, '2016-07-11 21:18:01'),
+(63, NULL, 'Dom Gás', 'Comércio Varejista De Gás Liquefeito De Petróleo (GLP)', NULL, NULL, NULL, 2, 1, 0, 0.00, 63, '63-dom-gas', 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-11 21:18:01'),
+(64, NULL, 'Bobby Som', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 64, '64-bobby-som', 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-11 21:18:01'),
+(65, NULL, 'Pneus Avenida', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 65, '65-pneus-avenida', 0, NULL, 1, 2, '2016-07-06 14:54:11', 3, '2016-07-11 21:18:01'),
+(66, NULL, 'Stilo Máquinas E Automóveis Ltda', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, 0.00, 66, '66-stilo-maquinas-e-automoveis-ltda', 0, NULL, 1, 2, '2016-07-06 14:54:12', 3, '2016-07-11 21:18:01'),
+(67, NULL, 'Academia Campus Fit', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 67, '67-academia-campus-fit', 0, NULL, 1, 2, '2016-07-06 14:54:12', 3, '2016-07-11 21:18:01'),
+(68, NULL, 'Ideal Auto Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 68, '68-ideal-auto-pecas', 0, NULL, 1, 2, '2016-07-06 14:54:13', 3, '2016-07-11 21:18:01'),
+(69, NULL, 'Carro E Cia', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, NULL, 69, '69-carro-e-cia', 0, NULL, 1, 2, '2016-07-06 14:54:13', 3, '2016-07-11 21:18:01'),
+(70, NULL, 'Reginaldo Auto Peças', 'Comércio Por Atacado De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 70, '70-reginaldo-auto-pecas', 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-11 21:18:01'),
+(71, NULL, 'Nossa Loja', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, 0.00, 71, '71-nossa-loja', 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-11 21:18:01'),
+(72, NULL, 'Maxmoto', 'Comércio A Varejo De Motocicletas E Motonetas Novas', NULL, NULL, NULL, 2, 1, 0, 0.00, 72, '72-maxmoto', 0, NULL, 1, 2, '2016-07-06 14:54:14', 3, '2016-07-11 21:18:01'),
+(73, NULL, 'M M Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 73, '73-m-m-modas', 0, NULL, 1, 2, '2016-07-06 14:54:15', 3, '2016-07-11 21:18:01'),
+(74, NULL, 'Happy Day Festas', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 74, '74-happy-day-festas', 0, NULL, 1, 2, '2016-07-06 14:54:15', 3, '2016-07-11 21:18:01'),
+(75, NULL, 'Farmácia Cotta', 'Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 75, '75-farmacia-cotta', 0, NULL, 1, 2, '2016-07-06 14:54:16', 3, '2016-07-11 21:18:01'),
+(76, NULL, 'Casa Da Lavoura', 'Comércio Atacadista De Defensivos Agrícolas Adubos Fertilizantes E Corretivos Do Solo', NULL, NULL, NULL, 2, 1, 0, NULL, 76, '76-casa-da-lavoura', 0, NULL, 1, 2, '2016-07-06 14:54:16', 3, '2016-07-11 21:18:01'),
+(77, NULL, 'Aliança Assessoria', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 77, '77-alianca-assessoria', 0, NULL, 1, 2, '2016-07-06 14:54:17', 3, '2016-07-11 21:18:01'),
+(78, NULL, 'Magia Kids', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 78, '78-magia-kids', 0, NULL, 1, 2, '2016-07-06 14:54:17', 3, '2016-07-11 21:18:01'),
+(79, NULL, 'São Geraldo Peças E Veículos', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 79, '79-sao-geraldo-pecas-e-veiculos', 0, NULL, 1, 2, '2016-07-06 14:54:18', 3, '2016-07-11 21:18:01'),
+(80, NULL, 'Central Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, NULL, 80, '80-central-motos', 0, NULL, 1, 2, '2016-07-06 14:54:18', 3, '2016-07-11 21:18:01'),
+(81, NULL, 'Parana Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 81, '81-parana-pecas', 0, NULL, 1, 2, '2016-07-06 14:54:19', 3, '2016-07-11 21:18:01'),
+(82, NULL, 'Visom', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 82, '82-visom', 0, NULL, 1, 2, '2016-07-06 14:54:19', 3, '2016-07-11 21:18:01'),
+(83, NULL, 'Viçosa Veículos', 'Serviços De Lavagem Lubrificação E Polimento De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 83, '83-vicosa-veiculos', 0, NULL, 1, 2, '2016-07-06 14:54:20', 3, '2016-07-11 21:18:01'),
+(84, NULL, 'Multipeças Diesel', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 84, '84-multipecas-diesel', 0, NULL, 1, 2, '2016-07-06 14:54:20', 3, '2016-07-11 21:18:01'),
+(85, NULL, 'Posto Tip-Top', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 85, '85-posto-tip-top', 0, NULL, 1, 2, '2016-07-06 14:54:21', 2, '2016-07-11 21:18:01'),
+(86, NULL, 'Serralheria Santa Clara', 'Fabricação De Produtos De Trefilados De Metal Exceto Padronizados', NULL, NULL, NULL, 2, 1, 0, 0.00, 86, '86-serralheria-santa-clara', 0, NULL, 1, 2, '2016-07-06 14:54:21', 3, '2016-07-11 21:18:01'),
+(87, NULL, 'Maqtotal', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 87, '87-maqtotal', 0, NULL, 1, 2, '2016-07-06 14:54:21', 3, '2016-07-11 21:18:01'),
+(88, NULL, 'Stop Car Pneus', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 88, '88-stop-car-pneus', 0, NULL, 1, 2, '2016-07-06 14:54:22', 3, '2016-07-11 21:18:01'),
+(89, NULL, 'Univiçosa', 'Educação Superior - Graduação E Pós-Graduação', NULL, NULL, NULL, 2, 1, 0, 0.00, 89, '89-univicosa', 0, NULL, 1, 2, '2016-07-06 14:54:22', 3, '2016-07-11 21:18:01'),
+(90, NULL, 'Intelmarketing', 'Comércio Atacadista De Livros Jornais E Outras Publicações', NULL, NULL, NULL, 2, 1, 0, 0.00, 90, '90-intelmarketing', 0, NULL, 1, 2, '2016-07-06 14:54:23', 3, '2016-07-11 21:18:01'),
+(91, NULL, 'Volksville – Mecânica Especializada Em Volkswagen', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 91, '91-volksville-mecanica-especializada-em-volkswagen', 0, NULL, 1, 2, '2016-07-06 14:54:23', 2, '2016-07-11 21:18:01'),
+(92, NULL, 'Sementec', 'Comércio Varejista De Plantas E Flores Naturais', NULL, NULL, NULL, 2, 1, 0, 0.00, 92, '92-sementec', 0, NULL, 1, 2, '2016-07-06 14:54:24', 3, '2016-07-11 21:18:01'),
+(93, NULL, '3 Irmãos Corretora De Café', 'Representantes Comerciais E Agentes Do Comércio De Matérias-Primas Agrícolas E Animais Vivos', NULL, NULL, NULL, 2, 1, 0, NULL, 93, '93-3-irmaos-corretora-de-cafe', 0, NULL, 1, 2, '2016-07-06 14:54:24', 3, '2016-07-11 21:18:01'),
+(94, NULL, 'Igui', 'Fabricação De Artefatos De Cerâmica E Barro Cozido Para Uso Na Construção Exceto Azulejos E Pisos', NULL, NULL, NULL, 2, 1, 0, 0.00, 94, '94-igui', 0, NULL, 1, 2, '2016-07-06 14:54:25', 3, '2016-07-11 21:18:01'),
+(95, NULL, 'Magalhães Veículos', 'Comércio A Varejo De Automóveis Camionetas E Utilitários Usados', NULL, NULL, NULL, 2, 1, 0, 0.00, 95, '95-magalhaes-veiculos', 0, NULL, 1, 2, '2016-07-06 14:54:25', 3, '2016-07-11 21:18:01'),
+(96, NULL, 'Tonny''s Bar', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, 0.00, 96, '96-tonny-s-bar', 0, NULL, 1, 2, '2016-07-06 14:54:26', 3, '2016-07-11 21:18:01'),
+(97, NULL, 'Paradiesel Peças E Acessórios', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 97, '97-paradiesel-pecas-e-acessorios', 0, NULL, 1, 2, '2016-07-06 14:54:27', 3, '2016-07-11 21:18:01'),
+(98, NULL, 'Viçosa Auto Peças', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 98, '98-vicosa-auto-pecas', 0, NULL, 1, 2, '2016-07-06 14:54:27', 2, '2016-07-11 21:18:01'),
+(99, NULL, 'Lanchonete JL', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 99, '99-lanchonete-jl', 0, NULL, 1, 2, '2016-07-06 14:54:28', 3, '2016-07-11 21:18:01'),
+(100, NULL, 'V2 Life Alimentos', 'Fabricação De Outros Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 100, '100-v2-life-alimentos', 0, NULL, 1, 2, '2016-07-06 14:54:29', 2, '2016-07-11 21:18:01'),
+(101, NULL, 'Mundial Parque Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 101, '101-mundial-parque-hotel', 0, NULL, 1, 2, '2016-07-06 14:54:29', 3, '2016-07-11 21:18:01'),
+(102, NULL, 'Irrizom Estufas & Equipamentos Agrícolas', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 102, '102-irrizom-estufas-equipamentos-agricolas', 0, NULL, 1, 2, '2016-07-06 14:54:30', 3, '2016-07-11 21:18:01'),
+(103, NULL, 'JB Lanternagem', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 103, '103-jb-lanternagem', 0, NULL, 1, 2, '2016-07-06 14:54:30', 3, '2016-07-11 21:18:01'),
+(104, NULL, 'Academia Ação E Água', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 104, '104-academia-acao-e-agua', 0, NULL, 1, 2, '2016-07-06 14:54:31', 3, '2016-07-11 21:18:01'),
+(105, NULL, 'Casa Mendes', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 105, '105-casa-mendes', 0, NULL, 1, 2, '2016-07-06 14:54:31', 3, '2016-07-11 21:18:01'),
+(106, NULL, 'Jungle', 'Desenvolvimento De Programas De Computador Sob Encomenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 106, '106-jungle', 0, NULL, 1, 2, '2016-07-06 14:54:32', 3, '2016-07-11 21:18:01'),
+(107, NULL, 'Ther Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 107, '107-ther-sistemas', 0, NULL, 1, 2, '2016-07-06 14:54:32', 3, '2016-07-11 21:18:01'),
+(108, NULL, 'Retitec Retífica De Motores', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 108, '108-retitec-retifica-de-motores', 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-11 21:18:01'),
+(109, NULL, 'Delimit - Engenharia De Levantamento', 'Serviços De Cartografia Topografia E Geodésia', NULL, NULL, NULL, 2, 1, 0, NULL, 109, '109-delimit-engenharia-de-levantamento', 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-11 21:18:01'),
+(110, NULL, 'Papelaria Barbosa', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 110, '110-papelaria-barbosa', 0, NULL, 1, 2, '2016-07-06 14:54:33', 3, '2016-07-11 21:18:01'),
+(111, NULL, 'Pinheiro Imóveis', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 111, '111-pinheiro-imoveis', 0, NULL, 1, 2, '2016-07-06 14:54:34', 2, '2016-07-11 21:18:01'),
+(112, NULL, 'Forno De Pedra', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 112, '112-forno-de-pedra', 0, NULL, 1, 2, '2016-07-06 14:54:34', 3, '2016-07-11 21:18:01'),
+(113, NULL, 'Boca Viçosa', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 113, '113-boca-vicosa', 0, NULL, 1, 2, '2016-07-06 14:54:35', 3, '2016-07-11 21:18:01'),
+(114, NULL, 'Burguer Max', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 114, '114-burguer-max', 0, NULL, 1, 2, '2016-07-06 14:54:35', 3, '2016-07-11 21:18:01'),
+(115, NULL, '100 Opções', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 115, '115-100-opcoes', 0, NULL, 1, 2, '2016-07-06 14:54:36', 3, '2016-07-11 21:18:01'),
+(116, NULL, 'Cientec', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, NULL, 116, '116-cientec', 0, NULL, 1, 2, '2016-07-06 14:54:36', 3, '2016-07-11 21:18:01'),
+(117, NULL, 'Centro Ótico Fotográfico', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, NULL, 117, '117-centro-otico-fotografico', 0, NULL, 1, 2, '2016-07-06 14:54:37', 3, '2016-07-11 21:18:01'),
+(118, NULL, 'M G Eletrodomésticos E Bicicletas', 'Comércio Varejista De Bicicletas E Triciclos', NULL, NULL, NULL, 2, 1, 0, 0.00, 118, '118-m-g-eletrodomesticos-e-bicicletas', 0, NULL, 1, 2, '2016-07-06 14:54:37', 3, '2016-07-11 21:18:01'),
+(119, NULL, 'One Day Spa', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 119, '119-one-day-spa', 0, NULL, 1, 2, '2016-07-06 14:54:37', 2, '2016-07-11 21:18:01'),
+(120, NULL, 'Imobiliária Pimentel', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 120, '120-imobiliaria-pimentel', 0, NULL, 1, 2, '2016-07-06 14:54:38', 2, '2016-07-11 21:18:01'),
+(121, NULL, 'Premium Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 121, '121-premium-construtora', 0, NULL, 1, 2, '2016-07-06 14:54:38', 3, '2016-07-11 21:18:01'),
+(122, NULL, 'Rei Do Celular', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 122, '122-rei-do-celular', 0, NULL, 1, 2, '2016-07-06 14:54:39', 3, '2016-07-11 21:18:01'),
+(123, NULL, 'Sarsan Engenharia E Saneamento', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, 0.00, 123, '123-sarsan-engenharia-e-saneamento', 0, NULL, 1, 2, '2016-07-06 14:54:39', 3, '2016-07-11 21:18:01'),
+(124, NULL, 'Diferencial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 124, '124-diferencial-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:54:40', 3, '2016-07-11 21:18:01'),
+(125, NULL, 'Vanderlei Ferreira', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 125, '125-vanderlei-ferreira', 0, NULL, 1, 2, '2016-07-06 14:54:40', 2, '2016-07-11 21:18:01'),
+(126, NULL, 'Imobiliária Líber', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 126, '126-imobiliaria-liber', 0, NULL, 1, 2, '2016-07-06 14:54:41', 2, '2016-07-11 21:18:01'),
+(127, NULL, 'Ideal Negócios Imobiliários', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 127, '127-ideal-negocios-imobiliarios', 0, NULL, 1, 2, '2016-07-06 14:54:41', 3, '2016-07-11 21:18:01'),
+(128, NULL, 'NaMariah Massas Rápidas', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 128, '128-namariah-massas-rapidas', 0, NULL, 1, 2, '2016-07-06 14:54:42', 3, '2016-07-11 21:18:01'),
+(129, NULL, 'Master Informática', 'Provedores De Acesso Às Redes De Comunicações', NULL, NULL, NULL, 2, 1, 0, NULL, 129, '129-master-informatica', 0, NULL, 1, 2, '2016-07-06 14:54:42', 2, '2016-07-11 21:18:01'),
+(130, NULL, 'Casa Do Biscoito II', 'Comércio Varejista De Doces Balas Bombons E Semelhantes', NULL, NULL, NULL, 2, 1, 0, NULL, 130, '130-casa-do-biscoito-ii', 0, NULL, 1, 2, '2016-07-06 14:54:48', 3, '2016-07-11 21:18:01'),
+(131, NULL, 'Hakuna Batata Lanches', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 131, '131-hakuna-batata-lanches', 0, NULL, 1, 2, '2016-07-06 14:54:48', 3, '2016-07-11 21:18:01'),
+(132, NULL, 'Imobiliária Invest', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 132, '132-imobiliaria-invest', 0, NULL, 1, 2, '2016-07-06 14:54:49', 3, '2016-07-11 21:18:01'),
+(133, NULL, 'Essencial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 133, '133-essencial-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:54:49', 3, '2016-07-11 21:18:01'),
+(134, NULL, 'Artesania', 'Comércio Varejista De Suvenires Bijuterias E Artesanatos', NULL, NULL, NULL, 2, 1, 0, NULL, 134, '134-artesania', 0, NULL, 1, 2, '2016-07-06 14:54:50', 3, '2016-07-11 21:18:01'),
+(135, NULL, 'Imobiliária Viçosa', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 135, '135-imobiliaria-vicosa', 0, NULL, 1, 2, '2016-07-06 14:54:50', 3, '2016-07-11 21:18:01'),
+(136, NULL, 'Mundial Acabamentos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 136, '136-mundial-acabamentos', 0, NULL, 1, 2, '2016-07-06 14:54:51', 2, '2016-07-11 21:18:01'),
+(137, NULL, 'Drogaria Atlas De Viçosa', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 137, '137-drogaria-atlas-de-vicosa', 0, NULL, 1, 2, '2016-07-06 14:54:51', 3, '2016-07-11 21:18:01'),
+(138, NULL, 'Number One', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 138, '138-number-one', 0, NULL, 1, 2, '2016-07-06 14:54:52', 3, '2016-07-11 21:18:01'),
+(139, NULL, 'Restaurante Japa Nobre', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 139, '139-restaurante-japa-nobre', 0, NULL, 1, 2, '2016-07-06 14:54:52', 3, '2016-07-11 21:18:01'),
+(140, NULL, 'Arte Livros', 'Fotocópias', NULL, NULL, NULL, 2, 1, 0, NULL, 140, '140-arte-livros', 0, NULL, 1, 2, '2016-07-06 14:54:53', 3, '2016-07-11 21:18:01'),
+(141, NULL, 'Posto Do Beto', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 141, '141-posto-do-beto', 0, NULL, 1, 2, '2016-07-06 14:54:53', 2, '2016-07-11 21:18:01'),
+(142, NULL, 'Casa Das Loterias', 'Casas Lotéricas', NULL, NULL, NULL, 2, 1, 0, NULL, 142, '142-casa-das-loterias', 0, NULL, 1, 2, '2016-07-06 14:54:54', 3, '2016-07-11 21:18:01'),
+(143, NULL, 'Casa Da Lavoura Pet', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 143, '143-casa-da-lavoura-pet', 0, NULL, 1, 2, '2016-07-06 14:54:54', 3, '2016-07-11 21:18:01'),
+(144, NULL, 'Predial Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 144, '144-predial-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:54:55', 3, '2016-07-11 21:18:01'),
+(145, NULL, 'ICBEU', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 145, '145-icbeu', 0, NULL, 1, 2, '2016-07-06 14:54:55', 2, '2016-07-11 21:18:01'),
+(146, NULL, 'Residencia Imóveis', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 146, '146-residencia-imoveis', 0, NULL, 1, 2, '2016-07-06 14:54:56', 3, '2016-07-11 21:18:01'),
+(147, NULL, 'Drogaria Americana', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 147, '147-drogaria-americana', 0, NULL, 1, 2, '2016-07-06 14:54:56', 3, '2016-07-11 21:18:01'),
+(148, NULL, 'Cia Do Corpo', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 148, '148-cia-do-corpo', 0, NULL, 1, 2, '2016-07-06 14:54:57', 3, '2016-07-11 21:18:01'),
+(149, NULL, 'Lanchonete Dce Piscina', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 149, '149-lanchonete-dce-piscina', 0, NULL, 1, 2, '2016-07-06 14:54:57', 3, '2016-07-11 21:18:01'),
+(150, NULL, 'Imobiliária Lovi', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 150, '150-imobiliaria-lovi', 0, NULL, 1, 2, '2016-07-06 14:54:58', 3, '2016-07-11 21:18:01'),
+(151, NULL, 'CACE Consultoria Jr', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 151, '151-cace-consultoria-jr', 0, NULL, 1, 2, '2016-07-06 14:54:59', 3, '2016-07-11 21:18:01'),
+(152, NULL, 'Ejesc', 'Atividades De Organizações Associativas Profissionais', NULL, NULL, NULL, 2, 1, 0, 0.00, 152, '152-ejesc', 0, NULL, 1, 2, '2016-07-06 14:54:59', 3, '2016-07-11 21:18:01'),
+(153, NULL, 'Apache Imóveis Viçosa', 'Corretagem Na Compra E Venda E Avaliação De Imóveis', NULL, NULL, NULL, 2, 1, 0, NULL, 153, '153-apache-imoveis-vicosa', 0, NULL, 1, 2, '2016-07-06 14:55:00', 3, '2016-07-11 21:18:01'),
+(154, NULL, 'TDNet', 'Provedores De Acesso Às Redes De Comunicações', NULL, NULL, NULL, 2, 1, 0, 0.00, 154, '154-tdnet', 0, NULL, 1, 2, '2016-07-06 14:55:00', 3, '2016-07-11 21:18:01'),
+(155, NULL, 'Habitar Imobiliária', 'Corretagem No Aluguel De Imóveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 155, '155-habitar-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:55:01', 3, '2016-07-11 21:18:01'),
+(156, NULL, 'Prime Telefonia', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 156, '156-prime-telefonia', 0, NULL, 1, 2, '2016-07-06 14:55:01', 2, '2016-07-11 21:18:01'),
+(157, NULL, 'Gastroclínica', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, 0.00, 157, '157-gastroclinica', 0, NULL, 1, 2, '2016-07-06 14:55:02', 3, '2016-07-11 21:18:01'),
+(158, NULL, 'Drogaria América Viçosense', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 158, '158-drogaria-america-vicosense', 0, NULL, 1, 2, '2016-07-06 14:55:02', 3, '2016-07-11 21:18:01'),
+(159, NULL, 'Estacao Rolfs', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, NULL, 159, '159-estacao-rolfs', 0, NULL, 1, 2, '2016-07-06 14:55:03', 2, '2016-07-11 21:18:01'),
+(160, NULL, 'Deck 398 Bar E Restaurante', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 160, '160-deck-398-bar-e-restaurante', 0, NULL, 1, 2, '2016-07-06 14:55:04', 3, '2016-07-11 21:18:01'),
+(161, NULL, 'Posto Rejane', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 161, '161-posto-rejane', 0, NULL, 1, 2, '2016-07-06 14:55:04', 2, '2016-07-11 21:18:01'),
+(162, NULL, 'Mega Solucoes Em Ti', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 162, '162-mega-solucoes-em-ti', 0, NULL, 1, 2, '2016-07-06 14:55:05', 3, '2016-07-11 21:18:01'),
+(163, NULL, 'Tecnomol - Empresa Júnior De Bioquímica', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, NULL, 163, '163-tecnomol-empresa-junior-de-bioquimica', 0, NULL, 1, 2, '2016-07-06 14:55:05', 2, '2016-07-11 21:18:01'),
+(164, NULL, 'Sabor & Cia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 164, '164-sabor-cia', 0, NULL, 1, 2, '2016-07-06 14:55:06', 3, '2016-07-11 21:18:01'),
+(165, NULL, 'Dom Porco', 'Comércio Varejista De Carnes - Açougues', NULL, NULL, NULL, 2, 1, 0, 0.00, 165, '165-dom-porco', 0, NULL, 1, 2, '2016-07-06 14:55:06', 3, '2016-07-11 21:18:01'),
+(166, NULL, 'Recicart', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 166, '166-recicart', 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-11 21:18:01'),
+(167, NULL, 'Drogapharma', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 167, '167-drogapharma', 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-11 21:18:01'),
+(168, NULL, 'Diviscrita', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 168, '168-diviscrita', 0, NULL, 1, 2, '2016-07-06 14:55:07', 3, '2016-07-11 21:18:01'),
+(169, NULL, 'Imobiliária Pereira', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 169, '169-imobiliaria-pereira', 0, NULL, 1, 2, '2016-07-06 14:55:08', 3, '2016-07-11 21:18:01'),
+(170, NULL, 'Lanchonete Do Denis', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 170, '170-lanchonete-do-denis', 0, NULL, 1, 2, '2016-07-06 14:55:09', 3, '2016-07-11 21:18:01'),
+(171, NULL, 'Floricultura Bicuíba', 'Comércio Varejista De Plantas E Flores Naturais', NULL, NULL, NULL, 2, 1, 0, 0.00, 171, '171-floricultura-bicuiba', 0, NULL, 1, 2, '2016-07-06 14:55:09', 3, '2016-07-11 21:18:01'),
+(172, NULL, 'Supermercado Vilela Avenida', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, 0.00, 172, '172-supermercado-vilela-avenida', 0, NULL, 1, 2, '2016-07-06 14:55:10', 3, '2016-07-11 21:18:01'),
+(173, NULL, 'Ar Condicionado Viçosa', 'Instalação E Manutenção De Sistemas Centrais De Ar Condicionado De Ventilação E Refrigeração', NULL, NULL, NULL, 2, 1, 0, NULL, 173, '173-ar-condicionado-vicosa', 0, NULL, 1, 2, '2016-07-06 14:55:10', 3, '2016-07-11 21:18:01'),
+(174, NULL, 'Casa Do PVC', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 174, '174-casa-do-pvc', 0, NULL, 1, 2, '2016-07-06 14:55:11', 3, '2016-07-11 21:18:01'),
+(175, NULL, 'Merco Paulo', 'Comércio Varejista De Hortifrutigranjeiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 175, '175-merco-paulo', 0, NULL, 1, 2, '2016-07-06 14:55:12', 3, '2016-07-11 21:18:01'),
+(176, NULL, 'Vivest Uniformes', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, NULL, 176, '176-vivest-uniformes', 0, NULL, 1, 2, '2016-07-06 14:55:12', 2, '2016-07-11 21:18:01'),
+(177, NULL, 'Fazendinha', 'Gestão De Espaços Para Artes Cênicas Espetáculos E Outras Atividades Artísticas', NULL, NULL, NULL, 2, 1, 0, 0.00, 177, '177-fazendinha', 0, NULL, 1, 2, '2016-07-06 14:55:13', 3, '2016-07-11 21:18:01'),
+(178, NULL, 'Viva Linda', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 178, '178-viva-linda', 0, NULL, 1, 2, '2016-07-06 14:55:14', 2, '2016-07-11 21:18:01'),
+(179, NULL, 'Posto Triunfo', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 179, '179-posto-triunfo', 0, NULL, 1, 2, '2016-07-06 14:55:14', 2, '2016-07-11 21:18:01'),
+(180, NULL, 'Haskell Cosmética Natural', 'Fabricação De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 180, '180-haskell-cosmetica-natural', 0, NULL, 1, 2, '2016-07-06 14:55:15', 2, '2016-07-11 21:18:01'),
+(181, NULL, 'Editora Ultimato', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, 0.00, 181, '181-editora-ultimato', 0, NULL, 1, 2, '2016-07-06 14:55:15', 3, '2016-07-11 21:18:01'),
+(182, NULL, 'Produtos Viçosa', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 182, '182-produtos-vicosa', 0, NULL, 1, 2, '2016-07-06 14:55:16', 2, '2016-07-11 21:18:01'),
+(183, NULL, 'Sec Jr. Consultoria', 'Atividades Associativas Não Especificada Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 183, '183-sec-jr-consultoria', 0, NULL, 1, 2, '2016-07-06 14:55:16', 2, '2016-07-11 21:18:01'),
+(184, NULL, 'Campic', 'Serviços De Agronomia E De Consultoria Às Atividades Agrícolas E Pecuárias', NULL, NULL, NULL, 2, 1, 0, NULL, 184, '184-campic', 0, NULL, 1, 2, '2016-07-06 14:55:17', 3, '2016-07-11 21:18:01'),
+(185, NULL, 'Sicoob UFVCredi', 'Cooperativas De Crédito Mútuo', NULL, NULL, NULL, 2, 1, 0, 0.00, 185, '185-sicoob-ufvcredi', 0, NULL, 1, 2, '2016-07-06 14:55:17', 3, '2016-07-11 21:18:01'),
+(186, NULL, 'MR Pneus', 'Comércio Por Atacado De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, 0.00, 186, '186-mr-pneus', 0, NULL, 1, 2, '2016-07-06 14:55:18', 3, '2016-07-11 21:18:01'),
+(187, NULL, 'Supermercado Escola', 'Administração Pública Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 187, '187-supermercado-escola', 0, NULL, 1, 2, '2016-07-06 14:55:19', 3, '2016-07-11 21:18:01'),
+(188, NULL, 'Alimentos Jr', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 188, '188-alimentos-jr', 0, NULL, 1, 2, '2016-07-06 14:55:19', 3, '2016-07-11 21:18:01'),
+(189, NULL, 'Agregar', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 189, '189-agregar', 0, NULL, 1, 2, '2016-07-06 14:55:20', 2, '2016-07-11 21:18:01'),
+(190, NULL, 'Construagro', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 190, '190-construagro', 0, NULL, 1, 2, '2016-07-06 14:55:20', 3, '2016-07-11 21:18:01'),
+(191, NULL, 'Gestão Láctea - Consultoria E Projetos Agro-Industriais', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, 0.00, 191, '191-gestao-lactea-consultoria-e-projetos-agro-industriais', 0, NULL, 1, 2, '2016-07-06 14:55:21', 3, '2016-07-11 21:18:01'),
+(192, NULL, 'Palpite', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 192, '192-palpite', 0, NULL, 1, 2, '2016-07-06 14:55:22', 3, '2016-07-11 21:18:01'),
+(193, NULL, 'Agrojuris', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 193, '193-agrojuris', 0, NULL, 1, 2, '2016-07-06 14:55:22', 3, '2016-07-11 21:18:01'),
+(194, NULL, 'Sacolão Center  Brasil', 'Comércio Varejista De Hortifrutigranjeiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 194, '194-sacolao-center-brasil', 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-11 21:18:01'),
+(195, NULL, 'Ladvet', 'Atividades Veterinárias', NULL, NULL, NULL, 2, 1, 0, 0.00, 195, '195-ladvet', 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-11 21:18:01'),
+(196, NULL, 'Englopes', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 196, '196-englopes', 0, NULL, 1, 2, '2016-07-06 14:55:23', 3, '2016-07-11 21:18:01'),
+(197, NULL, 'Viçosa Joias', 'Comércio Varejista De Artigos De Joalheria', NULL, NULL, NULL, 2, 1, 0, NULL, 197, '197-vicosa-joias', 0, NULL, 1, 2, '2016-07-06 14:55:24', 2, '2016-07-11 21:18:01'),
+(198, NULL, 'Granja Real', 'Comércio Varejista De Laticínios E Frios', NULL, NULL, NULL, 2, 1, 0, 0.00, 198, '198-granja-real', 0, NULL, 1, 2, '2016-07-06 14:55:24', 3, '2016-07-11 21:18:01'),
+(199, NULL, 'Olbirayr Souza Rodrigues', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, 0.00, 199, '199-olbirayr-souza-rodrigues', 0, NULL, 1, 2, '2016-07-06 14:55:25', 3, '2016-07-11 21:18:01'),
+(200, NULL, 'Alfa Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, NULL, 200, '200-alfa-hotel', 0, NULL, 1, 2, '2016-07-06 14:55:25', 3, '2016-07-11 21:18:01'),
+(201, NULL, 'Villa Alfa Restaurante', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 201, '201-villa-alfa-restaurante', 0, NULL, 1, 2, '2016-07-06 14:55:26', 2, '2016-07-11 21:18:01'),
+(202, NULL, 'Célio Grossi Ferragens', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 202, '202-celio-grossi-ferragens', 0, NULL, 1, 2, '2016-07-06 14:55:26', 3, '2016-07-11 21:18:01'),
+(203, NULL, 'Mercadinho Vilela', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 203, '203-mercadinho-vilela', 0, NULL, 1, 2, '2016-07-06 14:55:27', 2, '2016-07-11 21:18:01'),
+(204, NULL, 'Camigue', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 204, '204-camigue', 0, NULL, 1, 2, '2016-07-06 14:55:28', 3, '2016-07-11 21:18:01'),
+(205, NULL, 'Guarapiranga Tintas', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, 0.00, 205, '205-guarapiranga-tintas', 0, NULL, 1, 2, '2016-07-06 14:55:28', 3, '2016-07-11 21:18:01'),
+(206, NULL, 'ACF Colegial', 'Atividades De  franqueadas E Permissionárias Do Correio Nacional', NULL, NULL, NULL, 2, 1, 0, NULL, 206, '206-acf-colegial', 0, NULL, 1, 2, '2016-07-06 14:55:29', 2, '2016-07-11 21:18:01'),
+(207, NULL, 'Pão De Fátima', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 207, '207-pao-de-fatima', 0, NULL, 1, 2, '2016-07-06 14:55:29', 3, '2016-07-11 21:18:01'),
+(208, NULL, 'Saúde E Vida Drogaria', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 208, '208-saude-e-vida-drogaria', 0, NULL, 1, 2, '2016-07-06 14:55:30', 3, '2016-07-11 21:18:01'),
+(209, NULL, 'Supermercado Parati', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, 0.00, 209, '209-supermercado-parati', 0, NULL, 1, 2, '2016-07-06 14:55:31', 3, '2016-07-11 21:18:01'),
+(210, NULL, 'Pneus São Paulo', 'Comércio A Varejo De Pneumáticos E Câmaras-De-Ar', NULL, NULL, NULL, 2, 1, 0, 0.00, 210, '210-pneus-sao-paulo', 0, NULL, 1, 2, '2016-07-06 14:55:31', 3, '2016-07-11 21:18:01'),
+(211, NULL, 'Dermaclin', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, NULL, 211, '211-dermaclin', 0, NULL, 1, 2, '2016-07-06 14:55:32', 3, '2016-07-11 21:18:01'),
+(212, NULL, 'Casarão Do 10', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 212, '212-casarao-do-10', 0, NULL, 1, 2, '2016-07-06 14:55:32', 3, '2016-07-11 21:18:01'),
+(213, NULL, 'Líder Eletromóveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 213, '213-lider-eletromoveis', 0, NULL, 1, 2, '2016-07-06 14:55:33', 3, '2016-07-11 21:18:01'),
+(214, NULL, 'Ativa Móveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 214, '214-ativa-moveis', 0, NULL, 1, 2, '2016-07-06 14:55:33', 3, '2016-07-11 21:18:01'),
+(215, NULL, 'Posto Canaã', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 215, '215-posto-canaa', 0, NULL, 1, 2, '2016-07-06 14:55:34', 2, '2016-07-11 21:18:01'),
+(216, NULL, 'Açaí Mix', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 216, '216-acai-mix', 0, NULL, 1, 2, '2016-07-06 14:55:34', 3, '2016-07-11 21:18:01'),
+(217, NULL, 'Sudeste Colchoes', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 217, '217-sudeste-colchoes', 0, NULL, 1, 2, '2016-07-06 14:55:35', 3, '2016-07-11 21:18:01'),
+(218, NULL, 'Rosa Emília Silva Vieira Soares', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 218, '218-rosa-emilia-silva-vieira-soares', 0, NULL, 1, 2, '2016-07-06 14:55:35', 2, '2016-07-11 21:18:01'),
+(219, NULL, 'Rosimar Dos Reis Fialho', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 219, '219-rosimar-dos-reis-fialho', 0, NULL, 1, 2, '2016-07-06 14:55:36', 2, '2016-07-11 21:18:01'),
+(220, NULL, 'Universitária Locadora De Veículos', 'Locação De Automóveis Sem Condutor', NULL, NULL, NULL, 2, 1, 0, 0.00, 220, '220-universitaria-locadora-de-veiculos', 0, NULL, 1, 2, '2016-07-06 14:55:37', 3, '2016-07-11 21:18:01'),
+(221, NULL, 'Caixa Econômica Federal', 'Bancos Múltiplos Com Carteira Comercial', NULL, NULL, NULL, 2, 1, 0, NULL, 221, '221-caixa-economica-federal', 0, NULL, 1, 2, '2016-07-06 14:55:37', 3, '2016-07-11 21:18:01'),
+(222, NULL, 'Parati Eletrodomésticos', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 222, '222-parati-eletrodomesticos', 0, NULL, 1, 2, '2016-07-06 14:55:38', 3, '2016-07-11 21:18:01'),
+(223, NULL, 'Confecção Santa Edwiges', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 223, '223-confeccao-santa-edwiges', 0, NULL, 1, 2, '2016-07-06 14:55:38', 3, '2016-07-11 21:18:01'),
+(224, NULL, 'Hospital Dos Óculos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 224, '224-hospital-dos-oculos', 0, NULL, 1, 2, '2016-07-06 14:55:39', 3, '2016-07-11 21:18:01'),
+(225, NULL, 'Casa Do Biscoito', 'Comércio Varejista De Doces Balas Bombons E Semelhantes', NULL, NULL, NULL, 2, 1, 0, NULL, 225, '225-casa-do-biscoito', 0, NULL, 1, 2, '2016-07-06 14:55:40', 3, '2016-07-11 21:18:01'),
+(226, NULL, 'Estação Do Branco', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 226, '226-estacao-do-branco', 0, NULL, 1, 2, '2016-07-06 14:55:40', 3, '2016-07-11 21:18:01'),
+(227, NULL, 'Sintonia Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 227, '227-sintonia-modas', 0, NULL, 1, 2, '2016-07-06 14:55:41', 3, '2016-07-11 21:18:01');
+INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `canonico`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
+(228, NULL, 'Oriente Serviços Administrativos', 'Preparação De Documentos E Serviços Especializados De Apoio Administrativo Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 228, '228-oriente-servicos-administrativos', 0, NULL, 1, 2, '2016-07-06 14:55:41', 2, '2016-07-11 21:18:01'),
+(229, NULL, 'Farmácia Santa Maria', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 229, '229-farmacia-santa-maria', 0, NULL, 1, 2, '2016-07-06 14:55:42', 3, '2016-07-11 21:18:01'),
+(230, NULL, 'Ótica Visão Certa', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 230, '230-otica-visao-certa', 0, NULL, 1, 2, '2016-07-06 14:55:42', 3, '2016-07-11 21:18:01'),
+(231, NULL, 'Farmácia Santa Lúcia', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 231, '231-farmacia-santa-lucia', 0, NULL, 1, 2, '2016-07-06 14:55:43', 3, '2016-07-11 21:18:01'),
+(232, NULL, 'Lojão Das Fábricas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 232, '232-lojao-das-fabricas', 0, NULL, 1, 2, '2016-07-06 14:55:44', 3, '2016-07-11 21:18:01'),
+(233, NULL, 'Amorim Contabilidade', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 233, '233-amorim-contabilidade', 0, NULL, 1, 2, '2016-07-06 14:55:44', 3, '2016-07-11 21:18:01'),
+(234, NULL, 'Farmácia Duarte', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 234, '234-farmacia-duarte', 0, NULL, 1, 2, '2016-07-06 14:55:45', 3, '2016-07-11 21:18:01'),
+(235, NULL, 'Padaria Modelo', 'Fabricação De Produtos De Panificação', NULL, NULL, NULL, 2, 1, 0, 0.00, 235, '235-padaria-modelo', 0, NULL, 1, 2, '2016-07-06 14:55:45', 3, '2016-07-11 21:18:01'),
+(236, NULL, 'Bem Me Quer', 'Comércio Varejista De Brinquedos E Artigos Recreativos', NULL, NULL, NULL, 2, 1, 0, NULL, 236, '236-bem-me-quer', 0, NULL, 1, 2, '2016-07-06 14:55:46', 2, '2016-07-11 21:18:01'),
+(237, NULL, 'Clínica De Estética Bella Vitta', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 237, '237-clinica-de-estetica-bella-vitta', 0, NULL, 1, 2, '2016-07-06 14:55:46', 3, '2016-07-11 21:18:01'),
+(238, NULL, 'Innovago Consultoria E Assessoria Ltda - Me', 'Pesquisa E Desenvolvimento Experimental Em Ciências Físicas E Naturais', NULL, NULL, NULL, 2, 1, 0, 0.00, 238, '238-innovago-consultoria-e-assessoria-ltda-me', 0, NULL, 1, 2, '2016-07-06 14:55:47', 3, '2016-07-11 21:18:01'),
+(239, NULL, 'Rizoflora', 'Outras Atividades De Serviços Prestados Principalmente Às Empresas Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 239, '239-rizoflora', 0, NULL, 1, 2, '2016-07-06 14:55:47', 2, '2016-07-11 21:18:01'),
+(240, NULL, 'Fogão Paraíso', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 240, '240-fogao-paraiso', 0, NULL, 1, 2, '2016-07-06 14:55:48', 3, '2016-07-11 21:18:01'),
+(241, NULL, 'Labor Rural', 'Locação De Mão-De-Obra Temporária', NULL, NULL, NULL, 2, 1, 0, NULL, 241, '241-labor-rural', 0, NULL, 1, 2, '2016-07-06 14:55:48', 2, '2016-07-11 21:18:01'),
+(242, NULL, 'Carlos Roberto Rocha', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 242, '242-carlos-roberto-rocha', 0, NULL, 1, 2, '2016-07-06 14:55:49', 3, '2016-07-11 21:18:01'),
+(243, NULL, 'Núcleo Academia', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, 0.00, 243, '243-nucleo-academia', 0, NULL, 1, 2, '2016-07-06 14:55:50', 3, '2016-07-11 21:18:01'),
+(244, NULL, 'Faculdade Estácio - Viçosa', 'Ensino Fundamental', NULL, NULL, NULL, 2, 1, 0, NULL, 244, '244-faculdade-estacio-vicosa', 0, NULL, 1, 2, '2016-07-06 14:55:50', 2, '2016-07-11 21:18:01'),
+(245, NULL, 'Pansol Materiais De Construção', 'Fabricação De Artefatos De Cimento Para Uso Na Construção', NULL, NULL, NULL, 2, 1, 0, 0.00, 245, '245-pansol-materiais-de-construcao', 0, NULL, 1, 2, '2016-07-06 14:55:51', 3, '2016-07-11 21:18:01'),
+(246, NULL, 'Estruturarte Serralheria', 'Fabricação De Esquadrias De Metal', NULL, NULL, NULL, 2, 1, 0, 0.00, 246, '246-estruturarte-serralheria', 0, NULL, 1, 2, '2016-07-06 14:55:51', 3, '2016-07-11 21:18:01'),
+(247, NULL, 'Batatas Fritas Palha Leve', 'Fabricação De Outros Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 247, '247-batatas-fritas-palha-leve', 0, NULL, 1, 2, '2016-07-06 14:55:52', 3, '2016-07-11 21:18:01'),
+(248, NULL, 'Móveis E Eletrodomésticos Vilela', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 248, '248-moveis-e-eletrodomesticos-vilela', 0, NULL, 1, 2, '2016-07-06 14:55:53', 3, '2016-07-11 21:18:01'),
+(249, NULL, 'Silk Pena', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 249, '249-silk-pena', 0, NULL, 1, 2, '2016-07-06 14:55:53', 2, '2016-07-11 21:18:01'),
+(250, NULL, 'Opção Consultoria E Gestão Empresarial', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, 0.00, 250, '250-opcao-consultoria-e-gestao-empresarial', 0, NULL, 1, 2, '2016-07-06 14:55:54', 3, '2016-07-11 21:18:01'),
+(251, NULL, '4 D Alimentos', 'Fabricação De Sucos Concentrados De Frutas Hortaliças E Legumes', NULL, NULL, NULL, 2, 1, 0, NULL, 251, '251-4-d-alimentos', 0, NULL, 1, 2, '2016-07-06 14:55:54', 3, '2016-07-11 21:18:01'),
+(252, NULL, 'Cerimonial Parthenon', 'Serviços De Alimentação Para Eventos E Recepções - Bufê', NULL, NULL, NULL, 2, 1, 0, NULL, 252, '252-cerimonial-parthenon', 0, NULL, 1, 2, '2016-07-06 14:55:55', 3, '2016-07-11 21:18:01'),
+(253, NULL, 'Pizza Boka Loka', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 253, '253-pizza-boka-loka', 0, NULL, 1, 2, '2016-07-06 14:55:55', 3, '2016-07-11 21:18:01'),
+(254, NULL, 'Di Durmi Baby', 'Fabricação De Artefatos Têxteis Para Uso Doméstico', NULL, NULL, NULL, 2, 1, 0, NULL, 254, '254-di-durmi-baby', 0, NULL, 1, 2, '2016-07-06 14:55:56', 3, '2016-07-11 21:18:01'),
+(255, NULL, 'Passarela', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 255, '255-passarela', 0, NULL, 1, 2, '2016-07-06 14:55:56', 3, '2016-07-11 21:18:01'),
+(256, NULL, 'Corum', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 256, '256-corum', 0, NULL, 1, 2, '2016-07-06 14:55:57', 3, '2016-07-11 21:18:01'),
+(257, NULL, 'Real Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 257, '257-real-calcados', 0, NULL, 1, 2, '2016-07-06 14:55:57', 3, '2016-07-11 21:18:01'),
+(258, NULL, 'Cafeteria Viena', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 258, '258-cafeteria-viena', 0, NULL, 1, 2, '2016-07-06 14:55:58', 3, '2016-07-11 21:18:01'),
+(259, NULL, 'Informed', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 259, '259-informed', 0, NULL, 1, 2, '2016-07-06 14:55:58', 3, '2016-07-11 21:18:01'),
+(260, NULL, 'Segunda Pele Infantil', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 260, '260-segunda-pele-infantil', 0, NULL, 1, 2, '2016-07-06 14:55:59', 3, '2016-07-11 21:18:01'),
+(261, NULL, 'Ousadia', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 261, '261-ousadia', 0, NULL, 1, 2, '2016-07-06 14:55:59', 3, '2016-07-11 21:18:01'),
+(262, NULL, 'Tom E Guida', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 262, '262-tom-e-guida', 0, NULL, 1, 2, '2016-07-06 14:56:00', 3, '2016-07-11 21:18:01'),
+(263, NULL, 'Fisk Idiomas', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 263, '263-fisk-idiomas', 0, NULL, 1, 2, '2016-07-06 14:56:00', 3, '2016-07-11 21:18:01'),
+(264, NULL, 'Caminho Livre', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 264, '264-caminho-livre', 0, NULL, 1, 2, '2016-07-06 14:56:01', 3, '2016-07-11 21:18:01'),
+(265, NULL, 'Mundi Center Men Wear', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 265, '265-mundi-center-men-wear', 0, NULL, 1, 2, '2016-07-06 14:56:01', 3, '2016-07-11 21:18:01'),
+(266, NULL, 'Mundi Shoes Mulher', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 266, '266-mundi-shoes-mulher', 0, NULL, 1, 2, '2016-07-06 14:56:02', 3, '2016-07-11 21:18:01'),
+(267, NULL, 'Dara Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 267, '267-dara-calcados', 0, NULL, 1, 2, '2016-07-06 14:56:03', 3, '2016-07-11 21:18:01'),
+(268, NULL, 'Dentista Para Todos', 'Atividade Odontológica', NULL, NULL, NULL, 2, 1, 0, NULL, 268, '268-dentista-para-todos', 0, NULL, 1, 2, '2016-07-06 14:56:03', 3, '2016-07-11 21:18:01'),
+(269, NULL, 'Restaurante E Pizzaria Sabor E Cia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 269, '269-restaurante-e-pizzaria-sabor-e-cia', 0, NULL, 1, 2, '2016-07-06 14:56:04', 3, '2016-07-11 21:18:01'),
+(270, NULL, 'Camisa E Cia', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 270, '270-camisa-e-cia', 0, NULL, 1, 2, '2016-07-06 14:56:04', 3, '2016-07-11 21:18:01'),
+(271, NULL, 'Mundi Tennis', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 271, '271-mundi-tennis', 0, NULL, 1, 2, '2016-07-06 14:56:05', 3, '2016-07-11 21:18:01'),
+(272, NULL, 'Adesivar Comunicação Visual', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 272, '272-adesivar-comunicacao-visual', 0, NULL, 1, 2, '2016-07-06 14:56:05', 3, '2016-07-11 21:18:01'),
+(273, NULL, 'Óptica Gorete', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 273, '273-optica-gorete', 0, NULL, 1, 2, '2016-07-06 14:56:06', 3, '2016-07-11 21:18:01'),
+(274, NULL, 'Óptica Lume', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 274, '274-optica-lume', 0, NULL, 1, 2, '2016-07-06 14:56:06', 3, '2016-07-11 21:18:01'),
+(275, NULL, 'Delmo Calçados Femininos', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 275, '275-delmo-calcados-femininos', 0, NULL, 1, 2, '2016-07-06 14:56:07', 3, '2016-07-11 21:18:01'),
+(276, NULL, 'Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, 0.00, 276, '276-duda-cell', 0, NULL, 1, 2, '2016-07-06 14:56:07', 3, '2016-07-11 21:18:01'),
+(277, NULL, 'Foto Imagem', 'Laboratórios Fotográficos', NULL, NULL, NULL, 2, 1, 0, NULL, 277, '277-foto-imagem', 0, NULL, 1, 2, '2016-07-06 14:56:08', 2, '2016-07-11 21:18:01'),
+(278, NULL, 'Cacá Dedé', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 278, '278-caca-dede', 0, NULL, 1, 2, '2016-07-06 14:56:08', 3, '2016-07-11 21:18:01'),
+(279, NULL, 'Lucrymais Distribuidora', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 279, '279-lucrymais-distribuidora', 0, NULL, 1, 2, '2016-07-06 14:56:09', 3, '2016-07-11 21:18:01'),
+(280, NULL, 'Objetiva Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 280, '280-objetiva-boutique', 0, NULL, 1, 2, '2016-07-06 14:56:10', 3, '2016-07-11 21:18:01'),
+(281, NULL, 'Mega Byte Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 281, '281-mega-byte-informatica', 0, NULL, 1, 2, '2016-07-06 14:56:10', 3, '2016-07-11 21:18:01'),
+(282, NULL, 'Mundial Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 282, '282-mundial-calcados', 0, NULL, 1, 2, '2016-07-06 14:56:11', 3, '2016-07-11 21:18:01'),
+(283, NULL, 'Óticas Capixaba', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 283, '283-oticas-capixaba', 0, NULL, 1, 2, '2016-07-06 14:56:11', 3, '2016-07-11 21:18:01'),
+(284, NULL, 'Vermelho Pimenta', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 284, '284-vermelho-pimenta', 0, NULL, 1, 2, '2016-07-06 14:56:12', 2, '2016-07-11 21:18:01'),
+(285, NULL, 'Vivo Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 285, '285-vivo-duda-cell', 0, NULL, 1, 2, '2016-07-06 14:56:13', 2, '2016-07-11 21:18:01'),
+(286, NULL, 'Zeus TI', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 286, '286-zeus-ti', 0, NULL, 1, 2, '2016-07-06 14:56:13', 3, '2016-07-11 21:18:01'),
+(287, NULL, 'Lojas Mega Calçadão', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 287, '287-lojas-mega-calcadao', 0, NULL, 1, 2, '2016-07-06 14:56:14', 3, '2016-07-11 21:18:01'),
+(288, NULL, 'Salão De Beleza Carisma', 'Cabeleireiros', NULL, NULL, NULL, 2, 1, 0, 0.00, 288, '288-salao-de-beleza-carisma', 0, NULL, 1, 2, '2016-07-06 14:56:14', 3, '2016-07-11 21:18:01'),
+(289, NULL, 'Igara Artesanato', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, 0.00, 289, '289-igara-artesanato', 0, NULL, 1, 2, '2016-07-06 14:56:15', 3, '2016-07-11 21:18:01'),
+(290, NULL, 'Cartório Machado', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 290, '290-cartorio-machado', 0, NULL, 1, 2, '2016-07-06 14:56:15', 2, '2016-07-11 21:18:01'),
+(291, NULL, 'Sistema Equipe', 'Cursos Preparatórios Para Concursos', NULL, NULL, NULL, 2, 1, 0, 0.00, 291, '291-sistema-equipe', 0, NULL, 1, 2, '2016-07-06 14:56:16', 3, '2016-07-11 21:18:01'),
+(292, NULL, 'Fábrica De Óculos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, NULL, 292, '292-fabrica-de-oculos', 0, NULL, 1, 2, '2016-07-06 14:56:16', 2, '2016-07-11 21:18:01'),
+(293, NULL, 'Casa Silva', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 293, '293-casa-silva', 0, NULL, 1, 2, '2016-07-06 14:56:17', 3, '2016-07-11 21:18:01'),
+(294, NULL, 'Mundial Calçados', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 294, '294-mundial-calcados', 0, NULL, 1, 2, '2016-07-06 14:56:17', 2, '2016-07-11 21:18:01'),
+(295, NULL, 'Omega Sistema De Ensino', 'Cursos Preparatórios Para Concursos', NULL, NULL, NULL, 2, 1, 0, 0.00, 295, '295-omega-sistema-de-ensino', 0, NULL, 1, 2, '2016-07-06 14:56:18', 3, '2016-07-11 21:18:01'),
+(296, NULL, 'Lojas Sant Anna', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 296, '296-lojas-sant-anna', 0, NULL, 1, 2, '2016-07-06 14:56:18', 2, '2016-07-11 21:18:01'),
+(297, NULL, 'Opção Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 297, '297-opcao-modas', 0, NULL, 1, 2, '2016-07-06 14:56:19', 3, '2016-07-11 21:18:01'),
+(298, NULL, 'Podium Moda Masculina', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 298, '298-podium-moda-masculina', 0, NULL, 1, 2, '2016-07-06 14:56:19', 3, '2016-07-11 21:18:01'),
+(299, NULL, 'Magazine Luiza', 'Lojas De Departamentos Ou Magazines', NULL, NULL, NULL, 2, 1, 0, 0.00, 299, '299-magazine-luiza', 0, NULL, 1, 2, '2016-07-06 14:56:20', 3, '2016-07-11 21:18:01'),
+(300, NULL, 'Da Laque', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 300, '300-da-laque', 0, NULL, 1, 2, '2016-07-06 14:56:21', 3, '2016-07-11 21:18:01'),
+(301, NULL, 'High Tech', 'Comércio Varejista Especializado De Peças E Acessórios Para Aparelhos Eletroeletrônicos Para Uso Doméstico Exceto Informática E Comunicação', NULL, NULL, NULL, 2, 1, 0, 0.00, 301, '301-high-tech', 0, NULL, 1, 2, '2016-07-06 14:56:21', 3, '2016-07-11 21:18:01'),
+(302, NULL, 'Mundial Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 302, '302-mundial-boutique', 0, NULL, 1, 2, '2016-07-06 14:57:12', 3, '2016-07-11 21:18:01'),
+(303, NULL, 'Serovi - Serviço Especializado Em Radiologia Odontológica', 'Serviços De Diagnóstico Por Imagem Com Uso De Radiação Ionizante Exceto Tomografia', NULL, NULL, NULL, 2, 1, 0, 0.00, 303, '303-serovi-servico-especializado-em-radiologia-odontologica', 0, NULL, 1, 2, '2016-07-06 14:57:13', 3, '2016-07-11 21:18:01'),
+(304, NULL, 'LL Pisos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 304, '304-ll-pisos', 0, NULL, 1, 2, '2016-07-06 14:57:14', 3, '2016-07-11 21:18:01'),
+(305, NULL, 'Tele Mais', 'Comércio Varejista De Bebidas', NULL, NULL, NULL, 2, 1, 0, 0.00, 305, '305-tele-mais', 0, NULL, 1, 2, '2016-07-06 14:57:14', 3, '2016-07-11 21:18:01'),
+(306, NULL, 'Bley Roupas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 306, '306-bley-roupas', 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-11 21:18:01'),
+(307, NULL, 'Papelaria Colegial', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 307, '307-papelaria-colegial', 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-11 21:18:01'),
+(308, NULL, 'Lab. De Análises Clínicas Dr. Sebastião Lopes Soares', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 308, '308-lab-de-analises-clinicas-dr-sebastiao-lopes-soares', 0, NULL, 1, 2, '2016-07-06 14:57:15', 3, '2016-07-11 21:18:01'),
+(309, NULL, 'Master Marketing Digital De Resultados', 'Representantes Comerciais E Agentes Do Comércio De Mercadorias Em Geral Não Especializado', NULL, NULL, NULL, 2, 1, 0, NULL, 309, '309-master-marketing-digital-de-resultados', 0, NULL, 1, 2, '2016-07-06 14:57:16', 2, '2016-07-11 21:18:01'),
+(310, NULL, 'Mobiliadora São José', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 310, '310-mobiliadora-sao-jose', 0, NULL, 1, 2, '2016-07-06 14:57:16', 3, '2016-07-11 21:18:01'),
+(311, NULL, 'Resolve Imóveis', 'Serviços Combinados De Escritório E Apoio Administrativo', NULL, NULL, NULL, 2, 1, 0, NULL, 311, '311-resolve-imoveis', 0, NULL, 1, 2, '2016-07-06 14:57:18', 2, '2016-07-11 21:18:01'),
+(312, NULL, 'Drogarias Ultra Popular', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 312, '312-drogarias-ultra-popular', 0, NULL, 1, 2, '2016-07-06 14:57:18', 3, '2016-07-11 21:18:01'),
+(313, NULL, 'Padaria Unida', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 313, '313-padaria-unida', 0, NULL, 1, 2, '2016-07-06 14:57:19', 3, '2016-07-11 21:18:01'),
+(314, NULL, 'Viçosa Embalagens', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 314, '314-vicosa-embalagens', 0, NULL, 1, 2, '2016-07-06 14:57:19', 2, '2016-07-11 21:18:01'),
+(315, NULL, 'Casa Das Meias', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 315, '315-casa-das-meias', 0, NULL, 1, 2, '2016-07-06 14:57:20', 3, '2016-07-11 21:18:01'),
+(316, NULL, 'Messias Materiais De Construção', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 316, '316-messias-materiais-de-construcao', 0, NULL, 1, 2, '2016-07-06 14:57:20', 3, '2016-07-11 21:18:01'),
+(317, NULL, 'Supermercado Viçosense', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, 0.00, 317, '317-supermercado-vicosense', 0, NULL, 1, 2, '2016-07-06 14:57:21', 3, '2016-07-11 21:18:01'),
+(318, NULL, 'Edmar Lopes De Oliveira - Me', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, 0.00, 318, '318-edmar-lopes-de-oliveira-me', 0, NULL, 1, 2, '2016-07-06 14:57:21', 3, '2016-07-11 21:18:01'),
+(319, NULL, 'TD Software', 'Tratamento De Dados Provedores De Serviços De Aplicação E Serviços De Hospedagem Na Internet', NULL, NULL, NULL, 2, 1, 0, 0.00, 319, '319-td-software', 0, NULL, 1, 2, '2016-07-06 14:57:22', 3, '2016-07-11 21:18:01'),
+(320, NULL, 'Interodonto', 'Outras Atividades De Atenção À Saúde Humana Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 320, '320-interodonto', 0, NULL, 1, 2, '2016-07-06 14:57:22', 3, '2016-07-11 21:18:01'),
+(321, NULL, 'Caminhos Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 321, '321-caminhos-modas', 0, NULL, 1, 2, '2016-07-06 14:57:23', 3, '2016-07-11 21:18:01'),
+(322, NULL, 'Óticas Precisão', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 322, '322-oticas-precisao', 0, NULL, 1, 2, '2016-07-06 14:57:23', 3, '2016-07-11 21:18:01'),
+(323, NULL, 'Centro De Esteetica Dalva Lopes', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 323, '323-centro-de-esteetica-dalva-lopes', 0, NULL, 1, 2, '2016-07-06 14:57:24', 2, '2016-07-11 21:18:01'),
+(324, NULL, 'Descubra Me', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 324, '324-descubra-me', 0, NULL, 1, 2, '2016-07-06 14:57:24', 2, '2016-07-11 21:18:01'),
+(325, NULL, 'Muzza Calçados E Acessórios', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 325, '325-muzza-calcados-e-acessorios', 0, NULL, 1, 2, '2016-07-06 14:57:25', 3, '2016-07-11 21:18:01'),
+(326, NULL, 'Contato Jornal', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 326, '326-contato-jornal', 0, NULL, 1, 2, '2016-07-06 14:57:25', 3, '2016-07-11 21:18:01'),
+(327, NULL, 'Motokando', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 327, '327-motokando', 0, NULL, 1, 2, '2016-07-06 14:57:26', 3, '2016-07-11 21:18:01'),
+(328, NULL, 'Visat Eletro Eletron', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 328, '328-visat-eletro-eletron', 0, NULL, 1, 2, '2016-07-06 14:57:26', 2, '2016-07-11 21:18:01'),
+(329, NULL, 'Cantinho Da Roça', 'Comércio Varejista De Produtos Alimentícios Em Geral Ou Especializado Em Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 329, '329-cantinho-da-roca', 0, NULL, 1, 2, '2016-07-06 14:57:26', 3, '2016-07-11 21:18:01'),
+(330, NULL, 'Auto Escola Ideal', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 330, '330-auto-escola-ideal', 0, NULL, 1, 2, '2016-07-06 14:57:27', 3, '2016-07-11 21:18:01'),
+(331, NULL, 'Mercado Do Bananeira', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 331, '331-mercado-do-bananeira', 0, NULL, 1, 2, '2016-07-06 14:57:27', 2, '2016-07-11 21:18:01'),
+(332, NULL, 'Padaria E Confeitaria Viçosense', 'Padaria E Confeitaria Com Predominância De Produção Própria', NULL, NULL, NULL, 2, 1, 0, 0.00, 332, '332-padaria-e-confeitaria-vicosense', 0, NULL, 1, 2, '2016-07-06 14:57:28', 3, '2016-07-11 21:18:01'),
+(333, NULL, 'Mg Motos', 'Manutenção E Reparação De Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 333, '333-mg-motos', 0, NULL, 1, 2, '2016-07-06 14:57:29', 3, '2016-07-11 21:18:01'),
+(334, NULL, 'Supermercado Lider', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 334, '334-supermercado-lider', 0, NULL, 1, 2, '2016-07-06 14:57:29', 3, '2016-07-11 21:18:01'),
+(335, NULL, 'Materiais De Construção São Judas Tadeu', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 335, '335-materiais-de-construcao-sao-judas-tadeu', 0, NULL, 1, 2, '2016-07-06 14:57:30', 3, '2016-07-11 21:18:01'),
+(336, NULL, 'Speed Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 336, '336-speed-motos', 0, NULL, 1, 2, '2016-07-06 14:57:30', 3, '2016-07-11 21:18:01'),
+(337, NULL, 'Moto Flex', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 337, '337-moto-flex', 0, NULL, 1, 2, '2016-07-06 14:57:31', 3, '2016-07-11 21:18:01'),
+(338, NULL, 'Sic Tintas E Latarias', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 338, '338-sic-tintas-e-latarias', 0, NULL, 1, 2, '2016-07-06 14:57:31', 3, '2016-07-11 21:18:01'),
+(339, NULL, 'Globo Pao', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 339, '339-globo-pao', 0, NULL, 1, 2, '2016-07-06 14:57:32', 3, '2016-07-11 21:18:01'),
+(340, NULL, 'Uptime Consultants', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 340, '340-uptime-consultants', 0, NULL, 1, 2, '2016-07-06 14:57:32', 3, '2016-07-11 21:18:01'),
+(341, NULL, 'Conservar Imóveis', 'Corretagem Na Compra E Venda E Avaliação De Imóveis', NULL, NULL, NULL, 2, 1, 0, NULL, 341, '341-conservar-imoveis', 0, NULL, 1, 2, '2016-07-06 14:57:33', 3, '2016-07-11 21:18:01'),
+(342, NULL, 'Távola Lúdica', 'Bares E Outros Estabelecimentos Especializados Em Servir Bebidas', NULL, NULL, NULL, 2, 1, 0, 0.00, 342, '342-tavola-ludica', 0, NULL, 1, 2, '2016-07-06 14:57:33', 3, '2016-07-11 21:18:01'),
+(343, NULL, 'REC', 'Ensino De Idiomas', NULL, NULL, NULL, 2, 1, 0, 0.00, 343, '343-rec', 0, NULL, 1, 2, '2016-07-06 14:57:34', 3, '2016-07-11 21:18:01'),
+(344, NULL, 'Imobiliária Dos Estudantes', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 344, '344-imobiliaria-dos-estudantes', 0, NULL, 1, 2, '2016-07-06 14:57:34', 3, '2016-07-11 21:18:01'),
+(345, NULL, 'Eletrônica Alves', 'Reparação E Manutenção De Equipamentos Eletroeletrônicos De Uso Pessoal E Doméstico', NULL, NULL, NULL, 2, 1, 0, 0.00, 345, '345-eletronica-alves', 0, NULL, 1, 2, '2016-07-06 14:57:35', 3, '2016-07-11 21:18:01'),
+(346, NULL, 'Drogaria Madre Paulina', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 346, '346-drogaria-madre-paulina', 0, NULL, 1, 2, '2016-07-06 14:57:35', 3, '2016-07-11 21:18:01'),
+(347, NULL, 'Construpires', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 347, '347-construpires', 0, NULL, 1, 2, '2016-07-06 14:57:36', 2, '2016-07-11 21:18:01'),
+(348, NULL, 'Disk Tudo Valente', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 348, '348-disk-tudo-valente', 0, NULL, 1, 2, '2016-07-06 14:57:36', 3, '2016-07-11 21:18:01'),
+(349, NULL, 'Brasil Materiais Hidráulicos E Acabamentos', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 349, '349-brasil-materiais-hidraulicos-e-acabamentos', 0, NULL, 1, 2, '2016-07-06 14:57:37', 3, '2016-07-11 21:18:01'),
+(350, NULL, 'Resolve Serviços', 'Serviços Combinados De Escritório E Apoio Administrativo', NULL, NULL, NULL, 2, 1, 0, NULL, 350, '350-resolve-servicos', 0, NULL, 1, 2, '2016-07-06 14:57:37', 2, '2016-07-11 21:18:01'),
+(351, NULL, 'JB Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 351, '351-jb-motos', 0, NULL, 1, 2, '2016-07-06 14:57:38', 3, '2016-07-11 21:18:01'),
+(352, NULL, 'Exclusiva', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 352, '352-exclusiva', 0, NULL, 1, 2, '2016-07-06 14:57:38', 3, '2016-07-11 21:18:01'),
+(353, NULL, 'Posto Viçosa', 'Comércio Varejista De Combustíveis Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 353, '353-posto-vicosa', 0, NULL, 1, 2, '2016-07-06 14:57:39', 2, '2016-07-11 21:18:01'),
+(354, NULL, 'RC Materiais De Construção', 'Comércio Varejista De Materiais De Construção Em Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 354, '354-rc-materiais-de-construcao', 0, NULL, 1, 2, '2016-07-06 14:57:39', 3, '2016-07-11 21:18:01'),
+(355, NULL, 'Mobiliadora São Cristovão', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 355, '355-mobiliadora-sao-cristovao', 0, NULL, 1, 2, '2016-07-06 14:57:40', 3, '2016-07-11 21:18:01'),
+(356, NULL, 'Ponto Por Ponto', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 356, '356-ponto-por-ponto', 0, NULL, 1, 2, '2016-07-06 14:57:41', 3, '2016-07-11 21:18:01'),
+(357, NULL, 'Hyper 9 Academia', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, 0.00, 357, '357-hyper-9-academia', 0, NULL, 1, 2, '2016-07-06 14:57:41', 3, '2016-07-11 21:18:01'),
+(358, NULL, 'Centro De Formação De Condutores Aliança', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 358, '358-centro-de-formacao-de-condutores-alianca', 0, NULL, 1, 2, '2016-07-06 14:57:42', 3, '2016-07-11 21:18:01'),
+(359, NULL, 'SMC Consultoria Ambiental', 'Serviços De Agronomia E De Consultoria Às Atividades Agrícolas E Pecuárias', NULL, NULL, NULL, 2, 1, 0, 0.00, 359, '359-smc-consultoria-ambiental', 0, NULL, 1, 2, '2016-07-06 14:57:43', 3, '2016-07-11 21:18:01'),
+(360, NULL, 'Fercon', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 360, '360-fercon', 0, NULL, 1, 2, '2016-07-06 14:57:43', 2, '2016-07-11 21:18:01'),
+(361, NULL, 'Viação Viçosa Turismo', 'Transporte Rodoviário Coletivo De Passageiros Sob Regime De Fretamento Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, NULL, 361, '361-viacao-vicosa-turismo', 0, NULL, 1, 2, '2016-07-06 14:57:44', 2, '2016-07-11 21:18:01'),
+(362, NULL, 'Isomax', 'Fabricação De Esquadrias De Metal', NULL, NULL, NULL, 2, 1, 0, NULL, 362, '362-isomax', 0, NULL, 1, 2, '2016-07-06 14:57:44', 2, '2016-07-11 21:18:01'),
+(363, NULL, 'Tok Clean Lavanderia', 'Lavanderias', NULL, NULL, NULL, 2, 1, 0, NULL, 363, '363-tok-clean-lavanderia', 0, NULL, 1, 2, '2016-07-06 14:57:45', 2, '2016-07-11 21:18:01'),
+(364, NULL, 'Marmoraria Bella', 'Comércio Atacadista De Mármores E Granitos', NULL, NULL, NULL, 2, 1, 0, 0.00, 364, '364-marmoraria-bella', 0, NULL, 1, 2, '2016-07-06 14:57:46', 3, '2016-07-11 21:18:01'),
+(365, NULL, 'ESUV', 'Educação Superior - Graduação E Pós-Graduação', NULL, NULL, NULL, 2, 1, 0, 0.00, 365, '365-esuv', 0, NULL, 1, 2, '2016-07-06 14:57:46', 3, '2016-07-11 21:18:01'),
+(366, NULL, 'Contabilidade Faria', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 366, '366-contabilidade-faria', 0, NULL, 1, 2, '2016-07-06 14:57:47', 3, '2016-07-11 21:18:01'),
+(367, NULL, 'Dimensão Empreendimentos Imobiliários', 'Aluguel De Imóveis Próprios', NULL, NULL, NULL, 2, 1, 0, 0.00, 367, '367-dimensao-empreendimentos-imobiliarios', 0, NULL, 1, 2, '2016-07-06 14:57:48', 3, '2016-07-11 21:18:01'),
+(368, NULL, 'CPT', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, NULL, 368, '368-cpt', 0, NULL, 1, 2, '2016-07-06 14:57:48', 3, '2016-07-11 21:18:01'),
+(369, NULL, 'Ferkal Ferragens', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 369, '369-ferkal-ferragens', 0, NULL, 1, 2, '2016-07-06 14:57:49', 3, '2016-07-11 21:18:01'),
+(370, NULL, 'Podium Fashion', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 370, '370-podium-fashion', 0, NULL, 1, 2, '2016-07-06 14:57:49', 3, '2016-07-11 21:18:01'),
+(371, NULL, 'J.E.A - Máquinas E Ferramentas', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, 0.00, 371, '371-j-e-a-maquinas-e-ferramentas', 0, NULL, 1, 2, '2016-07-06 14:57:50', 3, '2016-07-11 21:18:01'),
+(372, NULL, 'Óticas Precisão II', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 372, '372-oticas-precisao-ii', 0, NULL, 1, 2, '2016-07-06 14:57:50', 3, '2016-07-11 21:18:01'),
+(373, NULL, 'Vital Alarme', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 373, '373-vital-alarme', 0, NULL, 1, 2, '2016-07-06 14:57:51', 2, '2016-07-11 21:18:01'),
+(374, NULL, 'Galvão Baby Kids', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 374, '374-galvao-baby-kids', 0, NULL, 1, 2, '2016-07-06 14:57:51', 3, '2016-07-11 21:18:01'),
+(375, NULL, 'Naja', 'Treinamento Em Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 375, '375-naja', 0, NULL, 1, 2, '2016-07-06 14:57:53', 3, '2016-07-11 21:18:01'),
+(376, NULL, 'Planodente', 'Outras Atividades De Atenção À Saúde Humana Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 376, '376-planodente', 0, NULL, 1, 2, '2016-07-06 14:57:53', 3, '2016-07-11 21:18:01'),
+(377, NULL, 'Mundial Interiores', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 377, '377-mundial-interiores', 0, NULL, 1, 2, '2016-07-06 14:57:54', 3, '2016-07-11 21:18:01'),
+(378, NULL, 'Restaurante Papa Kilo', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 378, '378-restaurante-papa-kilo', 0, NULL, 1, 2, '2016-07-06 14:57:54', 3, '2016-07-11 21:18:01'),
+(379, NULL, 'Cartório Fernandes', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 379, '379-cartorio-fernandes', 0, NULL, 1, 2, '2016-07-06 14:57:55', 2, '2016-07-11 21:18:01'),
+(380, NULL, 'Paradella Ambientes', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, NULL, 380, '380-paradella-ambientes', 0, NULL, 1, 2, '2016-07-06 14:57:55', 2, '2016-07-11 21:18:01'),
+(381, NULL, 'Construminas Acabamentos', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 381, '381-construminas-acabamentos', 0, NULL, 1, 2, '2016-07-06 14:57:56', 3, '2016-07-11 21:18:01'),
+(382, NULL, 'Auto Escola Autotrans', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 382, '382-auto-escola-autotrans', 0, NULL, 1, 2, '2016-07-06 14:57:56', 3, '2016-07-11 21:18:01'),
+(383, NULL, 'Odontomed', 'Geral', NULL, NULL, NULL, 2, 1, 0, 0.00, 383, '383-odontomed', 0, NULL, 1, 2, '2016-07-06 14:57:57', 3, '2016-07-11 21:18:01'),
+(384, NULL, 'Jornal Folha Da Mata', 'Edição Integrada À Impressão De Jornais', NULL, NULL, NULL, 2, 1, 0, NULL, 384, '384-jornal-folha-da-mata', 0, NULL, 1, 2, '2016-07-06 14:57:57', 2, '2016-07-11 21:18:01'),
+(385, NULL, 'Eletro Paulo', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, 0.00, 385, '385-eletro-paulo', 0, NULL, 1, 2, '2016-07-06 14:57:58', 3, '2016-07-11 21:18:01'),
+(386, NULL, 'Exata Contabilidade', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, 0.00, 386, '386-exata-contabilidade', 0, NULL, 1, 2, '2016-07-06 14:57:58', 3, '2016-07-11 21:18:01'),
+(387, NULL, 'Agriminas', 'Comércio Varejista De Medicamentos Veterinários', NULL, NULL, NULL, 2, 1, 0, NULL, 387, '387-agriminas', 0, NULL, 1, 2, '2016-07-06 14:57:59', 3, '2016-07-11 21:18:01'),
+(388, NULL, 'Relojoaria Stylu''s', 'Comércio Varejista De Artigos De Joalheria', NULL, NULL, NULL, 2, 1, 0, 0.00, 388, '388-relojoaria-stylu-s', 0, NULL, 1, 2, '2016-07-06 14:57:59', 3, '2016-07-11 21:18:01'),
+(389, NULL, 'Atual Ferragens E Acessórios', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 389, '389-atual-ferragens-e-acessorios', 0, NULL, 1, 2, '2016-07-06 14:58:00', 3, '2016-07-11 21:18:01'),
+(390, NULL, 'Contabilidade Ferreira', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, NULL, 390, '390-contabilidade-ferreira', 0, NULL, 1, 2, '2016-07-06 14:58:00', 3, '2016-07-11 21:18:01'),
+(391, NULL, 'Restaurante Temperarte Grill', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 391, '391-restaurante-temperarte-grill', 0, NULL, 1, 2, '2016-07-06 14:58:01', 3, '2016-07-11 21:18:01'),
+(392, NULL, 'Lugi Comunicação Visual', 'Impressão De Material Para Uso Publicitário', NULL, NULL, NULL, 2, 1, 0, NULL, 392, '392-lugi-comunicacao-visual', 0, NULL, 1, 2, '2016-07-06 14:58:02', 2, '2016-07-11 21:18:01'),
+(393, NULL, 'Auto Escola Líder', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 393, '393-auto-escola-lider', 0, NULL, 1, 2, '2016-07-06 14:58:02', 3, '2016-07-11 21:18:01'),
+(394, NULL, 'Ita Persianas', 'Comércio Varejista De Artigos De Tapeçaria Cortinas E Persianas', NULL, NULL, NULL, 2, 1, 0, 0.00, 394, '394-ita-persianas', 0, NULL, 1, 2, '2016-07-06 14:58:03', 3, '2016-07-11 21:18:01'),
+(395, NULL, 'Quinze Automação Comercial', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, 0.00, 395, '395-quinze-automacao-comercial', 0, NULL, 1, 2, '2016-07-06 14:58:03', 3, '2016-07-11 21:18:01'),
+(396, NULL, 'Plamhuv', 'Planos De Saúde', NULL, NULL, NULL, 2, 1, 0, 0.00, 396, '396-plamhuv', 0, NULL, 1, 2, '2016-07-06 14:58:04', 3, '2016-07-11 21:18:01'),
+(397, NULL, 'Comunex', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 397, '397-comunex', 0, NULL, 1, 2, '2016-07-06 14:58:04', 3, '2016-07-11 21:18:01'),
+(398, NULL, 'Bahamas', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 398, '398-bahamas', 0, NULL, 1, 2, '2016-07-06 14:58:05', 2, '2016-07-11 21:18:01'),
+(399, NULL, 'Colchões Ortobom', 'Comércio Varejista De Artigos De Colchoaria', NULL, NULL, NULL, 2, 1, 0, NULL, 399, '399-colchoes-ortobom', 0, NULL, 1, 2, '2016-07-06 14:58:05', 3, '2016-07-11 21:18:01'),
+(400, NULL, 'Hércules Corretora De Seguros', 'Corretores E Agentes De Seguros De Planos De Previdência Complementar E De Saúde', NULL, NULL, NULL, 2, 1, 0, 0.00, 400, '400-hercules-corretora-de-seguros', 0, NULL, 1, 2, '2016-07-06 14:58:06', 3, '2016-07-11 21:18:01'),
+(401, NULL, 'Ótica Da Fábrica', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 401, '401-otica-da-fabrica', 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-11 21:18:01'),
+(402, NULL, 'Espaço Grazi Rocha', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, 0.00, 402, '402-espaco-grazi-rocha', 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-11 21:18:01'),
+(403, NULL, 'Escritório De Contabilidade Ético', 'Atividades De Contabilidade', NULL, NULL, NULL, 2, 1, 0, 0.00, 403, '403-escritorio-de-contabilidade-etico', 0, NULL, 1, 2, '2016-07-06 14:58:07', 3, '2016-07-11 21:18:01'),
+(404, NULL, 'Mobiliadora Paradela', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 404, '404-mobiliadora-paradela', 0, NULL, 1, 2, '2016-07-06 14:58:08', 3, '2016-07-11 21:18:01'),
+(405, NULL, 'Elétrica Júnior', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, NULL, 405, '405-eletrica-junior', 0, NULL, 1, 2, '2016-07-06 14:58:08', 2, '2016-07-11 21:18:01'),
+(406, NULL, 'Colégio Anglo De Viçosa', 'Ensino Médio', NULL, NULL, NULL, 2, 1, 0, NULL, 406, '406-colegio-anglo-de-vicosa', 0, NULL, 1, 2, '2016-07-06 14:58:09', 3, '2016-07-11 21:18:01'),
+(407, NULL, 'Cicle Minas', 'Comércio Varejista De Bicicletas E Triciclos', NULL, NULL, NULL, 2, 1, 0, NULL, 407, '407-cicle-minas', 0, NULL, 1, 2, '2016-07-06 14:58:09', 3, '2016-07-11 21:18:01'),
+(408, NULL, 'Casa Dos Parafusos', 'Comércio Varejista De Ferragens E Ferramentas', NULL, NULL, NULL, 2, 1, 0, NULL, 408, '408-casa-dos-parafusos', 0, NULL, 1, 2, '2016-07-06 14:58:10', 3, '2016-07-11 21:18:01'),
+(409, NULL, 'Galvão Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 409, '409-galvao-calcados', 0, NULL, 1, 2, '2016-07-06 14:58:10', 3, '2016-07-11 21:18:01'),
+(410, NULL, 'Oriontec Automação Comercial', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 410, '410-oriontec-automacao-comercial', 0, NULL, 1, 2, '2016-07-06 14:58:11', 3, '2016-07-11 21:18:01'),
+(411, NULL, 'Pro-Motos', 'Comércio A Varejo De Peças E Acessórios Para Motocicletas E Motonetas', NULL, NULL, NULL, 2, 1, 0, 0.00, 411, '411-pro-motos', 0, NULL, 1, 2, '2016-07-06 14:58:13', 3, '2016-07-11 21:18:01'),
+(412, NULL, 'Santech Sistemas', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 412, '412-santech-sistemas', 0, NULL, 1, 2, '2016-07-06 14:58:13', 3, '2016-07-11 21:18:01'),
+(413, NULL, 'Vimetra', 'Geral', NULL, NULL, NULL, 2, 1, 0, NULL, 413, '413-vimetra', 0, NULL, 1, 2, '2016-07-06 14:58:13', 2, '2016-07-11 21:18:01'),
+(414, NULL, 'Ristorante La Coccinella', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 414, '414-ristorante-la-coccinella', 0, NULL, 1, 2, '2016-07-06 14:58:14', 3, '2016-07-11 21:18:01'),
+(415, NULL, 'Imobiliária Leão Júnior', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 415, '415-imobiliaria-leao-junior', 0, NULL, 1, 2, '2016-07-06 14:58:15', 3, '2016-07-11 21:18:01'),
+(416, NULL, 'Tribuna Editora Gráfica', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, 0.00, 416, '416-tribuna-editora-grafica', 0, NULL, 1, 2, '2016-07-06 14:58:15', 3, '2016-07-11 21:18:01'),
+(417, NULL, 'Kumon', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 417, '417-kumon', 0, NULL, 1, 2, '2016-07-06 14:58:16', 3, '2016-07-11 21:18:01'),
+(418, NULL, 'Fixit', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 418, '418-fixit', 0, NULL, 1, 2, '2016-07-06 14:58:16', 3, '2016-07-11 21:18:01'),
+(419, NULL, 'Restaurante Pau Brasil', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 419, '419-restaurante-pau-brasil', 0, NULL, 1, 2, '2016-07-06 14:58:17', 3, '2016-07-11 21:18:01'),
+(420, NULL, 'Interminas', 'Agências De Publicidade', NULL, NULL, NULL, 2, 1, 0, NULL, 420, '420-interminas', 0, NULL, 1, 2, '2016-07-06 14:58:17', 2, '2016-07-11 21:18:01'),
+(421, NULL, 'Cartório De Registro E Imóveis', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 421, '421-cartorio-de-registro-e-imoveis', 0, NULL, 1, 2, '2016-07-06 14:58:18', 2, '2016-07-11 21:18:01'),
+(422, NULL, 'Radio Montanhesa', 'Atividades De Rádio', NULL, NULL, NULL, 2, 1, 0, NULL, 422, '422-radio-montanhesa', 0, NULL, 1, 2, '2016-07-06 14:58:18', 2, '2016-07-11 21:18:01'),
+(423, NULL, 'Auto Escola Rogério', 'Formação De Condutores', NULL, NULL, NULL, 2, 1, 0, NULL, 423, '423-auto-escola-rogerio', 0, NULL, 1, 2, '2016-07-06 14:58:19', 3, '2016-07-11 21:18:01'),
+(424, NULL, 'Objetiva Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 424, '424-objetiva-modas', 0, NULL, 1, 2, '2016-07-06 14:58:19', 3, '2016-07-11 21:18:01'),
+(425, NULL, 'Chaveiro Gerson', 'Chaveiros', NULL, NULL, NULL, 2, 1, 0, NULL, 425, '425-chaveiro-gerson', 0, NULL, 1, 2, '2016-07-06 14:58:20', 2, '2016-07-11 21:18:01'),
+(426, NULL, 'Ind E Com Pernalonga', 'Fabricação De Artigos De Serralheria Exceto Esquadrias', NULL, NULL, NULL, 2, 1, 0, 0.00, 426, '426-ind-e-com-pernalonga', 0, NULL, 1, 2, '2016-07-06 14:58:20', 3, '2016-07-11 21:18:01'),
+(427, NULL, 'Pontocom Consultoria', 'Atividades De Produção De Fotografias Exceto Aérea E Submarina', NULL, NULL, NULL, 2, 1, 0, 0.00, 427, '427-pontocom-consultoria', 0, NULL, 1, 2, '2016-07-06 14:58:21', 3, '2016-07-11 21:18:01'),
+(428, NULL, 'Moto Som Rogério Dias', 'Outras Atividades De Publicidade Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 428, '428-moto-som-rogerio-dias', 0, NULL, 1, 2, '2016-07-06 14:58:21', 2, '2016-07-11 21:18:01'),
+(429, NULL, 'Padaria Progresso', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, NULL, 429, '429-padaria-progresso', 0, NULL, 1, 2, '2016-07-06 14:58:22', 2, '2016-07-11 21:18:01'),
+(430, NULL, 'Construforte', 'Comércio Varejista De Materiais De Construção Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 430, '430-construforte', 0, NULL, 1, 2, '2016-07-06 14:58:22', 3, '2016-07-11 21:18:01'),
+(431, NULL, 'Faculdade De Viçosa', 'Educação Superior - Graduação', NULL, NULL, NULL, 2, 1, 0, 0.00, 431, '431-faculdade-de-vicosa', 0, NULL, 1, 2, '2016-07-06 14:58:23', 3, '2016-07-11 21:18:01'),
+(432, NULL, 'Botica Fontenelle', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, NULL, 432, '432-botica-fontenelle', 0, NULL, 1, 2, '2016-07-06 14:58:23', 3, '2016-07-11 21:18:01'),
+(433, NULL, 'Estrela Modas Unissex', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 433, '433-estrela-modas-unissex', 0, NULL, 1, 2, '2016-07-06 14:58:24', 3, '2016-07-11 21:18:01'),
+(434, NULL, 'Bullks Jet', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 434, '434-bullks-jet', 0, NULL, 1, 2, '2016-07-06 14:58:24', 3, '2016-07-11 21:18:01'),
+(435, NULL, 'Pro-Imagem', 'Atividade Médica Ambulatorial Restrita A Consultas', NULL, NULL, NULL, 2, 1, 0, 0.00, 435, '435-pro-imagem', 0, NULL, 1, 2, '2016-07-06 14:58:25', 3, '2016-07-11 21:18:01'),
+(436, NULL, 'Bons Sonhos Colchões', 'Comércio Varejista De Artigos De Colchoaria', NULL, NULL, NULL, 2, 1, 0, NULL, 436, '436-bons-sonhos-colchoes', 0, NULL, 1, 2, '2016-07-06 14:58:26', 3, '2016-07-11 21:18:01'),
+(437, NULL, 'Construtora Solar', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 437, '437-construtora-solar', 0, NULL, 1, 2, '2016-07-06 14:58:26', 3, '2016-07-11 21:18:01'),
+(438, NULL, 'Chique E Casual', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 438, '438-chique-e-casual', 0, NULL, 1, 2, '2016-07-06 14:58:27', 3, '2016-07-11 21:18:01'),
+(439, NULL, 'Paparazzo Moveis', 'Comércio Varejista De Móveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 439, '439-paparazzo-moveis', 0, NULL, 1, 2, '2016-07-06 14:58:27', 3, '2016-07-11 21:18:01'),
+(440, NULL, 'Estação Do Pet', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, 0.00, 440, '440-estacao-do-pet', 0, NULL, 1, 2, '2016-07-06 14:58:28', 3, '2016-07-11 21:18:01'),
+(441, NULL, 'Colégio Equipe', 'Ensino Médio', NULL, NULL, NULL, 2, 1, 0, NULL, 441, '441-colegio-equipe', 0, NULL, 1, 2, '2016-07-06 14:58:28', 3, '2016-07-11 21:18:01'),
+(442, NULL, 'Marines Alchieri', 'Serviços Advocatícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 442, '442-marines-alchieri', 0, NULL, 1, 2, '2016-07-06 14:58:29', 3, '2016-07-11 21:18:01'),
+(443, NULL, 'Unimed Viçosa', 'Planos De Saúde', NULL, NULL, NULL, 2, 1, 0, 0.00, 443, '443-unimed-vicosa', 0, NULL, 1, 2, '2016-07-06 14:58:29', 3, '2016-07-11 21:18:01'),
+(444, NULL, 'Requinte Soluções Gráficas', 'Edição Integrada À Impressão De Cadastros Listas E De Outros Produtos Gráficos', NULL, NULL, NULL, 2, 1, 0, NULL, 444, '444-requinte-solucoes-graficas', 0, NULL, 1, 2, '2016-07-06 14:58:30', 2, '2016-07-11 21:18:01'),
+(445, NULL, 'Gás Dois Irmãos', 'Comércio Varejista De Gás Liquefeito De Petróleo (GLP)', NULL, NULL, NULL, 2, 1, 0, 0.00, 445, '445-gas-dois-irmaos', 0, NULL, 1, 2, '2016-07-06 14:58:30', 3, '2016-07-11 21:18:01'),
+(446, NULL, 'Transvan', 'Transporte Rodoviário Coletivo De Passageiros Sob Regime De Fretamento Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, 0.00, 446, '446-transvan', 0, NULL, 1, 2, '2016-07-06 14:58:31', 3, '2016-07-11 21:18:01'),
+(447, NULL, 'Opção Informática', 'Reparação E Manutenção De Computadores E De Equipamentos Periféricos', NULL, NULL, NULL, 2, 1, 0, 0.00, 447, '447-opcao-informatica', 0, NULL, 1, 2, '2016-07-06 14:58:31', 3, '2016-07-11 21:18:01'),
+(448, NULL, 'Imobiliária Chequer', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 448, '448-imobiliaria-chequer', 0, NULL, 1, 2, '2016-07-06 14:58:32', 3, '2016-07-11 21:18:01'),
+(449, NULL, 'Via Campus Club', 'Atividades De Condicionamento Físico', NULL, NULL, NULL, 2, 1, 0, NULL, 449, '449-via-campus-club', 0, NULL, 1, 2, '2016-07-06 14:58:32', 2, '2016-07-11 21:18:01'),
+(450, NULL, 'Sabor & Cia 4 Pilastras', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 450, '450-sabor-cia-4-pilastras', 0, NULL, 1, 2, '2016-07-06 14:58:33', 2, '2016-07-11 21:18:01'),
+(451, NULL, 'Papelaria Avenida', 'Comércio Varejista De Artigos De Papelaria', NULL, NULL, NULL, 2, 1, 0, 0.00, 451, '451-papelaria-avenida', 0, NULL, 1, 2, '2016-07-06 14:58:33', 3, '2016-07-11 21:18:01'),
+(452, NULL, 'Bemed', 'Comércio Atacadista De Máquinas, Aparelhos E Equipamentos Para Uso Odonto-Medico-Hospitalar - Partes E Pecas', NULL, NULL, NULL, 2, 1, 0, NULL, 452, '452-bemed', 0, NULL, 1, 2, '2016-07-06 14:58:34', 3, '2016-07-11 21:18:01'),
+(453, NULL, 'Casa Da Casa Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, NULL, 453, '453-casa-da-casa-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:58:34', 3, '2016-07-11 21:18:01'),
+(454, NULL, 'Mercado Modelo', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 454, '454-mercado-modelo', 0, NULL, 1, 2, '2016-07-06 14:58:35', 3, '2016-07-11 21:18:01');
+INSERT INTO `instituicao` (`id`, `razaoSocial`, `nomeFantasia`, `descricao`, `cnpj`, `inscricaoEstadual`, `site`, `vinculada`, `associada`, `fidelidade`, `conversao`, `endereco`, `canonico`, `grupo`, `plano`, `ativo`, `criadoPor`, `dataCriacao`, `modificadoPor`, `dataModificacao`) VALUES
+(455, NULL, 'Bar E Mercearia Mais Em Conta', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 455, '455-bar-e-mercearia-mais-em-conta', 0, NULL, 1, 2, '2016-07-06 14:58:35', 3, '2016-07-11 21:18:01'),
+(456, NULL, 'SCTV Super Cabo TV', 'Operadoras De Televisão Por Assinatura Por Cabo', NULL, NULL, NULL, 2, 1, 0, NULL, 456, '456-sctv-super-cabo-tv', 0, NULL, 1, 2, '2016-07-06 14:58:36', 2, '2016-07-11 21:18:01'),
+(457, NULL, 'Querhym Confecções', 'Confecção Sob Medida De Peças Do Vestuário Exceto Roupas Íntimas', NULL, NULL, NULL, 2, 1, 0, 0.00, 457, '457-querhym-confeccoes', 0, NULL, 1, 2, '2016-07-06 14:58:36', 3, '2016-07-11 21:18:01'),
+(458, NULL, 'Quitéria Confecções', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, NULL, 458, '458-quiteria-confeccoes', 0, NULL, 1, 2, '2016-07-06 14:58:37', 2, '2016-07-11 21:18:01'),
+(459, NULL, 'Minas Propaganda', 'Novocnae', NULL, NULL, NULL, 2, 1, 0, NULL, 459, '459-minas-propaganda', 0, NULL, 1, 2, '2016-07-06 14:58:37', 2, '2016-07-11 21:18:01'),
+(460, NULL, 'Viação União', 'Transporte Rodoviário Coletivo De Passageiros Com Itinerário Fixo Municipal', NULL, NULL, NULL, 2, 1, 0, NULL, 460, '460-viacao-uniao', 0, NULL, 1, 2, '2016-07-06 14:58:38', 2, '2016-07-11 21:18:01'),
+(461, NULL, 'Armarinho Gonçalves', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 461, '461-armarinho-goncalves', 0, NULL, 1, 2, '2016-07-06 14:58:38', 2, '2016-07-11 21:18:01'),
+(462, NULL, 'Indústria E Comércio De Máquinas Polidryer', 'Fabricação De Máquinas E Equipamentos Para A Agricultura E Pecuária Peças E Acessórios Exceto Para Irrigação', NULL, NULL, NULL, 2, 1, 0, 0.00, 462, '462-industria-e-comercio-de-maquinas-polidryer', 0, NULL, 1, 2, '2016-07-06 14:58:39', 3, '2016-07-11 21:18:01'),
+(463, NULL, 'Coca Cola E Kaiser', 'Comércio Atacadista De Cerveja Chope E Refrigerante', NULL, NULL, NULL, 2, 1, 0, NULL, 463, '463-coca-cola-e-kaiser', 0, NULL, 1, 2, '2016-07-06 14:58:39', 3, '2016-07-11 21:18:01'),
+(464, NULL, 'Drogaria Nova Opção', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, NULL, 464, '464-drogaria-nova-opcao', 0, NULL, 1, 2, '2016-07-06 14:58:40', 2, '2016-07-11 21:18:01'),
+(465, NULL, 'Kadu Barman', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 465, '465-kadu-barman', 0, NULL, 1, 2, '2016-07-06 14:58:40', 3, '2016-07-11 21:18:01'),
+(466, NULL, 'Grupo Bms', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 466, '466-grupo-bms', 0, NULL, 1, 2, '2016-07-06 14:58:41', 3, '2016-07-11 21:18:01'),
+(467, NULL, 'Estilo Animal Pet Shop', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, NULL, 467, '467-estilo-animal-pet-shop', 0, NULL, 1, 2, '2016-07-06 14:58:41', 2, '2016-07-11 21:18:01'),
+(468, NULL, 'Distribuidora Bela Ischia', 'Comércio Varejista De Produtos Alimentícios Em Geral Ou Especializado Em Produtos Alimentícios Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 468, '468-distribuidora-bela-ischia', 0, NULL, 1, 2, '2016-07-06 14:58:41', 3, '2016-07-11 21:18:01'),
+(469, NULL, 'Viação Viçosa', 'Transporte Rodoviário Coletivo De Passageiros Com Itinerário Fixo Intermunicipal Exceto Em Região Metropolitana', NULL, NULL, NULL, 2, 1, 0, NULL, 469, '469-viacao-vicosa', 0, NULL, 1, 2, '2016-07-06 14:58:42', 2, '2016-07-11 21:18:01'),
+(470, NULL, 'Casa De Carne Novo Horizonte', 'Comércio Varejista De Carnes - Açougues', NULL, NULL, NULL, 2, 1, 0, NULL, 470, '470-casa-de-carne-novo-horizonte', 0, NULL, 1, 2, '2016-07-06 14:58:42', 3, '2016-07-11 21:18:01'),
+(471, NULL, 'Sabonete', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 471, '471-sabonete', 0, NULL, 1, 2, '2016-07-06 14:58:43', 2, '2016-07-11 21:18:01'),
+(472, NULL, 'Sabonete 02', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 472, '472-sabonete-02', 0, NULL, 1, 2, '2016-07-06 14:58:43', 2, '2016-07-11 21:18:01'),
+(473, NULL, 'Agrogenética', 'Atividades De Profissionais Da Área De Saúde Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 473, '473-agrogenetica', 0, NULL, 1, 2, '2016-07-06 14:58:44', 3, '2016-07-11 21:18:01'),
+(474, NULL, 'CPT Cursos Presenciais', 'Treinamento Em Desenvolvimento Profissional E Gerencial', NULL, NULL, NULL, 2, 1, 0, NULL, 474, '474-cpt-cursos-presenciais', 0, NULL, 1, 2, '2016-07-06 14:58:44', 2, '2016-07-11 21:18:01'),
+(475, NULL, 'Viçosa Clube', 'Clubes Sociais Esportivos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 475, '475-vicosa-clube', 0, NULL, 1, 2, '2016-07-06 14:58:45', 2, '2016-07-11 21:18:01'),
+(476, NULL, 'Mercadinho Nova Era', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 476, '476-mercadinho-nova-era', 0, NULL, 1, 2, '2016-07-06 14:58:45', 3, '2016-07-11 21:18:01'),
+(477, NULL, 'O Mapa Do Mundo', 'Agências De Viagens', NULL, NULL, NULL, 2, 1, 0, 0.00, 477, '477-o-mapa-do-mundo', 0, NULL, 1, 2, '2016-07-06 14:58:46', 3, '2016-07-11 21:18:01'),
+(478, NULL, 'Restaurante Trem Bão', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, 0.00, 478, '478-restaurante-trem-bao', 0, NULL, 1, 2, '2016-07-06 14:58:46', 3, '2016-07-11 21:18:01'),
+(479, NULL, 'Livraria Do Conhecimento', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 479, '479-livraria-do-conhecimento', 0, NULL, 1, 2, '2016-07-06 14:58:47', 3, '2016-07-11 21:18:01'),
+(480, NULL, 'Pele De Seda', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 480, '480-pele-de-seda', 0, NULL, 1, 2, '2016-07-06 14:58:47', 3, '2016-07-11 21:18:01'),
+(481, NULL, 'Mundo Dos Calçados', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 481, '481-mundo-dos-calcados', 0, NULL, 1, 2, '2016-07-06 14:58:48', 3, '2016-07-11 21:18:01'),
+(482, NULL, 'Sport E Pesca', 'Comércio Varejista De Artigos De Caça Pesca E Camping', NULL, NULL, NULL, 2, 1, 0, 0.00, 482, '482-sport-e-pesca', 0, NULL, 1, 2, '2016-07-06 14:58:48', 3, '2016-07-11 21:18:01'),
+(483, NULL, 'Eldorado Roupas & Calçados', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 483, '483-eldorado-roupas-calcados', 0, NULL, 1, 2, '2016-07-06 14:58:49', 3, '2016-07-11 21:18:01'),
+(484, NULL, 'Visual Das Noivas', 'Aluguel De Objetos Do Vestuário Jóias E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 484, '484-visual-das-noivas', 0, NULL, 1, 2, '2016-07-06 14:58:49', 2, '2016-07-11 21:18:01'),
+(485, NULL, 'Peta Peti Moda Baby E Infanto Juvenil', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 485, '485-peta-peti-moda-baby-e-infanto-juvenil', 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-11 21:18:01'),
+(486, NULL, 'Charme Mineiro', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 486, '486-charme-mineiro', 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-11 21:18:01'),
+(487, NULL, 'CPT Softwares', 'Suporte Técnico Manutenção E Outros Serviços Em Tecnologia Da Informação', NULL, NULL, NULL, 2, 1, 0, NULL, 487, '487-cpt-softwares', 0, NULL, 1, 2, '2016-07-06 14:58:50', 3, '2016-07-11 21:18:01'),
+(488, NULL, 'Orquídea Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 488, '488-orquidea-hotel', 0, NULL, 1, 2, '2016-07-06 14:58:51', 3, '2016-07-11 21:18:01'),
+(489, NULL, 'Casa Souza', 'Comércio Varejista De Tecidos', NULL, NULL, NULL, 2, 1, 0, NULL, 489, '489-casa-souza', 0, NULL, 1, 2, '2016-07-06 14:58:51', 2, '2016-07-11 21:18:01'),
+(490, NULL, 'Feminina', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 490, '490-feminina', 0, NULL, 1, 2, '2016-07-06 14:58:52', 3, '2016-07-11 21:18:01'),
+(491, NULL, 'Casa Do Queijo', 'Comércio Varejista De Laticínios E Frios', NULL, NULL, NULL, 2, 1, 0, NULL, 491, '491-casa-do-queijo', 0, NULL, 1, 2, '2016-07-06 14:58:52', 3, '2016-07-11 21:18:01'),
+(492, NULL, 'Darshan Estilo Indiano', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 492, '492-darshan-estilo-indiano', 0, NULL, 1, 2, '2016-07-06 14:58:53', 3, '2016-07-11 21:18:01'),
+(493, NULL, 'Elétrica Bicalho', 'Comércio Varejista De Material Elétrico', NULL, NULL, NULL, 2, 1, 0, 0.00, 493, '493-eletrica-bicalho', 0, NULL, 1, 2, '2016-07-06 14:58:53', 3, '2016-07-11 21:18:01'),
+(494, NULL, 'Laticínios Minas Colonial', 'Fabricação De Laticínios', NULL, NULL, NULL, 2, 1, 0, NULL, 494, '494-laticinios-minas-colonial', 0, NULL, 1, 2, '2016-07-06 14:58:54', 2, '2016-07-11 21:18:01'),
+(495, NULL, 'Dental Carneiro', 'Comércio Atacadista De Produtos Odontológicos', NULL, NULL, NULL, 2, 1, 0, NULL, 495, '495-dental-carneiro', 0, NULL, 1, 2, '2016-07-06 14:58:54', 3, '2016-07-11 21:18:01'),
+(496, NULL, 'Dap Florestal', 'Serviços De Engenharia', NULL, NULL, NULL, 2, 1, 0, NULL, 496, '496-dap-florestal', 0, NULL, 1, 2, '2016-07-06 14:58:55', 3, '2016-07-11 21:18:01'),
+(497, NULL, 'Hinode Cosmeticos', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 497, '497-hinode-cosmeticos', 0, NULL, 1, 2, '2016-07-06 14:58:55', 2, '2016-07-11 21:18:01'),
+(498, NULL, 'Tintas E Cia', 'Comércio Varejista De Tintas E Materiais Para Pintura', NULL, NULL, NULL, 2, 1, 0, 0.00, 498, '498-tintas-e-cia', 0, NULL, 1, 2, '2016-07-06 14:58:56', 3, '2016-07-11 21:18:01'),
+(499, NULL, 'Kaleb Car', 'Serviços De Manutenção E Reparação Mecânica De Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, 0.00, 499, '499-kaleb-car', 0, NULL, 1, 2, '2016-07-06 14:58:56', 3, '2016-07-11 21:18:01'),
+(500, NULL, '1 Tribunal De Justiça E Arbitragem', 'Atividades De Associações De Defesa De Direitos Sociais', NULL, NULL, NULL, 2, 1, 0, NULL, 500, '500-1-tribunal-de-justica-e-arbitragem', 0, NULL, 1, 2, '2016-07-06 14:58:57', 3, '2016-07-11 21:18:01'),
+(501, NULL, 'Roberta Finamore De Araújo', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, NULL, 501, '501-roberta-finamore-de-araujo', 0, NULL, 1, 2, '2016-07-06 14:58:57', 2, '2016-07-11 21:18:01'),
+(502, NULL, 'Mvc Empreendimentos Imobiliários', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, 0.00, 502, '502-mvc-empreendimentos-imobiliarios', 0, NULL, 1, 2, '2016-07-06 14:58:58', 3, '2016-07-11 21:18:01'),
+(503, NULL, 'Chequer & Cia Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 503, '503-chequer-cia-construtora', 0, NULL, 1, 2, '2016-07-06 14:58:58', 3, '2016-07-11 21:18:01'),
+(504, NULL, 'Micro Center', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 504, '504-micro-center', 0, NULL, 1, 2, '2016-07-06 14:58:59', 3, '2016-07-11 21:18:01'),
+(505, NULL, 'Sobrancelhas Design Viçosa', 'Outras Atividades De Tratamento De Beleza', NULL, NULL, NULL, 2, 1, 0, NULL, 505, '505-sobrancelhas-design-vicosa', 0, NULL, 1, 2, '2016-07-06 14:58:59', 2, '2016-07-11 21:18:01'),
+(506, NULL, 'Karak Rocha', 'Produção Musical', NULL, NULL, NULL, 2, 1, 0, NULL, 506, '506-karak-rocha', 0, NULL, 1, 2, '2016-07-06 14:59:00', 2, '2016-07-11 21:18:01'),
+(507, NULL, 'Maria & Antônio', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, 0.00, 507, '507-maria-antonio', 0, NULL, 1, 2, '2016-07-06 14:59:00', 3, '2016-07-11 21:18:01'),
+(508, NULL, 'BL Construtora', 'Construção De Edifícios', NULL, NULL, NULL, 2, 1, 0, NULL, 508, '508-bl-construtora', 0, NULL, 1, 2, '2016-07-06 14:59:01', 2, '2016-07-11 21:18:01'),
+(509, NULL, 'Arte Mecânica', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 509, '509-arte-mecanica', 0, NULL, 1, 2, '2016-07-06 14:59:01', 3, '2016-07-11 21:18:01'),
+(510, NULL, 'Mercado Bom Jesus', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 510, '510-mercado-bom-jesus', 0, NULL, 1, 2, '2016-07-06 14:59:02', 2, '2016-07-11 21:18:01'),
+(511, NULL, 'Villemix', 'Transporte Rodoviário De Carga Exceto Produtos Perigosos E Mudanças Intermunicipal Interestadual E Internacional', NULL, NULL, NULL, 2, 1, 0, NULL, 511, '511-villemix', 0, NULL, 1, 2, '2016-07-06 14:59:02', 2, '2016-07-11 21:18:01'),
+(512, NULL, 'José Antônio Da Silva Araújo', 'Profissional Liberal', NULL, NULL, NULL, 2, 1, 0, 0.00, 512, '512-jose-antonio-da-silva-araujo', 0, NULL, 1, 2, '2016-07-06 14:59:03', 3, '2016-07-11 21:18:01'),
+(513, NULL, 'Passo A Passo', 'Educação Infantil - Creche', NULL, NULL, NULL, 2, 1, 0, 0.00, 513, '513-passo-a-passo', 0, NULL, 1, 2, '2016-07-06 14:59:03', 3, '2016-07-11 21:18:01'),
+(514, NULL, 'Magistech', 'Atividades De Consultoria Em Gestão Empresarial Exceto Consultoria Técnica Específica', NULL, NULL, NULL, 2, 1, 0, 0.00, 514, '514-magistech', 0, NULL, 1, 2, '2016-07-06 14:59:04', 3, '2016-07-11 21:18:01'),
+(515, NULL, 'Saint Charbel Farmácia & Manipulação', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 515, '515-saint-charbel-farmacia-manipulacao', 0, NULL, 1, 2, '2016-07-06 14:59:04', 3, '2016-07-11 21:18:01'),
+(516, NULL, 'Armas E Cia', 'Chaveiros', NULL, NULL, NULL, 2, 1, 0, NULL, 516, '516-armas-e-cia', 0, NULL, 1, 2, '2016-07-06 14:59:05', 2, '2016-07-11 21:18:01'),
+(517, NULL, 'Estação Criança', 'Confecção De Peças Do Vestuário Exceto Roupas Íntimas E As Confeccionadas Sob Medida', NULL, NULL, NULL, 2, 1, 0, 0.00, 517, '517-estacao-crianca', 0, NULL, 1, 2, '2016-07-06 14:59:05', 3, '2016-07-11 21:18:01'),
+(518, NULL, 'Príncipe Hotel', 'Hotéis', NULL, NULL, NULL, 2, 1, 0, 0.00, 518, '518-principe-hotel', 0, NULL, 1, 2, '2016-07-06 14:59:06', 3, '2016-07-11 21:18:01'),
+(519, NULL, 'Vicocred', 'Atividades De Cobranças E Informações Cadastrais', NULL, NULL, NULL, 2, 1, 0, NULL, 519, '519-vicocred', 0, NULL, 1, 2, '2016-07-06 14:59:06', 2, '2016-07-11 21:18:01'),
+(520, NULL, 'Nova Mania', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 520, '520-nova-mania', 0, NULL, 1, 2, '2016-07-06 14:59:07', 3, '2016-07-11 21:18:01'),
+(521, NULL, 'Unopar', 'Outras Atividades De Ensino Não Especificadas Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 521, '521-unopar', 0, NULL, 1, 2, '2016-07-06 14:59:08', 3, '2016-07-11 21:18:01'),
+(522, NULL, 'Bons Sonhos Enxovais', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 522, '522-bons-sonhos-enxovais', 0, NULL, 1, 2, '2016-07-06 14:59:08', 3, '2016-07-11 21:18:01'),
+(523, NULL, 'Óptica Cia Dos Olhos', 'Comércio Varejista De Artigos De Óptica', NULL, NULL, NULL, 2, 1, 0, 0.00, 523, '523-optica-cia-dos-olhos', 0, NULL, 1, 2, '2016-07-06 14:59:09', 3, '2016-07-11 21:18:01'),
+(524, NULL, 'Bem Me Quer Modas', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 524, '524-bem-me-quer-modas', 0, NULL, 1, 2, '2016-07-06 14:59:09', 3, '2016-07-11 21:18:01'),
+(525, NULL, 'Puro Charme', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 525, '525-puro-charme', 0, NULL, 1, 2, '2016-07-06 14:59:10', 3, '2016-07-11 21:18:01'),
+(526, NULL, 'Vivo Duda Cell', 'Comércio Varejista Especializado De Equipamentos De Telefonia E Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 526, '526-vivo-duda-cell', 0, NULL, 1, 2, '2016-07-06 14:59:10', 2, '2016-07-11 21:18:01'),
+(527, NULL, 'Girassol Boutique', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 527, '527-girassol-boutique', 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-11 21:18:01'),
+(528, NULL, 'Moranguinho', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 528, '528-moranguinho', 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-11 21:18:01'),
+(529, NULL, 'Acessorium Bijuterias', 'Comércio Varejista De Suvenires Bijuterias E Artesanatos', NULL, NULL, NULL, 2, 1, 0, NULL, 529, '529-acessorium-bijuterias', 0, NULL, 1, 2, '2016-07-06 14:59:11', 3, '2016-07-11 21:18:01'),
+(530, NULL, 'Sr. A Granel', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 530, '530-sr-a-granel', 0, NULL, 1, 2, '2016-07-06 14:59:12', 3, '2016-07-11 21:18:01'),
+(531, NULL, 'Carolina Etz', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 531, '531-carolina-etz', 0, NULL, 1, 2, '2016-07-06 14:59:12', 3, '2016-07-11 21:18:01'),
+(532, NULL, 'Video Locadora Maciel', 'Distribuição Cinematográfica De Vídeo E De Programas De Televisão', NULL, NULL, NULL, 2, 1, 0, NULL, 532, '532-video-locadora-maciel', 0, NULL, 1, 2, '2016-07-06 14:59:13', 2, '2016-07-11 21:18:01'),
+(533, NULL, 'Quero Quero Brinquedos', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, NULL, 533, '533-quero-quero-brinquedos', 0, NULL, 1, 2, '2016-07-06 14:59:13', 2, '2016-07-11 21:18:01'),
+(534, NULL, 'Infomaster Viçosa', 'Instalação E Manutenção Elétrica', NULL, NULL, NULL, 2, 1, 0, 0.00, 534, '534-infomaster-vicosa', 0, NULL, 1, 2, '2016-07-06 14:59:14', 3, '2016-07-11 21:18:01'),
+(535, NULL, 'Hospital São João Batista', 'Atividades De Atendimento Em Pronto-Socorro E Unidades Hospitalares Para Atendimento A Urgências', NULL, NULL, NULL, 2, 1, 0, 0.00, 535, '535-hospital-sao-joao-batista', 0, NULL, 1, 2, '2016-07-06 14:59:14', 3, '2016-07-11 21:18:01'),
+(536, NULL, 'Kit Net Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 536, '536-kit-net-informatica', 0, NULL, 1, 2, '2016-07-06 14:59:15', 3, '2016-07-11 21:18:01'),
+(537, NULL, 'Centro Educacional Interativa', 'Educação Infantil - Creche', NULL, NULL, NULL, 2, 1, 0, NULL, 537, '537-centro-educacional-interativa', 0, NULL, 1, 2, '2016-07-06 14:59:15', 3, '2016-07-11 21:18:01'),
+(538, NULL, 'Hyperion Sport', 'Comércio Varejista De Artigos Esportivos', NULL, NULL, NULL, 2, 1, 0, 0.00, 538, '538-hyperion-sport', 0, NULL, 1, 2, '2016-07-06 14:59:16', 3, '2016-07-11 21:18:01'),
+(539, NULL, 'A3 Publicidade', 'Agenciamento De Espaços Para Publicidade Exceto Em Veículos De Comunicação', NULL, NULL, NULL, 2, 1, 0, NULL, 539, '539-a3-publicidade', 0, NULL, 1, 2, '2016-07-06 14:59:17', 2, '2016-07-11 21:18:01'),
+(540, NULL, 'Cirúrgica Viçosa', 'Comércio Varejista De Artigos Médicos E Ortopédicos', NULL, NULL, NULL, 2, 1, 0, NULL, 540, '540-cirurgica-vicosa', 0, NULL, 1, 2, '2016-07-06 14:59:17', 3, '2016-07-11 21:18:01'),
+(541, NULL, 'Funerária Vitarelli', 'Serviços De Funerárias', NULL, NULL, NULL, 2, 1, 0, NULL, 541, '541-funeraria-vitarelli', 0, NULL, 1, 2, '2016-07-06 14:59:18', 2, '2016-07-11 21:18:01'),
+(542, NULL, 'Informe Contabilidade', 'Tratamento De Dados Provedores De Serviços De Aplicação E Serviços De Hospedagem Na Internet', NULL, NULL, NULL, 2, 1, 0, 0.00, 542, '542-informe-contabilidade', 0, NULL, 1, 2, '2016-07-06 14:59:19', 3, '2016-07-11 21:18:01'),
+(543, NULL, 'Droga Nossa', 'Comércio Varejista De Produtos Farmacêuticos Sem Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 543, '543-droga-nossa', 0, NULL, 1, 2, '2016-07-06 14:59:19', 3, '2016-07-11 21:18:01'),
+(544, NULL, 'Espaço Animal', 'Comércio Varejista De Animais Vivos E De Artigos E Alimentos Para Animais De Estimação', NULL, NULL, NULL, 2, 1, 0, 0.00, 544, '544-espaco-animal', 0, NULL, 1, 2, '2016-07-06 14:59:20', 3, '2016-07-11 21:18:01'),
+(545, NULL, 'Brechó Infantil Cantinho Do Bebê', 'Comércio Varejista De Outros Artigos Usados', NULL, NULL, NULL, 2, 1, 0, NULL, 545, '545-brecho-infantil-cantinho-do-bebe', 0, NULL, 1, 2, '2016-07-06 14:59:20', 3, '2016-07-11 21:18:01'),
+(546, NULL, 'Hemolab', 'Laboratórios Clínicos', NULL, NULL, NULL, 2, 1, 0, 0.00, 546, '546-hemolab', 0, NULL, 1, 2, '2016-07-06 14:59:21', 3, '2016-07-11 21:18:01'),
+(547, NULL, 'Mercado E Padaria Mais', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, 0.00, 547, '547-mercado-e-padaria-mais', 0, NULL, 1, 2, '2016-07-06 14:59:21', 3, '2016-07-11 21:18:01'),
+(548, NULL, 'Cartório Silvestre', 'Cartórios', NULL, NULL, NULL, 2, 1, 0, NULL, 548, '548-cartorio-silvestre', 0, NULL, 1, 2, '2016-07-06 14:59:22', 2, '2016-07-11 21:18:01'),
+(549, NULL, 'Cachaças De Minas', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Minimercados Mercearias E Armazéns', NULL, NULL, NULL, 2, 1, 0, NULL, 549, '549-cachacas-de-minas', 0, NULL, 1, 2, '2016-07-06 14:59:22', 3, '2016-07-11 21:18:01'),
+(550, NULL, 'Auge Informática', 'Comércio Varejista Especializado De Equipamentos E Suprimentos De Informática', NULL, NULL, NULL, 2, 1, 0, NULL, 550, '550-auge-informatica', 0, NULL, 1, 2, '2016-07-06 14:59:23', 3, '2016-07-11 21:18:01'),
+(551, NULL, 'AS Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, NULL, 551, '551-as-sistemas', 0, NULL, 1, 2, '2016-07-06 14:59:23', 3, '2016-07-11 21:18:01'),
+(552, NULL, 'Auto Fusca Santa Rita', 'Comércio A Varejo De Peças E Acessórios Novos Para Veículos Automotores', NULL, NULL, NULL, 2, 1, 0, NULL, 552, '552-auto-fusca-santa-rita', 0, NULL, 1, 2, '2016-07-06 14:59:24', 3, '2016-07-11 21:18:01'),
+(553, NULL, 'Kamilla Esportes', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 553, '553-kamilla-esportes', 0, NULL, 1, 2, '2016-07-06 14:59:24', 3, '2016-07-11 21:18:01'),
+(554, NULL, 'Amantino Supermercado', 'Comércio Varejista De Mercadorias Em Geral Com Predominância De Produtos Alimentícios - Supermercados', NULL, NULL, NULL, 2, 1, 0, NULL, 554, '554-amantino-supermercado', 0, NULL, 1, 2, '2016-07-06 14:59:25', 3, '2016-07-11 21:18:01'),
+(555, NULL, 'Companhia Do Bebe', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, NULL, 555, '555-companhia-do-bebe', 0, NULL, 1, 2, '2016-07-06 14:59:25', 3, '2016-07-11 21:18:01'),
+(556, NULL, 'Univep Ensino Profissional', 'Treinamento Em Informática', NULL, NULL, NULL, 2, 1, 0, 0.00, 556, '556-univep-ensino-profissional', 0, NULL, 1, 2, '2016-07-06 14:59:26', 3, '2016-07-11 21:18:01'),
+(557, NULL, 'Luciana Jung Cerimonial E Eventos', 'Serviços De Organização De Feiras Congressos Exposições E Festas', NULL, NULL, NULL, 2, 1, 0, 0.00, 557, '557-luciana-jung-cerimonial-e-eventos', 0, NULL, 1, 2, '2016-07-06 14:59:27', 3, '2016-07-11 21:18:01'),
+(558, NULL, 'Sonalle - Bolos E Doces', 'Padaria E Confeitaria Com Predominância De Revenda', NULL, NULL, NULL, 2, 1, 0, 0.00, 558, '558-sonalle-bolos-e-doces', 0, NULL, 1, 2, '2016-07-06 14:59:27', 3, '2016-07-11 21:18:01'),
+(559, NULL, 'Cedrus Gastronomia', 'Restaurantes E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 559, '559-cedrus-gastronomia', 0, NULL, 1, 2, '2016-07-06 14:59:28', 3, '2016-07-11 21:18:01'),
+(560, NULL, 'Foto Viçosa', 'Atividades De Produção De Fotografias Exceto Aérea E Submarina', NULL, NULL, NULL, 2, 1, 0, NULL, 560, '560-foto-vicosa', 0, NULL, 1, 2, '2016-07-06 14:59:29', 2, '2016-07-11 21:18:01'),
+(561, NULL, 'Convite Real', 'Fabricação De Produtos De Pastas Celulósicas Papel Cartolina Papel-Cartão E Papelão Ondulado Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 561, '561-convite-real', 0, NULL, 1, 2, '2016-07-06 14:59:29', 3, '2016-07-11 21:18:01'),
+(562, NULL, 'Casa Do Frango', 'Abate De Aves', NULL, NULL, NULL, 2, 1, 0, NULL, 562, '562-casa-do-frango', 0, NULL, 1, 2, '2016-07-06 14:59:30', 3, '2016-07-11 21:18:01'),
+(563, NULL, 'Vivenda Naturales', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 563, '563-vivenda-naturales', 0, NULL, 1, 2, '2016-07-06 14:59:31', 2, '2016-07-11 21:18:01'),
+(564, NULL, 'Rivelli Shoes', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, 0.00, 564, '564-rivelli-shoes', 0, NULL, 1, 2, '2016-07-06 14:59:31', 3, '2016-07-11 21:18:01'),
+(565, NULL, 'Mil Pecas', 'Comércio Varejista De Outros Artigos De Uso Doméstico Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, 0.00, 565, '565-mil-pecas', 0, NULL, 1, 2, '2016-07-06 14:59:32', 3, '2016-07-11 21:18:01'),
+(566, NULL, 'Rivelli', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 566, '566-rivelli', 0, NULL, 1, 2, '2016-07-06 14:59:32', 3, '2016-07-11 21:18:01'),
+(567, NULL, 'Frigor Alimentos', 'Fabricação De Produtos De Carne', NULL, NULL, NULL, 2, 1, 0, 0.00, 567, '567-frigor-alimentos', 0, NULL, 1, 2, '2016-07-06 14:59:33', 3, '2016-07-11 21:18:01'),
+(568, NULL, 'Hyperion Casual', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 568, '568-hyperion-casual', 0, NULL, 1, 2, '2016-07-06 14:59:34', 3, '2016-07-11 21:18:01'),
+(569, NULL, 'Sicoob Coopemata', 'Cooperativas De Crédito Mútuo', NULL, NULL, NULL, 2, 1, 0, 0.00, 569, '569-sicoob-coopemata', 0, NULL, 1, 2, '2016-07-06 14:59:34', 3, '2016-07-11 21:18:01'),
+(570, NULL, 'Ifour Sistemas', 'Desenvolvimento E Licenciamento De Programas De Computador Não-Customizáveis', NULL, NULL, NULL, 2, 1, 0, 0.00, 570, '570-ifour-sistemas', 0, NULL, 1, 2, '2016-07-06 14:59:35', 3, '2016-07-11 21:18:01'),
+(571, NULL, 'Livraria E Papelaria Nobel (Praça Silviano Brandão)', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, NULL, 571, '571-livraria-e-papelaria-nobel-praca-silviano-brandao', 0, NULL, 1, 2, '2016-07-06 14:59:35', 2, '2016-07-11 21:18:01'),
+(572, NULL, 'Zammir Digital', 'Comércio Varejista De Outros Produtos Não Especificados Anteriormente', NULL, NULL, NULL, 2, 1, 0, NULL, 572, '572-zammir-digital', 0, NULL, 1, 2, '2016-07-06 14:59:36', 2, '2016-07-11 21:18:01'),
+(573, NULL, 'T & G', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 573, '573-t-g', 0, NULL, 1, 2, '2016-07-06 14:59:36', 3, '2016-07-11 21:18:01'),
+(574, NULL, 'Livraria E Papelaria Nobel (Praça Do Rosário)', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 574, '574-livraria-e-papelaria-nobel-praca-do-rosario', 0, NULL, 1, 2, '2016-07-06 14:59:37', 3, '2016-07-11 21:18:01'),
+(575, NULL, 'Le Parfum', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, 0.00, 575, '575-le-parfum', 0, NULL, 1, 2, '2016-07-06 14:59:37', 3, '2016-07-11 21:18:01'),
+(576, NULL, 'Nobel Livraria E Papelaria', 'Comércio Varejista De Livros', NULL, NULL, NULL, 2, 1, 0, 0.00, 576, '576-nobel-livraria-e-papelaria', 0, NULL, 1, 2, '2016-07-06 14:59:38', 3, '2016-07-11 21:18:01'),
+(577, NULL, 'Manipulart', 'Comércio Varejista De Produtos Farmacêuticos Com Manipulação De Fórmulas', NULL, NULL, NULL, 2, 1, 0, 0.00, 577, '577-manipulart', 0, NULL, 1, 2, '2016-07-06 14:59:38', 3, '2016-07-11 21:18:01'),
+(578, NULL, 'Nativa Imobiliária', 'Gestão E Administração Da Propriedade Imobiliária', NULL, NULL, NULL, 2, 1, 0, 0.00, 578, '578-nativa-imobiliaria', 0, NULL, 1, 2, '2016-07-06 14:59:39', 3, '2016-07-11 21:18:01'),
+(579, NULL, 'Mundial For Men', 'Comércio Varejista De Calçados', NULL, NULL, NULL, 2, 1, 0, NULL, 579, '579-mundial-for-men', 0, NULL, 1, 2, '2016-07-06 14:59:39', 2, '2016-07-11 21:18:01'),
+(580, NULL, 'Lazuli', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 580, '580-lazuli', 0, NULL, 1, 2, '2016-07-06 14:59:40', 3, '2016-07-11 21:18:01'),
+(581, NULL, 'Mundi Center', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 581, '581-mundi-center', 0, NULL, 1, 2, '2016-07-06 14:59:40', 3, '2016-07-11 21:18:01'),
+(582, NULL, 'Aconchego Enxovais', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 582, '582-aconchego-enxovais', 0, NULL, 1, 2, '2016-07-06 14:59:41', 3, '2016-07-11 21:18:01'),
+(583, NULL, 'Casa Maciel', 'Comércio Varejista De Artigos De Cama Mesa E Banho', NULL, NULL, NULL, 2, 1, 0, NULL, 583, '583-casa-maciel', 0, NULL, 1, 2, '2016-07-06 14:59:42', 3, '2016-07-11 21:18:01'),
+(584, NULL, 'Cido Viçosa', 'Serviços De Diagnóstico Por Imagem Com Uso De Radiação Ionizante Exceto Tomografia', NULL, NULL, NULL, 2, 1, 0, NULL, 584, '584-cido-vicosa', 0, NULL, 1, 2, '2016-07-06 14:59:42', 3, '2016-07-11 21:18:01'),
+(585, NULL, 'Fios E Formas', 'Comércio Varejista De Artigos De Armarinho', NULL, NULL, NULL, 2, 1, 0, 0.00, 585, '585-fios-e-formas', 0, NULL, 1, 2, '2016-07-06 14:59:43', 3, '2016-07-11 21:18:01'),
+(586, NULL, 'Wed Atel', 'Comércio Varejista Especializado De Eletrodomésticos E Equipamentos De Áudio E Vídeo', NULL, NULL, NULL, 2, 1, 0, NULL, 586, '586-wed-atel', 0, NULL, 1, 2, '2016-07-06 14:59:43', 2, '2016-07-11 21:18:01'),
+(587, NULL, 'O Boticário', 'Comércio Varejista De Cosméticos Produtos De Perfumaria E De Higiene Pessoal', NULL, NULL, NULL, 2, 1, 0, NULL, 587, '587-o-boticario', 0, NULL, 1, 2, '2016-07-06 14:59:44', 2, '2016-07-11 21:18:01'),
+(588, NULL, 'Armarinho Do Antônio', 'Comércio Varejista De Brinquedos E Artigos Recreativos', NULL, NULL, NULL, 2, 1, 0, NULL, 588, '588-armarinho-do-antonio', 0, NULL, 1, 2, '2016-07-06 14:59:44', 2, '2016-07-11 21:18:01'),
+(589, NULL, 'Family Store', 'Comércio Varejista De Artigos Do Vestuário E Acessórios', NULL, NULL, NULL, 2, 1, 0, 0.00, 589, '589-family-store', 0, NULL, 1, 2, '2016-07-06 14:59:45', 3, '2016-07-11 21:18:01'),
+(590, NULL, 'Açaí Mix Mais', 'Lanchonetes Casas De Chá De Sucos E Similares', NULL, NULL, NULL, 2, 1, 0, NULL, 590, '590-acai-mix-mais', 0, NULL, 1, 2, '2016-07-06 14:59:45', 3, '2016-07-11 21:18:01');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instituicao_contato`
+-- Estrutura da tabela `instituicao_contato`
 --
 
 CREATE TABLE IF NOT EXISTS `instituicao_contato` (
@@ -8368,7 +8370,7 @@ CREATE TABLE IF NOT EXISTS `instituicao_contato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instituicao_contato`
+-- Extraindo dados da tabela `instituicao_contato`
 --
 
 INSERT INTO `instituicao_contato` (`instituicao`, `contato`) VALUES
@@ -8961,7 +8963,7 @@ INSERT INTO `instituicao_contato` (`instituicao`, `contato`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instituicao_segmento`
+-- Estrutura da tabela `instituicao_segmento`
 --
 
 CREATE TABLE IF NOT EXISTS `instituicao_segmento` (
@@ -8973,7 +8975,7 @@ CREATE TABLE IF NOT EXISTS `instituicao_segmento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instituicao_segmento`
+-- Extraindo dados da tabela `instituicao_segmento`
 --
 
 INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
@@ -9054,8 +9056,10 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (82, 4),
 (83, 4),
 (84, 4),
+(86, 32),
 (87, 4),
 (88, 4),
+(89, 9),
 (90, 20),
 (92, 3),
 (92, 14),
@@ -9064,6 +9068,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (94, 32),
 (95, 12),
 (95, 22),
+(96, 26),
 (97, 4),
 (99, 6),
 (101, 5),
@@ -9072,6 +9077,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (104, 18),
 (105, 14),
 (106, 13),
+(107, 13),
 (108, 4),
 (109, 2),
 (110, 17),
@@ -9111,6 +9117,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (151, 20),
 (152, 20),
 (153, 7),
+(154, 13),
 (155, 7),
 (157, 10),
 (158, 10),
@@ -9125,6 +9132,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (169, 7),
 (170, 6),
 (171, 3),
+(172, 14),
 (173, 4),
 (173, 32),
 (174, 32),
@@ -9132,7 +9140,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (177, 19),
 (181, 17),
 (184, 20),
+(185, 11),
 (186, 4),
+(187, 14),
 (188, 2),
 (190, 32),
 (191, 2),
@@ -9150,18 +9160,23 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (204, 1),
 (205, 32),
 (207, 21),
+(208, 10),
+(209, 14),
 (210, 4),
 (211, 10),
 (212, 8),
 (213, 28),
 (214, 28),
 (216, 6),
+(217, 28),
+(220, 22),
 (221, 11),
 (222, 28),
 (223, 8),
 (224, 31),
 (225, 14),
 (226, 8),
+(227, 8),
 (229, 10),
 (230, 31),
 (231, 10),
@@ -9189,7 +9204,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (257, 8),
 (258, 21),
 (259, 23),
+(260, 8),
 (261, 31),
+(262, 8),
 (263, 9),
 (264, 8),
 (265, 8),
@@ -9214,6 +9231,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (287, 28),
 (288, 25),
 (289, 8),
+(291, 9),
 (293, 8),
 (295, 9),
 (297, 8),
@@ -9222,7 +9240,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (300, 8),
 (301, 28),
 (302, 8),
+(303, 10),
 (304, 32),
+(305, 16),
 (306, 8),
 (307, 17),
 (308, 10),
@@ -9231,7 +9251,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (313, 21),
 (315, 8),
 (316, 32),
+(317, 14),
 (318, 28),
+(319, 13),
 (320, 10),
 (321, 8),
 (322, 31),
@@ -9242,11 +9264,16 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (330, 29),
 (332, 21),
 (333, 4),
+(334, 14),
 (335, 32),
+(336, 4),
 (337, 4),
+(338, 4),
 (339, 6),
 (339, 21),
+(340, 9),
 (341, 7),
+(342, 6),
 (343, 9),
 (344, 7),
 (345, 4),
@@ -9261,6 +9288,8 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (356, 8),
 (357, 18),
 (358, 29),
+(359, 2),
+(359, 20),
 (364, 32),
 (365, 9),
 (366, 20),
@@ -9309,6 +9338,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (412, 23),
 (414, 6),
 (415, 7),
+(416, 17),
 (417, 9),
 (418, 23),
 (419, 6),
@@ -9330,7 +9360,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (440, 24),
 (441, 9),
 (442, 20),
+(443, 10),
 (445, 16),
+(446, 22),
 (447, 23),
 (448, 7),
 (451, 17),
@@ -9355,6 +9387,8 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (479, 17),
 (480, 8),
 (481, 8),
+(482, 8),
+(482, 30),
 (483, 8),
 (485, 7),
 (486, 6),
@@ -9366,6 +9400,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (493, 32),
 (495, 10),
 (496, 2),
+(498, 32),
 (499, 4),
 (502, 2),
 (502, 32),
@@ -9381,6 +9416,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (517, 8),
 (518, 5),
 (520, 8),
+(521, 9),
 (522, 28),
 (523, 31),
 (524, 8),
@@ -9388,6 +9424,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (527, 8),
 (528, 8),
 (529, 8),
+(530, 14),
 (531, 8),
 (534, 32),
 (535, 10),
@@ -9412,7 +9449,10 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (553, 30),
 (554, 14),
 (555, 8),
+(556, 9),
 (557, 19),
+(558, 6),
+(558, 21),
 (559, 6),
 (561, 17),
 (562, 14),
@@ -9421,7 +9461,9 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 (566, 8),
 (567, 6),
 (568, 8),
+(569, 11),
 (570, 13),
+(573, 8),
 (574, 9),
 (574, 17),
 (575, 10),
@@ -9441,7 +9483,7 @@ INSERT INTO `instituicao_segmento` (`instituicao`, `segmento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membro`
+-- Estrutura da tabela `membro`
 --
 
 CREATE TABLE IF NOT EXISTS `membro` (
@@ -9456,7 +9498,7 @@ CREATE TABLE IF NOT EXISTS `membro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `membro`
+-- Extraindo dados da tabela `membro`
 --
 
 INSERT INTO `membro` (`usuario`, `instituicao`, `papel`, `ativo`) VALUES
@@ -9466,7 +9508,7 @@ INSERT INTO `membro` (`usuario`, `instituicao`, `papel`, `ativo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mensagemTipo`
+-- Estrutura da tabela `mensagemTipo`
 --
 
 CREATE TABLE IF NOT EXISTS `mensagemTipo` (
@@ -9477,7 +9519,7 @@ CREATE TABLE IF NOT EXISTS `mensagemTipo` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `mensagemTipo`
+-- Extraindo dados da tabela `mensagemTipo`
 --
 
 INSERT INTO `mensagemTipo` (`id`, `nome`, `descricao`) VALUES
@@ -9490,7 +9532,7 @@ INSERT INTO `mensagemTipo` (`id`, `nome`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notificacao`
+-- Estrutura da tabela `notificacao`
 --
 
 CREATE TABLE IF NOT EXISTS `notificacao` (
@@ -9512,7 +9554,7 @@ CREATE TABLE IF NOT EXISTS `notificacao` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notificacao_permissao`
+-- Estrutura da tabela `notificacao_permissao`
 --
 
 CREATE TABLE IF NOT EXISTS `notificacao_permissao` (
@@ -9526,7 +9568,7 @@ CREATE TABLE IF NOT EXISTS `notificacao_permissao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `notificacao_permissao`
+-- Extraindo dados da tabela `notificacao_permissao`
 --
 
 INSERT INTO `notificacao_permissao` (`destinatarioTipo`, `mensagemTipo`, `papel`) VALUES
@@ -9569,7 +9611,7 @@ INSERT INTO `notificacao_permissao` (`destinatarioTipo`, `mensagemTipo`, `papel`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oferta`
+-- Estrutura da tabela `oferta`
 --
 
 CREATE TABLE IF NOT EXISTS `oferta` (
@@ -9583,7 +9625,7 @@ CREATE TABLE IF NOT EXISTS `oferta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pagamento`
+-- Estrutura da tabela `pagamento`
 --
 
 CREATE TABLE IF NOT EXISTS `pagamento` (
@@ -9600,7 +9642,7 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `papel`
+-- Estrutura da tabela `papel`
 --
 
 CREATE TABLE IF NOT EXISTS `papel` (
@@ -9614,7 +9656,7 @@ CREATE TABLE IF NOT EXISTS `papel` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `papel`
+-- Extraindo dados da tabela `papel`
 --
 
 INSERT INTO `papel` (`id`, `regra`, `nome`, `descricao`, `pai`) VALUES
@@ -9630,7 +9672,7 @@ INSERT INTO `papel` (`id`, `regra`, `nome`, `descricao`, `pai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plano`
+-- Estrutura da tabela `plano`
 --
 
 CREATE TABLE IF NOT EXISTS `plano` (
@@ -9643,7 +9685,7 @@ CREATE TABLE IF NOT EXISTS `plano` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plano_funcionalidade`
+-- Estrutura da tabela `plano_funcionalidade`
 --
 
 CREATE TABLE IF NOT EXISTS `plano_funcionalidade` (
@@ -9656,7 +9698,7 @@ CREATE TABLE IF NOT EXISTS `plano_funcionalidade` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pontuacao`
+-- Estrutura da tabela `pontuacao`
 --
 
 CREATE TABLE IF NOT EXISTS `pontuacao` (
@@ -9671,13 +9713,14 @@ CREATE TABLE IF NOT EXISTS `pontuacao` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produto`
+-- Estrutura da tabela `produto`
 --
 
 CREATE TABLE IF NOT EXISTS `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `descricao` text NOT NULL,
+  `canonico` varchar(250) NOT NULL,
   `preco` decimal(10,2) DEFAULT NULL,
   `ean` varchar(13) DEFAULT NULL,
   `instituicao` int(11) NOT NULL,
@@ -9686,6 +9729,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `modificadoPor` int(11) NOT NULL,
   `dataModificacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `canonico` (`canonico`),
   KEY `instituicao` (`instituicao`),
   KEY `fk_usuarioid_produto_criadopor` (`criadoPor`) USING BTREE,
   KEY `fk_usuarioid_produto_modificadopor` (`modificadoPor`) USING BTREE
@@ -9694,13 +9738,14 @@ CREATE TABLE IF NOT EXISTS `produto` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promocao`
+-- Estrutura da tabela `promocao`
 --
 
 CREATE TABLE IF NOT EXISTS `promocao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `descricao` text NOT NULL,
+  `canonico` varchar(250) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataFim` date NOT NULL,
   `publicada` tinyint(1) NOT NULL DEFAULT '0',
@@ -9710,6 +9755,7 @@ CREATE TABLE IF NOT EXISTS `promocao` (
   `modificadoPor` int(11) NOT NULL,
   `dataModificacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `canonico` (`canonico`),
   KEY `instituicao` (`instituicao`),
   KEY `fk_usuarioid_promocao_criadopor` (`criadoPor`),
   KEY `fk_usuarioid_promocao_modificadopor` (`modificadoPor`)
@@ -9718,7 +9764,7 @@ CREATE TABLE IF NOT EXISTS `promocao` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promocao_oferta`
+-- Estrutura da tabela `promocao_oferta`
 --
 
 CREATE TABLE IF NOT EXISTS `promocao_oferta` (
@@ -9732,60 +9778,63 @@ CREATE TABLE IF NOT EXISTS `promocao_oferta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `segmento`
+-- Estrutura da tabela `segmento`
 --
 
 CREATE TABLE IF NOT EXISTS `segmento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `descricao` text NOT NULL,
+  `canonico` varchar(250) NOT NULL,
   `icone` int(11) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `canonico` (`canonico`),
   KEY `icone` (`icone`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
--- Dumping data for table `segmento`
+-- Extraindo dados da tabela `segmento`
 --
 
-INSERT INTO `segmento` (`id`, `nome`, `descricao`, `icone`) VALUES
-(1, 'Casas Agropecuárias', 'Casas Agropecuárias, Produtos e Maquinários Agrícolas', 112),
-(2, 'Engenharia', 'Empresas prestadoras de Serviços de Engenharia', 138),
-(3, 'Floriculturas e Jardinagem', 'Floriculturas, Decoradoras e Jardinagem', 408),
-(4, 'Oficinas, Máquinas e Peças', 'Oficinas Mecânicas, Auto-Peças, Lojas de Máquinas, Equipamentos, Alinhamento e Balanceamento', 178),
-(5, 'Hospedagem', 'Hotéis, Pousadas, Pensões e Hostels', 592),
-(6, 'Alimentação', 'Restaurantes, Lanchonetes, Sorveterias, Açaí, Traillers, Pizzarias e Buffet', 248),
-(7, 'Imóveis', 'Imóveis para Locação, Compra e Venda', 250),
-(8, 'Vestuário', 'Roupas, Calçados e Acessórios Masculinos e Femininos', 566),
-(9, 'Educação', 'Escolas, Faculdades, Universidades, Cursinhos e Idiomas', 428),
-(10, 'Saúde', 'Profissionais das áreas Médicas, Odontológicas, Nutrição, Fisioterapia, Hospitais e Farmácias', 243),
-(11, 'Seguradoras e Finanças', 'Seguradoras, Bancos, Financiadoras e Casas Lotéricas', 346),
-(12, 'Transportes', 'Transporte Público, Táxis, Vans e Ônibus para Locação', 547),
-(13, 'Tecnologia da Informação', 'Empresas de Tecnologia da Informação', 266),
-(14, 'Atacado e Varejo', 'Supermecados, Mercearias, Sacolões, Hortifrutigranjeiros, Açougues e Peixarias', 126),
-(15, 'Turismo e Lazer', 'Agências de Turismo, Clubes', 667),
-(16, 'Distribuidoras', 'Distribuidores de Bebidas, Gás e Água', 443),
-(17, 'Papelarias, Gráficas e Editoras', 'Papelarias, Gráficas, Xerox e Editoras', 47),
-(18, 'Academias e Produtos Afins', 'Academias, Pilates, Lojas de Suplementação Alimentar e de Produtos Naturais', 445),
-(19, 'Festas e Eventos', 'Organizações promotoras de Festas e Eventos em geral', 1),
-(20, 'Profissionais Liberais', 'Advogados, Consultores, Escritórios de Contabilidade e demais Profissionais Liberais', 673),
-(21, 'Cafés e Padarias', 'Cafés e Padarias', 247),
-(22, 'Transportadoras e Locação', 'Transportadoras e empresas de Locação de Automóveis, Furgões e Caminhões', 206),
-(23, 'Informática e Celulares', 'Equipamentos, Manutenção de Computadores e Celulares', 521),
-(24, 'Pet Shop e Veterinários', 'Médicos Veterinários, Pet Shop, Ração', 446),
-(25, 'Cabeleireiro', 'Salões de Beleza e Barbearias', 189),
-(26, 'Bares, Boates e Pub''s', 'Bares, Boates, Danceterias, Casas Noturnas e Pub''s', 255),
-(27, 'Lojas de Bicicletas', 'Lojas de Bicicletas, Oficinas e Peças', 546),
-(28, 'Artigos para o Lar', 'Cama, Mesa e Banho, Móveis e Eletrodomésticos', 24),
-(29, 'Autoescolas', 'Autoescolas e Treinamento para Habilitados', 455),
-(30, 'Artigos Esportivos', 'Lojas de Artigos Esportivos', 512),
-(31, 'Óticas', 'Óticas', 114),
-(32, 'Construção e Acabamentos', 'Marmorarias, Materiais de Construção, Elétricos, Hidráulicos e Acabamentos', 444);
+INSERT INTO `segmento` (`id`, `nome`, `descricao`, `canonico`, `icone`, `ativo`) VALUES
+(1, 'Casas Agropecuárias', 'Casas Agropecuárias, Produtos e Maquinários Agrícolas', '1-casas-agropecuarias', 112, 1),
+(2, 'Engenharia', 'Empresas prestadoras de Serviços de Engenharia', '2-engenharia', 138, 1),
+(3, 'Floriculturas e Jardinagem', 'Floriculturas, Decoradoras e Jardinagem', '3-floriculturas-e-jardinagem', 408, 1),
+(4, 'Oficinas, Máquinas e Peças', 'Oficinas Mecânicas, Auto-Peças, Lojas de Máquinas, Equipamentos, Alinhamento e Balanceamento', '4-oficinas-maquinas-e-pecas', 178, 1),
+(5, 'Hospedagem', 'Hotéis, Pousadas, Pensões e Hostels', '5-hospedagem', 592, 1),
+(6, 'Alimentação', 'Restaurantes, Lanchonetes, Sorveterias, Açaí, Traillers, Pizzarias e Buffet', '6-alimentacao', 248, 1),
+(7, 'Imóveis', 'Imóveis para Locação, Compra e Venda', '7-imoveis', 250, 1),
+(8, 'Vestuário', 'Roupas, Calçados e Acessórios Masculinos e Femininos', '8-vestuario', 566, 1),
+(9, 'Educação', 'Escolas, Faculdades, Universidades, Cursinhos e Idiomas', '9-educacao', 428, 1),
+(10, 'Saúde', 'Profissionais das áreas Médicas, Odontológicas, Nutrição, Fisioterapia, Hospitais e Farmácias', '10-saude', 243, 1),
+(11, 'Seguradoras e Finanças', 'Seguradoras, Bancos, Financiadoras e Casas Lotéricas', '11-seguradoras-e-financas', 346, 1),
+(12, 'Transportes', 'Transporte Público, Táxis, Vans e Ônibus para Locação', '12-transportes', 547, 1),
+(13, 'Tecnologia da Informação', 'Empresas de Tecnologia da Informação', '13-tecnologia-da-informacao', 266, 1),
+(14, 'Atacado e Varejo', 'Supermecados, Mercearias, Sacolões, Hortifrutigranjeiros, Açougues e Peixarias', '14-atacado-e-varejo', 126, 1),
+(15, 'Turismo e Lazer', 'Agências de Turismo, Clubes', '15-turismo-e-lazer', 667, 1),
+(16, 'Distribuidoras', 'Distribuidores de Bebidas, Gás e Água', '16-distribuidoras', 443, 1),
+(17, 'Papelarias, Gráficas e Editoras', 'Papelarias, Gráficas, Xerox e Editoras', '17-papelarias-graficas-e-editoras', 47, 1),
+(18, 'Academias e Produtos Afins', 'Academias, Pilates, Lojas de Suplementação Alimentar e de Produtos Naturais', '18-academias-e-produtos-afins', 445, 1),
+(19, 'Festas e Eventos', 'Organizações promotoras de Festas e Eventos em geral', '19-festas-e-eventos', 1, 1),
+(20, 'Profissionais Liberais', 'Advogados, Consultores, Escritórios de Contabilidade e demais Profissionais Liberais', '20-profissionais-liberais', 673, 1),
+(21, 'Cafés e Padarias', 'Cafés e Padarias', '21-cafes-e-padarias', 247, 1),
+(22, 'Transportadoras e Locação', 'Transportadoras e empresas de Locação de Automóveis, Furgões e Caminhões', '22-transportadoras-e-locacao', 206, 1),
+(23, 'Informática e Celulares', 'Equipamentos, Manutenção de Computadores e Celulares', '23-informatica-e-celulares', 521, 1),
+(24, 'Pet Shop e Veterinários', 'Médicos Veterinários, Pet Shop, Ração', '24-pet-shop-e-veterinarios', 446, 1),
+(25, 'Cabeleireiro', 'Salões de Beleza e Barbearias', '25-cabeleireiro', 189, 1),
+(26, 'Bares, Boates e Pub''s', 'Bares, Boates, Danceterias, Casas Noturnas e Pub''s', '26-bares-boates-e-pub-s', 255, 1),
+(27, 'Lojas de Bicicletas', 'Lojas de Bicicletas, Oficinas e Peças', '27-lojas-de-bicicletas', 546, 1),
+(28, 'Artigos para o Lar', 'Cama, Mesa e Banho, Móveis e Eletrodomésticos', '28-artigos-para-o-lar', 24, 1),
+(29, 'Autoescolas', 'Autoescolas e Treinamento para Habilitados', '29-autoescolas', 455, 1),
+(30, 'Artigos Esportivos', 'Lojas de Artigos Esportivos', '30-artigos-esportivos', 512, 1),
+(31, 'Óticas', 'Óticas', '31-oticas', 114, 1),
+(32, 'Construção e Acabamentos', 'Marmorarias, Materiais de Construção, Elétricos, Hidráulicos e Acabamentos', '32-construcao-e-acabamentos', 444, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seguidor`
+-- Estrutura da tabela `seguidor`
 --
 
 CREATE TABLE IF NOT EXISTS `seguidor` (
@@ -9798,18 +9847,19 @@ CREATE TABLE IF NOT EXISTS `seguidor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `seguidor`
+-- Extraindo dados da tabela `seguidor`
 --
 
 INSERT INTO `seguidor` (`usuario`, `instituicao`, `seguindo`) VALUES
 (1, 1, 1),
+(2, 93, 0),
 (3, 1, 0),
 (3, 93, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -9829,19 +9879,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `token`, `registrationId`, `administrador`, `ativo`, `dataCriacao`, `dataModificacao`) VALUES
 (1, 'Cleverson', 'trevenzolicleverson@gmail.com', '7bdf434019945eca05c4fb505d653972', '6e09825dec8e955e7f0d824827ee0887', 'fwREZOTwMas:APA91bGYRCwOSWRbotxA-2fpzdRY5pfKSDy3_FuWXExs0aLUcjTsuElF7k1V6pw-QDNSB_SpteYT_GeRpesX28UOndFFbmh7_2EYXq5jgKUsw_nORRbceklRkciHWeTer6Z8NtKHNH75', 1, 1, '2016-06-26 16:00:00', '2016-06-26 16:00:00'),
-(2, 'Pedro', 'pams.pedro@gmail.com', '4ab257c2faf325ba0ac9332fe4e56700', '63f63119e9893fd0556443b508c83002', 'dkdP1MmckhY:APA91bEJrQJtKxT_Z7Yv7EKNiGdjvsJgu1z8p7IY8UFF4cYmtSvw0-WL2nhMOX96n1e6L6Nc6Q4KSygX_9VgKNJXsF5NhHVYfj1a_LXCK1p4EULQy5olR8ddZriH1WkrioHfc-1DhPQM', 1, 1, '2016-06-26 16:00:00', '2016-06-26 16:00:00'),
+(2, 'Pedro', 'pams.pedro@gmail.com', '4ab257c2faf325ba0ac9332fe4e56700', '63f63119e9893fd0556443b508c83002', 'fNCzKFypOEQ:APA91bGvag8coj2NDjIJmlDoS_0uA6rmWzfAAUfTcFYzXW3lwOnq386Haw7kaL0q3iH_psYJeKmP4LR9E0NLRWgckXIhTITv9UgBUq0WUC9PnjYEXYMx7AFzbnMffFrW874wIce6iren', 1, 1, '2016-06-26 16:00:00', '2016-06-26 16:00:00'),
 (3, 'Ruan', 'ruan.coop@gmail.com', '698dc19d489c4e4db73e28a713eab07b', '4ab8365293b0eed34d198eccde861810', NULL, 0, 1, '2016-06-26 16:00:00', '2016-06-26 16:00:00'),
 (4, 'Diego', 'paradiegoso@gmail.com', '9cd26d98e1b3ba3d28a8ceade3a7a361', '608f0290f956072a1361bfa44fdddc20', NULL, 1, 1, '2016-06-26 16:00:00', '2016-06-26 16:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `versionamento`
+-- Estrutura da tabela `versionamento`
 --
 
 CREATE TABLE IF NOT EXISTS `versionamento` (
@@ -9856,7 +9906,7 @@ CREATE TABLE IF NOT EXISTS `versionamento` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `versionamento`
+-- Extraindo dados da tabela `versionamento`
 --
 
 INSERT INTO `versionamento` (`id`, `versao`, `plataforma`, `validade`, `atual`, `critica`) VALUES
@@ -9867,25 +9917,25 @@ INSERT INTO `versionamento` (`id`, `versao`, `plataforma`, `validade`, `atual`, 
 --
 
 --
--- Constraints for table `cidade`
+-- Limitadores para a tabela `cidade`
 --
 ALTER TABLE `cidade`
   ADD CONSTRAINT `fk_estadoid_cidade` FOREIGN KEY (`estado`) REFERENCES `estado` (`id`);
 
 --
--- Constraints for table `contato`
+-- Limitadores para a tabela `contato`
 --
 ALTER TABLE `contato`
   ADD CONSTRAINT `contato_ibfk_2` FOREIGN KEY (`contatoTipo`) REFERENCES `contatoTipo` (`id`);
 
 --
--- Constraints for table `endereco`
+-- Limitadores para a tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`cidade`) REFERENCES `cidade` (`id`);
 
 --
--- Constraints for table `funcionario`
+-- Limitadores para a tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `fk_enderecoid_funcionario` FOREIGN KEY (`endereco`) REFERENCES `endereco` (`id`),
@@ -9894,21 +9944,21 @@ ALTER TABLE `funcionario`
   ADD CONSTRAINT `fk_usuariarioid__funcionario_modificadopor` FOREIGN KEY (`modificadoPor`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `funcionario_contato`
+-- Limitadores para a tabela `funcionario_contato`
 --
 ALTER TABLE `funcionario_contato`
   ADD CONSTRAINT `funcionario_contato_ibfk_1` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`id`),
   ADD CONSTRAINT `funcionario_contato_ibfk_2` FOREIGN KEY (`contato`) REFERENCES `contato` (`id`);
 
 --
--- Constraints for table `historico`
+-- Limitadores para a tabela `historico`
 --
 ALTER TABLE `historico`
   ADD CONSTRAINT `historico_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`),
   ADD CONSTRAINT `historico_ibfk_2` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`);
 
 --
--- Constraints for table `instituicao`
+-- Limitadores para a tabela `instituicao`
 --
 ALTER TABLE `instituicao`
   ADD CONSTRAINT `fk_usuariarioid_criadopor` FOREIGN KEY (`criadoPor`) REFERENCES `usuario` (`id`),
@@ -9918,21 +9968,21 @@ ALTER TABLE `instituicao`
   ADD CONSTRAINT `instituicao_ibfk_3` FOREIGN KEY (`plano`) REFERENCES `plano` (`id`);
 
 --
--- Constraints for table `instituicao_contato`
+-- Limitadores para a tabela `instituicao_contato`
 --
 ALTER TABLE `instituicao_contato`
   ADD CONSTRAINT `instituicao_contato_ibfk_1` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`),
   ADD CONSTRAINT `instituicao_contato_ibfk_2` FOREIGN KEY (`contato`) REFERENCES `contato` (`id`);
 
 --
--- Constraints for table `instituicao_segmento`
+-- Limitadores para a tabela `instituicao_segmento`
 --
 ALTER TABLE `instituicao_segmento`
   ADD CONSTRAINT `fk_instituicaoid_segmento_instituicao` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`),
   ADD CONSTRAINT `fk_segmentoid_segmento_instituicao` FOREIGN KEY (`segmento`) REFERENCES `segmento` (`id`);
 
 --
--- Constraints for table `membro`
+-- Limitadores para a tabela `membro`
 --
 ALTER TABLE `membro`
   ADD CONSTRAINT `membro_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`),
@@ -9940,7 +9990,7 @@ ALTER TABLE `membro`
   ADD CONSTRAINT `membro_ibfk_3` FOREIGN KEY (`papel`) REFERENCES `papel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `notificacao`
+-- Limitadores para a tabela `notificacao`
 --
 ALTER TABLE `notificacao`
   ADD CONSTRAINT `fk_usuarioid_remetente` FOREIGN KEY (`remetente`) REFERENCES `usuario` (`id`),
@@ -9949,7 +9999,7 @@ ALTER TABLE `notificacao`
   ADD CONSTRAINT `notificacao_ibfk_3` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`);
 
 --
--- Constraints for table `notificacao_permissao`
+-- Limitadores para a tabela `notificacao_permissao`
 --
 ALTER TABLE `notificacao_permissao`
   ADD CONSTRAINT `notificacao_permissao_ibfk_1` FOREIGN KEY (`destinatarioTipo`) REFERENCES `destinatarioTipo` (`id`),
@@ -9957,39 +10007,39 @@ ALTER TABLE `notificacao_permissao`
   ADD CONSTRAINT `notificacao_permissao_ibfk_3` FOREIGN KEY (`papel`) REFERENCES `papel` (`id`);
 
 --
--- Constraints for table `oferta`
+-- Limitadores para a tabela `oferta`
 --
 ALTER TABLE `oferta`
   ADD CONSTRAINT `oferta_ibfk_1` FOREIGN KEY (`produto`) REFERENCES `produto` (`id`);
 
 --
--- Constraints for table `pagamento`
+-- Limitadores para a tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD CONSTRAINT `fk_instituicaoid_pagamento` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`);
 
 --
--- Constraints for table `papel`
+-- Limitadores para a tabela `papel`
 --
 ALTER TABLE `papel`
   ADD CONSTRAINT `papel_ibfk_1` FOREIGN KEY (`pai`) REFERENCES `papel` (`id`);
 
 --
--- Constraints for table `plano_funcionalidade`
+-- Limitadores para a tabela `plano_funcionalidade`
 --
 ALTER TABLE `plano_funcionalidade`
   ADD CONSTRAINT `plano_funcionalidade_ibfk_1` FOREIGN KEY (`plano`) REFERENCES `plano` (`id`),
   ADD CONSTRAINT `plano_funcionalidade_ibfk_2` FOREIGN KEY (`funcionalidade`) REFERENCES `funcionalidade` (`id`);
 
 --
--- Constraints for table `pontuacao`
+-- Limitadores para a tabela `pontuacao`
 --
 ALTER TABLE `pontuacao`
   ADD CONSTRAINT `pontuacao_ibfk_2` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`),
   ADD CONSTRAINT `pontuacao_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `produto`
+-- Limitadores para a tabela `produto`
 --
 ALTER TABLE `produto`
   ADD CONSTRAINT `fk_instituicaoid_produto` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`),
@@ -9997,7 +10047,7 @@ ALTER TABLE `produto`
   ADD CONSTRAINT `fk_usuarioid_modificaopor_produto` FOREIGN KEY (`modificadoPor`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `promocao`
+-- Limitadores para a tabela `promocao`
 --
 ALTER TABLE `promocao`
   ADD CONSTRAINT `fk_instituicaoid_promocao` FOREIGN KEY (`instituicao`) REFERENCES `instituicao` (`id`),
@@ -10005,20 +10055,20 @@ ALTER TABLE `promocao`
   ADD CONSTRAINT `fk_usuarioid_modificadopor_promocao` FOREIGN KEY (`modificadoPor`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `promocao_oferta`
+-- Limitadores para a tabela `promocao_oferta`
 --
 ALTER TABLE `promocao_oferta`
   ADD CONSTRAINT `fk_promocaoid_produto_promocao` FOREIGN KEY (`promocao`) REFERENCES `promocao` (`id`),
   ADD CONSTRAINT `promocao_oferta_ibfk_1` FOREIGN KEY (`oferta`) REFERENCES `oferta` (`id`);
 
 --
--- Constraints for table `segmento`
+-- Limitadores para a tabela `segmento`
 --
 ALTER TABLE `segmento`
   ADD CONSTRAINT `segmento_ibfk_1` FOREIGN KEY (`icone`) REFERENCES `icone` (`id`);
 
 --
--- Constraints for table `seguidor`
+-- Limitadores para a tabela `seguidor`
 --
 ALTER TABLE `seguidor`
   ADD CONSTRAINT `seguidor_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`),

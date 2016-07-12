@@ -27,8 +27,22 @@ class InstituicaoController extends Controller
     {
         $searchQuery = $request->get('search');
 
-        $finder = $this->container->get('fos_elastica.finder.app.instituicao');
-        $instituicoes = $finder->createPaginatorAdapter($searchQuery);
+        if(is_null($searchQuery)) {
+            $em = $this->getDoctrine()->getManager();
+            $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+
+            // TODO:  recuperar cidade na sessao
+            $criteria['cidade'] = 4082;
+
+            $order = $request->get('order') ? $request->get('order') : array();
+            $limit = $request->get('limit') ? $request->get('limit') : null;
+            $offset = $request->get('offset') ? $request->get('offset') : null;
+
+            $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
+        } else {
+            $finder = $this->container->get('fos_elastica.finder.app.instituicao');
+            $instituicoes = $finder->createPaginatorAdapter($searchQuery);
+        }
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
@@ -50,24 +64,23 @@ class InstituicaoController extends Controller
         // TODO: refatorar codigo para filtrar pesquisa por segmento
         $searchQuery = $request->get('search');
 
-        if(isset($searchQuery)) {
-
-            $finder = $this->container->get('fos_elastica.finder.app.instituicao');
-            $instituicoes = $finder->createPaginatorAdapter($searchQuery);
-
-        } else {
-
+        if(is_null($searchQuery)) {
             $em = $this->getDoctrine()->getManager();
 
             $criteria = $request->get('criteria') ? $request->get('criteria') : array();
             $criteria['segmento_canonico'] = $request->get('canonico');
+
             // TODO:  recuperar cidade na sessao
             $criteria['cidade'] = 4082;
+
             $order = $request->get('order') ? $request->get('order') : array();
             $limit = $request->get('limit') ? $request->get('limit') : null;
             $offset = $request->get('offset') ? $request->get('offset') : null;
 
             $instituicoes = $em->getRepository('CamaleaoBimgoCoreBundle:Instituicao')->findByCidade($criteria, $order, $limit, $offset);
+        } else {
+            $finder = $this->container->get('fos_elastica.finder.app.instituicao');
+            $instituicoes = $finder->createPaginatorAdapter($searchQuery);
         }
 
         /** @var  $paginator */

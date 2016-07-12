@@ -27,8 +27,22 @@ class PromocaoController extends Controller
     {
         $searchQuery = $request->get('search');
 
-        $finder = $this->container->get('fos_elastica.finder.app.promocao');
-        $promocoes = $finder->createPaginatorAdapter($searchQuery);
+        if(is_null($searchQuery)) {
+            $em = $this->getDoctrine()->getManager();
+            $criteria = $request->get('criteria') ? $request->get('criteria') : array();
+
+            // TODO:  recuperar cidade na sessao
+            $criteria['cidade'] = 4082;
+
+            $order = $request->get('order') ? $request->get('order') : array();
+            $limit = $request->get('limit') ? $request->get('limit') : null;
+            $offset = $request->get('offset') ? $request->get('offset') : null;
+
+            $promocoes = $em->getRepository('CamaleaoBimgoCoreBundle:Produto')->findByCidade($criteria, $order, $limit, $offset);
+        } else {
+            $finder = $this->container->get('fos_elastica.finder.app.promocao');
+            $promocoes = $finder->createPaginatorAdapter($searchQuery);
+        }
 
         /** @var  $paginator */
         $paginator  = $this->get('knp_paginator');
