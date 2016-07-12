@@ -42,13 +42,13 @@ class InstituicaoController extends Controller
     /**
      * Lists all Instituicao entities.
      *
-     * @Route("/segmento/{id}", name="site_instituicao_segmento")
+     * @Route("/segmento/{canonico}", name="site_instituicao_segmento")
      * @Method("GET")
      */
     public function segmentoAction(Request $request)
     {
         // TODO: refatorar codigo para filtrar pesquisa por segmento
-        $criteria['segmento'] = $request->get('id');
+        $criteria['segmento_canonico'] = $request->get('canonico');
         $searchQuery = $request->get('search');
 
         if(!empty($searchQuery)) {

@@ -46,6 +46,11 @@ class InstituicaoRepository extends EntityRepository
             unset($criteria['segmento']);
         }
 
+        if(isset($criteria['segmento_canonico'])) {
+            $result->andWhere("segmento.canonico in (".$criteria['segmento_canonico'].")");
+            unset($criteria['segmento_canonico']);
+        }
+
         if(count($criteria) > 0) {
             foreach($criteria as $key => $value) {
                 $result->andWhere("instituicao.$key = $value");

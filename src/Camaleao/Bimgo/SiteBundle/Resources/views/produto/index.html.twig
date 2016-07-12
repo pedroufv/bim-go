@@ -17,13 +17,8 @@
                 <div class="card col s12 m4" style="height: 250px">
                     <div class="icon-block">
                         <h3 class="center">
-                            <a href="{{ path('site_produto_show', { 'id': produto.id }) }}">
-                                {% set logo = 'bundles/camaleaowebbimgo/img/produto/' ~ produto.id ~ '.png' %}
-                                {% if file_exists(logo) %}
-                                    <img src="{{ asset(logo) }}" class="responsive-img">
-                                {% else %}
-                                    <img src="{{ asset('bundles/camaleaowebbimgo/img/logo/default.png') }}" class="responsive-img">
-                                {% endif %}
+                            <a href="{{ path('site_produto_show', { 'canonico': produto.canonico }) }}">
+                                <img src="{{ getImgS3(produto.canonico, 'png', 'produto') }}" class="responsive-img">
                             </a>
                         </h3>
                         <h5 class="center"><a href="" class="black-text">{{ produto.nome }}</a></h5>

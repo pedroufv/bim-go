@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Camaleao\Bimgo\CoreBundle\Entity\Promocao;
 
@@ -41,7 +42,8 @@ class PromocaoController extends Controller
     /**
      * Finds and displays a Promocao entity.
      *
-     * @Route("/{id}", name="site_promocao_show")
+     * @Route("/{canonico}", name="site_promocao_show")
+     * @ParamConverter("promocao", class="CamaleaoBimgoCoreBundle:Promocao")
      * @Method("GET")
      */
     public function showAction(Promocao $promocao)

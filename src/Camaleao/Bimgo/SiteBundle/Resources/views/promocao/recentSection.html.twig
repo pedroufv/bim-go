@@ -4,9 +4,9 @@
             <div class="row">
                 {% for promocao in promocoes %}
                     <div class="col s12 m3">
-                        <h5 class="center"><a class="black-text" href="{{ path('site_promocao_show', { 'id': promocao.id }) }}">{{ promocao.nome }}</a></h5>
-                        <p class="light center"><a class="black-text" href="{{ path('site_promocao_show', { 'id': promocao.id }) }}">{{ promocao.descricao }}</a></p>
-                        <span class="right"><a class="black-text" href="{{ path('site_instituicao_show', { 'id': promocao.instituicao.id }) }}">{{ promocao.instituicao.nomefantasia }}</a></span>
+                        <h5 class="center"><a class="black-text" href="{{ path('site_promocao_show', { 'canonico': promocao.canonico }) }}">{{ promocao.nome }}</a></h5>
+                        <p class="light center"><a class="black-text" href="{{ path('site_promocao_show', { 'canonico': promocao.canonico }) }}">{{ promocao.descricao }}</a></p>
+                        <span class="right"><a class="black-text" href="{{ path('site_instituicao_show', { 'canonico': promocao.instituicao.canonico }) }}">{{ promocao.instituicao.nomefantasia }}</a></span>
                     </div>
                 {% endfor %}
             </div>

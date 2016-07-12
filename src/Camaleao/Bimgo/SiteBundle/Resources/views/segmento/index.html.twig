@@ -16,9 +16,9 @@
                 {% for segmento in pagination %}
                 <div class="card col s12 m4" style="height: 210px">
                         <div class="icon-block">
-                            <h3 class="center"><a href="{{ path('site_instituicao_segmento', {'id': segmento.id}) }}"><i class="blue-text fa {{ segmento.icone.nome }}"></i></a></h3>
-                            <h5 class="center"><a href="{{ path('site_instituicao_segmento', {'id': segmento.id}) }}" class="black-text">{{ segmento.nome }}</a></h5>
-                            <p><a href="{{ path('site_instituicao_segmento', {'id': segmento.id}) }}" class="black-text">{{ segmento.descricao }}</a></p>
+                            <h3 class="center"><a href="{{ path('site_instituicao_segmento', {'canonico': segmento.canonico}) }}"><i class="blue-text fa {{ segmento.icone.nome }}"></i></a></h3>
+                            <h5 class="center"><a href="{{ path('site_instituicao_segmento', {'canonico': segmento.canonico}) }}" class="black-text">{{ segmento.nome }}</a></h5>
+                            <p><a href="{{ path('site_instituicao_segmento', {'canonico': segmento.canonico}) }}" class="black-text">{{ segmento.descricao }}</a></p>
                         </div>
                 </div>
                 {% endfor %}

@@ -5,12 +5,7 @@
         <h2>Promoção: {{ produto.nome }}</h2>
         <div class="row">
             <div class="col s6">
-                {% set logo = 'bundles/camaleaowebbimgo/img/produto/' ~ produto.id ~ '.png' %}
-                {% if file_exists(logo) %}
-                    <img src="{{ asset(logo) }}" class="responsive-img">
-                {% else %}
-                    <img src="{{ asset('bundles/camaleaowebbimgo/img/default.png') }}" class="responsive-img">
-                {% endif %}
+                <img src="{{ getImgS3(produto.canonico, 'png', 'produto') }}" class="responsive-img">
             </div>
             <div class="col s6">
                 <p><strong>Nome:</strong> {{ produto.nome }}</p>

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Camaleao\Bimgo\CoreBundle\Entity\Produto;
 
 /**
@@ -40,7 +41,8 @@ class ProdutoController extends Controller
     /**
      * Finds and displays a Produto entity.
      *
-     * @Route("/{id}", name="site_produto_show")
+     * @Route("/{canonico}", name="site_produto_show")
+     * @ParamConverter("produto", class="CamaleaoBimgoCoreBundle:Produto")
      * @Method("GET")
      */
     public function showAction(Produto $produto)
