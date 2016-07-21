@@ -17,6 +17,8 @@ class ReporteType extends AbstractType
         $builder
             ->add('nomeremetente')
             ->add('emailremetente', 'email')
+            ->add('instituicao')
+            ->add('nomeinstituicao')
             ->add('categoria')
             ->add('mensagem')
         ;

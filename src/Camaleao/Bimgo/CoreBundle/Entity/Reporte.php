@@ -75,6 +75,38 @@ class Reporte
     /**
      * @return string
      */
+    public function getInstituicao()
+    {
+        return $this->instituicao;
+    }
+
+    /**
+     * @param string $instituicao
+     */
+    public function setInstituicao($instituicao)
+    {
+        $this->instituicao = $instituicao;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomeInstituicao()
+    {
+        return $this->nomeInstituicao;
+    }
+
+    /**
+     * @param string $nomeInstituicao
+     */
+    public function setNomeInstituicao($nomeInstituicao)
+    {
+        $this->nomeInstituicao = $nomeInstituicao;
+    }
+
+    /**
+     * @return string
+     */
     public function getCategoria()
     {
         return $this->categoria;
