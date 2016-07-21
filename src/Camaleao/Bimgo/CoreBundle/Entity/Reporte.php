@@ -23,6 +23,16 @@ class Reporte
     /**
      * @var string
      */
+    private $instituicao;
+
+    /**
+     * @var string
+     */
+    private $nomeInstituicao;
+
+    /**
+     * @var string
+     */
     private $categoria;
 
     /**
