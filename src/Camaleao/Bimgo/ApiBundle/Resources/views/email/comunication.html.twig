@@ -2,22 +2,24 @@
 <div id='area' style='margin: 0 auto; font-family: Arial, Helvetica, sans-serif; width: 550px;'>
     <img src="{{ getImgS3('pin-150-150', 'png', 'web') }}" alt='Bim-go!' title="Bim-go!" width='150px' style="float: left"/>
     <p style='font-size: 18px; line-height: 16px; margin: 10px 10px 16px;'>
-        O cliente <strong>{{ comunicacao.nomeRemetente }}</strong> quer se comunicar!
+        O cliente <strong>{{ comunication.nomeRemetente }}</strong> quer se comunicar!
     </p>
     {#<p style='font-size: 14px; line-height: 16px; margin: 10px 10px 16px;'>#}
-        {#Através do Bim-go! a empresa {{ comunicacao.nomeDestinatario }} recebeu a seguinte mensagem:#}
+        {#Através do Bim-go! a empresa {{ comunication.nomeDestinatario }} recebeu a seguinte mensagem:#}
     {#</p>#}
     <p style='font-size: 14px; line-height: 16px; margin: 10px 10px 16px;'>
-        Através do Bim-go! a empresa {{ comunicacao.nomeDestinatario }} recebeu a seguinte mensagem:
+        Através do Bim-go! a empresa {{ comunication.nomeDestinatario }} recebeu a seguinte mensagem:
     <ul>
-        <li><strong>Categoria: </strong>{{ comunicacao.categoria }}</li>
-        <li><strong>Mensagem: </strong>{{ comunicacao.mensagem }}</li>
+        <li><strong>Categoria: </strong>{{ comunication.categoria }}</li>
+        <li><strong>Mensagem: </strong>{{ comunication.mensagem }}</li>
     </ul>
     </p>
     <p style='font-size: 14px; line-height: 16px; margin: 10px 10px 16px;'>
-        O Bim-go! oferece muitas vantagens para o seu negócio!
-        Caso não seja um associado, venha nos conhecer!
-        <strong>Contatos: </strong>
-        Tel: (31) 97124-8961 Email: cpe.feroz@gmail.com Site: http://camaleaoferoz.com.br
+        O Bim-go! oferece muitas vantagens para o seu negócio!<br>
+        Caso não seja um associado, venha nos conhecer!<br><br>
+        <strong>Contatos:</strong><br>
+        Tel: (31) 97124-8961<br>
+        Email: <a mailto="cpe.feroz@gmail.com">cpe.feroz@gmail.com</a>
+        <br>Site: <a href="http://camaleaoferoz.com.br">http://camaleaoferoz.com.br</a>
     </p>
 </div>
