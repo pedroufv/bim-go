@@ -2,6 +2,7 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Entity\Comunication;
 use Camaleao\Bimgo\CoreBundle\Entity\Instituicao;
 use Camaleao\Bimgo\CoreBundle\Entity\Reporte;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -463,6 +464,77 @@ class InstituicaoController extends ApiController
             )
         ;
         $this->get('mailer')->send($envioReporte);
+
+        $result = $serializer->serialize(array('success' => true), 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/comunicar", name="api_v1_instituicoes_comunicar")
+     * @Method("POST")
+     */
+    public function comunicateAction(Request $request)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+
+        if(!$request->getContent()){
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $comunication = new Comunication();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\ComunicationType', $comunication, $options);
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(true), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $envioComunicacao = \Swift_Message::newInstance()
+            ->setSubject('Bim-go! - Você recebeu uma mensagem')
+            ->setFrom($comunication->getEmailRemetente())
+            ->setReplyTo($comunication->getEmailRemetente())
+            ->setTo($comunication->getEmailDestinatario())
+            ->setBody(
+                $this->renderView('CamaleaoBimgoApiBundle:email:comunication.html.twig', array('comunication' => $comunication)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($envioComunicacao);
+
+        /*$envioSucesso = \Swift_Message::newInstance()
+            ->setSubject('[Bim-go! - E-mail] '.$comunication->getNomeDestinatario())
+            ->setFrom('cpe.feroz@gmail.com')
+            ->setTo($reporte->getEmailRemetente())
+            ->setBody(
+                $this->renderView('CamaleaoBimgoApiBundle:email:report.html.twig', array('reporte' => $reporte)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($envioSucesso);*/
 
         $result = $serializer->serialize(array('success' => true), 'json');
 
