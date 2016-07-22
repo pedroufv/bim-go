@@ -525,16 +525,16 @@ class InstituicaoController extends ApiController
         ;
         $this->get('mailer')->send($envioComunicacao);
 
-        /*$envioSucesso = \Swift_Message::newInstance()
-            ->setSubject('[Bim-go! - E-mail] '.$comunication->getNomeDestinatario())
+        $envioComprovante = \Swift_Message::newInstance()
+            ->setSubject('Bim-go! - Você enviou uma mensagem')
             ->setFrom('cpe.feroz@gmail.com')
-            ->setTo($reporte->getEmailRemetente())
+            ->setTo($comunication->getEmailRemetente())
             ->setBody(
-                $this->renderView('CamaleaoBimgoApiBundle:email:report.html.twig', array('reporte' => $reporte)),
+                $this->renderView('CamaleaoBimgoApiBundle:email:comunication_verify.html.twig', array('comunication' => $comunication)),
                 "text/html"
             )
         ;
-        $this->get('mailer')->send($envioSucesso);*/
+        $this->get('mailer')->send($envioComprovante);
 
         $result = $serializer->serialize(array('success' => true), 'json');
 
