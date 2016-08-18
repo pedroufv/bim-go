@@ -5,6 +5,7 @@ namespace Camaleao\Bimgo\ApiBundle\Controller;
 use Camaleao\Bimgo\CoreBundle\Entity\Comunication;
 use Camaleao\Bimgo\CoreBundle\Entity\Instituicao;
 use Camaleao\Bimgo\CoreBundle\Entity\Reporte;
+use Camaleao\Bimgo\CoreBundle\Entity\Indication;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -464,6 +465,89 @@ class InstituicaoController extends ApiController
             )
         ;
         $this->get('mailer')->send($envioReporte);
+
+        $result = $serializer->serialize(array('success' => true), 'json');
+
+        $response = new Response($result);
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/indicar", name="api_v1_instituicoes_indicar")
+     * @Method("POST")
+     */
+    public function indicationAction(Request $request)
+    {
+        $response = new Response();
+        $serializer = $this->container->get('jms_serializer');
+
+        if(!$request->getContent()){
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
+        if($request->getContentType() == 'json') {
+            $requestContent = json_decode($request->getContent(), true);
+            if(!$requestContent) {
+                $response->setStatusCode(Response::HTTP_BAD_REQUEST);
+                return $response;
+            }
+            $options = array('csrf_protection' => false);
+            $response->headers->set('Content-Type', 'application/json');
+            $request->request->replace($requestContent);
+        }
+
+        $indication = new Indication();
+        $form = $this->createForm('Camaleao\Bimgo\CoreBundle\Form\IndicationType', $indication, $options);
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
+            $response->setStatusCode(Response::HTTP_PRECONDITION_FAILED);
+            $responseContent = $serializer->serialize($form->getErrors(true), 'json');
+            $response->setContent($responseContent);
+            return $response;
+        }
+
+        $agradecimento = \Swift_Message::newInstance()
+            ->setSubject('Bim-go! - Obrigado pela sua indicação')
+            ->setFrom('cpe.feroz@gmail.com')
+            ->setTo($indication->getEmailRemetente())
+            ->setBody(
+                $this->renderView('CamaleaoBimgoApiBundle:email:indication_verify.html.twig', array('indication' => $indication)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($agradecimento);
+
+        $envioIndicacao = \Swift_Message::newInstance()
+            ->setSubject('[Bim-go! - Indicação] '.$indication->getNomeInstituicao())
+            ->setFrom($indication->getEmailRemetente())
+            ->setReplyTo($indication->getEmailRemetente())
+            ->setTo('cpe.feroz@gmail.com')
+            ->setBody(
+                $this->renderView('CamaleaoBimgoApiBundle:email:indication_user.html.twig', array('indication' => $indication)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($envioIndicacao);
+
+        $envioInstituicao = \Swift_Message::newInstance()
+            ->setSubject('[Bim-go! - Indicação] '.$indication->getNomeInstituicao())
+            ->setFrom($indication->getEmailRemetente())
+            ->setReplyTo($indication->getEmailRemetente())
+            ->setTo('cpe.feroz@gmail.com')
+            ->setBody(
+                $this->renderView('CamaleaoBimgoApiBundle:email:indication.html.twig', array('indication' => $indication)),
+                "text/html"
+            )
+        ;
+        $this->get('mailer')->send($envioInstituicao);
 
         $result = $serializer->serialize(array('success' => true), 'json');
 
