@@ -43,6 +43,11 @@ class Indication
     /**
      * @var string
      */
+    private $emailInstituicao;
+
+    /**
+     * @var string
+     */
     private $mensagem;
 
     /**
@@ -139,6 +144,22 @@ class Indication
     public function setNomeInstituicao($nomeInstituicao)
     {
         $this->nomeInstituicao = $nomeInstituicao;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailInstituicao()
+    {
+        return $this->emailInstituicao;
+    }
+
+    /**
+     * @param string $emailInstituicao
+     */
+    public function setEmailInstituicao($emailInstituicao)
+    {
+        $this->emailInstituicao = $emailInstituicao;
     }
 
     /**

@@ -537,16 +537,17 @@ class InstituicaoController extends ApiController
         ;
         $this->get('mailer')->send($envioIndicacao);
 
-        $envioInstituicao = \Swift_Message::newInstance()
-            ->setSubject('[Bim-go! - Indicação] '.$indication->getNomeInstituicao())
-            ->setFrom('cpe.feroz@gmail.com')
-            ->setTo($indication->getEmailInstituicao())
-            ->setBody(
-                $this->renderView('CamaleaoBimgoApiBundle:email:indication.html.twig', array('indication' => $indication)),
-                "text/html"
-            )
-        ;
-        $this->get('mailer')->send($envioInstituicao);
+        if ($indication->getEmailInstituicao()) {
+            $envioInstituicao = \Swift_Message::newInstance()
+                ->setSubject('[Bim-go! - Indicação] ' . $indication->getNomeInstituicao())
+                ->setFrom('cpe.feroz@gmail.com')
+                ->setTo($indication->getEmailInstituicao())
+                ->setBody(
+                    $this->renderView('CamaleaoBimgoApiBundle:email:indication.html.twig', array('indication' => $indication)),
+                    "text/html"
+                );
+            $this->get('mailer')->send($envioInstituicao);
+        }
 
         $result = $serializer->serialize(array('success' => true), 'json');
 
