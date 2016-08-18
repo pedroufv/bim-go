@@ -21,6 +21,7 @@ class IndicationType extends AbstractType
             ->add('emaildestinatario', 'email')
             ->add('instituicao')
             ->add('nomeinstituicao')
+            ->add('emailinstituicao')
             ->add('mensagem')
         ;
     }
