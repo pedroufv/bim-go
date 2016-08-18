@@ -529,7 +529,7 @@ class InstituicaoController extends ApiController
             ->setSubject('[Bim-go! - Indicação] '.$indication->getNomeInstituicao())
             ->setFrom($indication->getEmailRemetente())
             ->setReplyTo($indication->getEmailRemetente())
-            ->setTo('cpe.feroz@gmail.com')
+            ->setTo($indication->getEmailDestinatario())
             ->setBody(
                 $this->renderView('CamaleaoBimgoApiBundle:email:indication_user.html.twig', array('indication' => $indication)),
                 "text/html"
@@ -539,9 +539,8 @@ class InstituicaoController extends ApiController
 
         $envioInstituicao = \Swift_Message::newInstance()
             ->setSubject('[Bim-go! - Indicação] '.$indication->getNomeInstituicao())
-            ->setFrom($indication->getEmailRemetente())
-            ->setReplyTo($indication->getEmailRemetente())
-            ->setTo('cpe.feroz@gmail.com')
+            ->setFrom('cpe.feroz@gmail.com')
+            ->setTo($indication->getEmailInstituicao())
             ->setBody(
                 $this->renderView('CamaleaoBimgoApiBundle:email:indication.html.twig', array('indication' => $indication)),
                 "text/html"
