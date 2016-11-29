@@ -2,6 +2,8 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Message;
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Notification;
 use Camaleao\Bimgo\CoreBundle\Entity\Historico;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -94,9 +96,11 @@ class HistoricoController extends ApiController
         $historico = $em->merge($historico);
         $em->flush();
 
-        if(!empty($historico->getId())) {
-            $push = $this->get('camaleao_bimgo_core.push_notification');
-
+        if (!empty($historico->getId())) {
+            // SEND FCM NOTIFICATION
+            $client = $this->get('camaleao_bimgo_core.sender_fcm');
+            $message = new Message();
+            $message->setTo($historico->getUsuario()->getRegistrationid());
             $data = array(
                 'type'      => 4,
                 'title'     => ($historico->getOperacao() ? 'Crédito' : 'Débito') . ' na fidelidade',
@@ -104,14 +108,10 @@ class HistoricoController extends ApiController
                 'summary'   => $historico->getInstituicao()->getNomefantasia(),
                 'date'      => $historico->getData()->format("d-m-Y"),
             );
-            $push->setData($data);
-
-            $registrationIds = array();
-            array_push($registrationIds, $historico->getUsuario()->getRegistrationid());
-
-            $push->setRegistrationIds($registrationIds);
-
-            $push->send();
+            $message->setData($data);
+            $response = $client->send($message);
+            dump($response);
+            // END
         }
 
         $responseContent = $serializer->serialize($historico, 'json');

@@ -2,6 +2,6 @@ services:
   camaleao_bimgo_core.url_friendly:
     class:     Camaleao\Bimgo\CoreBundle\Service\TextHelper
 
-  camaleao_bimgo_core.push_notification:
-    class:     Camaleao\Bimgo\CoreBundle\Service\PushNotification
-    arguments: [@endroid.gcm.client, @doctrine.orm.entity_manager]
+  camaleao_bimgo_core.sender_fcm:
+    class:     Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Client\SenderFCM
+    arguments: ['%camaleao_animallovers_api.firebase_api_key%']

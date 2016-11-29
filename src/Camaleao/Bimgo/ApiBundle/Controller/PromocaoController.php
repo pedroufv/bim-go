@@ -2,8 +2,10 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Client\SenderFCMHelper;
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Message;
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Notification;
 use Camaleao\Bimgo\CoreBundle\Entity\Promocao;
-use Camaleao\Bimgo\CoreBundle\Service\PushNotification;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -169,8 +171,12 @@ class PromocaoController extends ApiController
         $em->flush();
 
         if (!$publicadaAtual AND $promocao->getPublicada()) {
-            $push = $this->get('camaleao_bimgo_core.push_notification');
-
+            // SEND FCM NOTIFICATION
+            $client = $this->get('camaleao_bimgo_core.sender_fcm');
+            $message = new Message();
+            $em = $this->getDoctrine()->getManager();
+            $registration_ids = SenderFCMHelper::mountRecipientList($em, $promocao->getInstituicao()->getId(), PushNotification::TIPO_DESTINATARIO_SEGUIDORES);
+            $message->setRegistrationIds($registration_ids);
             $data = array(
                 'type' => 1,
                 'title' => $promocao->getNome(),
@@ -178,11 +184,10 @@ class PromocaoController extends ApiController
                 'summary' => $promocao->getInstituicao()->getNomefantasia(),
                 'id' => $promocao->getId(),
             );
-            $push->setData($data);
-
-            $push->mountRecipientList($promocao->getInstituicao()->getId(), PushNotification::TIPO_DESTINATARIO_SEGUIDORES);
-
-            $push->send();
+            $message->setData($data);
+            $response = $client->send($message);
+            dump($response);
+            // END
         }
 
         $responseContent = $serializer->serialize($promocao, 'json');

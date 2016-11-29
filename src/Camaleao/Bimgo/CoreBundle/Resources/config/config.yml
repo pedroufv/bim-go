@@ -1,0 +1,6 @@
+imports:
+    - { resource: services.yml }
+
+# FCM SERVER API KEY
+camaleao_bimgo_core:
+    firebase_api_key: AIzaSyBW4ZKUxSRTlZc-bFz8Z9CZ-jLbKphOOoQ

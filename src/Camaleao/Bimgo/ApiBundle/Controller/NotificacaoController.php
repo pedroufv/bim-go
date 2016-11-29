@@ -2,8 +2,9 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Message;
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Notification;
 use Camaleao\Bimgo\CoreBundle\Entity\Notificacao;
-use Proxies\__CG__\Camaleao\Bimgo\CoreBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -96,8 +97,12 @@ class NotificacaoController extends ApiController
         $em->flush();
 
         if(!empty($notificacao->getId())) {
-            $push = $this->get('camaleao_bimgo_core.push_notification');
-
+            // SEND FCM NOTIFICATION
+            $client = $this->get('camaleao_bimgo_core.sender_fcm');
+            $message = new Message();
+            $em = $this->getDoctrine()->getManager();
+            $registration_ids = SenderFCMHelper::mountRecipientList($em, $notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
+            $message->setRegistrationIds($registration_ids);
             $data = array(
                 'type'      => 0,
                 'date'      => $notificacao->getData()->format("d-m-Y H:i:s"),
@@ -106,11 +111,10 @@ class NotificacaoController extends ApiController
                 'message'   => $notificacao->getMensagem(),
                 'summary'   => $notificacao->getInstituicao()->getNomefantasia(),
             );
-            $push->setData($data);
-
-            $push->mountRecipientList($notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
-
-            $push->send();
+            $message->setData($data);
+            $response = $client->send($message);
+            dump($response);
+            // END
         }
 
         $responseContent = $serializer->serialize($notificacao, 'json');

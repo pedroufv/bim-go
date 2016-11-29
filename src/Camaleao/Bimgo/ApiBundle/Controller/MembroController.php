@@ -2,6 +2,8 @@
 
 namespace Camaleao\Bimgo\ApiBundle\Controller;
 
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Message;
+use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Entity\Notification;
 use Camaleao\Bimgo\CoreBundle\Entity\Membro;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -94,22 +96,20 @@ class MembroController extends ApiController
         $membro = $em->merge($membro);
         $em->flush();
 
-        $push = $this->get('camaleao_bimgo_core.push_notification');
-
+        // SEND FCM NOTIFICATION
+        $client = $this->get('camaleao_bimgo_core.sender_fcm');
+        $message = new Message();
+        $message->setTo($membro->getUsuario()->getRegistrationid());
         $data = array(
             'type' => 2,
             'title' => 'Permissão concedida',
             'message' => 'Você foi adicionado com permissão de ' . $membro->getPapel()->getNome() . '.',
             'summary' => $membro->getInstituicao()->getNomefantasia(),
         );
-        $push->setData($data);
-
-        $registrationIds = array();
-        array_push($registrationIds, $membro->getUsuario()->getRegistrationid());
-
-        $push->setRegistrationIds($registrationIds);
-
-        $push->send();
+        $message->setData($data);
+        $response = $client->send($message);
+        dump($response);
+        // END
 
         $responseContent = $serializer->serialize($membro, 'json');
         $response->setContent($responseContent);
@@ -161,22 +161,20 @@ class MembroController extends ApiController
         $em->flush();
 
         if ($membro->getAtivo() == false) {
-            $push = $this->get('camaleao_bimgo_core.push_notification');
-
+            // SEND FCM NOTIFICATION
+            $client = $this->get('camaleao_bimgo_core.sender_fcm');
+            $message = new Message();
+            $message->setTo($membro->getUsuario()->getRegistrationid());
             $data = array(
                 'type' => 3,
                 'title' => 'Permissão revogada',
                 'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi removida.',
                 'summary' => $membro->getInstituicao()->getNomefantasia(),
             );
-            $push->setData($data);
-
-            $registrationIds = array();
-            array_push($registrationIds, $membro->getUsuario()->getRegistrationid());
-
-            $push->setRegistrationIds($registrationIds);
-
-            $push->send();
+            $message->setData($data);
+            $response = $client->send($message);
+            dump($response);
+            // END
         }
 
         $responseContent = $serializer->serialize($membro, 'json');
