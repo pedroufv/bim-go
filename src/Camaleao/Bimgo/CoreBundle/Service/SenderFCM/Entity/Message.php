@@ -9,7 +9,7 @@ use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Model\FCM;
  * 
  * Representa a mensagem que será enviada, codificada em json, aos servidores do FCM
  * 
- * @package Camaleao\Animallovers\ApiBundle\Services\SenderFCM\Entity
+ * @package Camaleao\Bimgo\CoreBundle\Services\SenderFCM\Entity
  */
 class Message
 {

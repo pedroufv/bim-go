@@ -30,7 +30,6 @@
         "knplabs/knp-menu-bundle": "^2.0",
         "jms/serializer-bundle": "^1.1",
         "knplabs/knp-paginator-bundle": "^2.5",
-        "endroid/gcm-bundle": "dev-master",
         "aws/aws-sdk-php-symfony": "~1.0",
         "friendsofsymfony/elastica-bundle": "^3.1"
     },

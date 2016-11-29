@@ -9,7 +9,7 @@ use Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Model\FCM;
  *
  * Representa a notificação enviada dentro de uma mensagem aos servidores FCM
  *
- * @package Camaleao\Animallovers\ApiBundle\Services\SenderFCM\Entity
+ * @package Camaleao\Bimgo\CoreBundle\Services\SenderFCM\Entity
  */
 class Notification
 {

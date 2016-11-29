@@ -4,4 +4,4 @@ services:
 
   camaleao_bimgo_core.sender_fcm:
     class:     Camaleao\Bimgo\CoreBundle\Service\SenderFCM\Client\SenderFCM
-    arguments: ['%camaleao_animallovers_api.firebase_api_key%']
+    arguments: ['%camaleao_bimgo_core.firebase_api_key%']
