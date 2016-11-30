@@ -178,11 +178,11 @@ class PromocaoController extends ApiController
             $registration_ids = SenderFCMHelper::mountRecipientList($em, $promocao->getInstituicao()->getId(), PushNotification::TIPO_DESTINATARIO_SEGUIDORES);
             $message->setRegistrationIds($registration_ids);
             $data = array(
-                'type' => 1,
+                'type' => '1',
                 'title' => $promocao->getNome(),
                 'message' => $promocao->getDescricao(),
                 'summary' => $promocao->getInstituicao()->getNomefantasia(),
-                'id' => $promocao->getId(),
+                'id' => (string) $promocao->getId(),
             );
             $message->setData($data);
             $response = $client->send($message);

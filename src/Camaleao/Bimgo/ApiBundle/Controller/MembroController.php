@@ -101,7 +101,7 @@ class MembroController extends ApiController
         $message = new Message();
         $message->setTo($membro->getUsuario()->getRegistrationid());
         $data = array(
-            'type' => 2,
+            'type' => '2',
             'title' => 'Permissão concedida',
             'message' => 'Você foi adicionado com permissão de ' . $membro->getPapel()->getNome() . '.',
             'summary' => $membro->getInstituicao()->getNomefantasia(),
@@ -166,7 +166,7 @@ class MembroController extends ApiController
             $message = new Message();
             $message->setTo($membro->getUsuario()->getRegistrationid());
             $data = array(
-                'type' => 3,
+                'type' => '3',
                 'title' => 'Permissão revogada',
                 'message' => 'Sua permissão de ' . $membro->getPapel()->getNome() . ' foi removida.',
                 'summary' => $membro->getInstituicao()->getNomefantasia(),

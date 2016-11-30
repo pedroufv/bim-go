@@ -102,7 +102,7 @@ class HistoricoController extends ApiController
             $message = new Message();
             $message->setTo($historico->getUsuario()->getRegistrationid());
             $data = array(
-                'type'      => 4,
+                'type'      => '4',
                 'title'     => ($historico->getOperacao() ? 'Crédito' : 'Débito') . ' na fidelidade',
                 'message'   => 'Você foi ' . ($historico->getOperacao() ? 'creditado' : 'debitado') . ' em ' . $historico->getPontos() . ' pontos!',
                 'summary'   => $historico->getInstituicao()->getNomefantasia(),

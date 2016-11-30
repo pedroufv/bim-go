@@ -104,12 +104,12 @@ class NotificacaoController extends ApiController
             $registration_ids = SenderFCMHelper::mountRecipientList($em, $notificacao->getInstituicao()->getId(), $notificacao->getDestinatariotipo()->getId());
             $message->setRegistrationIds($registration_ids);
             $data = array(
-                'type'      => 0,
+                'type'      => '0',
                 'date'      => $notificacao->getData()->format("d-m-Y H:i:s"),
-                'id'        => $notificacao->getId(),
                 'title'     => $notificacao->getMensagemtipo()->getNome(),
                 'message'   => $notificacao->getMensagem(),
                 'summary'   => $notificacao->getInstituicao()->getNomefantasia(),
+                'id'        => (string) $notificacao->getId(),
             );
             $message->setData($data);
             $response = $client->send($message);
