@@ -186,7 +186,7 @@ class PromocaoController extends ApiController
             );
             $message->setData($data);
             $fcm_response = $client->send($message);
-            dump($fcm_response);
+            //dump($fcm_response);
             // END
         }
 

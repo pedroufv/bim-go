@@ -108,7 +108,7 @@ class MembroController extends ApiController
         );
         $message->setData($data);
         $fcm_response = $client->send($message);
-        dump($fcm_response);
+        //dump($fcm_response);
         // END
 
         $responseContent = $serializer->serialize($membro, 'json');
@@ -173,7 +173,7 @@ class MembroController extends ApiController
             );
             $message->setData($data);
             $fcm_response = $client->send($message);
-            dump($fcm_response);
+            //dump($fcm_response);
             // END
         }
 
