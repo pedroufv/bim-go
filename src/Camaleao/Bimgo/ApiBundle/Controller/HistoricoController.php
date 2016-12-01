@@ -109,8 +109,8 @@ class HistoricoController extends ApiController
                 'date'      => $historico->getData()->format("d-m-Y"),
             );
             $message->setData($data);
-            $response = $client->send($message);
-            dump($response);
+            $fcm_response = $client->send($message);
+            dump($fcm_response);
             // END
         }
 

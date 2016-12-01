@@ -185,8 +185,8 @@ class PromocaoController extends ApiController
                 'id' => (string) $promocao->getId(),
             );
             $message->setData($data);
-            $response = $client->send($message);
-            dump($response);
+            $fcm_response = $client->send($message);
+            dump($fcm_response);
             // END
         }
 
