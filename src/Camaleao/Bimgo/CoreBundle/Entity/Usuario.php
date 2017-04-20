@@ -73,6 +73,13 @@ class Usuario implements UserInterface
     private $ativo = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="foto", type="boolean", nullable=false)
+     */
+    private $foto = false;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
@@ -288,6 +295,29 @@ class Usuario implements UserInterface
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    /**
+     * Set foto
+     *
+     * @param boolean $foto
+     * @return Usuario
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Get foto
+     *
+     * @return boolean
+     */
+    public function getFoto()
+    {
+        return $this->foto;
     }
 
     /**

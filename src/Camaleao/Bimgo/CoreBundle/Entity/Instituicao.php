@@ -94,6 +94,13 @@ class Instituicao
     private $ativo = true;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="foto", type="boolean", nullable=false)
+     */
+    private $foto = false;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dataCriacao", type="datetime", nullable=false)
@@ -490,6 +497,29 @@ class Instituicao
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    /**
+     * Set foto
+     *
+     * @param boolean $foto
+     * @return Instituicao
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Get foto
+     *
+     * @return boolean
+     */
+    public function getFoto()
+    {
+        return $this->foto;
     }
 
     /**
